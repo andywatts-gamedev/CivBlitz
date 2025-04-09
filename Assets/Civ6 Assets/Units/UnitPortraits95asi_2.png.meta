@@ -1,0 +1,1846 @@
+fileFormatVersion: 2
+guid: 5a9783bd5901ca349afb3618fab87c99
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4853364438628336325
+    second: UnitPortraits95asi_2_0
+  - first:
+      213: -8780311093346805164
+    second: UnitPortraits95asi_2_1
+  - first:
+      213: -6083811574598091282
+    second: UnitPortraits95asi_2_2
+  - first:
+      213: 3168771437334354799
+    second: UnitPortraits95asi_2_3
+  - first:
+      213: 5351299949116650191
+    second: UnitPortraits95asi_2_4
+  - first:
+      213: 8277942920345016800
+    second: UnitPortraits95asi_2_5
+  - first:
+      213: -2779309033778473518
+    second: UnitPortraits95asi_2_6
+  - first:
+      213: 9171103709750987497
+    second: UnitPortraits95asi_2_7
+  - first:
+      213: -967168796625161361
+    second: UnitPortraits95asi_2_8
+  - first:
+      213: -1918435810060867514
+    second: UnitPortraits95asi_2_9
+  - first:
+      213: 4369412479402830169
+    second: UnitPortraits95asi_2_10
+  - first:
+      213: -1776949653577807641
+    second: UnitPortraits95asi_2_11
+  - first:
+      213: -3701514515529100995
+    second: UnitPortraits95asi_2_12
+  - first:
+      213: -7506149396522403342
+    second: UnitPortraits95asi_2_13
+  - first:
+      213: -202596476693925823
+    second: UnitPortraits95asi_2_14
+  - first:
+      213: 3859806184514496497
+    second: UnitPortraits95asi_2_15
+  - first:
+      213: -8002024283862394292
+    second: UnitPortraits95asi_2_16
+  - first:
+      213: -68602105237198474
+    second: UnitPortraits95asi_2_17
+  - first:
+      213: -6918998077591882984
+    second: UnitPortraits95asi_2_18
+  - first:
+      213: 4580279111317881331
+    second: UnitPortraits95asi_2_19
+  - first:
+      213: 6659075809825632690
+    second: UnitPortraits95asi_2_20
+  - first:
+      213: -3482030416476770290
+    second: UnitPortraits95asi_2_21
+  - first:
+      213: -7568888401725526248
+    second: UnitPortraits95asi_2_22
+  - first:
+      213: 3613763427315331656
+    second: UnitPortraits95asi_2_23
+  - first:
+      213: -7434543465618536245
+    second: UnitPortraits95asi_2_24
+  - first:
+      213: -5354809808515912982
+    second: UnitPortraits95asi_2_25
+  - first:
+      213: -8751399460802170360
+    second: UnitPortraits95asi_2_26
+  - first:
+      213: -9006756401165051428
+    second: UnitPortraits95asi_2_27
+  - first:
+      213: -8007104938409055187
+    second: UnitPortraits95asi_2_28
+  - first:
+      213: 1288952143283850642
+    second: UnitPortraits95asi_2_29
+  - first:
+      213: -4906717484528676812
+    second: UnitPortraits95asi_2_30
+  - first:
+      213: 8840678586332110239
+    second: UnitPortraits95asi_2_31
+  - first:
+      213: 770436446293918749
+    second: UnitPortraits95asi_2_32
+  - first:
+      213: -4231464423273422185
+    second: UnitPortraits95asi_2_33
+  - first:
+      213: 5908448998025580021
+    second: UnitPortraits95asi_2_34
+  - first:
+      213: 8402462605998918386
+    second: UnitPortraits95asi_2_35
+  - first:
+      213: -2626163403802516400
+    second: UnitPortraits95asi_2_36
+  - first:
+      213: 781158855105442297
+    second: UnitPortraits95asi_2_37
+  - first:
+      213: 1527489857669707681
+    second: UnitPortraits95asi_2_38
+  - first:
+      213: -6009410104086824093
+    second: UnitPortraits95asi_2_39
+  - first:
+      213: -1847564955978483001
+    second: UnitPortraits95asi_2_40
+  - first:
+      213: 7086787936887392448
+    second: UnitPortraits95asi_2_41
+  - first:
+      213: -1811714784813769282
+    second: UnitPortraits95asi_2_42
+  - first:
+      213: 8701163694502108006
+    second: UnitPortraits95asi_2_43
+  - first:
+      213: -8308469939750936189
+    second: UnitPortraits95asi_2_44
+  - first:
+      213: -7932948293856847658
+    second: UnitPortraits95asi_2_45
+  - first:
+      213: 2374209886024111221
+    second: UnitPortraits95asi_2_46
+  - first:
+      213: 5525524626975442175
+    second: UnitPortraits95asi_2_47
+  - first:
+      213: -9076345461697639126
+    second: UnitPortraits95asi_2_48
+  - first:
+      213: -8817965446437503769
+    second: UnitPortraits95asi_2_49
+  - first:
+      213: 6719765951017024577
+    second: UnitPortraits95asi_2_50
+  - first:
+      213: -3578392177769487551
+    second: UnitPortraits95asi_2_51
+  - first:
+      213: -8661125900668515897
+    second: UnitPortraits95asi_2_52
+  - first:
+      213: 4781873152514375677
+    second: UnitPortraits95asi_2_53
+  - first:
+      213: -2304080404681661219
+    second: UnitPortraits95asi_2_54
+  - first:
+      213: 6872213683393862694
+    second: UnitPortraits95asi_2_55
+  - first:
+      213: -5905692215041769677
+    second: UnitPortraits95asi_2_56
+  - first:
+      213: -1495713710682786056
+    second: UnitPortraits95asi_2_57
+  - first:
+      213: -2856401958746153853
+    second: UnitPortraits95asi_2_58
+  - first:
+      213: 6869591312417966461
+    second: UnitPortraits95asi_2_59
+  - first:
+      213: -3518330240248473912
+    second: UnitPortraits95asi_2_60
+  - first:
+      213: -6039471873443750160
+    second: UnitPortraits95asi_2_61
+  - first:
+      213: -7870968775423054223
+    second: UnitPortraits95asi_2_62
+  - first:
+      213: 407976542001234190
+    second: UnitPortraits95asi_2_63
+  - first:
+      213: 1009308159440516614
+    second: UnitPortraits95asi_2_64
+  - first:
+      213: 3390209901176749314
+    second: UnitPortraits95asi_2_65
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 674
+        width: 73
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3d7b0ed1c265acb0800000000000000
+      internalID: -4853364438628336325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_1
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 675
+        width: 70
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45a54a7a491162680800000000000000
+      internalID: -8780311093346805164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_2
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 675
+        width: 62
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eedbba73b95f19ba0800000000000000
+      internalID: -6083811574598091282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_3
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 676
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6bd7b855dcb9fb20800000000000000
+      internalID: 3168771437334354799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_4
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 672
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc2f9a983f2a34a40800000000000000
+      internalID: 5351299949116650191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_5
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 674
+        width: 73
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e9df164a3921e270800000000000000
+      internalID: 8277942920345016800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_6
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 676
+        width: 65
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d59990c829ed69d0800000000000000
+      internalID: -2779309033778473518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_7
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 675
+        width: 69
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ea89f1cb3e464f70800000000000000
+      internalID: 9171103709750987497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_8
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 581
+        width: 59
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f63b05f8a1de392f0800000000000000
+      internalID: -967168796625161361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_9
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 581
+        width: 68
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 648eee88bc85065e0800000000000000
+      internalID: -1918435810060867514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_10
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 575
+        width: 66
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 959e6f7ff7543ac30800000000000000
+      internalID: 4369412479402830169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_11
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 579
+        width: 61
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e8cdba64b10757e0800000000000000
+      internalID: -1776949653577807641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_12
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 581
+        width: 77
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d319fead82491acc0800000000000000
+      internalID: -3701514515529100995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_13
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 581
+        width: 75
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f9f445a4ecc4d790800000000000000
+      internalID: -7506149396522403342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_14
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 591
+        width: 75
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 140b9ede39b303df0800000000000000
+      internalID: -202596476693925823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_15
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 580
+        width: 74
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f7a7d15649c09530800000000000000
+      internalID: 3859806184514496497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_16
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 481
+        width: 65
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4a15547f4913f090800000000000000
+      internalID: -8002024283862394292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_17
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 485
+        width: 77
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6792e7eafb64c0ff0800000000000000
+      internalID: -68602105237198474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_18
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 478
+        width: 74
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 813768728e7caff90800000000000000
+      internalID: -6918998077591882984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_19
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 481
+        width: 65
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f18e3a959b609f30800000000000000
+      internalID: 4580279111317881331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_20
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 488
+        width: 73
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b1bd01fa2ac96c50800000000000000
+      internalID: 6659075809825632690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_21
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 482
+        width: 71
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e00fbc8e8c75dafc0800000000000000
+      internalID: -3482030416476770290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_22
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 487
+        width: 78
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81f639ea918e5f690800000000000000
+      internalID: -7568888401725526248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_23
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 486
+        width: 79
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 842bd6bc0baa62230800000000000000
+      internalID: 3613763427315331656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_24
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 391
+        width: 78
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc80b90ab1233d890800000000000000
+      internalID: -7434543465618536245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_25
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 397
+        width: 76
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeaa1a3a9d4efa5b0800000000000000
+      internalID: -5354809808515912982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_26
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 389
+        width: 75
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 802775bae88cc8680800000000000000
+      internalID: -8751399460802170360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_27
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 383
+        width: 69
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd9d412e5c2910380800000000000000
+      internalID: -9006756401165051428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_28
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 389
+        width: 63
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2c2ad26b7c01e090800000000000000
+      internalID: -8007104938409055187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_29
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 397
+        width: 81
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29d89e8252743e110800000000000000
+      internalID: 1288952143283850642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_30
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 385
+        width: 61
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4305879d176d7ebb0800000000000000
+      internalID: -4906717484528676812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_31
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 390
+        width: 48
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9d5ab7955660ba70800000000000000
+      internalID: 8840678586332110239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_32
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 295
+        width: 56
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d140d5fadd321ba00800000000000000
+      internalID: 770436446293918749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_33
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 295
+        width: 58
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 792a51bb681d645c0800000000000000
+      internalID: -4231464423273422185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_34
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 295
+        width: 51
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fdc3d43f070ff150800000000000000
+      internalID: 5908448998025580021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_35
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 297
+        width: 72
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fa8115d83b8b9470800000000000000
+      internalID: 8402462605998918386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_36
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 296
+        width: 72
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 054683a5c4efd8bd0800000000000000
+      internalID: -2626163403802516400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_37
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 298
+        width: 75
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f1f5b707db37da00800000000000000
+      internalID: 781158855105442297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_38
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 294
+        width: 74
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a73a6cbeebb23510800000000000000
+      internalID: 1527489857669707681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_39
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 288
+        width: 74
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36bf24c79594a9ca0800000000000000
+      internalID: -6009410104086824093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_40
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 197
+        width: 73
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ca317b16712c56e0800000000000000
+      internalID: -1847564955978483001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_41
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 199
+        width: 68
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c842b8c414595260800000000000000
+      internalID: 7086787936887392448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_42
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 193
+        width: 82
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebd1ad8800f7bd6e0800000000000000
+      internalID: -1811714784813769282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_43
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 201
+        width: 73
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66bd257874eb0c870800000000000000
+      internalID: 8701163694502108006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_44
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 201
+        width: 67
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38162262c9262bc80800000000000000
+      internalID: -8308469939750936189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_45
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 200
+        width: 68
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d81f1bae8188e190800000000000000
+      internalID: -7932948293856847658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_46
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 200
+        width: 52
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57410beef43e2f020800000000000000
+      internalID: 2374209886024111221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_47
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 200
+        width: 45
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff44b8c6f5b9eac40800000000000000
+      internalID: 5525524626975442175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_48
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 106
+        width: 45
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2d88c024e75a0280800000000000000
+      internalID: -9076345461697639126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_49
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 106
+        width: 49
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ec7c63652b40a580800000000000000
+      internalID: -8817965446437503769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_50
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 106
+        width: 51
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14c72249787614d50800000000000000
+      internalID: 6719765951017024577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_51
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 101
+        width: 52
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1436301064ff65ec0800000000000000
+      internalID: -3578392177769487551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_52
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 101
+        width: 51
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c9c7b7c1ef7dc780800000000000000
+      internalID: -8661125900668515897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_53
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 103
+        width: 78
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dffb898fb40ac5240800000000000000
+      internalID: 4781873152514375677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_54
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 103
+        width: 78
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd4e20954134600e0800000000000000
+      internalID: -2304080404681661219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_55
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 97
+        width: 62
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62c154b3fe10f5f50800000000000000
+      internalID: 6872213683393862694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_56
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 10
+        width: 59
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f35a95834ca0ea0800000000000000
+      internalID: -5905692215041769677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_57
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 11
+        width: 56
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f632150e482e3be0800000000000000
+      internalID: -1495713710682786056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_58
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 11
+        width: 48
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38c94396d850c58d0800000000000000
+      internalID: -2856401958746153853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_59
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 7
+        width: 66
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7948c8e6e0b55f50800000000000000
+      internalID: 6869591312417966461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_60
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 0
+        width: 72
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c6997399416c2fc0800000000000000
+      internalID: -3518330240248473912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_61
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 6
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fe1c60645c7f2ca0800000000000000
+      internalID: -6039471873443750160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_62
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 11
+        width: 61
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17ea7b6d993b4c290800000000000000
+      internalID: -7870968775423054223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_63
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 12
+        width: 70
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e010daed08c69a500800000000000000
+      internalID: 407976542001234190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_64
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 12
+        width: 66
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 606fa586c68c10e00800000000000000
+      internalID: 1009308159440516614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits95asi_2_65
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 0
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20df6a961f17c0f20800000000000000
+      internalID: 3390209901176749314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UnitPortraits95asi_2_0: -4853364438628336325
+      UnitPortraits95asi_2_1: -8780311093346805164
+      UnitPortraits95asi_2_10: 4369412479402830169
+      UnitPortraits95asi_2_11: -1776949653577807641
+      UnitPortraits95asi_2_12: -3701514515529100995
+      UnitPortraits95asi_2_13: -7506149396522403342
+      UnitPortraits95asi_2_14: -202596476693925823
+      UnitPortraits95asi_2_15: 3859806184514496497
+      UnitPortraits95asi_2_16: -8002024283862394292
+      UnitPortraits95asi_2_17: -68602105237198474
+      UnitPortraits95asi_2_18: -6918998077591882984
+      UnitPortraits95asi_2_19: 4580279111317881331
+      UnitPortraits95asi_2_2: -6083811574598091282
+      UnitPortraits95asi_2_20: 6659075809825632690
+      UnitPortraits95asi_2_21: -3482030416476770290
+      UnitPortraits95asi_2_22: -7568888401725526248
+      UnitPortraits95asi_2_23: 3613763427315331656
+      UnitPortraits95asi_2_24: -7434543465618536245
+      UnitPortraits95asi_2_25: -5354809808515912982
+      UnitPortraits95asi_2_26: -8751399460802170360
+      UnitPortraits95asi_2_27: -9006756401165051428
+      UnitPortraits95asi_2_28: -8007104938409055187
+      UnitPortraits95asi_2_29: 1288952143283850642
+      UnitPortraits95asi_2_3: 3168771437334354799
+      UnitPortraits95asi_2_30: -4906717484528676812
+      UnitPortraits95asi_2_31: 8840678586332110239
+      UnitPortraits95asi_2_32: 770436446293918749
+      UnitPortraits95asi_2_33: -4231464423273422185
+      UnitPortraits95asi_2_34: 5908448998025580021
+      UnitPortraits95asi_2_35: 8402462605998918386
+      UnitPortraits95asi_2_36: -2626163403802516400
+      UnitPortraits95asi_2_37: 781158855105442297
+      UnitPortraits95asi_2_38: 1527489857669707681
+      UnitPortraits95asi_2_39: -6009410104086824093
+      UnitPortraits95asi_2_4: 5351299949116650191
+      UnitPortraits95asi_2_40: -1847564955978483001
+      UnitPortraits95asi_2_41: 7086787936887392448
+      UnitPortraits95asi_2_42: -1811714784813769282
+      UnitPortraits95asi_2_43: 8701163694502108006
+      UnitPortraits95asi_2_44: -8308469939750936189
+      UnitPortraits95asi_2_45: -7932948293856847658
+      UnitPortraits95asi_2_46: 2374209886024111221
+      UnitPortraits95asi_2_47: 5525524626975442175
+      UnitPortraits95asi_2_48: -9076345461697639126
+      UnitPortraits95asi_2_49: -8817965446437503769
+      UnitPortraits95asi_2_5: 8277942920345016800
+      UnitPortraits95asi_2_50: 6719765951017024577
+      UnitPortraits95asi_2_51: -3578392177769487551
+      UnitPortraits95asi_2_52: -8661125900668515897
+      UnitPortraits95asi_2_53: 4781873152514375677
+      UnitPortraits95asi_2_54: -2304080404681661219
+      UnitPortraits95asi_2_55: 6872213683393862694
+      UnitPortraits95asi_2_56: -5905692215041769677
+      UnitPortraits95asi_2_57: -1495713710682786056
+      UnitPortraits95asi_2_58: -2856401958746153853
+      UnitPortraits95asi_2_59: 6869591312417966461
+      UnitPortraits95asi_2_6: -2779309033778473518
+      UnitPortraits95asi_2_60: -3518330240248473912
+      UnitPortraits95asi_2_61: -6039471873443750160
+      UnitPortraits95asi_2_62: -7870968775423054223
+      UnitPortraits95asi_2_63: 407976542001234190
+      UnitPortraits95asi_2_64: 1009308159440516614
+      UnitPortraits95asi_2_65: 3390209901176749314
+      UnitPortraits95asi_2_7: 9171103709750987497
+      UnitPortraits95asi_2_8: -967168796625161361
+      UnitPortraits95asi_2_9: -1918435810060867514
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

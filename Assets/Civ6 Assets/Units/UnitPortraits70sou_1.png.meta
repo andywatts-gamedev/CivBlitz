@@ -1,0 +1,1742 @@
+fileFormatVersion: 2
+guid: 295725455f1154940ac230d6e8ee00cc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6839987889268152210
+    second: UnitPortraits70sou_1_0
+  - first:
+      213: -6679500734529742513
+    second: UnitPortraits70sou_1_1
+  - first:
+      213: 5316613914597690737
+    second: UnitPortraits70sou_1_2
+  - first:
+      213: 3347306662538718773
+    second: UnitPortraits70sou_1_3
+  - first:
+      213: 8671620419679329141
+    second: UnitPortraits70sou_1_4
+  - first:
+      213: -8164202739562019134
+    second: UnitPortraits70sou_1_5
+  - first:
+      213: -8395694974958503960
+    second: UnitPortraits70sou_1_6
+  - first:
+      213: 5906439414546499779
+    second: UnitPortraits70sou_1_7
+  - first:
+      213: 4614511817645960344
+    second: UnitPortraits70sou_1_8
+  - first:
+      213: 8758152606548441984
+    second: UnitPortraits70sou_1_9
+  - first:
+      213: -8272274431367054193
+    second: UnitPortraits70sou_1_10
+  - first:
+      213: -4509928626614188151
+    second: UnitPortraits70sou_1_11
+  - first:
+      213: -5885784530426028637
+    second: UnitPortraits70sou_1_12
+  - first:
+      213: 2313470149569633341
+    second: UnitPortraits70sou_1_13
+  - first:
+      213: 7243288629427935442
+    second: UnitPortraits70sou_1_14
+  - first:
+      213: -7891779364722247996
+    second: UnitPortraits70sou_1_15
+  - first:
+      213: -2675072724619803703
+    second: UnitPortraits70sou_1_16
+  - first:
+      213: 7098417686428933327
+    second: UnitPortraits70sou_1_17
+  - first:
+      213: -7963168357873235569
+    second: UnitPortraits70sou_1_18
+  - first:
+      213: -5420710272555601260
+    second: UnitPortraits70sou_1_19
+  - first:
+      213: 1212502098433864377
+    second: UnitPortraits70sou_1_20
+  - first:
+      213: 3130451142895736213
+    second: UnitPortraits70sou_1_21
+  - first:
+      213: -2125398196675069924
+    second: UnitPortraits70sou_1_22
+  - first:
+      213: -8874827997762710064
+    second: UnitPortraits70sou_1_23
+  - first:
+      213: -1199171015548787327
+    second: UnitPortraits70sou_1_24
+  - first:
+      213: -5969621251037009493
+    second: UnitPortraits70sou_1_25
+  - first:
+      213: -4696844893589903037
+    second: UnitPortraits70sou_1_26
+  - first:
+      213: -8396477229199864443
+    second: UnitPortraits70sou_1_27
+  - first:
+      213: 5123184309149650805
+    second: UnitPortraits70sou_1_28
+  - first:
+      213: -2598123592324125550
+    second: UnitPortraits70sou_1_29
+  - first:
+      213: 7820093386390950976
+    second: UnitPortraits70sou_1_30
+  - first:
+      213: 1809051176555553679
+    second: UnitPortraits70sou_1_31
+  - first:
+      213: -2062045107889180169
+    second: UnitPortraits70sou_1_32
+  - first:
+      213: -5955046919929660286
+    second: UnitPortraits70sou_1_33
+  - first:
+      213: 3174617086520547697
+    second: UnitPortraits70sou_1_34
+  - first:
+      213: -1643641852450633433
+    second: UnitPortraits70sou_1_35
+  - first:
+      213: -1017099149255897154
+    second: UnitPortraits70sou_1_36
+  - first:
+      213: 4503840832945129767
+    second: UnitPortraits70sou_1_37
+  - first:
+      213: 6129223612071443878
+    second: UnitPortraits70sou_1_38
+  - first:
+      213: 5602476785608822246
+    second: UnitPortraits70sou_1_39
+  - first:
+      213: -1962296942617016572
+    second: UnitPortraits70sou_1_40
+  - first:
+      213: -7626753909737074862
+    second: UnitPortraits70sou_1_41
+  - first:
+      213: -156497302739575530
+    second: UnitPortraits70sou_1_42
+  - first:
+      213: -232796060240450534
+    second: UnitPortraits70sou_1_43
+  - first:
+      213: -2349641294338759892
+    second: UnitPortraits70sou_1_44
+  - first:
+      213: -5479822292708871853
+    second: UnitPortraits70sou_1_45
+  - first:
+      213: 7657656736083447322
+    second: UnitPortraits70sou_1_46
+  - first:
+      213: 6693085387228174755
+    second: UnitPortraits70sou_1_47
+  - first:
+      213: -6312898110304488504
+    second: UnitPortraits70sou_1_48
+  - first:
+      213: 213197868078508488
+    second: UnitPortraits70sou_1_49
+  - first:
+      213: -8502649242135876765
+    second: UnitPortraits70sou_1_50
+  - first:
+      213: 7522647236588599198
+    second: UnitPortraits70sou_1_51
+  - first:
+      213: 1718414566291550760
+    second: UnitPortraits70sou_1_52
+  - first:
+      213: -4319949609001036602
+    second: UnitPortraits70sou_1_53
+  - first:
+      213: 5207817264359106867
+    second: UnitPortraits70sou_1_54
+  - first:
+      213: 1836824822713025838
+    second: UnitPortraits70sou_1_55
+  - first:
+      213: -7698786809313176872
+    second: UnitPortraits70sou_1_56
+  - first:
+      213: -8009039146726555796
+    second: UnitPortraits70sou_1_57
+  - first:
+      213: -3803495950182007537
+    second: UnitPortraits70sou_1_58
+  - first:
+      213: -6985706188456134760
+    second: UnitPortraits70sou_1_59
+  - first:
+      213: -3796419639045212814
+    second: UnitPortraits70sou_1_60
+  - first:
+      213: -8448432428960176518
+    second: UnitPortraits70sou_1_61
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 490
+        width: 42
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e68a238214b7311a0800000000000000
+      internalID: -6839987889268152210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 497
+        width: 54
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f49d461b875ad43a0800000000000000
+      internalID: -6679500734529742513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_2
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 498
+        width: 49
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17d8e7bcf2868c940800000000000000
+      internalID: 5316613914597690737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_3
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 497
+        width: 43
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53e2beebca5047e20800000000000000
+      internalID: 3347306662538718773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_4
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 497
+        width: 38
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57b9206d3d8c75870800000000000000
+      internalID: 8671620419679329141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_5
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 497
+        width: 46
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c6822a3ddce2be80800000000000000
+      internalID: -8164202739562019134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_6
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 497
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e7f01f07ef7c7b80800000000000000
+      internalID: -8395694974958503960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_7
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 427
+        width: 51
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c809679a53e7f150800000000000000
+      internalID: 5906439414546499779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_8
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 421
+        width: 52
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89c21a6ac0a0a0040800000000000000
+      internalID: 4614511817645960344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_9
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 426
+        width: 42
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08b3bf994653b8970800000000000000
+      internalID: 8758152606548441984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_10
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 428
+        width: 37
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8cf1d9ab3af23d80800000000000000
+      internalID: -8272274431367054193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_11
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 427
+        width: 39
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 987cb480fc38961c0800000000000000
+      internalID: -4509928626614188151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_12
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 420
+        width: 46
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ad977f572e715ea0800000000000000
+      internalID: -5885784530426028637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_13
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 421
+        width: 52
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c519ff7d81b1020800000000000000
+      internalID: 2313470149569633341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_14
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 427
+        width: 43
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d89da2c1a4558460800000000000000
+      internalID: 7243288629427935442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_15
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 356
+        width: 40
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c6f8ffea74ca7290800000000000000
+      internalID: -7891779364722247996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_16
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 357
+        width: 56
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c343b4b78b30ead0800000000000000
+      internalID: -2675072724619803703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_17
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 357
+        width: 48
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcc52fad645a28260800000000000000
+      internalID: 7098417686428933327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_18
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 356
+        width: 52
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f89c556b1942d7190800000000000000
+      internalID: -7963168357873235569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_19
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 357
+        width: 45
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 492330e2ab4c5c4b0800000000000000
+      internalID: -5420710272555601260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_20
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 356
+        width: 41
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b2f0920c3ca3d010800000000000000
+      internalID: 1212502098433864377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_21
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 355
+        width: 54
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59514078ab8917b20800000000000000
+      internalID: 3130451142895736213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_22
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 358
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c183de8d9911182e0800000000000000
+      internalID: -2125398196675069924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_23
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 287
+        width: 45
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d599a6f4f646d480800000000000000
+      internalID: -8874827997762710064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_24
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 284
+        width: 62
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18525499050bb5fe0800000000000000
+      internalID: -1199171015548787327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_25
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 288
+        width: 51
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba9e050c915a72da0800000000000000
+      internalID: -5969621251037009493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_26
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 287
+        width: 47
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3496778447471deb0800000000000000
+      internalID: -4696844893589903037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_27
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 288
+        width: 60
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58dc2ec4278b97b80800000000000000
+      internalID: -8396477229199864443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_28
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 287
+        width: 49
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57f48b14cf4391740800000000000000
+      internalID: 5123184309149650805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_29
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 290
+        width: 57
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29c65f4bb5c91fbd0800000000000000
+      internalID: -2598123592324125550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_30
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 287
+        width: 48
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 044d636908d868c60800000000000000
+      internalID: 7820093386390950976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_31
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 218
+        width: 47
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f83a817d57a0b1910800000000000000
+      internalID: 1809051176555553679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_32
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 217
+        width: 42
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f1fe6946e42263e0800000000000000
+      internalID: -2062045107889180169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_33
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 217
+        width: 45
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28cfec4a06c6b5da0800000000000000
+      internalID: -5955046919929660286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_34
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 217
+        width: 47
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17951fb9b618e0c20800000000000000
+      internalID: 3174617086520547697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_35
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 217
+        width: 46
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72907be817c9039e0800000000000000
+      internalID: -1643641852450633433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_36
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 216
+        width: 55
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebf004b66b982e1f0800000000000000
+      internalID: -1017099149255897154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_37
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 215
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 729089c006bd08e30800000000000000
+      internalID: 4503840832945129767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_38
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 215
+        width: 54
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ad7472b6606f0550800000000000000
+      internalID: 6129223612071443878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_39
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 147
+        width: 34
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ed069c04feffbd40800000000000000
+      internalID: 5602476785608822246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_40
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 147
+        width: 39
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4074a7fc35584c4e0800000000000000
+      internalID: -1962296942617016572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_41
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 148
+        width: 55
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25fccc43ab3582690800000000000000
+      internalID: -7626753909737074862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_42
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 148
+        width: 48
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61d96e5488204ddf0800000000000000
+      internalID: -156497302739575530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_43
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 147
+        width: 51
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1ce1447731f4ccf0800000000000000
+      internalID: -232796060240450534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_44
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 147
+        width: 44
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c23695511b5646fd0800000000000000
+      internalID: -2349641294338759892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_45
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 148
+        width: 39
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35132da78a2c3f3b0800000000000000
+      internalID: -5479822292708871853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_46
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 78
+        width: 55
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1e812eba36754a60800000000000000
+      internalID: 7657656736083447322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_47
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 77
+        width: 43
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a9d71db2bd92ec50800000000000000
+      internalID: 6693085387228174755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_48
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 77
+        width: 54
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c3f018ad941468a0800000000000000
+      internalID: -6312898110304488504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_49
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 78
+        width: 47
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c9a0b9d45e65f200800000000000000
+      internalID: 213197868078508488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_50
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 77
+        width: 43
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36b2fb03095800a80800000000000000
+      internalID: -8502649242135876765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_51
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 77
+        width: 45
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e97ff631ecfc56860800000000000000
+      internalID: 7522647236588599198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_52
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 78
+        width: 50
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8223aa881f809d710800000000000000
+      internalID: 1718414566291550760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_53
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 75
+        width: 43
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c4d7ebf7b47c04c0800000000000000
+      internalID: -4319949609001036602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_54
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 3
+        width: 46
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3396541b532e54840800000000000000
+      internalID: 5207817264359106867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_55
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 7
+        width: 46
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e250e60c176bd7910800000000000000
+      internalID: 1836824822713025838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_56
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 14
+        width: 55
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d2dc65df2a682590800000000000000
+      internalID: -7698786809313176872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_57
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 7
+        width: 51
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6f7a2b645d2ad090800000000000000
+      internalID: -8009039146726555796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_58
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 7
+        width: 41
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0db3c8c594473bc0800000000000000
+      internalID: -3803495950182007537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_59
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 7
+        width: 50
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 897f2d3cb39cd0f90800000000000000
+      internalID: -6985706188456134760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_60
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 8
+        width: 43
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 275b46cd378605bc0800000000000000
+      internalID: -3796419639045212814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitPortraits70sou_1_61
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 8
+        width: 37
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7620f2b77321ca80800000000000000
+      internalID: -8448432428960176518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UnitPortraits70sou_1_0: -6839987889268152210
+      UnitPortraits70sou_1_1: -6679500734529742513
+      UnitPortraits70sou_1_10: -8272274431367054193
+      UnitPortraits70sou_1_11: -4509928626614188151
+      UnitPortraits70sou_1_12: -5885784530426028637
+      UnitPortraits70sou_1_13: 2313470149569633341
+      UnitPortraits70sou_1_14: 7243288629427935442
+      UnitPortraits70sou_1_15: -7891779364722247996
+      UnitPortraits70sou_1_16: -2675072724619803703
+      UnitPortraits70sou_1_17: 7098417686428933327
+      UnitPortraits70sou_1_18: -7963168357873235569
+      UnitPortraits70sou_1_19: -5420710272555601260
+      UnitPortraits70sou_1_2: 5316613914597690737
+      UnitPortraits70sou_1_20: 1212502098433864377
+      UnitPortraits70sou_1_21: 3130451142895736213
+      UnitPortraits70sou_1_22: -2125398196675069924
+      UnitPortraits70sou_1_23: -8874827997762710064
+      UnitPortraits70sou_1_24: -1199171015548787327
+      UnitPortraits70sou_1_25: -5969621251037009493
+      UnitPortraits70sou_1_26: -4696844893589903037
+      UnitPortraits70sou_1_27: -8396477229199864443
+      UnitPortraits70sou_1_28: 5123184309149650805
+      UnitPortraits70sou_1_29: -2598123592324125550
+      UnitPortraits70sou_1_3: 3347306662538718773
+      UnitPortraits70sou_1_30: 7820093386390950976
+      UnitPortraits70sou_1_31: 1809051176555553679
+      UnitPortraits70sou_1_32: -2062045107889180169
+      UnitPortraits70sou_1_33: -5955046919929660286
+      UnitPortraits70sou_1_34: 3174617086520547697
+      UnitPortraits70sou_1_35: -1643641852450633433
+      UnitPortraits70sou_1_36: -1017099149255897154
+      UnitPortraits70sou_1_37: 4503840832945129767
+      UnitPortraits70sou_1_38: 6129223612071443878
+      UnitPortraits70sou_1_39: 5602476785608822246
+      UnitPortraits70sou_1_4: 8671620419679329141
+      UnitPortraits70sou_1_40: -1962296942617016572
+      UnitPortraits70sou_1_41: -7626753909737074862
+      UnitPortraits70sou_1_42: -156497302739575530
+      UnitPortraits70sou_1_43: -232796060240450534
+      UnitPortraits70sou_1_44: -2349641294338759892
+      UnitPortraits70sou_1_45: -5479822292708871853
+      UnitPortraits70sou_1_46: 7657656736083447322
+      UnitPortraits70sou_1_47: 6693085387228174755
+      UnitPortraits70sou_1_48: -6312898110304488504
+      UnitPortraits70sou_1_49: 213197868078508488
+      UnitPortraits70sou_1_5: -8164202739562019134
+      UnitPortraits70sou_1_50: -8502649242135876765
+      UnitPortraits70sou_1_51: 7522647236588599198
+      UnitPortraits70sou_1_52: 1718414566291550760
+      UnitPortraits70sou_1_53: -4319949609001036602
+      UnitPortraits70sou_1_54: 5207817264359106867
+      UnitPortraits70sou_1_55: 1836824822713025838
+      UnitPortraits70sou_1_56: -7698786809313176872
+      UnitPortraits70sou_1_57: -8009039146726555796
+      UnitPortraits70sou_1_58: -3803495950182007537
+      UnitPortraits70sou_1_59: -6985706188456134760
+      UnitPortraits70sou_1_6: -8395694974958503960
+      UnitPortraits70sou_1_60: -3796419639045212814
+      UnitPortraits70sou_1_61: -8448432428960176518
+      UnitPortraits70sou_1_7: 5906439414546499779
+      UnitPortraits70sou_1_8: 4614511817645960344
+      UnitPortraits70sou_1_9: 8758152606548441984
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,2548 @@
+fileFormatVersion: 2
+guid: 91ee1424a4d8d464ea922be6cb1f9598
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3512961882721445440
+    second: UnitFlagAtlas22_0
+  - first:
+      213: -750280997116276359
+    second: UnitFlagAtlas22_1
+  - first:
+      213: -5693493244540853138
+    second: UnitFlagAtlas22_2
+  - first:
+      213: -1458421415719171317
+    second: UnitFlagAtlas22_3
+  - first:
+      213: 83541716675613291
+    second: UnitFlagAtlas22_4
+  - first:
+      213: 7821037729000397788
+    second: UnitFlagAtlas22_5
+  - first:
+      213: 4992637298806319426
+    second: UnitFlagAtlas22_6
+  - first:
+      213: 7519621218752862095
+    second: UnitFlagAtlas22_7
+  - first:
+      213: -3485984477180305340
+    second: UnitFlagAtlas22_8
+  - first:
+      213: -4497097678211956968
+    second: UnitFlagAtlas22_9
+  - first:
+      213: -8080888035653979151
+    second: UnitFlagAtlas22_10
+  - first:
+      213: 1622946805172823723
+    second: UnitFlagAtlas22_11
+  - first:
+      213: 4930232284280002131
+    second: UnitFlagAtlas22_12
+  - first:
+      213: -920325225453773953
+    second: UnitFlagAtlas22_13
+  - first:
+      213: 3566187968814707976
+    second: UnitFlagAtlas22_14
+  - first:
+      213: 2942501212482877201
+    second: UnitFlagAtlas22_15
+  - first:
+      213: 7046555251727372123
+    second: UnitFlagAtlas22_16
+  - first:
+      213: 6951878523841464911
+    second: UnitFlagAtlas22_17
+  - first:
+      213: 7012235984280142937
+    second: UnitFlagAtlas22_18
+  - first:
+      213: -7336409698195108553
+    second: UnitFlagAtlas22_19
+  - first:
+      213: 2350108814805835349
+    second: UnitFlagAtlas22_20
+  - first:
+      213: -7136747090744348505
+    second: UnitFlagAtlas22_21
+  - first:
+      213: -385233144347851396
+    second: UnitFlagAtlas22_22
+  - first:
+      213: 4523134258330143194
+    second: UnitFlagAtlas22_23
+  - first:
+      213: -5368197763093094244
+    second: UnitFlagAtlas22_24
+  - first:
+      213: -551625672012290318
+    second: UnitFlagAtlas22_25
+  - first:
+      213: -7775874527625964244
+    second: UnitFlagAtlas22_26
+  - first:
+      213: -7125553580738561006
+    second: UnitFlagAtlas22_27
+  - first:
+      213: -6949466223363488819
+    second: UnitFlagAtlas22_28
+  - first:
+      213: 4636297368877658254
+    second: UnitFlagAtlas22_29
+  - first:
+      213: 3222604191121325549
+    second: UnitFlagAtlas22_30
+  - first:
+      213: -2302320055238092152
+    second: UnitFlagAtlas22_31
+  - first:
+      213: 5420296894016022355
+    second: UnitFlagAtlas22_32
+  - first:
+      213: -7001587770762233760
+    second: UnitFlagAtlas22_33
+  - first:
+      213: 5172692474762068664
+    second: UnitFlagAtlas22_34
+  - first:
+      213: -8553504609195687283
+    second: UnitFlagAtlas22_35
+  - first:
+      213: -2344908996073751847
+    second: UnitFlagAtlas22_36
+  - first:
+      213: 256914086569658035
+    second: UnitFlagAtlas22_37
+  - first:
+      213: -1371697868629159102
+    second: UnitFlagAtlas22_38
+  - first:
+      213: -6951967825501750202
+    second: UnitFlagAtlas22_39
+  - first:
+      213: 5617149872573733716
+    second: UnitFlagAtlas22_40
+  - first:
+      213: -3065002123420612284
+    second: UnitFlagAtlas22_41
+  - first:
+      213: -461838936390714107
+    second: UnitFlagAtlas22_42
+  - first:
+      213: -5321018063188440841
+    second: UnitFlagAtlas22_43
+  - first:
+      213: -5657912952250593349
+    second: UnitFlagAtlas22_44
+  - first:
+      213: 3393666102778968522
+    second: UnitFlagAtlas22_45
+  - first:
+      213: -6377782943654059175
+    second: UnitFlagAtlas22_46
+  - first:
+      213: -8620688362166895358
+    second: UnitFlagAtlas22_47
+  - first:
+      213: -5775865004204246676
+    second: UnitFlagAtlas22_48
+  - first:
+      213: 5651615324193119504
+    second: UnitFlagAtlas22_49
+  - first:
+      213: -24942500923666189
+    second: UnitFlagAtlas22_50
+  - first:
+      213: -6006304160913548368
+    second: UnitFlagAtlas22_51
+  - first:
+      213: 3483547002454497394
+    second: UnitFlagAtlas22_52
+  - first:
+      213: 160416113580951042
+    second: UnitFlagAtlas22_53
+  - first:
+      213: 738392721615341308
+    second: UnitFlagAtlas22_54
+  - first:
+      213: -6708052778404728885
+    second: UnitFlagAtlas22_55
+  - first:
+      213: 4680603096172914155
+    second: UnitFlagAtlas22_56
+  - first:
+      213: 8964183789655516980
+    second: UnitFlagAtlas22_57
+  - first:
+      213: -9113264501579501364
+    second: UnitFlagAtlas22_58
+  - first:
+      213: -4654680290906573219
+    second: UnitFlagAtlas22_59
+  - first:
+      213: 1874475198452284120
+    second: UnitFlagAtlas22_60
+  - first:
+      213: 1474767887689146527
+    second: UnitFlagAtlas22_61
+  - first:
+      213: 3071167554175678288
+    second: UnitFlagAtlas22_62
+  - first:
+      213: 1151801403324600345
+    second: UnitFlagAtlas22_63
+  - first:
+      213: -9080960216122294727
+    second: UnitFlagAtlas22_64
+  - first:
+      213: 5376051107206982857
+    second: UnitFlagAtlas22_65
+  - first:
+      213: 1902968407927505866
+    second: UnitFlagAtlas22_66
+  - first:
+      213: -5420563627790629878
+    second: UnitFlagAtlas22_67
+  - first:
+      213: 2759833586912455277
+    second: UnitFlagAtlas22_68
+  - first:
+      213: -5302560194042622243
+    second: UnitFlagAtlas22_69
+  - first:
+      213: 6205255424652137476
+    second: UnitFlagAtlas22_70
+  - first:
+      213: -2418578546335630045
+    second: UnitFlagAtlas22_71
+  - first:
+      213: -5363295533367007068
+    second: UnitFlagAtlas22_72
+  - first:
+      213: -4590547740921055918
+    second: UnitFlagAtlas22_73
+  - first:
+      213: 6400061498064070237
+    second: UnitFlagAtlas22_74
+  - first:
+      213: 6679814459218659238
+    second: UnitFlagAtlas22_75
+  - first:
+      213: -193254076847883518
+    second: UnitFlagAtlas22_76
+  - first:
+      213: 1618926378160770424
+    second: UnitFlagAtlas22_77
+  - first:
+      213: -4884525823456694312
+    second: UnitFlagAtlas22_78
+  - first:
+      213: -6452175639010325445
+    second: UnitFlagAtlas22_79
+  - first:
+      213: -1667712833788452559
+    second: UnitFlagAtlas22_80
+  - first:
+      213: -3661005827614262207
+    second: UnitFlagAtlas22_81
+  - first:
+      213: -4479853145415820831
+    second: UnitFlagAtlas22_82
+  - first:
+      213: 1386347317614649018
+    second: UnitFlagAtlas22_83
+  - first:
+      213: -9078958535128267714
+    second: UnitFlagAtlas22_84
+  - first:
+      213: -9082627550062767347
+    second: UnitFlagAtlas22_85
+  - first:
+      213: -5900387650576079344
+    second: UnitFlagAtlas22_86
+  - first:
+      213: -6788579207352743630
+    second: UnitFlagAtlas22_87
+  - first:
+      213: -6371560505198520148
+    second: UnitFlagAtlas22_88
+  - first:
+      213: 8135197541192941705
+    second: UnitFlagAtlas22_89
+  - first:
+      213: -130118057648772005
+    second: UnitFlagAtlas22_90
+  - first:
+      213: -3511944106245885209
+    second: UnitFlagAtlas22_91
+  - first:
+      213: -1804522714429172853
+    second: UnitFlagAtlas22_92
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 153
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c996e6b7c37f3fc0800000000000000
+      internalID: -3512961882721445440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 155
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 971982588677695f0800000000000000
+      internalID: -750280997116276359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_2
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 158
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e646e0c3f06acf0b0800000000000000
+      internalID: -5693493244540853138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_3
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 155
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0b8c3f0375a2cbe0800000000000000
+      internalID: -1458421415719171317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_4
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 156
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b62506aafbcc82100800000000000000
+      internalID: 83541716675613291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_5
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 154
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdb1ffb7068e98c60800000000000000
+      internalID: 7821037729000397788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_6
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 155
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24967bfcb29694540800000000000000
+      internalID: 4992637298806319426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_7
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 155
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f87114568af0b5860800000000000000
+      internalID: 7519621218752862095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_8
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 153
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4406429669b4f9fc0800000000000000
+      internalID: -3485984477180305340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_9
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 156
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81f31f10d791791c0800000000000000
+      internalID: -4497097678211956968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_10
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 156
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f3f32d552beadf80800000000000000
+      internalID: -8080888035653979151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_11
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 156
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba66ea3458dd58610800000000000000
+      internalID: 1622946805172823723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_12
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 157
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3561cac1424bb6440800000000000000
+      internalID: 4930232284280002131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_13
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 157
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7b1ff265195a33f0800000000000000
+      internalID: -920325225453773953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_14
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 157
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 805f87b2015ad7130800000000000000
+      internalID: 3566187968814707976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_15
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 158
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 117b231434dd5d820800000000000000
+      internalID: 2942501212482877201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_16
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 137
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5f8f5dcaa46ac160800000000000000
+      internalID: 7046555251727372123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_17
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 134
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4acc3f4fa80a7060800000000000000
+      internalID: 6951878523841464911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_18
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 133
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 954ca3ca977705160800000000000000
+      internalID: 7012235984280142937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_19
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 134
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73d895cdf36df2a90800000000000000
+      internalID: -7336409698195108553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_20
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 133
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55e140204834d9020800000000000000
+      internalID: 2350108814805835349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_21
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 134
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a07164455e25fc90800000000000000
+      internalID: -7136747090744348505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_22
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 135
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c75807b0f7067aaf0800000000000000
+      internalID: -385233144347851396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_23
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 133
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad90b23b4a665ce30800000000000000
+      internalID: 4523134258330143194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_24
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 135
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c902ace83945085b0800000000000000
+      internalID: -5368197763093094244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_25
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 134
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f6a8babf5b3858f0800000000000000
+      internalID: -551625672012290318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_26
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 135
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2598d2c05b861490800000000000000
+      internalID: -7775874527625964244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_27
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 134
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21cb01865c2fc1d90800000000000000
+      internalID: -7125553580738561006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_28
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 133
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc308d92a498e8f90800000000000000
+      internalID: -6949466223363488819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_29
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 132
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e80f70194ef675040800000000000000
+      internalID: 4636297368877658254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_30
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 133
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dedb87f007df8bc20800000000000000
+      internalID: 3222604191121325549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_31
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 133
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88a9644ab148c00e0800000000000000
+      internalID: -2302320055238092152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_32
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 110
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3576af0ae43c83b40800000000000000
+      internalID: 5420296894016022355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_33
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 112
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0687ffbb40d55de90800000000000000
+      internalID: -7001587770762233760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_34
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 112
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b28782566819c740800000000000000
+      internalID: 5172692474762068664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_35
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 113
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d82893850e8db4980800000000000000
+      internalID: -8553504609195687283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_36
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 112
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9daf76221b5357fd0800000000000000
+      internalID: -2344908996073751847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_37
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 112
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b647c3200eb09300800000000000000
+      internalID: 256914086569658035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_38
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 110
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 243d2395e00c6fce0800000000000000
+      internalID: -1371697868629159102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_39
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 110
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64cf5078816a58f90800000000000000
+      internalID: -6951967825501750202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_40
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 111
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45b53e45c0024fd40800000000000000
+      internalID: 5617149872573733716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_41
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 111
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44942bdcecce675d0800000000000000
+      internalID: -3065002123420612284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_42
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 112
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50dbcfc2fe73799f0800000000000000
+      internalID: -461838936390714107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_43
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 113
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f847347342f726b0800000000000000
+      internalID: -5321018063188440841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_44
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 115
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbf8507952e0b71b0800000000000000
+      internalID: -5657912952250593349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_45
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 113
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac9bc6e0759b81f20800000000000000
+      internalID: 3393666102778968522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_46
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 111
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95364f424309d77a0800000000000000
+      internalID: -6377782943654059175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_47
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 114
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20db2b5eb992d5880800000000000000
+      internalID: -8620688362166895358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_48
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 92
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c69bbc9616108dfa0800000000000000
+      internalID: -5775865004204246676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_49
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 90
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01d5fad91329e6e40800000000000000
+      internalID: 5651615324193119504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_50
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 90
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f092a47de267aff0800000000000000
+      internalID: -24942500923666189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_51
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 91
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bb1ccb303255aca0800000000000000
+      internalID: -6006304160913548368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_52
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 89
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2785da7ca8b085030800000000000000
+      internalID: 3483547002454497394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_53
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 93
+        width: 21
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 206cd3afa99e93200800000000000000
+      internalID: 160416113580951042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_54
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 89
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf6cd94a44c4f3a00800000000000000
+      internalID: 738392721615341308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_55
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 90
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcf2d90f98538e2a0800000000000000
+      internalID: -6708052778404728885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_56
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 91
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be5eaf197b7d4f040800000000000000
+      internalID: 4680603096172914155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_57
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 91
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4376bb399ad276c70800000000000000
+      internalID: 8964183789655516980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_58
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 91
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc03d2f483e278180800000000000000
+      internalID: -9113264501579501364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_59
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 89
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d56708ddfe0476fb0800000000000000
+      internalID: -4654680290906573219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_60
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 91
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8da3708f249730a10800000000000000
+      internalID: 1874475198452284120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_61
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 89
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f906dd7849d677410800000000000000
+      internalID: 1474767887689146527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_62
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 91
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 057b8586e9afe9a20800000000000000
+      internalID: 3071167554175678288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_63
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 90
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91095f816450cff00800000000000000
+      internalID: 1151801403324600345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_64
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 69
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93e7392ebc2f9f180800000000000000
+      internalID: -9080960216122294727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_65
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 68
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ccea6b9ff19b9a40800000000000000
+      internalID: 5376051107206982857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_66
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 71
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac34f454fa3b86a10800000000000000
+      internalID: 1902968407927505866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_67
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 68
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a040323991a46c4b0800000000000000
+      internalID: -5420563627790629878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_68
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 68
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6aeb1b6606ec4620800000000000000
+      internalID: 2759833586912455277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_69
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 71
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dde86f109958966b0800000000000000
+      internalID: -5302560194042622243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_70
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 68
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 404d4fe8eee7d1650800000000000000
+      internalID: 6205255424652137476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_71
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 68
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32db84450ab7f6ed0800000000000000
+      internalID: -2418578546335630045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_72
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 68
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a8683cd02fb195b0800000000000000
+      internalID: -5363295533367007068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_73
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 69
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 255bde1c6291b40c0800000000000000
+      internalID: -4590547740921055918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_74
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 70
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5663c4060691d850800000000000000
+      internalID: 6400061498064070237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_75
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 68
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a70f370cd773bc50800000000000000
+      internalID: 6679814459218659238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_76
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 68
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20bf516e07c615df0800000000000000
+      internalID: -193254076847883518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_77
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 70
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87d48c7a6f4977610800000000000000
+      internalID: 1618926378160770424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_78
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 68
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8df24a494ada63cb0800000000000000
+      internalID: -4884525823456694312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_79
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 68
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3c4c5001744576a0800000000000000
+      internalID: -6452175639010325445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_80
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 48
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 131edaa73081bd8e0800000000000000
+      internalID: -1667712833788452559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_81
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 48
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14cba6cb89e713dc0800000000000000
+      internalID: -3661005827614262207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_82
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 46
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e9d29dac4d54d1c0800000000000000
+      internalID: -4479853145415820831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_83
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 45
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abe9cb94a8b4d3310800000000000000
+      internalID: 1386347317614649018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_84
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 46
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e34cd2f805f010280800000000000000
+      internalID: -9078958535128267714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_85
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 45
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0315537d5604f180800000000000000
+      internalID: -9082627550062767347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_86
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 46
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 016af4281bc9d1ea0800000000000000
+      internalID: -5900387650576079344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_87
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 45
+        width: 7
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2390328ad2f1ac1a0800000000000000
+      internalID: -6788579207352743630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_88
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 47
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca8dbbe7a7ba397a0800000000000000
+      internalID: -6371560505198520148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_89
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 47
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 980cf64cf0706e070800000000000000
+      internalID: 8135197541192941705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_90
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 48
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5c2bf2e05ab13ef0800000000000000
+      internalID: -130118057648772005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_91
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 48
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e2ff244171134fc0800000000000000
+      internalID: -3511944106245885209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UnitFlagAtlas22_92
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 49
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b835359e62c05f6e0800000000000000
+      internalID: -1804522714429172853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UnitFlagAtlas22_0: -3512961882721445440
+      UnitFlagAtlas22_1: -750280997116276359
+      UnitFlagAtlas22_10: -8080888035653979151
+      UnitFlagAtlas22_11: 1622946805172823723
+      UnitFlagAtlas22_12: 4930232284280002131
+      UnitFlagAtlas22_13: -920325225453773953
+      UnitFlagAtlas22_14: 3566187968814707976
+      UnitFlagAtlas22_15: 2942501212482877201
+      UnitFlagAtlas22_16: 7046555251727372123
+      UnitFlagAtlas22_17: 6951878523841464911
+      UnitFlagAtlas22_18: 7012235984280142937
+      UnitFlagAtlas22_19: -7336409698195108553
+      UnitFlagAtlas22_2: -5693493244540853138
+      UnitFlagAtlas22_20: 2350108814805835349
+      UnitFlagAtlas22_21: -7136747090744348505
+      UnitFlagAtlas22_22: -385233144347851396
+      UnitFlagAtlas22_23: 4523134258330143194
+      UnitFlagAtlas22_24: -5368197763093094244
+      UnitFlagAtlas22_25: -551625672012290318
+      UnitFlagAtlas22_26: -7775874527625964244
+      UnitFlagAtlas22_27: -7125553580738561006
+      UnitFlagAtlas22_28: -6949466223363488819
+      UnitFlagAtlas22_29: 4636297368877658254
+      UnitFlagAtlas22_3: -1458421415719171317
+      UnitFlagAtlas22_30: 3222604191121325549
+      UnitFlagAtlas22_31: -2302320055238092152
+      UnitFlagAtlas22_32: 5420296894016022355
+      UnitFlagAtlas22_33: -7001587770762233760
+      UnitFlagAtlas22_34: 5172692474762068664
+      UnitFlagAtlas22_35: -8553504609195687283
+      UnitFlagAtlas22_36: -2344908996073751847
+      UnitFlagAtlas22_37: 256914086569658035
+      UnitFlagAtlas22_38: -1371697868629159102
+      UnitFlagAtlas22_39: -6951967825501750202
+      UnitFlagAtlas22_4: 83541716675613291
+      UnitFlagAtlas22_40: 5617149872573733716
+      UnitFlagAtlas22_41: -3065002123420612284
+      UnitFlagAtlas22_42: -461838936390714107
+      UnitFlagAtlas22_43: -5321018063188440841
+      UnitFlagAtlas22_44: -5657912952250593349
+      UnitFlagAtlas22_45: 3393666102778968522
+      UnitFlagAtlas22_46: -6377782943654059175
+      UnitFlagAtlas22_47: -8620688362166895358
+      UnitFlagAtlas22_48: -5775865004204246676
+      UnitFlagAtlas22_49: 5651615324193119504
+      UnitFlagAtlas22_5: 7821037729000397788
+      UnitFlagAtlas22_50: -24942500923666189
+      UnitFlagAtlas22_51: -6006304160913548368
+      UnitFlagAtlas22_52: 3483547002454497394
+      UnitFlagAtlas22_53: 160416113580951042
+      UnitFlagAtlas22_54: 738392721615341308
+      UnitFlagAtlas22_55: -6708052778404728885
+      UnitFlagAtlas22_56: 4680603096172914155
+      UnitFlagAtlas22_57: 8964183789655516980
+      UnitFlagAtlas22_58: -9113264501579501364
+      UnitFlagAtlas22_59: -4654680290906573219
+      UnitFlagAtlas22_6: 4992637298806319426
+      UnitFlagAtlas22_60: 1874475198452284120
+      UnitFlagAtlas22_61: 1474767887689146527
+      UnitFlagAtlas22_62: 3071167554175678288
+      UnitFlagAtlas22_63: 1151801403324600345
+      UnitFlagAtlas22_64: -9080960216122294727
+      UnitFlagAtlas22_65: 5376051107206982857
+      UnitFlagAtlas22_66: 1902968407927505866
+      UnitFlagAtlas22_67: -5420563627790629878
+      UnitFlagAtlas22_68: 2759833586912455277
+      UnitFlagAtlas22_69: -5302560194042622243
+      UnitFlagAtlas22_7: 7519621218752862095
+      UnitFlagAtlas22_70: 6205255424652137476
+      UnitFlagAtlas22_71: -2418578546335630045
+      UnitFlagAtlas22_72: -5363295533367007068
+      UnitFlagAtlas22_73: -4590547740921055918
+      UnitFlagAtlas22_74: 6400061498064070237
+      UnitFlagAtlas22_75: 6679814459218659238
+      UnitFlagAtlas22_76: -193254076847883518
+      UnitFlagAtlas22_77: 1618926378160770424
+      UnitFlagAtlas22_78: -4884525823456694312
+      UnitFlagAtlas22_79: -6452175639010325445
+      UnitFlagAtlas22_8: -3485984477180305340
+      UnitFlagAtlas22_80: -1667712833788452559
+      UnitFlagAtlas22_81: -3661005827614262207
+      UnitFlagAtlas22_82: -4479853145415820831
+      UnitFlagAtlas22_83: 1386347317614649018
+      UnitFlagAtlas22_84: -9078958535128267714
+      UnitFlagAtlas22_85: -9082627550062767347
+      UnitFlagAtlas22_86: -5900387650576079344
+      UnitFlagAtlas22_87: -6788579207352743630
+      UnitFlagAtlas22_88: -6371560505198520148
+      UnitFlagAtlas22_89: 8135197541192941705
+      UnitFlagAtlas22_9: -4497097678211956968
+      UnitFlagAtlas22_90: -130118057648772005
+      UnitFlagAtlas22_91: -3511944106245885209
+      UnitFlagAtlas22_92: -1804522714429172853
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

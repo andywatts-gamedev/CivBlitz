@@ -1,0 +1,2392 @@
+fileFormatVersion: 2
+guid: 1cd402f9a3326f34da8c562a0f0107cf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2519553004906200403
+    second: Units38_FOW_0
+  - first:
+      213: 1615896428173509612
+    second: Units38_FOW_1
+  - first:
+      213: -881926511016613291
+    second: Units38_FOW_2
+  - first:
+      213: -2708756752201849984
+    second: Units38_FOW_3
+  - first:
+      213: 5344562384330006925
+    second: Units38_FOW_4
+  - first:
+      213: 7335553900675754612
+    second: Units38_FOW_5
+  - first:
+      213: -5570968615380619320
+    second: Units38_FOW_6
+  - first:
+      213: -8137143114960964357
+    second: Units38_FOW_7
+  - first:
+      213: 1690437173386912462
+    second: Units38_FOW_8
+  - first:
+      213: -417736526031206967
+    second: Units38_FOW_9
+  - first:
+      213: 8789705536625579628
+    second: Units38_FOW_10
+  - first:
+      213: 1014041065274527492
+    second: Units38_FOW_11
+  - first:
+      213: -107530435736708633
+    second: Units38_FOW_12
+  - first:
+      213: 8232496659332136723
+    second: Units38_FOW_13
+  - first:
+      213: 8266229086644563976
+    second: Units38_FOW_14
+  - first:
+      213: 5304634473471598716
+    second: Units38_FOW_15
+  - first:
+      213: 6186796771182667449
+    second: Units38_FOW_16
+  - first:
+      213: -2916680819121335651
+    second: Units38_FOW_17
+  - first:
+      213: -5218326098374557993
+    second: Units38_FOW_18
+  - first:
+      213: -9126370564322580727
+    second: Units38_FOW_19
+  - first:
+      213: -1347108245088591982
+    second: Units38_FOW_20
+  - first:
+      213: -6144271280141204275
+    second: Units38_FOW_21
+  - first:
+      213: -2569358142993137630
+    second: Units38_FOW_22
+  - first:
+      213: -9165276113215161388
+    second: Units38_FOW_23
+  - first:
+      213: 4233234711110987914
+    second: Units38_FOW_24
+  - first:
+      213: 7844449437035488178
+    second: Units38_FOW_25
+  - first:
+      213: -6923875214881891096
+    second: Units38_FOW_26
+  - first:
+      213: 1924796123679341998
+    second: Units38_FOW_27
+  - first:
+      213: 9133610895920765034
+    second: Units38_FOW_28
+  - first:
+      213: 6287004658186987706
+    second: Units38_FOW_29
+  - first:
+      213: 2879734748528111226
+    second: Units38_FOW_30
+  - first:
+      213: 8045357076877250294
+    second: Units38_FOW_31
+  - first:
+      213: 4824411421001830272
+    second: Units38_FOW_32
+  - first:
+      213: 2687354457357429969
+    second: Units38_FOW_33
+  - first:
+      213: -100102587546162234
+    second: Units38_FOW_34
+  - first:
+      213: -1251560810174664625
+    second: Units38_FOW_35
+  - first:
+      213: 6151263515553529083
+    second: Units38_FOW_36
+  - first:
+      213: -780468234120913096
+    second: Units38_FOW_37
+  - first:
+      213: 6984364804957511250
+    second: Units38_FOW_38
+  - first:
+      213: -859494891747763613
+    second: Units38_FOW_39
+  - first:
+      213: 8241571708577419012
+    second: Units38_FOW_40
+  - first:
+      213: -6100170658502341537
+    second: Units38_FOW_41
+  - first:
+      213: -3420987013749022212
+    second: Units38_FOW_42
+  - first:
+      213: 8278954401983268825
+    second: Units38_FOW_43
+  - first:
+      213: 2337515461656294547
+    second: Units38_FOW_44
+  - first:
+      213: 5228216136163386433
+    second: Units38_FOW_45
+  - first:
+      213: -4915966301951872657
+    second: Units38_FOW_46
+  - first:
+      213: 7634608110525580390
+    second: Units38_FOW_47
+  - first:
+      213: 6520579163436414465
+    second: Units38_FOW_48
+  - first:
+      213: 3655181803830718027
+    second: Units38_FOW_49
+  - first:
+      213: 499845462755260642
+    second: Units38_FOW_50
+  - first:
+      213: -3546263158731482843
+    second: Units38_FOW_51
+  - first:
+      213: 344692562926857673
+    second: Units38_FOW_52
+  - first:
+      213: 6168373365783645947
+    second: Units38_FOW_53
+  - first:
+      213: 2819084532840215901
+    second: Units38_FOW_54
+  - first:
+      213: -1840359910431566282
+    second: Units38_FOW_55
+  - first:
+      213: -8967725874780420948
+    second: Units38_FOW_56
+  - first:
+      213: -5911247190487477439
+    second: Units38_FOW_57
+  - first:
+      213: -4926693655958076905
+    second: Units38_FOW_58
+  - first:
+      213: -7536310838894653104
+    second: Units38_FOW_59
+  - first:
+      213: 2472420683956296045
+    second: Units38_FOW_60
+  - first:
+      213: 1388257721964829027
+    second: Units38_FOW_61
+  - first:
+      213: 8663585349985830866
+    second: Units38_FOW_62
+  - first:
+      213: 1505957500774934599
+    second: Units38_FOW_63
+  - first:
+      213: -6191508030801640315
+    second: Units38_FOW_64
+  - first:
+      213: -586009186461406450
+    second: Units38_FOW_65
+  - first:
+      213: 950544325057000435
+    second: Units38_FOW_66
+  - first:
+      213: -5148047948379250845
+    second: Units38_FOW_67
+  - first:
+      213: -4577172404236762197
+    second: Units38_FOW_68
+  - first:
+      213: 3524376627802075560
+    second: Units38_FOW_69
+  - first:
+      213: 3511285722859588982
+    second: Units38_FOW_70
+  - first:
+      213: -7959410103792796400
+    second: Units38_FOW_71
+  - first:
+      213: 5921921403079784417
+    second: Units38_FOW_72
+  - first:
+      213: -1766256547103369465
+    second: Units38_FOW_73
+  - first:
+      213: 6153045810790064415
+    second: Units38_FOW_74
+  - first:
+      213: -2766013578444103695
+    second: Units38_FOW_75
+  - first:
+      213: 8907882780301810614
+    second: Units38_FOW_76
+  - first:
+      213: -6453289411227529719
+    second: Units38_FOW_77
+  - first:
+      213: 1665277231017365622
+    second: Units38_FOW_78
+  - first:
+      213: 5828004952220003976
+    second: Units38_FOW_79
+  - first:
+      213: -2332108461855691448
+    second: Units38_FOW_80
+  - first:
+      213: -2864533426114310857
+    second: Units38_FOW_81
+  - first:
+      213: 6566341366142150360
+    second: Units38_FOW_82
+  - first:
+      213: -8388310577083268037
+    second: Units38_FOW_83
+  - first:
+      213: -4591396430798294125
+    second: Units38_FOW_84
+  - first:
+      213: 1610607929300221261
+    second: Units38_FOW_85
+  - first:
+      213: 5445461743205775290
+    second: Units38_FOW_86
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Units38_FOW_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 267
+        width: 25
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da24cc524efb80dd0800000000000000
+      internalID: -2519553004906200403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_1
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 267
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce3ca137d31dc6610800000000000000
+      internalID: 1615896428173509612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_2
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 267
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55aead8c284c2c3f0800000000000000
+      internalID: -881926511016613291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_3
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 266
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0836112e510986ad0800000000000000
+      internalID: -2708756752201849984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_4
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 270
+        width: 35
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d81a7edfb23bb2a40800000000000000
+      internalID: 5344562384330006925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_5
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 269
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47a6280486f1dc560800000000000000
+      internalID: 7335553900675754612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_6
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 270
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cf63618f81ffa2b0800000000000000
+      internalID: -5570968615380619320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_7
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 269
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf47c3a037f031f80800000000000000
+      internalID: -8137143114960964357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_8
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 230
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec2a7d227a3a57710800000000000000
+      internalID: 1690437173386912462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_9
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 231
+        width: 28
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c54434c7d6e33af0800000000000000
+      internalID: -417736526031206967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_10
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 228
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c661ade9d9e4bf970800000000000000
+      internalID: 8789705536625579628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_11
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 229
+        width: 28
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40fc85be9f8921e00800000000000000
+      internalID: 1014041065274527492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 229
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e9de5f63a9f18ef0800000000000000
+      internalID: -107530435736708633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_13
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 231
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31ff4121814bf3270800000000000000
+      internalID: 8232496659332136723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_14
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 229
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8007375de8b87b270800000000000000
+      internalID: 8266229086644563976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_15
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 230
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c70e09ec2f8dd9940800000000000000
+      internalID: 5304634473471598716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_16
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 229
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b660e362eaebd550800000000000000
+      internalID: 6186796771182667449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 230
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d92d31d8f3ed587d0800000000000000
+      internalID: -2916680819121335651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_18
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 231
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7defb38bf08c497b0800000000000000
+      internalID: -5218326098374557993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_19
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 232
+        width: 35
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 907a8f8435e985180800000000000000
+      internalID: -9126370564322580727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_20
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 229
+        width: 39
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29f9e79303c1e4de0800000000000000
+      internalID: -1347108245088591982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_21
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 232
+        width: 35
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc48c8f03d92bbaa0800000000000000
+      internalID: -6144271280141204275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_22
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 231
+        width: 34
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 220032ac16ec75cd0800000000000000
+      internalID: -2569358142993137630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_23
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 194
+        width: 33
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dbff6b4fe56ec080800000000000000
+      internalID: -9165276113215161388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_24
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 191
+        width: 28
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a80bf968a887fba30800000000000000
+      internalID: 4233234711110987914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_25
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 193
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b3630983351ddc60800000000000000
+      internalID: 7844449437035488178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_26
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 192
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ec55d32d2479ef90800000000000000
+      internalID: -6923875214881891096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_27
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 190
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eadb4f060ef36ba10800000000000000
+      internalID: 1924796123679341998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_28
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 191
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a689ef7c7ba11ce70800000000000000
+      internalID: 9133610895920765034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_29
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 191
+        width: 32
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab826783d6def3750800000000000000
+      internalID: 6287004658186987706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_30
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 194
+        width: 36
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7eed5d0f7fd6f720800000000000000
+      internalID: 2879734748528111226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_31
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 192
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fe8172a2a9d6af60800000000000000
+      internalID: 8045357076877250294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_32
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 194
+        width: 37
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08fc62760a0c3f240800000000000000
+      internalID: 4824411421001830272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_33
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 197
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dc2a5804a66b4520800000000000000
+      internalID: 2687354457357429969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_34
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 192
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cba63c1a3d5c9ef0800000000000000
+      internalID: -100102587546162234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_35
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 192
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f403dbef21091aee0800000000000000
+      internalID: -1251560810174664625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_36
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 192
+        width: 29
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfc736c939dad5550800000000000000
+      internalID: 6151263515553529083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_37
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 193
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83f1fb2b6483b25f0800000000000000
+      internalID: -780468234120913096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_38
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 190
+        width: 30
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25e9b3d09c27de060800000000000000
+      internalID: 6984364804957511250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_39
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 153
+        width: 23
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36a9c1323f57214f0800000000000000
+      internalID: -859494891747763613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_40
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 153
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40f8aa0adc1ff5270800000000000000
+      internalID: 8241571708577419012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_41
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 154
+        width: 34
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5c05be2b17d75ba0800000000000000
+      internalID: -6100170658502341537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_42
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 153
+        width: 30
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf1e348af663680d0800000000000000
+      internalID: -3420987013749022212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_43
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 154
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d78ed13a21c4e270800000000000000
+      internalID: 8278954401983268825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_44
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 155
+        width: 38
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 394b10d7de5807020800000000000000
+      internalID: 2337515461656294547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_45
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 155
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 144ebf420ea5e8840800000000000000
+      internalID: 5228216136163386433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_46
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 157
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f613e5cb1baf6cbb0800000000000000
+      internalID: -4915966301951872657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_47
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 158
+        width: 34
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 664813b60a393f960800000000000000
+      internalID: 7634608110525580390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_48
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 158
+        width: 38
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 106f07e9330cd7a50800000000000000
+      internalID: 6520579163436414465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_49
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 157
+        width: 36
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4e2dce0c70d9b230800000000000000
+      internalID: 3655181803830718027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_50
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 157
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e83e12dccecfe600800000000000000
+      internalID: 499845462755260642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_51
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 159
+        width: 37
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52951cf227429cec0800000000000000
+      internalID: -3546263158731482843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_52
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 155
+        width: 35
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cd69f94f0898c400800000000000000
+      internalID: 344692562926857673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_53
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 154
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfec38d05e67a9550800000000000000
+      internalID: 6168373365783645947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_54
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 154
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d553dbb42766f1720800000000000000
+      internalID: 2819084532840215901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_55
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 116
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6365bdf796ab576e0800000000000000
+      internalID: -1840359910431566282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_56
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 117
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca442a674dc3c8380800000000000000
+      internalID: -8967725874780420948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_57
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 124
+        width: 39
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 143d777dff707fda0800000000000000
+      internalID: -5911247190487477439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_58
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 121
+        width: 35
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 712c27ff83ed0abb0800000000000000
+      internalID: -4926693655958076905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_59
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 117
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05112ca9835a96790800000000000000
+      internalID: -7536310838894653104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_60
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 118
+        width: 34
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d691b8a338dcf4220800000000000000
+      internalID: 2472420683956296045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_61
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 121
+        width: 37
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3691866fa05144310800000000000000
+      internalID: 1388257721964829027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_62
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 120
+        width: 33
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d70f2369fc3b3870800000000000000
+      internalID: 8663585349985830866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_63
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 119
+        width: 35
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74866883e5c36e410800000000000000
+      internalID: 1505957500774934599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_64
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 123
+        width: 40
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58407100048531aa0800000000000000
+      internalID: -6191508030801640315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_65
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 123
+        width: 38
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b2addefb31ed7f0800000000000000
+      internalID: -586009186461406450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_66
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 125
+        width: 38
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f339460703013d00800000000000000
+      internalID: 950544325057000435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_67
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 125
+        width: 39
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36f1d2e9aa57e88b0800000000000000
+      internalID: -5148047948379250845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_68
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 123
+        width: 34
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba34fb103fd9a70c0800000000000000
+      internalID: -4577172404236762197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_69
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 118
+        width: 37
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a1f4dabed919e030800000000000000
+      internalID: 3524376627802075560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_70
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 113
+        width: 37
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67d42f7e2c79ab030800000000000000
+      internalID: 3511285722859588982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_71
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 75
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01d76cd6eae7a8190800000000000000
+      internalID: -7959410103792796400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_72
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 77
+        width: 39
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e77a52f324ee2250800000000000000
+      internalID: 5921921403079784417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_73
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 82
+        width: 38
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70712b7470ffc77e0800000000000000
+      internalID: -1766256547103369465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_74
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 83
+        width: 37
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f11e8de8092046550800000000000000
+      internalID: 6153045810790064415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_75
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 88
+        width: 39
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ff9eec2e452d99d0800000000000000
+      internalID: -2766013578444103695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_76
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 88
+        width: 38
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bb55b451382f9b70800000000000000
+      internalID: 8907882780301810614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_77
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 82
+        width: 38
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90e4ef2b87f4176a0800000000000000
+      internalID: -6453289411227529719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_78
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 85
+        width: 39
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 670165f81d04c1710800000000000000
+      internalID: 1665277231017365622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_79
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 82
+        width: 38
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88e6a4e30ab31e050800000000000000
+      internalID: 5828004952220003976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_80
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 82
+        width: 37
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84da861c5bfa2afd0800000000000000
+      internalID: -2332108461855691448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_81
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 81
+        width: 36
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73d4931a6022f38d0800000000000000
+      internalID: -2864533426114310857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_82
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 77
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d62bdabea4502b50800000000000000
+      internalID: 6566341366142150360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_83
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 76
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b34cc4b29fbb69b80800000000000000
+      internalID: -8388310577083268037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_84
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 83
+        width: 38
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 393754fb5451840c0800000000000000
+      internalID: -4591396430798294125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_85
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 83
+        width: 35
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4dfd5ad0670a5610800000000000000
+      internalID: 1610607929300221261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Units38_FOW_86
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 82
+        width: 38
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab772c9aa9a229b40800000000000000
+      internalID: 5445461743205775290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Units38_FOW_0: -2519553004906200403
+      Units38_FOW_1: 1615896428173509612
+      Units38_FOW_10: 8789705536625579628
+      Units38_FOW_11: 1014041065274527492
+      Units38_FOW_12: -107530435736708633
+      Units38_FOW_13: 8232496659332136723
+      Units38_FOW_14: 8266229086644563976
+      Units38_FOW_15: 5304634473471598716
+      Units38_FOW_16: 6186796771182667449
+      Units38_FOW_17: -2916680819121335651
+      Units38_FOW_18: -5218326098374557993
+      Units38_FOW_19: -9126370564322580727
+      Units38_FOW_2: -881926511016613291
+      Units38_FOW_20: -1347108245088591982
+      Units38_FOW_21: -6144271280141204275
+      Units38_FOW_22: -2569358142993137630
+      Units38_FOW_23: -9165276113215161388
+      Units38_FOW_24: 4233234711110987914
+      Units38_FOW_25: 7844449437035488178
+      Units38_FOW_26: -6923875214881891096
+      Units38_FOW_27: 1924796123679341998
+      Units38_FOW_28: 9133610895920765034
+      Units38_FOW_29: 6287004658186987706
+      Units38_FOW_3: -2708756752201849984
+      Units38_FOW_30: 2879734748528111226
+      Units38_FOW_31: 8045357076877250294
+      Units38_FOW_32: 4824411421001830272
+      Units38_FOW_33: 2687354457357429969
+      Units38_FOW_34: -100102587546162234
+      Units38_FOW_35: -1251560810174664625
+      Units38_FOW_36: 6151263515553529083
+      Units38_FOW_37: -780468234120913096
+      Units38_FOW_38: 6984364804957511250
+      Units38_FOW_39: -859494891747763613
+      Units38_FOW_4: 5344562384330006925
+      Units38_FOW_40: 8241571708577419012
+      Units38_FOW_41: -6100170658502341537
+      Units38_FOW_42: -3420987013749022212
+      Units38_FOW_43: 8278954401983268825
+      Units38_FOW_44: 2337515461656294547
+      Units38_FOW_45: 5228216136163386433
+      Units38_FOW_46: -4915966301951872657
+      Units38_FOW_47: 7634608110525580390
+      Units38_FOW_48: 6520579163436414465
+      Units38_FOW_49: 3655181803830718027
+      Units38_FOW_5: 7335553900675754612
+      Units38_FOW_50: 499845462755260642
+      Units38_FOW_51: -3546263158731482843
+      Units38_FOW_52: 344692562926857673
+      Units38_FOW_53: 6168373365783645947
+      Units38_FOW_54: 2819084532840215901
+      Units38_FOW_55: -1840359910431566282
+      Units38_FOW_56: -8967725874780420948
+      Units38_FOW_57: -5911247190487477439
+      Units38_FOW_58: -4926693655958076905
+      Units38_FOW_59: -7536310838894653104
+      Units38_FOW_6: -5570968615380619320
+      Units38_FOW_60: 2472420683956296045
+      Units38_FOW_61: 1388257721964829027
+      Units38_FOW_62: 8663585349985830866
+      Units38_FOW_63: 1505957500774934599
+      Units38_FOW_64: -6191508030801640315
+      Units38_FOW_65: -586009186461406450
+      Units38_FOW_66: 950544325057000435
+      Units38_FOW_67: -5148047948379250845
+      Units38_FOW_68: -4577172404236762197
+      Units38_FOW_69: 3524376627802075560
+      Units38_FOW_7: -8137143114960964357
+      Units38_FOW_70: 3511285722859588982
+      Units38_FOW_71: -7959410103792796400
+      Units38_FOW_72: 5921921403079784417
+      Units38_FOW_73: -1766256547103369465
+      Units38_FOW_74: 6153045810790064415
+      Units38_FOW_75: -2766013578444103695
+      Units38_FOW_76: 8907882780301810614
+      Units38_FOW_77: -6453289411227529719
+      Units38_FOW_78: 1665277231017365622
+      Units38_FOW_79: 5828004952220003976
+      Units38_FOW_8: 1690437173386912462
+      Units38_FOW_80: -2332108461855691448
+      Units38_FOW_81: -2864533426114310857
+      Units38_FOW_82: 6566341366142150360
+      Units38_FOW_83: -8388310577083268037
+      Units38_FOW_84: -4591396430798294125
+      Units38_FOW_85: 1610607929300221261
+      Units38_FOW_86: 5445461743205775290
+      Units38_FOW_9: -417736526031206967
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
