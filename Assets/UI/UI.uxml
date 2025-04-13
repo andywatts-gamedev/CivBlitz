@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Container" style="flex-grow: 1; position: absolute; left: 0; right: 0; bottom: 0; top: 0;">
+        <ui:Label text="Japan&#10;" name="AICiv" style="position: absolute; top: 0; left: 0; -unity-background-image-tint-color: rgb(255, 255, 255);" />
+        <ui:Label text="Rome" name="PlayerCiv" style="position: absolute; top: auto; left: 0; bottom: 0;" />
+    </ui:VisualElement>
+</ui:UXML>

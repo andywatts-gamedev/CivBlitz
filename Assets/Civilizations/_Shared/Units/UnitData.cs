@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Unity.Mathematics;
 
 [CreateAssetMenu(menuName = "ScriptableObject/Unit")]
 public class UnitData : ScriptableObject

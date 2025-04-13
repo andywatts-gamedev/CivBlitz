@@ -16,7 +16,7 @@ public class UnitTileBrushEditor : Editor
     public override void OnInspectorGUI()
     {
         gridSelectionSO.Update();
-        Debug.Log("OnInspectorGUI");
+        // Debug.Log("OnInspectorGUI");
         
         // Draw all properties from the GridSelection
         SerializedProperty iterator = gridSelectionSO.GetIterator();
