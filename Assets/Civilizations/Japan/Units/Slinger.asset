@@ -34,4 +34,5 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 0
   m_ColliderType: 1
+  unitData: {fileID: 0}
   civ: {fileID: 11400000, guid: 39ce15cfa3b7349de961f9ee79b8d5be, type: 2}

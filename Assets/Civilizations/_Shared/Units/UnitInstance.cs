@@ -1,26 +1,16 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class UnitInstance : MonoBehaviour
+public struct UnitInstance
 {
-
     public UnitData unitData;
-
-    public int Health;
-    public int Movement;
+    public int health;
+    public int movement;
     public Civilization civ;
 
     public void Start()
     {
-        Health = unitData.Health;
-        Movement = unitData.Movement;
-
-
-
-        var cell = Game.Instance.units.WorldToCell(transform.position);
-        UnitTile unitTile = Game.Instance.units.GetTile(cell) as UnitTile;
-        Debug.Log(unitTile);
-        civ = unitTile.civ;
+        health = unitData.health;
+        movement = unitData.movement;
     }
-
 }

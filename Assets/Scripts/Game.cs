@@ -4,51 +4,11 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 
-public class Game : MonoBehaviour
+public class Game : Singleton<Game>
 {
-    public static Game Instance { get; private set; }
-
     [SerializeField] private InputEvents events;
-    public Tilemap units;
     public GameObject highlightGO;
-
     private Vector2Int? selectedTile;
-    private bool isPlayerTurn = true;
-    private Dictionary<Vector2Int, UnitInstance> unitInstances = new();
-
-    public Civilization playerCiv;
-    public Civilization aiCiv;
-
-    void Awake()
-    {
-        if (Instance != null && Instance != this) 
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-    }
-
-    void Start()
-    {
-        Debug.Log("Start");
-        foreach (var unit in FindObjectsOfType<UnitInstance>())
-            unitInstances[Vector2Int.RoundToInt(unit.transform.position)] = unit;
-        
-        var bounds = units.cellBounds;
-        for (int x = bounds.min.x; x < bounds.max.x; x++)
-            for (int y = bounds.min.y; y < bounds.max.y; y++)
-                if (units.GetTile(new Vector3Int(x, y, 0)) is UnitTile ut)
-                    Debug.Log($"Unit at {x},{y}");
-
-        ResetUnitMoves();
-    }
-
-    private void ResetUnitMoves()
-    {
-        foreach (var unit in unitInstances.Values)
-            unit.Movement = unit.unitData.Movement;
-    }
 
     private void OnEnable()
     {
@@ -72,69 +32,62 @@ public class Game : MonoBehaviour
 
     private void SelectTile(Vector2Int tile)
     {
-        var unitInstance = unitInstances.GetValueOrDefault(tile);
-        if (unitInstance != null)
-        {
-            Debug.Log("SelectTile");
-            var unitTile = units.GetTile((Vector3Int)tile) as UnitTile;
-            if (!isPlayerTurn || unitTile.civ != playerCiv) return;
-            
-            Debug.Log("SelectTile2");
-            selectedTile = tile;
-            highlightGO.transform.position = units.GetCellCenterWorld((Vector3Int)tile);
-            highlightGO.SetActive(true);
-        }
+        if (!UnitManager.Instance.TryGetUnit(tile, out var unit)) return;
+        
+        var unitTile = UnitManager.Instance.tilemap.GetTile((Vector3Int)tile) as UnitTile;
+        if (!TurnManager.Instance.isPlayerTurn || unitTile.civ != TurnManager.Instance.playerCiv) return;
+        
+        selectedTile = tile;
+        highlightGO.transform.position = UnitManager.Instance.tilemap.GetCellCenterWorld((Vector3Int)tile);
+        highlightGO.SetActive(true);
     }
 
     private void MoveTo(Vector2Int target)
     {
-        if (!selectedTile.HasValue) return;
+        if (!selectedTile.HasValue || !IsValidMove(target)) return;
         
-        var unit = unitInstances[selectedTile.Value];
-        var targetUnit = unitInstances.GetValueOrDefault(target);
-        var distance = Mathf.Abs(target.x - selectedTile.Value.x) + Mathf.Abs(target.y - selectedTile.Value.y);
-        
-        if (unit.Movement < distance) return;
+        if (!UnitManager.Instance.TryGetUnit(selectedTile.Value, out var unit)) return;
 
-        if (targetUnit != null)
-        {
-            var targetTile = units.GetTile((Vector3Int)target) as UnitTile;
-            var sourceTile = units.GetTile((Vector3Int)selectedTile.Value) as UnitTile;
-            if (targetTile.civ != sourceTile.civ)
-            {
-                Debug.Log("Attack");
-                unit.Movement = 0;
-            }
-        }
-        else 
-        {
-            unitInstances.Remove(selectedTile.Value);
-            unitInstances[target] = unit;
-            unit.transform.position = units.GetCellCenterWorld((Vector3Int)target);
-            unit.Movement -= distance;
+        var distance = GetHexDistance(selectedTile.Value, target);
+        if (unit.movement < distance) return;
+
+        if (UnitManager.Instance.HasUnitAt(target)) {
+            if (CombatManager.Instance.TryCombat(selectedTile.Value, target))
+                HandleCancel();
+        } else {
+            unit.movement -= distance;
+            UnitManager.Instance.MoveUnit(unit, selectedTile.Value, target);
+            if (unit.movement <= 0) HandleCancel();
         }
         
-        HandleCancel();
-        
-        if (isPlayerTurn && AllUnitsMovedForCiv(playerCiv))
-            EndTurn();
+        if (TurnManager.Instance.isPlayerTurn && TurnManager.Instance.AlltilemapMovedForCiv(TurnManager.Instance.playerCiv))
+            TurnManager.Instance.EndTurn();
     }
 
-    private bool AllUnitsMovedForCiv(Civilization civ)
+    private int GetHexDistance(Vector2Int a, Vector2Int b)
     {
-        var bounds = units.cellBounds;
-        for (int x = bounds.min.x; x < bounds.max.x; x++)
-            for (int y = bounds.min.y; y < bounds.max.y; y++)
-            {
-                var pos = new Vector3Int(x, y, 0);
-                var tile = units.GetTile(pos) as UnitTile;
-                if (tile != null && tile.civ == civ)
-                {
-                    var unit = unitInstances[new Vector2Int(x, y)];
-                    if (unit.Movement > 0) return false;
-                }
-            }
-        return true;
+        // Convert to cube coordinates for pointy-top hex grid
+        var ax = a.x - (a.y - (a.y & 1)) / 2;
+        var az = a.y;
+        var ay = -ax - az;
+        
+        var bx = b.x - (b.y - (b.y & 1)) / 2;
+        var bz = b.y;
+        var by = -bx - bz;
+        
+        return (Mathf.Abs(ax - bx) + Mathf.Abs(ay - by) + Mathf.Abs(az - bz)) / 2;
+    }
+
+    private bool IsValidMove(Vector2Int target)
+    {
+        if (!UnitManager.Instance.tilemap.cellBounds.Contains((Vector3Int)target)) return false;
+        
+        var dx = Mathf.Abs(target.x - selectedTile.Value.x);
+        var dy = Mathf.Abs(target.y - selectedTile.Value.y);
+        
+        return (dx == 0 && dy == 1) || 
+               (dx == 1 && dy == 1) || 
+               (dx == 1 && dy == 0);
     }
 
     private void HandleCancel()
@@ -142,21 +95,4 @@ public class Game : MonoBehaviour
         selectedTile = null;
         highlightGO.SetActive(false);
     }
-
-    private void EndTurn()
-    {
-        isPlayerTurn = !isPlayerTurn;
-        
-        if (!isPlayerTurn)
-            StartCoroutine(DoAITurn());
-        else
-            ResetUnitMoves();
-    }
-
-    private IEnumerator DoAITurn()
-    {
-        yield return new WaitForSeconds(1.5f);
-        EndTurn();
-    }
-
 }

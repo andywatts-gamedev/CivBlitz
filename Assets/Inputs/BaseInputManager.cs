@@ -25,8 +25,9 @@ public abstract class BaseInputManager : MonoBehaviour
     protected Vector2Int? GetTileXY(Vector2 screenPos)
     {
         // TODO check if UI.  (over IsPointerOverGameObject)
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, -Camera.main.transform.position.z));
         worldPosition.z = 0;
-        return (Vector2Int)grid.WorldToCell(worldPosition);
+        var cell = grid.WorldToCell(worldPosition);
+        return (Vector2Int)cell;
     }
 } 
