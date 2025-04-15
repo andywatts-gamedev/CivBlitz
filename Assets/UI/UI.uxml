@@ -2,5 +2,13 @@
     <ui:VisualElement name="Container" style="flex-grow: 1; position: absolute; left: 0; right: 0; bottom: 0; top: 0;">
         <ui:Label text="Japan&#10;" name="AICiv" style="position: absolute; top: 0; left: 0; -unity-background-image-tint-color: rgb(255, 255, 255);" />
         <ui:Label text="Rome" name="PlayerCiv" style="position: absolute; top: auto; left: 0; bottom: 0;" />
+        <ui:VisualElement name="Unit" style="flex-grow: 0; bottom: 10px; right: 10px; width: 200px; padding: 10px; position: absolute; background-color: rgba(0, 0, 0, 0.8); border-radius: 5px; display: none;">
+            <ui:Label name="Name" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=b21607e8ad9494443bc35aaccde994e4&amp;type=3#NotInter-Regular&quot;);" />
+            <ui:Label name="Health" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
+            <ui:Label name="Movement" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
+            <ui:Label name="Attack" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
+            <ui:Label name="Range" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
+            <ui:Label name="Defense" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
