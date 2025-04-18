@@ -72,20 +72,16 @@ public class Game : MonoBehaviour
         if (unit.movement <= 0)
             return false;
             
+        if (UnitManager.Instance.isMoving)
+            return false;
+            
         var validMoves = HexGrid.GetValidMoves(from, unit.movement, UnitManager.Instance.tilemap);
         
         if (!validMoves.Contains(to))
-        {
-            Debug.Log($"Invalid move: {from} -> {to} not in valid moves");
             return false;
-        }
 
-        // Check if destination has a friendly unit
         if (UnitManager.Instance.TryGetUnit(to, out var target) && target.civ == unit.civ)
-        {
-            Debug.Log($"Invalid move: friendly unit at {to}");
             return false;
-        }
             
         return true;
     }
@@ -97,28 +93,14 @@ public class Game : MonoBehaviour
             
         var unit = UnitManager.Instance.units[from];
         
-        // Handle combat if target exists
         if (UnitManager.Instance.TryGetUnit(to, out var target))
         {
             if (CombatManager.Instance.TryCombat(from, to))
-            {
-                // Combat handled movement
-                Debug.Log($"Combat at {to}");
                 return;
-            }
-            return; // Invalid combat
+            return;
         }
             
-        // Normal movement
         unit.movement--;
-        UnitManager.Instance.units.Remove(from);
-        UnitManager.Instance.units[to] = unit;
-
-        // Update tilemap
-        var tile = UnitManager.Instance.tilemap.GetTile((Vector3Int)from);
-        UnitManager.Instance.tilemap.SetTile((Vector3Int)from, null);
-        UnitManager.Instance.tilemap.SetTile((Vector3Int)to, tile);
-
-        Debug.Log($"Movement after: {unit.movement}");
+        UnitManager.Instance.MoveUnit(unit, from, to);
     }
 } 

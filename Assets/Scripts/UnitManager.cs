@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections;
 using System.Collections.Generic;
 
 public class UnitManager : Singleton<UnitManager>
 {
     public Tilemap tilemap;
+    private const float MOVE_DURATION = 2f;
+    
+    public bool isMoving;
 
     [Sirenix.OdinInspector.ShowInInspector]
     public Dictionary<Vector2Int, UnitInstance> units = new();
@@ -36,14 +40,42 @@ public class UnitManager : Singleton<UnitManager>
 
     public void MoveUnit(UnitInstance unit, Vector2Int from, Vector2Int to)
     {
-        // Update dictionary
+        if (isMoving) return;
+        
+        var tile = tilemap.GetTile((Vector3Int)from) as UnitTile;
+        tilemap.SetTile((Vector3Int)from, null);
+        
         units.Remove(from);
         units[to] = unit;
         
-        // Update tilemap
-        var tile = tilemap.GetTile((Vector3Int)from);
-        tilemap.SetTile((Vector3Int)from, null);
-        tilemap.SetTile((Vector3Int)to, tile);
+        var movingUnit = new GameObject("UnitMove");
+        var sprite = movingUnit.AddComponent<SpriteRenderer>();
+        sprite.sprite = tile.sprite;
+        sprite.color = tile.color;
+        sprite.sortingOrder = 1;
+        sprite.transform.position = tilemap.CellToWorld((Vector3Int)from);
+        
+        StartCoroutine(MoveCoroutine(movingUnit, (Vector3Int)from, (Vector3Int)to, tile));
+    }
+
+    private IEnumerator MoveCoroutine(GameObject movingUnit, Vector3Int from, Vector3Int to, UnitTile tile)
+    {
+        isMoving = true;
+        var start = tilemap.CellToWorld(from);
+        var end = tilemap.CellToWorld(to);
+        var elapsed = 0f;
+        
+        while (elapsed < MOVE_DURATION)
+        {
+            elapsed += Time.deltaTime;
+            var t = Mathf.Clamp01(elapsed / MOVE_DURATION);
+            movingUnit.transform.position = Vector3.Lerp(start, end, t);
+            yield return null;
+        }
+        
+        tilemap.SetTile(to, tile);
+        Destroy(movingUnit);
+        isMoving = false;
     }
 
     public void ResetMoves() {
