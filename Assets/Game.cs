@@ -72,7 +72,7 @@ public class Game : MonoBehaviour
         if (unit.movement <= 0)
             return false;
             
-        if (UnitManager.Instance.isMoving)
+        if (UnitManager.Instance.isMoving || CombatManager.Instance.isCombatMoving)
             return false;
             
         var validMoves = HexGrid.GetValidMoves(from, unit.movement, UnitManager.Instance.tilemap);
