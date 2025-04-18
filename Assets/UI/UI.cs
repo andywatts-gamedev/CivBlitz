@@ -7,8 +7,11 @@ public class UI : MonoBehaviour
     private UIDocument doc;
     private Label nameLabel, healthLabel, movementLabel, rangeLabel, meleeLabel, rangedLabel;
     private Label playerCivLabel, aiCivLabel;
-    private VisualElement unitPanel;
+    private Label terrainLabel, resourcesLabel, movementCostLabel;
+    private VisualElement infoPanel;
     private Button endTurnButton;
+    private Vector2Int? currentTile;
+    private bool isSelected;
 
     private char health = '';
     private char sword = '';
@@ -29,18 +32,22 @@ public class UI : MonoBehaviour
             return;
         }
 
-        unitPanel = root.Q("Unit");
-        if (unitPanel == null) {
-            Debug.LogError("No Unit panel found!");
+        infoPanel = root.Q("InfoPanel");
+        if (infoPanel == null) {
+            Debug.LogError("No InfoPanel found!");
             return;
         }
 
-        nameLabel = unitPanel.Q<Label>("Name"); 
-        healthLabel = unitPanel.Q<Label>("Health");
-        movementLabel = unitPanel.Q<Label>("Movement");
-        rangeLabel = unitPanel.Q<Label>("Range");
-        meleeLabel = unitPanel.Q<Label>("Melee");
-        rangedLabel = unitPanel.Q<Label>("Ranged");
+        nameLabel = infoPanel.Q<Label>("Name"); 
+        healthLabel = infoPanel.Q<Label>("Health");
+        movementLabel = infoPanel.Q<Label>("Movement");
+        rangeLabel = infoPanel.Q<Label>("Range");
+        meleeLabel = infoPanel.Q<Label>("Melee");
+        rangedLabel = infoPanel.Q<Label>("Ranged");
+
+        terrainLabel = infoPanel.Q<Label>("Terrain");
+        resourcesLabel = infoPanel.Q<Label>("Resources");
+        movementCostLabel = infoPanel.Q<Label>("MovementCost");
 
         playerCivLabel = root.Q<Label>("PlayerCiv");
         aiCivLabel = root.Q<Label>("AICiv");
@@ -61,8 +68,11 @@ public class UI : MonoBehaviour
         if (rangedLabel == null) Debug.LogError("Ranged label not found!");
         if (playerCivLabel == null) Debug.LogError("PlayerCiv label not found!");
         if (aiCivLabel == null) Debug.LogError("AICiv label not found!");
+        if (terrainLabel == null) Debug.LogError("Terrain label not found!");
+        if (resourcesLabel == null) Debug.LogError("Resources label not found!");
+        if (movementCostLabel == null) Debug.LogError("MovementCost label not found!");
         
-        unitPanel.style.display = DisplayStyle.None;
+        infoPanel.style.display = DisplayStyle.None;
         
         events.OnTileSelected += HandleTileSelected;
         events.OnCancel += HandleCancel;
@@ -78,6 +88,80 @@ public class UI : MonoBehaviour
         events.OnCancel -= HandleCancel;
         events.OnTileDeselected -= HandleTileDeselected;
         TurnManager.Instance.OnTurnChanged -= UpdateTurnLabels;
+    }
+
+    public void ShowTile(Vector2Int pos)
+    {
+        currentTile = pos;
+        infoPanel.style.display = DisplayStyle.Flex;
+        UpdateTilePanel(pos);
+        
+        if (UnitManager.Instance.TryGetUnit(pos, out var unit))
+        {
+            UpdateUnitPanel(unit);
+            nameLabel.style.display = DisplayStyle.Flex;
+            healthLabel.style.display = DisplayStyle.Flex;
+            movementLabel.style.display = DisplayStyle.Flex;
+            meleeLabel.style.display = DisplayStyle.Flex;
+            rangedLabel.style.display = unit.unitData?.ranged > 0 ? DisplayStyle.Flex : DisplayStyle.None;
+            rangeLabel.style.display = unit.unitData?.ranged > 0 ? DisplayStyle.Flex : DisplayStyle.None;
+        }
+        else
+        {
+            nameLabel.style.display = DisplayStyle.None;
+            healthLabel.style.display = DisplayStyle.None;
+            movementLabel.style.display = DisplayStyle.None;
+            meleeLabel.style.display = DisplayStyle.None;
+            rangedLabel.style.display = DisplayStyle.None;
+            rangeLabel.style.display = DisplayStyle.None;
+        }
+    }
+
+    public void HideTile()
+    {
+        if (!isSelected)
+        {
+            infoPanel.style.display = DisplayStyle.None;
+            currentTile = null;
+        }
+    }
+
+    void UpdateTilePanel(Vector2Int pos)
+    {
+        // TODO: Get actual tile data
+        terrainLabel.text = "Grassland";
+        resourcesLabel.text = "None";
+        movementCostLabel.text = "1";
+    }
+
+    void UpdateUnitPanel(UnitInstance unit)
+    {
+        string unitName = unit.unitData != null ? unit.unitData.name.Replace("Data", "") : "Unknown";
+        nameLabel.text = unitName;
+        healthLabel.text = $"{health} {unit.health}";
+        movementLabel.text = $"{walk} {unit.movement}";
+        meleeLabel.text = $"{sword} {unit.unitData?.melee}";
+        rangedLabel.text = $"{bow} {unit.unitData?.ranged}";
+        rangeLabel.text = $"{bow} {unit.unitData?.range}";
+    
+    }
+
+    void HandleTileSelected(Vector2Int pos)
+    {
+        isSelected = true;
+        ShowTile(pos);
+    }
+
+    void HandleCancel()
+    {
+        isSelected = false;
+        HideTile();
+    }
+
+    void HandleTileDeselected(Vector2Int pos)
+    {
+        isSelected = false;
+        HideTile();
     }
 
     void UpdateTurnLabels()
@@ -105,16 +189,9 @@ public class UI : MonoBehaviour
                 aiCivLabel.style.borderRightWidth = 0;
                 aiCivLabel.style.borderBottomWidth = 0;
                 aiCivLabel.style.borderLeftWidth = 0;
-            } else {
-                playerCivLabel.style.borderTopColor = new Color(0, 0, 0, 0);
-                playerCivLabel.style.borderRightColor = new Color(0, 0, 0, 0);
-                playerCivLabel.style.borderBottomColor = new Color(0, 0, 0, 0);
-                playerCivLabel.style.borderLeftColor = new Color(0, 0, 0, 0);
-                playerCivLabel.style.borderTopWidth = 0;
-                playerCivLabel.style.borderRightWidth = 0;
-                playerCivLabel.style.borderBottomWidth = 0;
-                playerCivLabel.style.borderLeftWidth = 0;
-                
+            }
+            else
+            {
                 aiCivLabel.style.borderTopColor = new Color(1, 1, 1, 1);
                 aiCivLabel.style.borderRightColor = new Color(1, 1, 1, 1);
                 aiCivLabel.style.borderBottomColor = new Color(1, 1, 1, 1);
@@ -123,50 +200,16 @@ public class UI : MonoBehaviour
                 aiCivLabel.style.borderRightWidth = 2;
                 aiCivLabel.style.borderBottomWidth = 2;
                 aiCivLabel.style.borderLeftWidth = 2;
+                
+                playerCivLabel.style.borderTopColor = new Color(0, 0, 0, 0);
+                playerCivLabel.style.borderRightColor = new Color(0, 0, 0, 0);
+                playerCivLabel.style.borderBottomColor = new Color(0, 0, 0, 0);
+                playerCivLabel.style.borderLeftColor = new Color(0, 0, 0, 0);
+                playerCivLabel.style.borderTopWidth = 0;
+                playerCivLabel.style.borderRightWidth = 0;
+                playerCivLabel.style.borderBottomWidth = 0;
+                playerCivLabel.style.borderLeftWidth = 0;
             }
         }
-    }
-
-    void HandleTileSelected(Vector2Int pos)
-    {
-        if (!UnitManager.Instance.TryGetUnit(pos, out var unit)) {
-            unitPanel.style.display = DisplayStyle.None;
-            return;
-        }
-
-        string unitName = unit.unitData != null ? unit.unitData.name.Replace("Data", "") : "Unknown";
-        nameLabel.text = unitName;
-        healthLabel.text = $"{health} {unit.health}";
-        movementLabel.text = $"{walk} {unit.movement}";
-        
-        // Show melee attack
-        meleeLabel.text = $"{sword} {unit.unitData?.melee}";
-        
-        // Show ranged attack and range if it exists
-        if (unit.unitData?.ranged > 0) {
-            rangedLabel.text = $"{bow} {unit.unitData.ranged}";
-            rangedLabel.style.display = DisplayStyle.Flex;
-            if (unit.unitData.range > 0) {
-                rangeLabel.text = $"{bow} {unit.unitData.range}";
-                rangeLabel.style.display = DisplayStyle.Flex;
-            } else {
-                rangeLabel.style.display = DisplayStyle.None;
-            }
-        } else {
-            rangedLabel.style.display = DisplayStyle.None;
-            rangeLabel.style.display = DisplayStyle.None;
-        }
-        
-        unitPanel.style.display = DisplayStyle.Flex;
-    }
-
-    void HandleCancel()
-    {
-        unitPanel.style.display = DisplayStyle.None;
-    }
-
-    void HandleTileDeselected(Vector2Int pos)
-    {
-        unitPanel.style.display = DisplayStyle.None;
     }
 }

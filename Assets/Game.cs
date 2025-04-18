@@ -96,7 +96,6 @@ public class Game : MonoBehaviour
             return;
             
         var unit = UnitManager.Instance.units[from];
-        Debug.Log($"Moving unit from {from} to {to}, movement before: {unit.movement}");
         
         // Handle combat if target exists
         if (UnitManager.Instance.TryGetUnit(to, out var target))

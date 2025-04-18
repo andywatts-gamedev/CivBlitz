@@ -1,5 +1,33 @@
 # UI System Documentation
 
+## Overview
+The UI system is built using Unity's UI Toolkit and follows a modular design pattern. It consists of several key components:
+
+1. **UI.uxml**: The main UI document that defines the visual structure
+2. **UI.cs**: The controller that manages UI state and interactions
+3. **UI.uss**: The stylesheet that defines the visual appearance
+
+## Info Panel Behavior
+
+The info panel displays tile and unit information with the following behavior:
+
+### Tile Selection
+- Clicking a tile selects it and shows the info panel
+- The panel remains visible while the tile is selected
+- Pressing Escape or clicking elsewhere deselects the tile and hides the panel
+
+### Hover Behavior
+- Hovering over a tile for 1 second shows the info panel
+- Moving the mouse hides the panel immediately
+- If a tile is selected, moving the mouse does not hide the panel
+- The panel shows both tile and unit data if a unit is present
+
+### Panel Content
+- Shows terrain type and movement cost
+- If a unit is present, shows unit stats (health, movement, combat)
+- Updates in real-time as the mouse moves over different tiles
+- Only visible when a tile is selected or being hovered
+
 ## Components
 
 1. `UI.cs`
@@ -13,7 +41,7 @@
    - Uses UIElements for modern UI
 
 ## Event Handling
-
+****
 1. `TileSelected`
    - Show unit panel
    - Update unit stats

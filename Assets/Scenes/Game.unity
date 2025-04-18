@@ -454,6 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
   grid: {fileID: 649436932}
+  ui: {fileID: 2017718144}
 --- !u!114 &785604384
 MonoBehaviour:
   m_ObjectHideFlags: 0
