@@ -5,7 +5,7 @@ public class UnitData : ScriptableObject
 {
     public int health;
     public int movement;
+    public int melee;
+    public int ranged;
     public int range;
-    public int attack;
-    public int defense;
 }

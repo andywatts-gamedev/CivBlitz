@@ -10,17 +10,24 @@ public class CombatManager : Singleton<CombatManager>
             !UnitManager.Instance.TryGetUnit(defenderPos, out var defender)) return false;
         
         if (attacker.civ != defender.civ) {
-            defender.health -= attacker.unitData.attack;
-            attacker.movement = 0;
+            var distance = HexGrid.GetDistance(attackerPos, defenderPos);
+            var damage = attacker.unitData.ranged > 0 ? 
+                        (distance <= attacker.unitData.range ? attacker.unitData.ranged : 0) :
+                        (distance <= 1 ? attacker.unitData.melee : 0);
             
-            UnitManager.Instance.UpdateUnit(attackerPos, attacker);
-            UnitManager.Instance.UpdateUnit(defenderPos, defender);
-            
-            if (defender.health <= 0) {
-                UnitManager.Instance.RemoveUnit(defenderPos);
+            if (damage > 0) {
+                defender.health -= damage;
+                attacker.movement = 0;
+                
+                UnitManager.Instance.UpdateUnit(attackerPos, attacker);
+                UnitManager.Instance.UpdateUnit(defenderPos, defender);
+                
+                if (defender.health <= 0) {
+                    UnitManager.Instance.RemoveUnit(defenderPos);
+                }
+                
+                return true;
             }
-            
-            return true;
         }
         return false;
     }

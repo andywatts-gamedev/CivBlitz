@@ -420,11 +420,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 785604380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 125ce2146f0ea4dd1976f421a2a185b2, type: 3}
+  m_Script: {fileID: 11500000, guid: bc15e1b50ffab42568fd0c843fd12729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
-  highlightGO: {fileID: 576595455}
+  highlight: {fileID: 576595455}
 --- !u!4 &785604382
 Transform:
   m_ObjectHideFlags: 0

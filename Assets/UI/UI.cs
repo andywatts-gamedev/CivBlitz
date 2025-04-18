@@ -5,13 +5,14 @@ public class UI : MonoBehaviour
 {
     [SerializeField] private InputEvents events;
     private UIDocument doc;
-    private Label nameLabel, healthLabel, movementLabel, rangeLabel, attackLabel, defenseLabel;
+    private Label nameLabel, healthLabel, movementLabel, rangeLabel, meleeLabel, rangedLabel;
+    private Label playerCivLabel, aiCivLabel;
     private VisualElement unitPanel;
+    private Button endTurnButton;
 
+    private char health = '';
     private char sword = '';
-    private char shield = '';
     private char walk = '';
-    private char vs = '';
     private char bow = '\u26b2';
 
     void Start()
@@ -38,26 +39,37 @@ public class UI : MonoBehaviour
         healthLabel = unitPanel.Q<Label>("Health");
         movementLabel = unitPanel.Q<Label>("Movement");
         rangeLabel = unitPanel.Q<Label>("Range");
-        attackLabel = unitPanel.Q<Label>("Attack");
-        defenseLabel = unitPanel.Q<Label>("Defense");
+        meleeLabel = unitPanel.Q<Label>("Melee");
+        rangedLabel = unitPanel.Q<Label>("Ranged");
+
+        playerCivLabel = root.Q<Label>("PlayerCiv");
+        aiCivLabel = root.Q<Label>("AICiv");
+        endTurnButton = root.Q<Button>("EndTurn");
+
+        if (endTurnButton == null) {
+            endTurnButton = new Button(() => TurnManager.Instance.EndTurn()) { text = "End Turn" };
+            root.Add(endTurnButton);
+        } else {
+            endTurnButton.clicked += () => TurnManager.Instance.EndTurn();
+        }
 
         if (nameLabel == null) Debug.LogError("Name label not found!");
         if (healthLabel == null) Debug.LogError("Health label not found!");
         if (movementLabel == null) Debug.LogError("Movement label not found!");
         if (rangeLabel == null) Debug.LogError("Range label not found!");
-        if (attackLabel == null) Debug.LogError("Attack label not found!");
-        if (defenseLabel == null) Debug.LogError("Defense label not found!");
-
-        Debug.Log($"UI#Start: UI Labels found: Name={nameLabel != null}, Health={healthLabel != null}, " +
-                 $"Movement={movementLabel != null}, Range={rangeLabel != null}, " +
-                 $"Attack={attackLabel != null}, Defense={defenseLabel != null}");
+        if (meleeLabel == null) Debug.LogError("Melee label not found!");
+        if (rangedLabel == null) Debug.LogError("Ranged label not found!");
+        if (playerCivLabel == null) Debug.LogError("PlayerCiv label not found!");
+        if (aiCivLabel == null) Debug.LogError("AICiv label not found!");
         
-        // Hide panel initially
         unitPanel.style.display = DisplayStyle.None;
         
         events.OnTileSelected += HandleTileSelected;
         events.OnCancel += HandleCancel;
         events.OnTileDeselected += HandleTileDeselected;
+        TurnManager.Instance.OnTurnChanged += UpdateTurnLabels;
+        
+        UpdateTurnLabels();
     }
 
     void OnDisable() 
@@ -65,43 +77,91 @@ public class UI : MonoBehaviour
         events.OnTileSelected -= HandleTileSelected;
         events.OnCancel -= HandleCancel;
         events.OnTileDeselected -= HandleTileDeselected;
+        TurnManager.Instance.OnTurnChanged -= UpdateTurnLabels;
+    }
+
+    void UpdateTurnLabels()
+    {
+        if (TurnManager.Instance.playerCiv != null && TurnManager.Instance.aiCiv != null) {
+            playerCivLabel.text = TurnManager.Instance.playerCiv.Name;
+            aiCivLabel.text = TurnManager.Instance.aiCiv.Name;
+            endTurnButton.SetEnabled(TurnManager.Instance.isPlayerTurn);
+
+            if (TurnManager.Instance.isPlayerTurn) {
+                playerCivLabel.style.borderTopColor = new Color(1, 1, 1, 1);
+                playerCivLabel.style.borderRightColor = new Color(1, 1, 1, 1);
+                playerCivLabel.style.borderBottomColor = new Color(1, 1, 1, 1);
+                playerCivLabel.style.borderLeftColor = new Color(1, 1, 1, 1);
+                playerCivLabel.style.borderTopWidth = 2;
+                playerCivLabel.style.borderRightWidth = 2;
+                playerCivLabel.style.borderBottomWidth = 2;
+                playerCivLabel.style.borderLeftWidth = 2;
+                
+                aiCivLabel.style.borderTopColor = new Color(0, 0, 0, 0);
+                aiCivLabel.style.borderRightColor = new Color(0, 0, 0, 0);
+                aiCivLabel.style.borderBottomColor = new Color(0, 0, 0, 0);
+                aiCivLabel.style.borderLeftColor = new Color(0, 0, 0, 0);
+                aiCivLabel.style.borderTopWidth = 0;
+                aiCivLabel.style.borderRightWidth = 0;
+                aiCivLabel.style.borderBottomWidth = 0;
+                aiCivLabel.style.borderLeftWidth = 0;
+            } else {
+                playerCivLabel.style.borderTopColor = new Color(0, 0, 0, 0);
+                playerCivLabel.style.borderRightColor = new Color(0, 0, 0, 0);
+                playerCivLabel.style.borderBottomColor = new Color(0, 0, 0, 0);
+                playerCivLabel.style.borderLeftColor = new Color(0, 0, 0, 0);
+                playerCivLabel.style.borderTopWidth = 0;
+                playerCivLabel.style.borderRightWidth = 0;
+                playerCivLabel.style.borderBottomWidth = 0;
+                playerCivLabel.style.borderLeftWidth = 0;
+                
+                aiCivLabel.style.borderTopColor = new Color(1, 1, 1, 1);
+                aiCivLabel.style.borderRightColor = new Color(1, 1, 1, 1);
+                aiCivLabel.style.borderBottomColor = new Color(1, 1, 1, 1);
+                aiCivLabel.style.borderLeftColor = new Color(1, 1, 1, 1);
+                aiCivLabel.style.borderTopWidth = 2;
+                aiCivLabel.style.borderRightWidth = 2;
+                aiCivLabel.style.borderBottomWidth = 2;
+                aiCivLabel.style.borderLeftWidth = 2;
+            }
+        }
     }
 
     void HandleTileSelected(Vector2Int pos)
     {
-        Debug.Log($"UI#HandleTileSelected: called for position {pos}");
-        
         if (!UnitManager.Instance.TryGetUnit(pos, out var unit)) {
-            Debug.Log("UI#HandleTileSelected: No unit found at position");
             unitPanel.style.display = DisplayStyle.None;
             return;
         }
 
-        Debug.Log($"UI#HandleTileSelected: Found unit: name={unit.unitData?.name}, health={unit.health}");
-
-        if (nameLabel == null || healthLabel == null) {
-            Debug.LogError("UI#HandleTileSelected: UI labels are null!");
-            return;
-        }
-
-        // Use the asset name instead of a non-existent name field
         string unitName = unit.unitData != null ? unit.unitData.name.Replace("Data", "") : "Unknown";
         nameLabel.text = unitName;
-        // healthLabel.text = $"{heart} {unit.health}";
+        healthLabel.text = $"{health} {unit.health}";
         movementLabel.text = $"{walk} {unit.movement}";
-        rangeLabel.text = $"{bow} {unit.unitData?.range}";
-        attackLabel.text = $"{sword} {unit.unitData?.attack}";
-        defenseLabel.text = $"{shield} {unit.unitData?.defense}";
         
-        Debug.Log($"UI#HandleTileSelected: Updated labels: name={nameLabel.text}, health={healthLabel.text}");
+        // Show melee attack
+        meleeLabel.text = $"{sword} {unit.unitData?.melee}";
+        
+        // Show ranged attack and range if it exists
+        if (unit.unitData?.ranged > 0) {
+            rangedLabel.text = $"{bow} {unit.unitData.ranged}";
+            rangedLabel.style.display = DisplayStyle.Flex;
+            if (unit.unitData.range > 0) {
+                rangeLabel.text = $"{bow} {unit.unitData.range}";
+                rangeLabel.style.display = DisplayStyle.Flex;
+            } else {
+                rangeLabel.style.display = DisplayStyle.None;
+            }
+        } else {
+            rangedLabel.style.display = DisplayStyle.None;
+            rangeLabel.style.display = DisplayStyle.None;
+        }
         
         unitPanel.style.display = DisplayStyle.Flex;
-        Debug.Log("UI#HandleTileSelected: Set panel to Flex display");
     }
 
     void HandleCancel()
     {
-        Debug.Log("UI#HandleCancel: called ***********************");
         unitPanel.style.display = DisplayStyle.None;
     }
 
