@@ -26,14 +26,14 @@ public class CombatManager : Singleton<CombatManager>
                 UnitManager.Instance.UpdateUnit(defenderPos, defender);
                 
                 // Start combat animation
-                StartCoroutine(CombatCoroutine(attackerPos, defenderPos, defender.health <= 0));
+                StartCoroutine(CombatCoroutine(attackerPos, defenderPos, defender.health <= 0, damage));
                 return true;
             }
         }
         return false;
     }
 
-    private IEnumerator CombatCoroutine(Vector2Int attackerPos, Vector2Int defenderPos, bool defenderDies)
+    private IEnumerator CombatCoroutine(Vector2Int attackerPos, Vector2Int defenderPos, bool defenderDies, int damage)
     {
         isCombatMoving = true;
         
@@ -62,6 +62,9 @@ public class CombatManager : Singleton<CombatManager>
             defenderSprite.transform.position = Vector3.Lerp(defenderStart, meetingPoint, t);
             yield return null;
         }
+        
+        // Show damage text at meeting point
+        FloatingCombatText.Create(meetingPoint + Vector3.up * 0.5f, damage);
         
         // Handle combat result
         if (defenderDies)
