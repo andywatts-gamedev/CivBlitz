@@ -7,7 +7,7 @@ public class UI : MonoBehaviour
     private UIDocument doc;
     private Label nameLabel, healthLabel, movementLabel, rangeLabel, meleeLabel, rangedLabel;
     private Label playerCivLabel, aiCivLabel;
-    private Label terrainLabel, resourcesLabel, movementCostLabel;
+    private Label terrainLabel, movementCostLabel;
     private VisualElement infoPanel;
     private Button endTurnButton;
     private Vector2Int? currentTile;
@@ -46,7 +46,6 @@ public class UI : MonoBehaviour
         rangedLabel = infoPanel.Q<Label>("Ranged");
 
         terrainLabel = infoPanel.Q<Label>("Terrain");
-        resourcesLabel = infoPanel.Q<Label>("Resources");
         movementCostLabel = infoPanel.Q<Label>("MovementCost");
 
         playerCivLabel = root.Q<Label>("PlayerCiv");
@@ -69,7 +68,6 @@ public class UI : MonoBehaviour
         if (playerCivLabel == null) Debug.LogError("PlayerCiv label not found!");
         if (aiCivLabel == null) Debug.LogError("AICiv label not found!");
         if (terrainLabel == null) Debug.LogError("Terrain label not found!");
-        if (resourcesLabel == null) Debug.LogError("Resources label not found!");
         if (movementCostLabel == null) Debug.LogError("MovementCost label not found!");
         
         infoPanel.style.display = DisplayStyle.None;
@@ -128,9 +126,7 @@ public class UI : MonoBehaviour
 
     void UpdateTilePanel(Vector2Int pos)
     {
-        // TODO: Get actual tile data
         terrainLabel.text = "Grassland";
-        resourcesLabel.text = "None";
         movementCostLabel.text = "1";
     }
 

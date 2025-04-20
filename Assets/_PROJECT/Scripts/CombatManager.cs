@@ -14,28 +14,37 @@ public class CombatManager : Singleton<CombatManager>
         
         if (attacker.civ != defender.civ) {
             var distance = HexGrid.GetDistance(attackerPos, defenderPos);
-            var damage = attacker.unitData.ranged > 0 ? 
-                        (distance <= attacker.unitData.range ? attacker.unitData.ranged : 0) :
-                        (distance <= 1 ? attacker.unitData.melee : 0);
+            var strengthDiff = attacker.unitData.melee - defender.unitData.melee;
             
-            if (damage > 0) {
-                defender.health -= damage;
+            // Attack damage
+            var attackDamage = Mathf.RoundToInt(30 * Mathf.Exp(0.04f * strengthDiff) * Random.Range(0.8f, 1.2f));
+            // Retaliation damage (just flip the strength diff)
+            var retaliationDamage = distance <= 1 ? 
+                Mathf.RoundToInt(30 * Mathf.Exp(0.04f * -strengthDiff) * Random.Range(0.8f, 1.2f)) : 
+                0;
+            
+            if (attackDamage > 0) {
+                defender.health -= attackDamage;
+                attacker.health -= retaliationDamage;
                 attacker.movement = 0;
                 
                 UnitManager.Instance.UpdateUnit(attackerPos, attacker);
                 UnitManager.Instance.UpdateUnit(defenderPos, defender);
                 
                 // Start combat animation
-                StartCoroutine(CombatCoroutine(attackerPos, defenderPos, defender.health <= 0, damage));
+                StartCoroutine(CombatCoroutine(attackerPos, defenderPos, defender.health <= 0, attackDamage, retaliationDamage));
                 return true;
             }
         }
         return false;
     }
 
-    private IEnumerator CombatCoroutine(Vector2Int attackerPos, Vector2Int defenderPos, bool defenderDies, int damage)
+    private IEnumerator CombatCoroutine(Vector2Int attackerPos, Vector2Int defenderPos, bool defenderDies, int attackDamage, int retaliationDamage)
     {
         isCombatMoving = true;
+        
+        // Store attacker reference at start
+        var attackingUnit = UnitManager.Instance.units[attackerPos];
         
         // Get tiles and hide them
         var attackerTile = tilemap.GetTile((Vector3Int)attackerPos) as UnitTile;
@@ -64,7 +73,11 @@ public class CombatManager : Singleton<CombatManager>
         }
         
         // Show damage text at meeting point
-        FloatingCombatText.Create(meetingPoint + Vector3.up * 0.5f, damage);
+        FloatingCombatText.Create(meetingPoint + Vector3.up * 0.5f, 
+                                attackDamage, 
+                                defenderTile.color, 
+                                retaliationDamage, 
+                                attackerTile.color);
         
         // Handle combat result
         if (defenderDies)
@@ -83,7 +96,7 @@ public class CombatManager : Singleton<CombatManager>
             }
             
             tilemap.SetTile((Vector3Int)defenderPos, attackerTile);
-            UnitManager.Instance.MoveUnit(UnitManager.Instance.units[attackerPos], attackerPos, defenderPos);
+            UnitManager.Instance.MoveUnit(attackingUnit, attackerPos, defenderPos);
         }
         else
         {

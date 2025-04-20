@@ -12,7 +12,6 @@
             <ui:Label name="Range" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
             <ui:VisualElement style="height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 5px 0;" />
             <ui:Label name="Terrain" text="Terrain" style="color: white; font-size: 14px; margin-bottom: 5px;"/>
-            <ui:Label name="Resources" text="Resources" style="color: white; font-size: 14px; margin-bottom: 5px;"/>
             <ui:Label name="MovementCost" text="Movement Cost" style="color: white; font-size: 14px; margin-bottom: 5px;"/>
         </ui:VisualElement>
     </ui:VisualElement>

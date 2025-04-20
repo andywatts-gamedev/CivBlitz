@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 
 public class Game : MonoBehaviour
 {
@@ -102,5 +103,9 @@ public class Game : MonoBehaviour
             
         unit.movement--;
         UnitManager.Instance.MoveUnit(unit, from, to);
+        
+        // Check if any player units can still move
+        if (!UnitManager.Instance.units.Any(u => u.Value.civ == TurnManager.Instance.playerCiv && u.Value.movement > 0))
+            TurnManager.Instance.EndTurn();
     }
 } 

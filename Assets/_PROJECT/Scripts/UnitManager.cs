@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class UnitManager : Singleton<UnitManager>
 {
     public Tilemap tilemap;
-    private const float MOVE_DURATION = 2f;
+    private const float MOVE_DURATION = 1f;
     
     public bool isMoving;
 
