@@ -135,7 +135,7 @@ public class UI : MonoBehaviour
         string unitName = unit.unitData != null ? unit.unitData.name.Replace("Data", "") : "Unknown";
         nameLabel.text = unitName;
         healthLabel.text = $"{health} {unit.health}";
-        movementLabel.text = $"{walk} {unit.movement}";
+        movementLabel.text = $"{walk} {unit.movesLeft}/{unit.unitData.movement}";
         meleeLabel.text = $"{sword} {unit.unitData?.melee}";
         rangedLabel.text = $"{bow} {unit.unitData?.ranged}";
         rangeLabel.text = $"{bow} {unit.unitData?.range}";

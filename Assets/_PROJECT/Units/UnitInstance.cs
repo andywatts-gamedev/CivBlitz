@@ -1,16 +1,20 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public struct UnitInstance
+public class UnitInstance
 {
     public UnitData unitData;
-    public int health;
-    public int movement;
     public Civilization civ;
+    public Vector2Int position;
+    public int movesLeft;
+    public int health;
 
-    public void Start()
+    public UnitInstance(UnitData unitData, Civilization civ, Vector2Int pos)
     {
-        health = unitData.health;
-        movement = unitData.movement;
+        this.unitData = unitData;
+        this.civ = civ;
+        this.position = pos;
+        this.movesLeft = unitData.movement;
+        this.health = unitData.health;
     }
 }
