@@ -43,14 +43,20 @@ public class CombatManager : Singleton<CombatManager>
     {
         isCombatMoving = true;
         
-        // Store attacker reference at start
         var attackingUnit = UnitManager.Instance.units[attackerPos];
+        var defendingUnit = UnitManager.Instance.units[defenderPos];
         
-        // Get tiles and hide them
-        var attackerTile = tilemap.GetTile((Vector3Int)attackerPos) as UnitTile;
-        var defenderTile = tilemap.GetTile((Vector3Int)defenderPos) as UnitTile;
-        tilemap.SetTile((Vector3Int)attackerPos, null);
-        tilemap.SetTile((Vector3Int)defenderPos, null);
+        // Get correct tilemaps
+        var attackerTilemap = attackingUnit.civ == UnitManager.Instance.playerCiv ? 
+            UnitManager.Instance.playerUnitTilemap : UnitManager.Instance.enemyUnitTilemap;
+        var defenderTilemap = defendingUnit.civ == UnitManager.Instance.playerCiv ? 
+            UnitManager.Instance.playerUnitTilemap : UnitManager.Instance.enemyUnitTilemap;
+        
+        // Get and hide tiles
+        var attackerTile = attackerTilemap.GetTile((Vector3Int)attackerPos) as UnitTile;
+        var defenderTile = defenderTilemap.GetTile((Vector3Int)defenderPos) as UnitTile;
+        attackerTilemap.SetTile((Vector3Int)attackerPos, null);
+        defenderTilemap.SetTile((Vector3Int)defenderPos, null);
         
         // Create moving sprites
         var attackerSprite = CreateMovingSprite(attackerTile, attackerPos);
@@ -79,7 +85,7 @@ public class CombatManager : Singleton<CombatManager>
                                 retaliationDamage, 
                                 attackerTile.color);
         
-        // Handle combat result
+        // Update final positions
         if (defenderDies)
         {
             UnitManager.Instance.RemoveUnit(defenderPos);
@@ -95,7 +101,7 @@ public class CombatManager : Singleton<CombatManager>
                 yield return null;
             }
             
-            tilemap.SetTile((Vector3Int)defenderPos, attackerTile);
+            attackerTilemap.SetTile((Vector3Int)defenderPos, attackerTile);
             UnitManager.Instance.MoveUnit(attackerPos, defenderPos);
         }
         else
@@ -111,8 +117,8 @@ public class CombatManager : Singleton<CombatManager>
                 yield return null;
             }
             
-            tilemap.SetTile((Vector3Int)attackerPos, attackerTile);
-            tilemap.SetTile((Vector3Int)defenderPos, defenderTile);
+            attackerTilemap.SetTile((Vector3Int)attackerPos, attackerTile);
+            defenderTilemap.SetTile((Vector3Int)defenderPos, defenderTile);
         }
         
         Destroy(attackerSprite);

@@ -47,16 +47,6 @@ public class UnitManager : MonoBehaviour
         civUnits[unit.civ].Add(unit);
     }
 
-    // public void MoveUnit(Vector2Int from, Vector2Int to)
-    // {
-    //     if (units.TryGetValue(from, out var unit))
-    //     {
-    //         units.Remove(from);
-    //         unit.position = to;
-    //         units[to] = unit;
-
-
-
     public void MoveUnit(Vector2Int from, Vector2Int to)
     {
         if (isMoving) return;
@@ -73,8 +63,8 @@ public class UnitManager : MonoBehaviour
             var movingFlag = new GameObject("FlagMove");
             var sprite = movingFlag.AddComponent<SpriteRenderer>();
             sprite.sprite = flagTile.sprite;
-            sprite.color = flagTile.color;
-            sprite.sortingOrder = 1;
+            sprite.color = flagsTilemap.color;
+            sprite.sortingOrder = 10;
             sprite.transform.position = flagsTilemap.CellToWorld((Vector3Int)from);
             StartCoroutine(MoveCoroutine(flagsTilemap, movingFlag, (Vector3Int)from, (Vector3Int)to, flagTile));
 
@@ -86,7 +76,7 @@ public class UnitManager : MonoBehaviour
             var movingUnit = new GameObject("UnitMove");
             var unitSprite = movingUnit.AddComponent<SpriteRenderer>();
             unitSprite.sprite = unitTile.sprite;
-            unitSprite.sortingOrder = 1;
+            unitSprite.sortingOrder = 20;
             unitSprite.transform.position = unitTilemap.CellToWorld((Vector3Int)from);
             StartCoroutine(MoveCoroutine(unitTilemap, movingUnit, (Vector3Int)from, (Vector3Int)to, unitTile));
         }
