@@ -19,17 +19,26 @@ public class TurnManager : Singleton<TurnManager>
         ai = gameObject.AddComponent<MinMaxAI>();
     }
 
-    public void EndTurn() {
+    public void EndTurn()
+    {
         if (isAITurnInProgress) return;
-        
-        isPlayerTurn = !isPlayerTurn;
-        OnTurnChanged?.Invoke();
-        if (!isPlayerTurn) {
-            StartCoroutine(DoAITurn());
-        } else {
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-            UnitManager.Instance.ResetMoves();
+        if (UnitManager.Instance.isMoving || CombatManager.Instance.isCombatMoving) {
+            StartCoroutine(DelayedEndTurn());
+            return;
         }
+        isPlayerTurn = false;
+        OnTurnChanged?.Invoke();
+        StartCoroutine(DoAITurn());
+    }
+
+    private IEnumerator DelayedEndTurn()
+    {
+        while (UnitManager.Instance.isMoving || CombatManager.Instance.isCombatMoving) {
+            yield return null;
+        }
+        isPlayerTurn = false;
+        OnTurnChanged?.Invoke();
+        StartCoroutine(DoAITurn());
     }
 
     private IEnumerator DoAITurn() {

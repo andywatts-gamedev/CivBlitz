@@ -44,11 +44,19 @@ public class UnitManager : MonoBehaviour
     public void MoveUnit(Vector2Int from, Vector2Int to)
     {
         Debug.Log("UnitManager#MoveUnit: Moving unit from " + from + " to " + to);
-        if (isMoving) return;
+        if (isMoving || CombatManager.Instance.isCombatMoving) return;
         if (units.TryGetValue(from, out var unit))
         {
             units.Remove(from);
+            unit.position = to;
             units[to] = unit;
+            
+            // var civUnitsList = civUnits[unit.civ];
+            // var index = civUnitsList.FindIndex(u => u.position == from);
+            // if (index != -1)
+            // {
+            //     civUnitsList[index] = unit;
+            // }
             
             // Flag
             var flagsTilemap = flags[unit.civ];

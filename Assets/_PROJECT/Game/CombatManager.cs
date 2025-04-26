@@ -24,13 +24,17 @@ public class CombatManager : Singleton<CombatManager>
             
             if (attackDamage > 0)
             {
-                var attackerTilemap = UnitManager.Instance.flags[attacker.civ];
-                var defenderTilemap = UnitManager.Instance.flags[defender.civ];
-                var attackerTile = attackerTilemap.GetTile((Vector3Int)attackerPos) as UnitTile;
-                var defenderTile = defenderTilemap.GetTile((Vector3Int)defenderPos) as UnitTile;
+                var attackerFlagTilemap = UnitManager.Instance.flags[attacker.civ];
+                var defenderFlagTilemap = UnitManager.Instance.flags[defender.civ];
+                var unitTilemap = UnitManager.Instance.unitTilemap;
+
+                var attackerFlagTile = attackerFlagTilemap.GetTile((Vector3Int)attackerPos) as Tile;
+                var defenderFlagTile = defenderFlagTilemap.GetTile((Vector3Int)defenderPos) as Tile;
+                var attackerUnitTile = unitTilemap.GetTile((Vector3Int)attackerPos) as UnitTile;
+                var defenderUnitTile = unitTilemap.GetTile((Vector3Int)defenderPos) as UnitTile;
                 
-                Debug.Log($"Pre-combat tiles - Attacker: {attackerTile}, Defender: {defenderTile}");
-                if (attackerTile == null || defenderTile == null) {
+                if (attackerFlagTile == null || defenderFlagTile == null || 
+                    attackerUnitTile == null || defenderUnitTile == null) {
                     Debug.LogError($"Missing tiles at positions - Attacker: {attackerPos}, Defender: {defenderPos}");
                     return false;
                 }
@@ -42,12 +46,12 @@ public class CombatManager : Singleton<CombatManager>
                 UnitManager.Instance.UpdateUnit(attackerPos, attacker);
                 UnitManager.Instance.UpdateUnit(defenderPos, defender);
                 
-                // Pass tiles to coroutine
                 StartCoroutine(CombatCoroutine(
                     attackerPos, defenderPos, 
                     defender.health <= 0, 
                     attackDamage, retaliationDamage,
-                    attackerTile, defenderTile,
+                    attackerFlagTile, defenderFlagTile,
+                    attackerUnitTile, defenderUnitTile,
                     attacker.civ, defender.civ
                 ));
                 return true;
@@ -59,42 +63,32 @@ public class CombatManager : Singleton<CombatManager>
     private IEnumerator CombatCoroutine(
         Vector2Int attackerPos, Vector2Int defenderPos, 
         bool defenderDies, int attackDamage, int retaliationDamage,
-        UnitTile attackerTile, UnitTile defenderTile,
+        Tile attackerFlagTile, Tile defenderFlagTile,
+        UnitTile attackerUnitTile, UnitTile defenderUnitTile,
         Civilization attackerCiv, Civilization defenderCiv)
     {
-        if (attackerTile == null || defenderTile == null) {
-            Debug.LogError("Combat started with null tiles");
-            yield break;
-        }
-
         isCombatMoving = true;
         
-        var attackerTilemap = UnitManager.Instance.flags[attackerCiv];
-        var defenderTilemap = UnitManager.Instance.flags[defenderCiv];
-        Debug.Log($"Combat tilemaps - Attacker: {attackerTilemap.name}, Defender: {defenderTilemap.name}");
+        var attackerFlagTilemap = UnitManager.Instance.flags[attackerCiv];
+        var defenderFlagTilemap = UnitManager.Instance.flags[defenderCiv];
+        var unitTilemap = UnitManager.Instance.unitTilemap;
         
         // Hide tiles
-        attackerTilemap.SetTile((Vector3Int)attackerPos, null);
-        defenderTilemap.SetTile((Vector3Int)defenderPos, null);
+        attackerFlagTilemap.SetTile((Vector3Int)attackerPos, null);
+        defenderFlagTilemap.SetTile((Vector3Int)defenderPos, null);
+        unitTilemap.SetTile((Vector3Int)attackerPos, null);
+        unitTilemap.SetTile((Vector3Int)defenderPos, null);
         
         // Create moving sprites
-        var attackerSprite = CreateMovingSprite(attackerTile, attackerPos, attackerCiv);
-        if (attackerSprite == null) {
-            Debug.LogError("Failed to create attacker sprite");
-            yield break;
-        }
+        var attackerFlagSprite = CreateMovingSprite(attackerFlagTile, attackerPos, attackerCiv, true);
+        var attackerUnitSprite = CreateMovingSprite(attackerUnitTile, attackerPos, attackerCiv, false);
+        var defenderFlagSprite = CreateMovingSprite(defenderFlagTile, defenderPos, defenderCiv, true);
+        var defenderUnitSprite = CreateMovingSprite(defenderUnitTile, defenderPos, defenderCiv, false);
         
-        var defenderSprite = CreateMovingSprite(defenderTile, defenderPos, defenderCiv);
-        if (defenderSprite == null) {
-            Destroy(attackerSprite);
-            Debug.LogError("Failed to create defender sprite");
-            yield break;
-        }
-        
-        // Calculate meeting point (1/3 of the way)
-        var attackerStart = attackerTilemap.CellToWorld((Vector3Int)attackerPos);
-        var defenderStart = defenderTilemap.CellToWorld((Vector3Int)defenderPos);
-        var meetingPoint = Vector3.Lerp(attackerStart, defenderStart, 0.33f);
+        // Calculate meeting point
+        var start = attackerFlagTilemap.CellToWorld((Vector3Int)attackerPos);
+        var end = defenderFlagTilemap.CellToWorld((Vector3Int)defenderPos);
+        var meetingPoint = Vector3.Lerp(start, end, 0.33f);
         
         // Move to meeting point
         var elapsed = 0f;
@@ -102,75 +96,81 @@ public class CombatManager : Singleton<CombatManager>
         {
             elapsed += Time.deltaTime;
             var t = Mathf.Clamp01(elapsed / COMBAT_DURATION);
-            attackerSprite.transform.position = Vector3.Lerp(attackerStart, meetingPoint, t);
-            defenderSprite.transform.position = Vector3.Lerp(defenderStart, meetingPoint, t);
+            var lerpedAttackerPos = Vector3.Lerp(start, meetingPoint, t);
+            var lerpedDefenderPos = Vector3.Lerp(end, meetingPoint, t);
+            
+            attackerFlagSprite.transform.position = lerpedAttackerPos;
+            attackerUnitSprite.transform.position = lerpedAttackerPos;
+            defenderFlagSprite.transform.position = lerpedDefenderPos;
+            defenderUnitSprite.transform.position = lerpedDefenderPos;
             yield return null;
         }
         
-        // Show damage text at meeting point
-        FloatingCombatText.Create(meetingPoint + Vector3.up * 0.5f, 
-                                attackDamage, 
-                                defenderTile.color, 
-                                retaliationDamage, 
-                                attackerTile.color);
+        FloatingCombatText.Create(meetingPoint + Vector3.up * 0.5f, attackDamage, defenderFlagTile.color, retaliationDamage, attackerFlagTile.color);
         
-        // Update final positions
         if (defenderDies)
         {
             UnitManager.Instance.RemoveUnit(defenderPos);
-            Destroy(defenderSprite);
+            Destroy(defenderFlagSprite);
+            Destroy(defenderUnitSprite);
             
-            // Winner moves to destination
             elapsed = 0f;
             while (elapsed < COMBAT_DURATION)
             {
                 elapsed += Time.deltaTime;
                 var t = Mathf.Clamp01(elapsed / COMBAT_DURATION);
-                attackerSprite.transform.position = Vector3.Lerp(meetingPoint, defenderStart, t);
+                var pos = Vector3.Lerp(meetingPoint, end, t);
+                attackerFlagSprite.transform.position = pos;
+                attackerUnitSprite.transform.position = pos;
                 yield return null;
             }
             
-            attackerTilemap.SetTile((Vector3Int)defenderPos, attackerTile);
+            attackerFlagTilemap.SetTile((Vector3Int)defenderPos, attackerFlagTile);
+            unitTilemap.SetTile((Vector3Int)defenderPos, attackerUnitTile);
             UnitManager.Instance.MoveUnit(attackerPos, defenderPos);
         }
         else
         {
-            // Both return to start
             elapsed = 0f;
             while (elapsed < COMBAT_DURATION)
             {
                 elapsed += Time.deltaTime;
                 var t = Mathf.Clamp01(elapsed / COMBAT_DURATION);
-                attackerSprite.transform.position = Vector3.Lerp(meetingPoint, attackerStart, t);
-                defenderSprite.transform.position = Vector3.Lerp(meetingPoint, defenderStart, t);
+                attackerFlagSprite.transform.position = Vector3.Lerp(meetingPoint, start, t);
+                attackerUnitSprite.transform.position = Vector3.Lerp(meetingPoint, start, t);
+                defenderFlagSprite.transform.position = Vector3.Lerp(meetingPoint, end, t);
+                defenderUnitSprite.transform.position = Vector3.Lerp(meetingPoint, end, t);
                 yield return null;
             }
             
-            attackerTilemap.SetTile((Vector3Int)attackerPos, attackerTile);
-            defenderTilemap.SetTile((Vector3Int)defenderPos, defenderTile);
+            attackerFlagTilemap.SetTile((Vector3Int)attackerPos, attackerFlagTile);
+            defenderFlagTilemap.SetTile((Vector3Int)defenderPos, defenderFlagTile);
+            unitTilemap.SetTile((Vector3Int)attackerPos, attackerUnitTile);
+            unitTilemap.SetTile((Vector3Int)defenderPos, defenderUnitTile);
         }
-        // 
-        Destroy(attackerSprite);
-        if (!defenderDies) Destroy(defenderSprite);
+        
+        Destroy(attackerFlagSprite);
+        Destroy(attackerUnitSprite);
+        if (!defenderDies) {
+            Destroy(defenderFlagSprite);
+            Destroy(defenderUnitSprite);
+        }
         isCombatMoving = false;
     }
 
-    private GameObject CreateMovingSprite(UnitTile tile, Vector2Int pos, Civilization civ)
+    private GameObject CreateMovingSprite(Tile tile, Vector2Int pos, Civilization civ, bool isFlag)
     {
-        if (tile == null) {
-            Debug.LogError($"Attempted to create sprite with null tile at {pos}");
-            return null;
-        }
-
-        var tilemap = UnitManager.Instance.flags[civ];
+        var tilemap = isFlag ? UnitManager.Instance.flags[civ] : UnitManager.Instance.unitTilemap;
+        var scale = isFlag ? Game.Instance.flagScale : Game.Instance.unitScale;
+        var sortingOrder = isFlag ? 10 : 20;
         
         return SpriteUtils.CreateMovingSprite(
             "CombatMove",
             tile.sprite,
             tile.color,
-            20,
+            sortingOrder,
             tilemap.CellToWorld((Vector3Int)pos),
-            Game.Instance.flagScale
+            scale
         );
     }
 
