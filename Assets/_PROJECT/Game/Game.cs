@@ -117,7 +117,7 @@ public class Game : MonoBehaviour
         UnitManager.Instance.MoveUnit(from, to);
         
         // Check if any player units can still move
-        if (!UnitManager.Instance.units.Any(u => u.Value.civ == TurnManager.Instance.playerCiv && u.Value.movesLeft > 0))
+        if (!UnitManager.Instance.units.Any(u => u.Value.civ == Game.Instance.player && u.Value.movesLeft > 0))
             TurnManager.Instance.EndTurn();
     }
 } 
