@@ -62,28 +62,12 @@ public class UnitManager : MonoBehaviour
             var flagsTilemap = flags[unit.civ];
             var flagTile = flagsTilemap.GetTile((Vector3Int)from) as Tile;
             flagsTilemap.SetTile((Vector3Int)from, null);
-            
-            var movingFlag = SpriteUtils.CreateMovingSprite(
-                "FlagMove",
-                flagTile.sprite,
-                flagsTilemap.color,
-                10,
-                flagsTilemap.CellToWorld((Vector3Int)from),
-                Game.Instance.flagScale
-            );
+            var movingFlag = SpriteUtils.CreateMovingUnitSprite(flagTile, from, unit.civ, true);
 
             // Unit
             var unitTile = unitTilemap.GetTile((Vector3Int)from) as Tile;
             unitTilemap.SetTile((Vector3Int)from, null);
-            
-            var movingUnit = SpriteUtils.CreateMovingSprite(
-                "UnitMove",
-                unitTile.sprite,
-                unitTile.color,
-                20,
-                unitTilemap.CellToWorld((Vector3Int)from),
-                Game.Instance.unitScale
-            );
+            var movingUnit = SpriteUtils.CreateMovingUnitSprite(unitTile, from, unit.civ, false);
 
             StartCoroutine(MoveCoroutine(flagsTilemap, movingFlag, (Vector3Int)from, (Vector3Int)to, flagTile, Game.Instance.flagScale));
             StartCoroutine(MoveCoroutine(unitTilemap, movingUnit, (Vector3Int)from, (Vector3Int)to, unitTile, Game.Instance.unitScale));

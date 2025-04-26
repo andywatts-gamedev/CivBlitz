@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public static class SpriteUtils 
 {
@@ -12,5 +13,22 @@ public static class SpriteUtils
         go.transform.position = position;
         go.transform.localScale = scale;
         return go;
+    }
+
+    public static GameObject CreateMovingUnitSprite(Tile tile, Vector2Int pos, Civilization civ, bool isFlag)
+    {
+        var tilemap = isFlag ? UnitManager.Instance.flags[civ] : UnitManager.Instance.unitTilemap;
+        var scale = isFlag ? Game.Instance.flagScale : Game.Instance.unitScale;
+        var sortingOrder = isFlag ? 10 : 20;
+        var color = isFlag ? tilemap.color : tile.color;
+        
+        return CreateMovingSprite(
+            "UnitMove",
+            tile.sprite,
+            color,
+            sortingOrder,
+            tilemap.CellToWorld((Vector3Int)pos),
+            scale
+        );
     }
 } 

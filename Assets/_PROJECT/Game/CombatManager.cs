@@ -126,7 +126,11 @@ public class CombatManager : Singleton<CombatManager>
             }
             
             attackerFlagTilemap.SetTile((Vector3Int)defenderPos, attackerFlagTile);
+            attackerFlagTilemap.SetTransformMatrix((Vector3Int)defenderPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale));
+            
             unitTilemap.SetTile((Vector3Int)defenderPos, attackerUnitTile);
+            unitTilemap.SetTransformMatrix((Vector3Int)defenderPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.unitScale));
+            
             UnitManager.Instance.MoveUnit(attackerPos, defenderPos);
         }
         else
@@ -144,9 +148,16 @@ public class CombatManager : Singleton<CombatManager>
             }
             
             attackerFlagTilemap.SetTile((Vector3Int)attackerPos, attackerFlagTile);
+            attackerFlagTilemap.SetTransformMatrix((Vector3Int)attackerPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale));
+            
             defenderFlagTilemap.SetTile((Vector3Int)defenderPos, defenderFlagTile);
+            defenderFlagTilemap.SetTransformMatrix((Vector3Int)defenderPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale));
+            
             unitTilemap.SetTile((Vector3Int)attackerPos, attackerUnitTile);
+            unitTilemap.SetTransformMatrix((Vector3Int)attackerPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.unitScale));
+            
             unitTilemap.SetTile((Vector3Int)defenderPos, defenderUnitTile);
+            unitTilemap.SetTransformMatrix((Vector3Int)defenderPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.unitScale));
         }
         
         Destroy(attackerFlagSprite);
@@ -160,18 +171,7 @@ public class CombatManager : Singleton<CombatManager>
 
     private GameObject CreateMovingSprite(Tile tile, Vector2Int pos, Civilization civ, bool isFlag)
     {
-        var tilemap = isFlag ? UnitManager.Instance.flags[civ] : UnitManager.Instance.unitTilemap;
-        var scale = isFlag ? Game.Instance.flagScale : Game.Instance.unitScale;
-        var sortingOrder = isFlag ? 10 : 20;
-        
-        return SpriteUtils.CreateMovingSprite(
-            "CombatMove",
-            tile.sprite,
-            tile.color,
-            sortingOrder,
-            tilemap.CellToWorld((Vector3Int)pos),
-            scale
-        );
+        return SpriteUtils.CreateMovingUnitSprite(tile, pos, civ, isFlag);
     }
 
 } 
