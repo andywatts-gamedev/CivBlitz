@@ -1,9 +1,11 @@
-
-
-
 Tilemaps
-* Terrain
-* Civ1 Units
-* Civ1 Flags
-* Civ2 Units
-* Civ2 Flags
+* Authoring
+* Rendering
+
+
+Gotchas
+* Flag and unit are seperate sprites so require seperate tilemaps
+* No way to add data to tilemap cells besides color.
+
+
+

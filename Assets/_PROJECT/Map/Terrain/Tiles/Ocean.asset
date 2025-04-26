@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Terrain256_15
+  m_Script: {fileID: 11500000, guid: 8cd230af67c514e3198feff7651c1d4c, type: 3}
+  m_Name: Ocean
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 3145708312315434545, guid: 21004b887f0c4c54987645966970e6cc, type: 3}
+  m_Sprite: {fileID: -5075165658092984334, guid: 21004b887f0c4c54987645966970e6cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -34,3 +34,4 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
+  terrainScob: {fileID: 11400000, guid: 70d76d07231eb4cb59e7c29ea86d8a27, type: 2}

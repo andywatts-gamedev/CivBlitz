@@ -3,6 +3,6 @@ using UnityEngine.Tilemaps;
 
 public class UnitTile : Tile
 {
-    public UnitData unitData;
+    public UnitSCOB unitSCOB;
 
 }

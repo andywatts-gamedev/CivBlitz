@@ -4,7 +4,6 @@ using System.Collections;
 
 public class CombatManager : Singleton<CombatManager>
 {
-    public Tilemap tilemap;
     private const float COMBAT_DURATION = 1f;
     public bool isCombatMoving;
 
@@ -14,7 +13,7 @@ public class CombatManager : Singleton<CombatManager>
         
         if (attacker.civ != defender.civ) {
             var distance = HexGrid.GetDistance(attackerPos, defenderPos);
-            var strengthDiff = attacker.unitData.melee - defender.unitData.melee;
+            var strengthDiff = attacker.unit.melee - defender.unit.melee;
             
             // Attack damage
             var attackDamage = Mathf.RoundToInt(30 * Mathf.Exp(0.04f * strengthDiff) * Random.Range(0.8f, 1.2f));
@@ -23,7 +22,19 @@ public class CombatManager : Singleton<CombatManager>
                 Mathf.RoundToInt(30 * Mathf.Exp(0.04f * -strengthDiff) * Random.Range(0.8f, 1.2f)) : 
                 0;
             
-            if (attackDamage > 0) {
+            if (attackDamage > 0)
+            {
+                var attackerTilemap = UnitManager.Instance.flags[attacker.civ];
+                var defenderTilemap = UnitManager.Instance.flags[defender.civ];
+                var attackerTile = attackerTilemap.GetTile((Vector3Int)attackerPos) as UnitTile;
+                var defenderTile = defenderTilemap.GetTile((Vector3Int)defenderPos) as UnitTile;
+                
+                Debug.Log($"Pre-combat tiles - Attacker: {attackerTile}, Defender: {defenderTile}");
+                if (attackerTile == null || defenderTile == null) {
+                    Debug.LogError($"Missing tiles at positions - Attacker: {attackerPos}, Defender: {defenderPos}");
+                    return false;
+                }
+                
                 defender.health -= attackDamage;
                 attacker.health -= retaliationDamage;
                 attacker.movesLeft = 0;
@@ -31,40 +42,58 @@ public class CombatManager : Singleton<CombatManager>
                 UnitManager.Instance.UpdateUnit(attackerPos, attacker);
                 UnitManager.Instance.UpdateUnit(defenderPos, defender);
                 
-                // Start combat animation
-                StartCoroutine(CombatCoroutine(attackerPos, defenderPos, defender.health <= 0, attackDamage, retaliationDamage));
+                // Pass tiles to coroutine
+                StartCoroutine(CombatCoroutine(
+                    attackerPos, defenderPos, 
+                    defender.health <= 0, 
+                    attackDamage, retaliationDamage,
+                    attackerTile, defenderTile,
+                    attacker.civ, defender.civ
+                ));
                 return true;
             }
         }
         return false;
     }
 
-    private IEnumerator CombatCoroutine(Vector2Int attackerPos, Vector2Int defenderPos, bool defenderDies, int attackDamage, int retaliationDamage)
+    private IEnumerator CombatCoroutine(
+        Vector2Int attackerPos, Vector2Int defenderPos, 
+        bool defenderDies, int attackDamage, int retaliationDamage,
+        UnitTile attackerTile, UnitTile defenderTile,
+        Civilization attackerCiv, Civilization defenderCiv)
     {
+        if (attackerTile == null || defenderTile == null) {
+            Debug.LogError("Combat started with null tiles");
+            yield break;
+        }
+
         isCombatMoving = true;
         
-        var attackingUnit = UnitManager.Instance.units[attackerPos];
-        var defendingUnit = UnitManager.Instance.units[defenderPos];
+        var attackerTilemap = UnitManager.Instance.flags[attackerCiv];
+        var defenderTilemap = UnitManager.Instance.flags[defenderCiv];
+        Debug.Log($"Combat tilemaps - Attacker: {attackerTilemap.name}, Defender: {defenderTilemap.name}");
         
-        // Get correct tilemaps
-        var attackerTilemap = attackingUnit.civ == UnitManager.Instance.playerCiv ? 
-            UnitManager.Instance.playerUnitTilemap : UnitManager.Instance.enemyUnitTilemap;
-        var defenderTilemap = defendingUnit.civ == UnitManager.Instance.playerCiv ? 
-            UnitManager.Instance.playerUnitTilemap : UnitManager.Instance.enemyUnitTilemap;
-        
-        // Get and hide tiles
-        var attackerTile = attackerTilemap.GetTile((Vector3Int)attackerPos) as UnitTile;
-        var defenderTile = defenderTilemap.GetTile((Vector3Int)defenderPos) as UnitTile;
+        // Hide tiles
         attackerTilemap.SetTile((Vector3Int)attackerPos, null);
         defenderTilemap.SetTile((Vector3Int)defenderPos, null);
         
         // Create moving sprites
-        var attackerSprite = CreateMovingSprite(attackerTile, attackerPos);
-        var defenderSprite = CreateMovingSprite(defenderTile, defenderPos);
+        var attackerSprite = CreateMovingSprite(attackerTile, attackerPos, attackerCiv);
+        if (attackerSprite == null) {
+            Debug.LogError("Failed to create attacker sprite");
+            yield break;
+        }
+        
+        var defenderSprite = CreateMovingSprite(defenderTile, defenderPos, defenderCiv);
+        if (defenderSprite == null) {
+            Destroy(attackerSprite);
+            Debug.LogError("Failed to create defender sprite");
+            yield break;
+        }
         
         // Calculate meeting point (1/3 of the way)
-        var attackerStart = tilemap.CellToWorld((Vector3Int)attackerPos);
-        var defenderStart = tilemap.CellToWorld((Vector3Int)defenderPos);
+        var attackerStart = attackerTilemap.CellToWorld((Vector3Int)attackerPos);
+        var defenderStart = defenderTilemap.CellToWorld((Vector3Int)defenderPos);
         var meetingPoint = Vector3.Lerp(attackerStart, defenderStart, 0.33f);
         
         // Move to meeting point
@@ -120,20 +149,29 @@ public class CombatManager : Singleton<CombatManager>
             attackerTilemap.SetTile((Vector3Int)attackerPos, attackerTile);
             defenderTilemap.SetTile((Vector3Int)defenderPos, defenderTile);
         }
-        
+        // 
         Destroy(attackerSprite);
         if (!defenderDies) Destroy(defenderSprite);
         isCombatMoving = false;
     }
 
-    private GameObject CreateMovingSprite(UnitTile tile, Vector2Int pos)
+    private GameObject CreateMovingSprite(UnitTile tile, Vector2Int pos, Civilization civ)
     {
-        var go = new GameObject("CombatMove");
-        var sprite = go.AddComponent<SpriteRenderer>();
-        sprite.sprite = tile.sprite;
-        sprite.color = tile.color;
-        sprite.sortingOrder = 1;
-        sprite.transform.position = tilemap.CellToWorld((Vector3Int)pos);
-        return go;
+        if (tile == null) {
+            Debug.LogError($"Attempted to create sprite with null tile at {pos}");
+            return null;
+        }
+
+        var tilemap = UnitManager.Instance.flags[civ];
+        
+        return SpriteUtils.CreateMovingSprite(
+            "CombatMove",
+            tile.sprite,
+            tile.color,
+            20,
+            tilemap.CellToWorld((Vector3Int)pos),
+            Game.Instance.flagScale
+        );
     }
+
 } 

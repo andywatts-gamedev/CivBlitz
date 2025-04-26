@@ -46,7 +46,7 @@ public static class HexGrid
         return (Mathf.Abs(ax - bx) + Mathf.Abs(ay - by) + Mathf.Abs(az - bz)) / 2;
     }
 
-    public static List<Vector2Int> GetValidMoves(Vector2Int pos, int movement, Tilemap tilemap)
+    public static List<Vector2Int> GetValidMoves(Vector2Int pos, int movement, Tilemap unitTilemap)
     {
         var offsets = pos.y % 2 == 0 ? EvenRowOffsets : OddRowOffsets;
         var moves = new List<Vector2Int>();
@@ -54,7 +54,7 @@ public static class HexGrid
         foreach (var offset in offsets)
         {
             var newPos = pos + offset;
-            if (tilemap.cellBounds.Contains((Vector3Int)newPos))
+            if (unitTilemap.cellBounds.Contains((Vector3Int)newPos))
                 moves.Add(newPos);
         }
         

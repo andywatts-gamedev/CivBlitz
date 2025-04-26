@@ -3,18 +3,18 @@ using UnityEngine.Tilemaps;
 
 public class UnitInstance
 {
-    public UnitData unitData;
+    public Unit unit;
     public Civilization civ;
     public Vector2Int position;
     public int movesLeft;
     public int health;
 
-    public UnitInstance(UnitData unitData, Civilization civ, Vector2Int pos)
+    public UnitInstance(Unit unit, Civilization civ, Vector2Int pos)
     {
-        this.unitData = unitData;
+        this.unit = unit;
         this.civ = civ;
         this.position = pos;
-        this.movesLeft = unitData.movement;
-        this.health = unitData.health;
+        this.movesLeft = unit.movement;
+        this.health = unit.health;
     }
 }

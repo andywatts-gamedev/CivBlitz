@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6874e32ee30f4d37ab7a7466305e1c7, type: 3}
+  m_Script: {fileID: 11500000, guid: ac7c09bdca8104ef1abfbf80fe023369, type: 3}
   m_Name: Japan
   m_EditorClassIdentifier: 
-  Name: Japan
-  color: {r: 0.8584906, g: 0, b: 0.12857799, a: 1}
+  civilization: 2
+  color: {r: 0.6509434, g: 0.021493427, b: 0.021493427, a: 1}

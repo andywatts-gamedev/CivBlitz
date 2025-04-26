@@ -1,8 +1,9 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObject/Civilization")]
-public class Civilization : ScriptableObject
+public class CivilizationSCOB : ScriptableObject
 {
-    public string Name;
+    public Civilization civilization;
     public Color color;
+    
 }

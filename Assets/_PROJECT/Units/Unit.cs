@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-[CreateAssetMenu(menuName = "ScriptableObject/Unit")]
-public class UnitData : ScriptableObject
+[Serializable]
+public struct Unit 
 {
+    public string name;
     public int health;
     public int movement;
     public int melee;

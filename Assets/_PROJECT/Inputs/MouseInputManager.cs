@@ -10,7 +10,7 @@ public class MouseInputManager : BaseInputManager
     private Vector2 lastMousePos;
     private float hoverStartTime;
     private const float HOVER_DELAY = 1f;
-    [SerializeField] private UI ui;
+    // [SerializeField] private UI ui;
     private bool isSelected;
     private bool hasEmittedHover;
     private bool isHoverSelection;
@@ -57,7 +57,7 @@ public class MouseInputManager : BaseInputManager
         {
             if (!isSelected)
             {
-                ui.HideTile();
+                // ui.HideTile();
                 hasEmittedHover = false;
                 isHoverSelection = false;
                 hoverStartTime = Time.time;
@@ -72,7 +72,7 @@ public class MouseInputManager : BaseInputManager
                 if (!hasEmittedHover && Time.time - hoverStartTime >= HOVER_DELAY)
                 {
                     isHoverSelection = true;
-                    ui.ShowTile(tile.Value);
+                    // ui.ShowTile(tile.Value);
                 }
             }
             else
