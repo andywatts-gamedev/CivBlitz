@@ -47,7 +47,7 @@ public class TurnManager : Singleton<TurnManager>
             Cursor.SetCursor(waitCursor, new Vector2(waitCursor.width/2, waitCursor.height/2), CursorMode.Auto);
         }
 
-        foreach (var aiCiv in UnitManager.Instance.civUnits.Keys.Where(c => c != Game.Instance.player)) {
+        foreach (var aiCiv in UnitManager.Instance.civUnits.Keys.Where(c => c != Game.Instance.player.civilization)) {
             // Move each AI unit for this civ
             while (UnitManager.Instance.civUnits[aiCiv].Any(u => u.movesLeft > 0))
             {

@@ -1,18 +1,19 @@
-<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/_PROJECT/UI/UI.uss?fileID=7433441132597879392&amp;guid=1bb2196d14f4840f0baa0b1aa9ce1f42&amp;type=3#UI" />
     <ui:VisualElement name="Container" style="flex-grow: 1; position: absolute; left: 0; right: 0; bottom: 0; top: 0;">
-        <ui:Label text="Japan" name="AICiv" style="position: absolute; top: 0; left: 0; -unity-background-image-tint-color: rgb(255, 255, 255);" />
-        <ui:Label text="Rome" name="PlayerCiv" style="position: absolute; top: auto; left: 0; bottom: 0;" />
+        <ui:Image name="AICivIcon" style="position: absolute; top: 0; left: 0; width: 48px; height: 48px; background-color: rgba(0, 0, 0, 0.5);" />
+        <ui:Image name="PlayerCivIcon" style="position: absolute; bottom: 0; left: 0; width: 48px; height: 48px; background-color: rgba(0, 0, 0, 0.5);" />
         <ui:Button text="End Turn" name="EndTurn" style="position: absolute; bottom: 10px; right: 10px; width: 100px; height: 30px; background-color: rgba(0, 0, 0, 0.8); color: rgb(255, 255, 255); border-radius: 5px;" />
         <ui:VisualElement name="InfoPanel" style="flex-grow: 0; bottom: 10px; right: 10px; width: 200px; padding: 10px; position: absolute; background-color: rgba(0, 0, 0, 0.8); border-radius: 5px; display: none;">
-            <ui:Label name="Name" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=b21607e8ad9494443bc35aaccde994e4&amp;type=3#NotInter-Regular&quot;);" />
-            <ui:Label name="Health" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
-            <ui:Label name="Movement" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
-            <ui:Label name="Melee" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
-            <ui:Label name="Ranged" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
-            <ui:Label name="Range" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
+            <ui:Label name="Name" style="color: rgb(255, 255, 255); margin: 2px;" />
+            <ui:Label name="Health" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/_PROJECT/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
+            <ui:Label name="Movement" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/_PROJECT/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
+            <ui:Label name="Melee" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/_PROJECT/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
+            <ui:Label name="Ranged" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/_PROJECT/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
+            <ui:Label name="Range" style="color: rgb(255, 255, 255); margin: 2px; -unity-font-definition: url(&quot;project://database/Assets/_PROJECT/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
             <ui:VisualElement style="height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 5px 0;" />
-            <ui:Label name="Terrain" text="Terrain" style="color: white; font-size: 14px; margin-bottom: 5px;"/>
-            <ui:Label name="MovementCost" text="Movement Cost" style="color: white; font-size: 14px; margin-bottom: 5px;"/>
+            <ui:Label name="Terrain" text="Terrain" style="color: white; font-size: 14px; margin-bottom: 5px;" />
+            <ui:Label name="MovementCost" text="Movement Cost" style="color: white; font-size: 14px; margin-bottom: 5px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

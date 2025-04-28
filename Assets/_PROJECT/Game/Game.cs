@@ -1,5 +1,8 @@
 using UnityEngine;
 using System.Linq;
+using System.Collections.Generic;
+using Sirenix.OdinInspector;
+
 
 public class Game : MonoBehaviour
 {
@@ -9,7 +12,11 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject highlight;
     private Vector2Int? selectedTile;
 
-    public Civilization player;
+    public CivilizationSCOB player;
+    public CivilizationSCOB ai;
+    
+    [ShowInInspector]
+    public Dictionary<Civilization, CivilizationSCOB> civilizations;
 
     public Vector3 flagScale = new Vector3(2f, 2f, 2f);
     public Vector3 unitScale = new Vector3(0.8f, 0.8f, 0.8f);
@@ -21,6 +28,9 @@ public class Game : MonoBehaviour
         events.OnTileClicked += HandleTileClicked;
         events.OnCancel += HandleCancel;
         highlight.SetActive(false);
+        civilizations = Resources.LoadAll<CivilizationSCOB>("").ToDictionary(c => c.civilization, c => c);
+
+
     }
 
     void OnDisable()
@@ -53,7 +63,7 @@ public class Game : MonoBehaviour
             }
         }
 
-        if (UnitManager.Instance.TryGetUnit(pos, out var unit) && unit.civ == player)
+        if (UnitManager.Instance.TryGetUnit(pos, out var unit) && unit.civ == player.civilization)
         {
             Debug.Log("Unit clicked: " + pos);
             if (selectedTile.HasValue)
@@ -62,7 +72,7 @@ public class Game : MonoBehaviour
             selectedTile = pos;
             events.EmitTileSelected(pos);
             highlight.SetActive(true);
-            highlight.transform.position = UnitManager.Instance.flags[player].CellToWorld((Vector3Int)pos);
+            highlight.transform.position = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)pos);
         }
     }
 
@@ -87,10 +97,10 @@ public class Game : MonoBehaviour
         if (UnitManager.Instance.isMoving || CombatManager.Instance.isCombatMoving)
             return false;
             
-        // var validMoves = HexGrid.GetValidMoves(from, unit.unit.movement, UnitManager.Instance.playerFlagsTilemap);
+        var validMoves = HexGrid.GetValidMoves(from, unit.unit.movement, UnitManager.Instance.unitTilemap);
         
-        // if (!validMoves.Contains(to))
-        //     return false;
+        if (!validMoves.Contains(to))
+            return false;
 
         if (UnitManager.Instance.TryGetUnit(to, out var target) && target.civ == unit.civ)
             return false;
@@ -117,7 +127,7 @@ public class Game : MonoBehaviour
         UnitManager.Instance.MoveUnit(from, to);
         
         // Check if any player units can still move
-        if (!UnitManager.Instance.units.Any(u => u.Value.civ == Game.Instance.player && u.Value.movesLeft > 0))
+        if (!UnitManager.Instance.units.Any(u => u.Value.civ == Game.Instance.player.civilization && u.Value.movesLeft > 0))
             TurnManager.Instance.EndTurn();
     }
 } 

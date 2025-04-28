@@ -5,5 +5,6 @@ public class CivilizationSCOB : ScriptableObject
 {
     public Civilization civilization;
     public Color color;
+    public Texture2D icon;
     
 }

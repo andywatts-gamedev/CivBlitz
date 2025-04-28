@@ -84,6 +84,10 @@ public class CombatManager : Singleton<CombatManager>
         var attackerUnitSprite = CreateMovingSprite(attackerUnitTile, attackerPos, attackerCiv, false);
         var defenderFlagSprite = CreateMovingSprite(defenderFlagTile, defenderPos, defenderCiv, true);
         var defenderUnitSprite = CreateMovingSprite(defenderUnitTile, defenderPos, defenderCiv, false);
+
+        // Colors
+        var attackerColor = Game.Instance.civilizations[attackerCiv].color;
+        var defenderColor = Game.Instance.civilizations[defenderCiv].color;
         
         // Calculate meeting point
         var start = attackerFlagTilemap.CellToWorld((Vector3Int)attackerPos);
@@ -106,7 +110,11 @@ public class CombatManager : Singleton<CombatManager>
             yield return null;
         }
         
-        FloatingCombatText.Create(meetingPoint + Vector3.up * 0.5f, attackDamage, defenderFlagTile.color, retaliationDamage, attackerFlagTile.color);
+        FloatingCombatText.Create(
+            meetingPoint + Vector3.up * 0.5f, 
+            attackDamage, defenderColor, defenderFlagTilemap.CellToWorld((Vector3Int)defenderPos),
+            retaliationDamage, attackerColor, attackerFlagTilemap.CellToWorld((Vector3Int)attackerPos)
+        );
         
         if (defenderDies)
         {
@@ -175,3 +183,4 @@ public class CombatManager : Singleton<CombatManager>
     }
 
 } 
+

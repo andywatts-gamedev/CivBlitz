@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   unit:
+    name: Warrior
     health: 100
     movement: 1
     melee: 20
