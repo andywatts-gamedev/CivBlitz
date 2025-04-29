@@ -3,17 +3,17 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 
-public class MouseInputManager : BaseInputManager
+public class MouseInputManager : MonoBehaviour
 {
+    [SerializeField] protected InputEvents events;
+    [SerializeField] protected Grid grid;
     private MyInputActions inputs;
-    private Vector2Int? lastHoveredTile;
     private Vector2 lastMousePos;
+    private bool isSelected;
+    private Vector2Int? lastTile;
     private float hoverStartTime;
     private const float HOVER_DELAY = 1f;
-    // [SerializeField] private UI ui;
-    private bool isSelected;
     private bool hasEmittedHover;
-    private bool isHoverSelection;
 
     private void Awake()
     {
@@ -21,82 +21,95 @@ public class MouseInputManager : BaseInputManager
         inputs.Mouse.Click.performed += _ => {
             var mousePos = Mouse.current.position.ReadValue();
             var tile = GetTileXY(mousePos);
-            if (tile.HasValue) events.EmitTileClicked(tile.Value);
+            if (tile.HasValue)
+            {
+                Debug.Log($"{GetType().Name}: Clicked on tile {tile.Value}");
+                events.EmitTileClicked(tile.Value);
+            }
         };
         inputs.Mouse.Cancel.performed += _ => {
+            Debug.Log($"{GetType().Name}: Right click detected");
             isSelected = false;
-            hasEmittedHover = false;
-            isHoverSelection = false;
             events.EmitCancel();
         };
         
         events.OnTileSelected += pos => {
+            Debug.Log($"{GetType().Name}: Tile {pos} selected");
             isSelected = true;
-            hasEmittedHover = true;
         };
         events.OnTileDeselected += _ => {
+            Debug.Log($"{GetType().Name}: Tile deselected");
             isSelected = false;
-            hasEmittedHover = false;
-            isHoverSelection = false;
         };
-    }
-
-    private void Start()
-    {
-        isSelected = false; // Ensure initial state
-        hasEmittedHover = false;
-        isHoverSelection = false;
     }
 
     private void Update()
     {
         var mousePos = Mouse.current.position.ReadValue();
-        var tile = GetTileXY(mousePos);
         
         if (Vector2.Distance(mousePos, lastMousePos) > 0.1f)
         {
-            if (!isSelected)
+            if (!isSelected) 
             {
-                // ui.HideTile();
-                hasEmittedHover = false;
-                isHoverSelection = false;
-                hoverStartTime = Time.time;
+                UpdateTilePosition(mousePos);
+                Debug.Log($"{GetType().Name}: Mouse moved");
+                events.EmitMouseMoved();
             }
         }
+        else if (!isSelected && lastTile.HasValue)
+        {
+            CheckHoverTime();
+        }
+        
         lastMousePos = mousePos;
+    }
+
+    private void UpdateTilePosition(Vector2 screenPos)
+    {
+        var tile = GetTileXY(screenPos);
         
         if (tile.HasValue)
         {
-            if (lastHoveredTile.HasValue && lastHoveredTile.Value == tile.Value)
+            if (lastTile.HasValue && lastTile.Value != tile.Value)
             {
-                if (!hasEmittedHover && Time.time - hoverStartTime >= HOVER_DELAY)
-                {
-                    isHoverSelection = true;
-                    // ui.ShowTile(tile.Value);
-                }
-            }
-            else
-            {
-                if (isSelected && isHoverSelection && lastHoveredTile.HasValue)
-                {
-                    events.EmitTileDeselected(lastHoveredTile.Value);
-                }
-                lastHoveredTile = tile;
+                Debug.Log($"{GetType().Name}: Moved from tile {lastTile.Value} to {tile.Value}");
+                lastTile = tile;
                 hoverStartTime = Time.time;
                 hasEmittedHover = false;
-                isHoverSelection = false;
             }
-        }
-        else
-        {
-            if (isSelected && isHoverSelection && lastHoveredTile.HasValue)
+            else if (!lastTile.HasValue)
             {
-                events.EmitTileDeselected(lastHoveredTile.Value);
+                Debug.Log($"{GetType().Name}: Started hovering tile {tile.Value}");
+                lastTile = tile;
+                hoverStartTime = Time.time;
+                hasEmittedHover = false;
             }
-            lastHoveredTile = null;
-            hasEmittedHover = false;
-            isHoverSelection = false;
         }
+        else if (lastTile.HasValue)
+        {
+            Debug.Log($"{GetType().Name}: Stopped hovering tile {lastTile.Value}");
+            lastTile = null;
+            hasEmittedHover = false;
+        }
+    }
+
+    private void CheckHoverTime()
+    {
+        var hoverTime = Time.time - hoverStartTime;
+        if (!hasEmittedHover && hoverTime >= HOVER_DELAY)
+        {
+            hasEmittedHover = true;
+            Debug.Log($"{GetType().Name}: Emitting TileHovered for tile {lastTile.Value} after {hoverTime:F1}s");
+            events.EmitTileHovered(lastTile.Value);
+        }
+    }
+
+    protected Vector2Int? GetTileXY(Vector2 screenPos)
+    {
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, -Camera.main.transform.position.z));
+        worldPosition.z = 0;
+        var cell = grid.WorldToCell(worldPosition);
+        return (Vector2Int)cell;
     }
 
     private void OnEnable() => inputs.Enable();

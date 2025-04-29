@@ -10,6 +10,11 @@ public class InputEvents : ScriptableObject
     public event System.Action OnCancel;
     public void EmitCancel() => OnCancel?.Invoke();
     
+    public event System.Action<Vector2Int> OnTileHovered;
+    public void EmitTileHovered(Vector2Int tile) => OnTileHovered?.Invoke(tile);
+
+    public event System.Action OnMouseMoved;
+    public void EmitMouseMoved() => OnMouseMoved?.Invoke();
 
     // Game state events
     public event System.Action<Vector2Int> OnTileSelected;

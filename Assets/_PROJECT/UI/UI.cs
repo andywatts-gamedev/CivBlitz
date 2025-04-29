@@ -42,6 +42,8 @@ public class UI : MonoBehaviour
         
         // Subscribe to events
         events.OnTileSelected += HandleTileSelected;
+        events.OnTileHovered += HandleTileHovered;
+        events.OnMouseMoved += HandleMouseMoved;
         events.OnCancel += HandleCancel;
         events.OnTileDeselected += HandleTileDeselected;
         TurnManager.Instance.OnTurnChanged += UpdateTurnLabels;
@@ -52,6 +54,8 @@ public class UI : MonoBehaviour
     void OnDisable() 
     {
         events.OnTileSelected -= HandleTileSelected;
+        events.OnTileHovered -= HandleTileHovered;
+        events.OnMouseMoved -= HandleMouseMoved;
         events.OnCancel -= HandleCancel;
         events.OnTileDeselected -= HandleTileDeselected;
         TurnManager.Instance.OnTurnChanged -= UpdateTurnLabels;
@@ -68,8 +72,10 @@ public class UI : MonoBehaviour
     {
         currentTile = pos;
         infoPanel.style.display = DisplayStyle.Flex;
-        terrainLabel.text = "Grassland";
-        movementCostLabel.text = "1";
+        var tile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)pos) as TerrainTile;
+        var terrain = tile.terrainScob.terrain;
+        terrainLabel.text = terrain.name;
+        movementCostLabel.text = terrain.movementCost.ToString();
         
         if (!UnitManager.Instance.TryGetUnit(pos, out var unit))
         {
@@ -104,6 +110,8 @@ public class UI : MonoBehaviour
 
     public void HideTile() { if (!isSelected) { infoPanel.style.display = DisplayStyle.None; currentTile = null; } }
     void HandleTileSelected(Vector2Int pos) { isSelected = true; ShowTile(pos); }
+    void HandleTileHovered(Vector2Int pos) { if (!isSelected) ShowTile(pos); }
+    void HandleMouseMoved() { if (!isSelected) HideTile(); }
     void HandleCancel() { isSelected = false; HideTile(); }
     void HandleTileDeselected(Vector2Int pos) { isSelected = false; HideTile(); }
 
