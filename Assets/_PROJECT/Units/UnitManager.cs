@@ -14,6 +14,7 @@ public class UnitManager : MonoBehaviour
     [Sirenix.OdinInspector.ShowInInspector] public Dictionary<Civilization, List<UnitInstance>> civUnits = new();
 
     public Dictionary<Civilization, Tilemap> flags = new();
+    public Tilemap terrainTilemap;
     public Tilemap unitTilemap;
 
     void Awake() => Instance = this;

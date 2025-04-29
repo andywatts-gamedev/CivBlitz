@@ -20,7 +20,7 @@ public class Map : MonoBehaviour
     }
 
 
-    public bool IsWithinBounds(int2 xy) => xy.x >= 0 && xy.y >= 0 && xy.x < size.x && xy.y < size.y;
-    public bool IsWithinBounds(Vector3 worldPos) => worldPos.x >= 0 && worldPos.y >= 0 && worldPos.x < size.x && worldPos.y < size.y;
+    // public bool IsWithinBounds(int2 xy) => xy.x >= 0 && xy.y >= 0 && xy.x < size.x && xy.y < size.y;
+    // public bool IsWithinBounds(Vector3 worldPos) => worldPos.x >= 0 && worldPos.y >= 0 && worldPos.x < size.x && worldPos.y < size.y;
 }
 

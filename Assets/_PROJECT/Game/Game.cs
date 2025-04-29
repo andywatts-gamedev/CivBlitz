@@ -29,8 +29,6 @@ public class Game : MonoBehaviour
         events.OnCancel += HandleCancel;
         highlight.SetActive(false);
         civilizations = Resources.LoadAll<CivilizationSCOB>("").ToDictionary(c => c.civilization, c => c);
-
-
     }
 
     void OnDisable()
@@ -96,9 +94,25 @@ public class Game : MonoBehaviour
             
         if (UnitManager.Instance.isMoving || CombatManager.Instance.isCombatMoving)
             return false;
+
+        // Get terrain at target
+        var terrainTile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)to) as TerrainTile;
+        if (terrainTile == null) return false;
+        
+        // Check if unit can travel on terrain
+        var terrain = terrainTile.terrainScob.terrain;
+        var canTravel = terrain.type switch {
+            TerrainType.Ocean => unit.unit.canTravelOcean,
+            TerrainType.Coast => unit.unit.canTravelCoast,
+            _ => unit.unit.canTravelLand
+        };
+        if (!canTravel) return false;
+        
+        // Check movement cost
+        if (unit.movesLeft < terrain.movementCost)
+            return false;
             
         var validMoves = HexGrid.GetValidMoves(from, unit.unit.movement, UnitManager.Instance.unitTilemap);
-        
         if (!validMoves.Contains(to))
             return false;
 
