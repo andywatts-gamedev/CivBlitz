@@ -16,3 +16,6 @@ MonoBehaviour:
     name: Ocean
     movementCost: 10
     defenseBonus: 0
+    type: 7
+    feature: 0
+    height: 0

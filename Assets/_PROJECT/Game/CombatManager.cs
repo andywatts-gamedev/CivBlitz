@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections;
+using System.Linq;
 
 public class CombatManager : Singleton<CombatManager>
 {
@@ -175,6 +176,11 @@ public class CombatManager : Singleton<CombatManager>
             Destroy(defenderUnitSprite);
         }
         isCombatMoving = false;
+
+        // Only check for turn end if player was the attacker
+        if (attackerCiv == Game.Instance.player.civilization && 
+            !UnitManager.Instance.units.Any(u => u.Value.civ == Game.Instance.player.civilization && u.Value.movesLeft > 0))
+            TurnManager.Instance.EndTurn();
     }
 
     private GameObject CreateMovingSprite(Tile tile, Vector2Int pos, Civilization civ, bool isFlag)

@@ -19,3 +19,7 @@ MonoBehaviour:
     melee: 20
     ranged: 0
     range: 0
+    cost: 160
+    canTravelLand: 1
+    canTravelCoast: 0
+    canTravelOcean: 0

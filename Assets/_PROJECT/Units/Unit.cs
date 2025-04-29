@@ -10,4 +10,8 @@ public struct Unit
     public int melee;
     public int ranged;
     public int range;
+    public int cost;
+    public bool canTravelLand;
+    public bool canTravelCoast;
+    public bool canTravelOcean;
 }

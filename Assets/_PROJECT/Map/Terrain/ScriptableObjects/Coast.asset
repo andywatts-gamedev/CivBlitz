@@ -16,3 +16,6 @@ MonoBehaviour:
     name: Coast
     movementCost: 1
     defenseBonus: 0
+    type: 6
+    feature: 0
+    height: 0
