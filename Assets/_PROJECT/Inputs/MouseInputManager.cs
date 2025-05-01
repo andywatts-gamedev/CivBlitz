@@ -49,14 +49,13 @@ public class MouseInputManager : MonoBehaviour
         
         if (Vector2.Distance(mousePos, lastMousePos) > 0.1f)
         {
-            if (!isSelected) 
-            {
-                UpdateTilePosition(mousePos);
-                Debug.Log($"{GetType().Name}: Mouse moved");
-                events.EmitMouseMoved();
-            }
+            var tile = GetTileXY(mousePos);
+            UpdateTilePosition(mousePos);
+            Debug.Log($"{GetType().Name}: Mouse moved");
+            events.EmitMouseMoved();
+            events.EmitMouseMovedToTile(tile);
         }
-        else if (!isSelected && lastTile.HasValue)
+        else if (lastTile.HasValue)
         {
             CheckHoverTime();
         }

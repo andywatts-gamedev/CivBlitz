@@ -22,7 +22,7 @@ public abstract class BaseInputManager : MonoBehaviour
         return offsets.Any(o => (src + o).Equals(tgt));
     }
 
-    protected Vector2Int? GetTileXY(Vector2 screenPos)
+    public Vector2Int? GetTileXY(Vector2 screenPos)
     {
         // TODO check if UI.  (over IsPointerOverGameObject)
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, -Camera.main.transform.position.z));
