@@ -1,69 +1,73 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="project://database/Assets/_PROJECT/UI/UI.uss?fileID=7433441132597879392&amp;guid=1bb2196d14f4840f0baa0b1aa9ce1f42&amp;type=3#UI" />
+    <Style src="project://database/Assets/_PROJECT/UI/UI.uss?fileID=7433441132597879392&amp;guid=1bb2196d14f4840f0baa0b1aa9ce1f42&amp;type=3" />
     <ui:VisualElement name="Container" style="flex-grow: 1; position: absolute; left: 0; right: 0; bottom: 0; top: 0;">
         <ui:Image name="AICivIcon" class="civ-icon" />
         <ui:Image name="PlayerCivIcon" class="civ-icon" />
         <ui:Button text="End Turn" name="EndTurn" />
+        
         <ui:VisualElement name="SelectedPanel" class="info-panel">
-            <ui:VisualElement class="header-row">
-                <ui:Label name="SelectedName" text="Warrior" class="name-label" />
-                <ui:Label name="SelectedTerrain" text="Plains" class="terrain-name" />
+            <!-- Three-column grid -->
+            <ui:VisualElement class="grid">
+                <!-- Header -->
+                <ui:Label text="" class="col-1" />
+                <ui:Label name="SelectedAttackIcon" text="&#xf71c;" class="col-2 header-icon" />
+                <ui:Label name="SelectedDefenceIcon" text="&#xf3ed;" class="col-3 header-icon" />
+                
+                <!-- Unit -->
+                <ui:Label name="SelectedUnitLabel" text="Warrior" class="col-1 unit-name" />
+                <ui:Label name="SelectedAttack" text="3" class="col-2 value" />
+                <ui:Label name="SelectedDefence" text="2" class="col-3 value" />
+                
+                <!-- Terrain -->
+                <ui:Label name="SelectedTerrainLabel" text="Plains" class="col-1 terrain-name" />
+                <ui:Label name="SelectedTerrainAttack" text="1" class="col-2 value" />
+                <ui:Label name="SelectedTerrainDefence" text="2" class="col-3 value" />
             </ui:VisualElement>
-            <ui:VisualElement class="stat-table">
-                <ui:VisualElement class="table-row">
-                    <ui:Label name="SelectedHealthIcon" text="&#xf21e;" class="cell icon" />
-                    <ui:Label name="SelectedHealth" text="10" class="cell value" />
-                </ui:VisualElement>
-                <ui:VisualElement class="table-row">
-                    <ui:Label name="SelectedMovementIcon" text="&#xf554;" class="cell icon" />
-                    <ui:Label name="SelectedMovement" text="2/2" class="cell value" />
-                </ui:VisualElement>
-                <ui:VisualElement class="table-row">
-                    <ui:Label class="cell empty" />
-                    <ui:Label name="SelectedAttackIcon" text="&#xf71c;" class="cell header-icon" />
-                    <ui:Label name="SelectedDefenceIcon" text="&#xf3ed;" class="cell header-icon" />
-                </ui:VisualElement>
-                <ui:VisualElement name="UnitStatsRow" class="table-row">
-                    <ui:Label text="&#xf554;" class="cell icon" />
-                    <ui:Label name="SelectedAttack" text="3" class="cell value" />
-                    <ui:Label name="SelectedDefence" text="2" class="cell value" />
-                </ui:VisualElement>
-                <ui:VisualElement class="table-row">
-                    <ui:Label name="SelectedTerrainIcon" text="&#xf312;" class="cell icon" />
-                    <ui:Label name="SelectedTerrainAttack" text="+1" class="cell value" />
-                    <ui:Label name="SelectedTerrainDefence" text="+2" class="cell value" />
-                </ui:VisualElement>
+
+            <!-- Vitals -->
+            <ui:VisualElement class="vitals-row">
+                <ui:Label name="SelectedHealthIcon" text="&#xf21e;" class="vital-icon" />
+                <ui:Label name="SelectedHealth" text="10" class="vital-value" />
+                <ui:VisualElement class="vital-spacer" />
+                <ui:Label name="SelectedMovementIcon" text="&#xf554;" class="vital-icon" />
+                <ui:Label name="SelectedMovement" text="2/2" class="vital-value" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="HoverPanel" class="info-panel" style="display: flex;">
-            <ui:VisualElement class="header-row">
-                <ui:Label name="HoverName" text="Archer" class="name-label" />
-                <ui:Label name="HoverTerrain" text="Hills" class="terrain-name" />
-            </ui:VisualElement>
+
+        <!-- Hover panel with identical structure -->
+        <ui:VisualElement name="HoverPanel" class="info-panel">
             <ui:VisualElement class="stat-table">
-                <ui:VisualElement class="table-row">
-                    <ui:Label name="HoverHealthIcon" text="&#xf21e;" class="cell icon" />
-                    <ui:Label name="HoverHealth" text="8" class="cell value" />
-                </ui:VisualElement>
-                <ui:VisualElement class="table-row">
-                    <ui:Label name="HoverMovementIcon" text="&#xf554;" class="cell icon" />
-                    <ui:Label name="HoverMovement" text="1/2" class="cell value" />
-                </ui:VisualElement>
-                <ui:VisualElement class="table-row">
+                <ui:VisualElement class="table-row header-row">
                     <ui:Label class="cell empty" />
-                    <ui:Label name="HoverAttackIcon" text="&#xf71c;" class="cell header-icon" />
-                    <ui:Label name="HoverDefenceIcon" text="&#xf3ed;" class="cell header-icon" />
+                    <ui:VisualElement class="value-columns">
+                        <ui:Label name="HoverAttackIcon" text="&#xf71c;" class="cell header-icon" />
+                        <ui:Label name="HoverDefenceIcon" text="&#xf3ed;" class="cell header-icon" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
+                
                 <ui:VisualElement name="UnitStatsRow" class="table-row">
-                    <ui:Label text="&#xf554;" class="cell icon" />
-                    <ui:Label name="HoverAttack" text="1" class="cell value" />
-                    <ui:Label name="HoverDefence" text="3" class="cell value" />
+                    <ui:Label name="HoverUnitLabel" text="Archer" class="cell label unit-name" />
+                    <ui:VisualElement class="value-columns">
+                        <ui:Label name="HoverAttack" text="3" class="cell value" />
+                        <ui:Label name="HoverDefence" text="2" class="cell value" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
+                
                 <ui:VisualElement class="table-row">
-                    <ui:Label name="HoverTerrainIcon" text="&#xf312;" class="cell icon" />
-                    <ui:Label name="HoverTerrainAttack" text="+2" class="cell value" />
-                    <ui:Label name="HoverTerrainDefence" text="+3" class="cell value" />
+                    <ui:Label name="HoverTerrainLabel" text="Hills" class="cell label terrain-name" />
+                    <ui:VisualElement class="value-columns">
+                        <ui:Label name="HoverTerrainAttack" text="1" class="cell value" />
+                        <ui:Label name="HoverTerrainDefence" text="2" class="cell value" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="vitals-row">
+                <ui:Label name="HoverHealthIcon" text="&#xf21e;" class="vital-icon" />
+                <ui:Label name="HoverHealth" text="8" class="vital-value" />
+                <ui:VisualElement class="vital-spacer" />
+                <ui:Label name="HoverMovementIcon" text="&#xf554;" class="vital-icon" />
+                <ui:Label name="HoverMovement" text="1/2" class="vital-value" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

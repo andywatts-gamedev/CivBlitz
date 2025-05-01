@@ -17,29 +17,102 @@
     right: 10px;
 }
 
-.stat-row {
+.header-row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    background-color: rgba(60, 60, 60, 0.6);
+    padding: 4px;
+    border-radius: 3px;
+}
+
+.name-label {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.terrain-name {
+    color: #a0a0a0;
+}
+
+.stats-row {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 8px;
+}
+
+.stat-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-icon {
+    color: #ffd700;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -unity-font-definition: url("project://database/Assets/_PROJECT/UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=daf2e9e4734e949068bd8e6d71a47c73&type=3#fa-solid-900");
+}
+
+.stat-value {
+    color: white;
+    min-width: 30px;
+}
+
+.stat-table {
+    width: 100%;
+}
+
+.table-row {
     flex-direction: row;
     margin: 2px 0;
 }
 
-.icon-label {
-    color: rgb(255, 255, 255);
+.table-row.header-row {
+    background-color: rgba(40, 40, 40, 0.6);
+    padding: 2px;
+    border-radius: 2px;
+    margin-bottom: 4px;
+}
+
+.value-columns {
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.cell.empty {
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.cell.label {
+    width: 80px;
+    -unity-text-align: middle-right;
+    padding-right: 8px;
+    flex-shrink: 0;
+}
+
+.cell.label.unit-name {
+    color: #ffd700;
+}
+
+.cell.label.terrain-name {
+    color: #ffd700;
+}
+
+.cell.header-icon {
+    width: 40px;
+    -unity-text-align: middle-left;
+    color: #ffd700;
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
-    width: 20px;
-    text-align: center;
-    -unity-font-definition: url("project://database/Assets/_PROJECT/UI/Fonts/src/fa-regular-400.ttf?fileID=12800000&guid=daf2e9e4734e949068bd8e6d71a47c73&type=3#fa-regular-400");
+    -unity-font-definition: url("project://database/Assets/_PROJECT/UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=daf2e9e4734e949068bd8e6d71a47c73&type=3#fa-solid-900");
 }
 
-.value-label {
-    color: rgb(255, 255, 255);
-    margin-left: 5px;
-}
-
-.info-label {
-    color: rgb(255, 255, 255);
-    margin: 2px;
-    font-weight: bold;
+.cell.value {
+    width: 40px;
+    -unity-text-align: middle-left;
 }
 
 .terrain-divider {
@@ -83,52 +156,6 @@
     border-radius: 5px;
 }
 
-.header-row {
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 8px;
-}
-
-.name-label {
-    color: white;
-    font-weight: bold;
-}
-
-.terrain-name {
-    color: #aaa;
-}
-
-.stat-table {
-    width: 100%;
-}
-
-.table-row {
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 2px 0;
-}
-
-.cell {
-    flex: 1;
-    color: white;
-    text-align: center;
-}
-
-.icon, .header-icon {
-    color: rgb(255, 255, 255);
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    -unity-font-definition: url("project://database/Assets/_PROJECT/UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=daf2e9e4734e949068bd8e6d71a47c73&type=3#fa-solid-900");
-}
-
-.empty {
-    flex: 1;
-}
-
-.value {
-    color: white;
-}
-
 .unit-info {
     flex-direction: row;
     align-items: center;
@@ -150,4 +177,100 @@
     color: white;
     margin-top: 8px;
     font-size: 12px;
+}
+
+.vitals-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top-width: 1px;
+    border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+.vital-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+}
+
+.vital-icon {
+    color: #ffd700;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -unity-font-definition: url("project://database/Assets/_PROJECT/UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=daf2e9e4734e949068bd8e6d71a47c73&type=3#fa-solid-900");
+    margin-right: 4px;
+}
+
+.vital-value {
+    color: white;
+    min-width: 30px;
+    margin-right: 12px;
+}
+
+.vital-spacer {
+    width: 16px;
+    flex-shrink: 0;
+}
+
+.table-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.table-grid > * {
+    display: flex;
+    flex-direction: row;
+}
+
+.column-label {
+    width: 80px;
+    -unity-text-align: right;
+    padding-right: 8px;
+    color: #a0a0a0;
+}
+
+.column-value {
+    width: 40px;
+    color: white;
+    -unity-text-align: left;
+}
+
+.header-icon {
+    color: #ffd700;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -unity-font-definition: url("project://database/Assets/_PROJECT/UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=daf2e9e4734e949068bd8e6d71a47c73&type=3#fa-solid-900");
+    -unity-text-align: left;
+    background-color: rgba(40, 40, 40, 0.6);
+    padding: 2px;
+}
+
+.unit-name {
+    color: #ffd700;
+}
+
+.terrain-name {
+    color: #a0a0a0;
+}
+
+.value {
+    color: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 80px 40px 40px;
+    gap: 2px;
+}
+
+.col-1 {
+    -unity-text-align: right;
+    padding-right: 8px;
+}
+
+.col-2, .col-3 {
+    -unity-text-align: left;
 }
