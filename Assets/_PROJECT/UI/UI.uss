@@ -74,10 +74,80 @@
 #EndTurn {
     position: absolute;
     bottom: 10px;
-    right: 10px;
+    left: 50%;
+    translate: -50% 0;
     width: 100px;
     height: 30px;
     background-color: rgba(0, 0, 0, 0.8);
     color: rgb(255, 255, 255);
     border-radius: 5px;
+}
+
+.header-row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.name-label {
+    color: white;
+    font-weight: bold;
+}
+
+.terrain-name {
+    color: #aaa;
+}
+
+.stat-table {
+    width: 100%;
+}
+
+.table-row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2px 0;
+}
+
+.cell {
+    flex: 1;
+    color: white;
+    text-align: center;
+}
+
+.icon, .header-icon {
+    color: rgb(255, 255, 255);
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -unity-font-definition: url("project://database/Assets/_PROJECT/UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=daf2e9e4734e949068bd8e6d71a47c73&type=3#fa-solid-900");
+}
+
+.empty {
+    flex: 1;
+}
+
+.value {
+    color: white;
+}
+
+.unit-info {
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+}
+
+.health-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+}
+
+.health-value {
+    color: white;
+    font-size: 12px;
+}
+
+.movement-cost {
+    color: white;
+    margin-top: 8px;
+    font-size: 12px;
 }

@@ -7,6 +7,7 @@ public struct Terrain
     public string name; 
     public int movementCost;
     public int defenseBonus;
+    public int attackBonus;
 
     public TerrainType type;
     public TerrainFeature feature;
