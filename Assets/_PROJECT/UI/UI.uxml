@@ -5,28 +5,34 @@
         <ui:Image name="PlayerCivIcon" class="civ-icon" />
         <ui:Button text="End Turn" name="EndTurn" style="display: none;" />
         <ui:VisualElement name="SelectedPanel" class="info-panel">
-            <ui:VisualElement class="grid">
-                <ui:Label text="" class="col-1" />
-                <ui:VisualElement class="value-columns">
-                    <ui:Label name="SelectedAttackIcon" text="&#xf71c;" class="col-2 header-icon" />
-                    <ui:Label name="SelectedDefenceIcon" text="&#xf3ed;" class="col-3 header-icon" />
+            <ui:VisualElement class="stat-table">
+                <ui:VisualElement class="table-row header-row">
+                    <ui:Label class="cell empty" />
+                    <ui:VisualElement class="value-columns">
+                        <ui:Label name="SelectedAttackIcon" text="&#xf71c;" class="cell header-icon" />
+                        <ui:Label name="SelectedDefenceIcon" text="&#xf3ed;" class="cell header-icon" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:Label name="SelectedUnitLabel" text="Warrior" class="col-1 unit-name" />
-                <ui:VisualElement class="value-columns">
-                    <ui:Label name="SelectedAttack" text="3" class="col-2 value" />
-                    <ui:Label name="SelectedDefence" text="2" class="col-3 value" />
+                <ui:VisualElement name="UnitStatsRow" class="table-row">
+                    <ui:Label name="SelectedUnitLabel" text="Warrior" class="cell label unit-name" />
+                    <ui:VisualElement class="value-columns">
+                        <ui:Label name="SelectedAttack" text="3" class="cell value" />
+                        <ui:Label name="SelectedDefence" text="2" class="cell value" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:Label name="SelectedTerrainLabel" text="Plains" class="col-1 terrain-name" />
-                <ui:VisualElement class="value-columns">
-                    <ui:Label name="SelectedTerrainAttack" text="1" class="col-2 value" />
-                    <ui:Label name="SelectedTerrainDefence" text="2" class="col-3 value" />
+                <ui:VisualElement class="table-row">
+                    <ui:Label name="SelectedTerrainLabel" text="Plains" class="cell label terrain-name" />
+                    <ui:VisualElement class="value-columns">
+                        <ui:Label name="SelectedTerrainAttack" text="1" class="cell value" />
+                        <ui:Label name="SelectedTerrainDefence" text="2" class="cell value" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="vitals-row">
-                <ui:Label name="SelectedHealthIcon" text="" class="vital-icon" />
+                <ui:Label name="SelectedHealthIcon" text="&#xf21e;" class="vital-icon" />
                 <ui:Label name="SelectedHealth" text="10" class="vital-value" />
                 <ui:VisualElement class="vital-spacer" />
-                <ui:Label name="SelectedMovementIcon" text="" class="vital-icon" />
+                <ui:Label name="SelectedMovementIcon" text="&#xf554;" class="vital-icon" />
                 <ui:Label name="SelectedMovement" text="2/2" class="vital-value" />
             </ui:VisualElement>
         </ui:VisualElement>
