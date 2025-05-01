@@ -16,6 +16,7 @@ MonoBehaviour:
     name: Grass
     movementCost: 1
     defenseBonus: 0
+    attackBonus: 0
     type: 2
     feature: 0
     height: 0

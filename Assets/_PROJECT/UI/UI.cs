@@ -7,17 +7,17 @@ public class UI : MonoBehaviour
 {
     [SerializeField] private InputEvents events;
     private UIDocument doc;
-    private Label selectedName, selectedHealth, selectedMovement;
+    private Label selectedUnitLabel, selectedHealth, selectedMovement;
     private Label selectedHealthIcon, selectedMovementIcon;
     private Label selectedAttack, selectedDefence;
     private Label selectedAttackIcon, selectedDefenceIcon;
-    private Label selectedTerrain, selectedMovementCost;
+    private Label selectedTerrainLabel, selectedMovementCost;
     private Label selectedTerrainIcon, selectedTerrainAttack, selectedTerrainDefence;
-    private Label hoverName, hoverHealth, hoverMovement;
+    private Label hoverUnitLabel, hoverHealth, hoverMovement;
     private Label hoverHealthIcon, hoverMovementIcon;
     private Label hoverAttack, hoverDefence;
     private Label hoverAttackIcon, hoverDefenceIcon;
-    private Label hoverTerrain, hoverMovementCost;
+    private Label hoverTerrainLabel, hoverMovementCost;
     private Label hoverTerrainIcon, hoverTerrainAttack, hoverTerrainDefence;
     private Image playerCivIcon, aiCivIcon;
     private VisualElement selectedPanel, hoverPanel;
@@ -39,7 +39,7 @@ public class UI : MonoBehaviour
         hoverPanel = root.Q("HoverPanel");
         
         // Get all UI elements
-        selectedName = selectedPanel.Q<Label>("SelectedName"); 
+        selectedUnitLabel = selectedPanel.Q<Label>("SelectedUnitLabel"); 
         selectedHealth = selectedPanel.Q<Label>("SelectedHealth");
         selectedMovement = selectedPanel.Q<Label>("SelectedMovement");
         selectedHealthIcon = selectedPanel.Q<Label>("SelectedHealthIcon");
@@ -48,13 +48,13 @@ public class UI : MonoBehaviour
         selectedDefence = selectedPanel.Q<Label>("SelectedDefence");
         selectedAttackIcon = selectedPanel.Q<Label>("SelectedAttackIcon");
         selectedDefenceIcon = selectedPanel.Q<Label>("SelectedDefenceIcon");
-        selectedTerrain = selectedPanel.Q<Label>("SelectedTerrain");
+        selectedTerrainLabel = selectedPanel.Q<Label>("SelectedTerrainLabel");
         selectedMovementCost = selectedPanel.Q<Label>("SelectedMovementCost");
         selectedTerrainIcon = selectedPanel.Q<Label>("SelectedTerrainIcon");
         selectedTerrainAttack = selectedPanel.Q<Label>("SelectedTerrainAttack");
         selectedTerrainDefence = selectedPanel.Q<Label>("SelectedTerrainDefence");
 
-        hoverName = hoverPanel.Q<Label>("HoverName"); 
+        hoverUnitLabel = hoverPanel.Q<Label>("HoverUnitLabel"); 
         hoverHealth = hoverPanel.Q<Label>("HoverHealth");
         hoverMovement = hoverPanel.Q<Label>("HoverMovement");
         hoverHealthIcon = hoverPanel.Q<Label>("HoverHealthIcon");
@@ -63,7 +63,7 @@ public class UI : MonoBehaviour
         hoverDefence = hoverPanel.Q<Label>("HoverDefence");
         hoverAttackIcon = hoverPanel.Q<Label>("HoverAttackIcon");
         hoverDefenceIcon = hoverPanel.Q<Label>("HoverDefenceIcon");
-        hoverTerrain = hoverPanel.Q<Label>("HoverTerrain");
+        hoverTerrainLabel = hoverPanel.Q<Label>("HoverTerrainLabel");
         hoverMovementCost = hoverPanel.Q<Label>("HoverMovementCost");
         hoverTerrainIcon = hoverPanel.Q<Label>("HoverTerrainIcon");
         hoverTerrainAttack = hoverPanel.Q<Label>("HoverTerrainAttack");
@@ -110,9 +110,7 @@ public class UI : MonoBehaviour
         selectedPanel.style.display = DisplayStyle.Flex;
         var tile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)pos) as TerrainTile;
         var terrain = tile.terrainScob.terrain;
-        selectedTerrain.text = terrain.name;
-        selectedMovementCost.text = terrain.movementCost.ToString();
-        selectedTerrainIcon.text = HEX.ToString();
+        selectedTerrainLabel.text = terrain.name;
         
         if (!UnitManager.Instance.TryGetUnit(pos, out var unit))
         {
@@ -130,8 +128,7 @@ public class UI : MonoBehaviour
         hoverPanel.style.display = DisplayStyle.Flex;
         var tile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)pos) as TerrainTile;
         var terrain = tile.terrainScob.terrain;
-        hoverTerrain.text = terrain.name;
-        hoverTerrainIcon.text = HEX.ToString();
+        hoverTerrainLabel.text = terrain.name;
         
         if (!UnitManager.Instance.TryGetUnit(pos, out var unit))
         {
@@ -146,34 +143,30 @@ public class UI : MonoBehaviour
     private void SetSelectedLabelsVisible(bool visible)
     {
         var display = visible ? DisplayStyle.Flex : DisplayStyle.None;
-        selectedName.style.display = display;
+        selectedUnitLabel.style.display = display;
         selectedHealth.style.display = display;
         selectedHealthIcon.style.display = display;
         selectedMovement.style.display = display;
         selectedMovementIcon.style.display = display;
         selectedAttack.style.display = display;
-        selectedAttackIcon.style.display = display;
         selectedDefence.style.display = display;
-        selectedDefenceIcon.style.display = display;
     }
 
     private void SetHoverLabelsVisible(bool visible)
     {
         var display = visible ? DisplayStyle.Flex : DisplayStyle.None;
-        hoverName.style.display = display;
+        hoverUnitLabel.style.display = display;
         hoverHealth.style.display = display;
         hoverHealthIcon.style.display = display;
         hoverMovement.style.display = display;
         hoverMovementIcon.style.display = display;
         hoverAttack.style.display = display;
-        hoverAttackIcon.style.display = display;
         hoverDefence.style.display = display;
-        hoverDefenceIcon.style.display = display;
     }
 
     private void UpdateSelectedPanel(UnitInstance unit)
     {
-        selectedName.text = unit.unit.name;
+        selectedUnitLabel.text = unit.unit.name;
         selectedHealthIcon.text = HEALTH.ToString();
         selectedHealth.text = unit.health.ToString();
         selectedMovementIcon.text = WALK.ToString();
@@ -182,12 +175,11 @@ public class UI : MonoBehaviour
         selectedAttack.text = unit.unit.melee.ToString();
         selectedDefenceIcon.text = SHIELD.ToString();
         selectedDefence.text = unit.unit.ranged.ToString();
-        selectedTerrainIcon.text = HEX.ToString();
     }
 
     private void UpdateHoverPanel(UnitInstance unit)
     {
-        hoverName.text = unit.unit.name;
+        hoverUnitLabel.text = unit.unit.name;
         hoverHealthIcon.text = HEALTH.ToString();
         hoverHealth.text = unit.health.ToString();
         hoverMovementIcon.text = WALK.ToString();
@@ -196,7 +188,6 @@ public class UI : MonoBehaviour
         hoverAttack.text = unit.unit.melee.ToString();
         hoverDefenceIcon.text = SHIELD.ToString();
         hoverDefence.text = unit.unit.ranged.ToString();
-        hoverTerrainIcon.text = HEX.ToString();
     }
 
     void HandleTileSelected(Vector2Int pos) { ShowSelectedTile(pos); }
