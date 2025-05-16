@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Linq;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class UI : MonoBehaviour
 {
@@ -125,8 +126,10 @@ public class UI : MonoBehaviour
     private void ShowHoveredTile(Vector2Int pos)
     {
         hoveredTile = pos;
-        hoverPanel.style.display = DisplayStyle.Flex;
         var tile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)pos) as TerrainTile;
+        if (tile == null)
+            return;
+        hoverPanel.style.display = DisplayStyle.Flex;
         var terrain = tile.terrainScob.terrain;
         hoverTerrainLabel.text = terrain.name;
         

@@ -51,7 +51,7 @@ public class MouseInputManager : MonoBehaviour
         {
             var tile = GetTileXY(mousePos);
             UpdateTilePosition(mousePos);
-            Debug.Log($"{GetType().Name}: Mouse moved");
+            // Debug.Log($"{GetType().Name}: Mouse moved");
             events.EmitMouseMoved();
             events.EmitMouseMovedToTile(tile);
         }

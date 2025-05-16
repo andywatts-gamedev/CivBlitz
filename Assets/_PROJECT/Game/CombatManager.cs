@@ -49,7 +49,7 @@ public class CombatManager : Singleton<CombatManager>
                 
                 StartCoroutine(CombatCoroutine(
                     attackerPos, defenderPos, 
-                    defender.health <= 0, 
+                    defender.health <= 0, attacker.health <= 0,
                     attackDamage, retaliationDamage,
                     attackerFlagTile, defenderFlagTile,
                     attackerUnitTile, defenderUnitTile,
@@ -63,7 +63,8 @@ public class CombatManager : Singleton<CombatManager>
 
     private IEnumerator CombatCoroutine(
         Vector2Int attackerPos, Vector2Int defenderPos, 
-        bool defenderDies, int attackDamage, int retaliationDamage,
+        bool defenderDies, bool attackerDies,
+        int attackDamage, int retaliationDamage,
         Tile attackerFlagTile, Tile defenderFlagTile,
         UnitTile attackerUnitTile, UnitTile defenderUnitTile,
         Civilization attackerCiv, Civilization defenderCiv)
@@ -122,27 +123,16 @@ public class CombatManager : Singleton<CombatManager>
             UnitManager.Instance.RemoveUnit(defenderPos);
             Destroy(defenderFlagSprite);
             Destroy(defenderUnitSprite);
-            
-            elapsed = 0f;
-            while (elapsed < COMBAT_DURATION)
-            {
-                elapsed += Time.deltaTime;
-                var t = Mathf.Clamp01(elapsed / COMBAT_DURATION);
-                var pos = Vector3.Lerp(meetingPoint, end, t);
-                attackerFlagSprite.transform.position = pos;
-                attackerUnitSprite.transform.position = pos;
-                yield return null;
-            }
-            
-            attackerFlagTilemap.SetTile((Vector3Int)defenderPos, attackerFlagTile);
-            attackerFlagTilemap.SetTransformMatrix((Vector3Int)defenderPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale));
-            
-            unitTilemap.SetTile((Vector3Int)defenderPos, attackerUnitTile);
-            unitTilemap.SetTransformMatrix((Vector3Int)defenderPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.unitScale));
-            
-            UnitManager.Instance.MoveUnit(attackerPos, defenderPos);
         }
-        else
+        
+        if (attackerDies)
+        {
+            UnitManager.Instance.RemoveUnit(attackerPos);
+            Destroy(attackerFlagSprite);
+            Destroy(attackerUnitSprite);
+        }
+        
+        if (!defenderDies && !attackerDies)
         {
             elapsed = 0f;
             while (elapsed < COMBAT_DURATION)
@@ -156,6 +146,7 @@ public class CombatManager : Singleton<CombatManager>
                 yield return null;
             }
             
+            // Only restore tiles if units survived
             attackerFlagTilemap.SetTile((Vector3Int)attackerPos, attackerFlagTile);
             attackerFlagTilemap.SetTransformMatrix((Vector3Int)attackerPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale));
             
@@ -169,12 +160,11 @@ public class CombatManager : Singleton<CombatManager>
             unitTilemap.SetTransformMatrix((Vector3Int)defenderPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.unitScale));
         }
         
-        Destroy(attackerFlagSprite);
-        Destroy(attackerUnitSprite);
-        if (!defenderDies) {
-            Destroy(defenderFlagSprite);
-            Destroy(defenderUnitSprite);
-        }
+        // Only destroy sprites that weren't already destroyed
+        if (!attackerDies) Destroy(attackerFlagSprite);
+        if (!attackerDies) Destroy(attackerUnitSprite);
+        if (!defenderDies) Destroy(defenderFlagSprite);
+        if (!defenderDies) Destroy(defenderUnitSprite);
         isCombatMoving = false;
 
         // Only check for turn end if player was the attacker
