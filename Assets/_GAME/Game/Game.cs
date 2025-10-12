@@ -192,29 +192,47 @@ public class Game : MonoBehaviour
 
     private void UpdatePathPreview(Vector2Int fromTile, Vector2Int toTile)
     {
-        if (pathPreview == null) return;
+        Debug.Log($"UpdatePathPreview: {fromTile} -> {toTile}");
+        
+        // Create pathPreview GameObject if it doesn't exist
+        if (pathPreview == null)
+        {
+            pathPreview = new GameObject("PathPreview");
+            pathPreview.transform.SetParent(transform);
+            Debug.Log("Created pathPreview GameObject");
+        }
         
         var isValid = IsValidMove(fromTile, toTile);
+        Debug.Log($"Move valid: {isValid}");
         pathPreview.SetActive(true);
         
-        // Simple line preview from start to end
-        var startPos = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)fromTile);
-        var endPos = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)toTile);
+        // Use the terrain tilemap for consistent world positioning
+        var startPos = UnitManager.Instance.terrainTilemap.CellToWorld((Vector3Int)fromTile);
+        var endPos = UnitManager.Instance.terrainTilemap.CellToWorld((Vector3Int)toTile);
         
-        // Create a simple line renderer or use existing path preview system
+        // Create or get line renderer
         var lineRenderer = pathPreview.GetComponent<LineRenderer>();
         if (lineRenderer == null)
         {
             lineRenderer = pathPreview.AddComponent<LineRenderer>();
-            lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-            lineRenderer.startWidth = 0.1f;
+            // Use Unity's default line material
+            lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended"));
+            lineRenderer.startWidth = 0.3f;
             lineRenderer.endWidth = 0.1f;
             lineRenderer.positionCount = 2;
+            lineRenderer.useWorldSpace = true;
+            lineRenderer.sortingOrder = 10; // Make sure it renders on top
         }
         
+        // Set positions with slight offset to avoid z-fighting
+        startPos.z = -0.1f;
+        endPos.z = -0.1f;
         lineRenderer.SetPosition(0, startPos);
         lineRenderer.SetPosition(1, endPos);
-        lineRenderer.startColor = isValid ? Color.green : Color.red;
-        lineRenderer.endColor = isValid ? Color.green : Color.red;
+        
+        // Set colors based on validity with alpha for better visibility
+        var color = isValid ? new Color(0, 1, 0, 0.8f) : new Color(1, 0, 0, 0.8f);
+        lineRenderer.startColor = color;
+        lineRenderer.endColor = color;
     }
 } 
