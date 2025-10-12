@@ -7,7 +7,7 @@
                         <ui:Label class="cell empty" />
                         <ui:VisualElement class="value-columns">
                             <ui:Label name="HoverAttackIcon" text="" enable-rich-text="false" emoji-fallback-support="false" class="cell header-icon" style="display: none;" />
-                            <ui:Label name="HoverDefenceIcon" text="" enable-rich-text="false" emoji-fallback-support="false" class="cell header-icon" />
+                            <ui:Label name="HoverDefenceIcon" text="" enable-rich-text="false" emoji-fallback-support="false" class="cell header-icon" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement name="UnitStatsRow" class="table-row">

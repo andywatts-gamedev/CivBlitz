@@ -7,8 +7,8 @@
                     <ui:VisualElement class="table-row header-row">
                         <ui:Label class="cell empty" />
                         <ui:VisualElement class="value-columns">
-                            <ui:Label name="SelectedAttackIcon" text="" enable-rich-text="false" emoji-fallback-support="false" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&amp;guid=d603a4ddba56c4cd896c15f6dfaadadb&amp;type=3#fa-solid-900&quot;); color: rgb(248, 0, 0);" />
-                            <ui:Label name="SelectedDefenceIcon" text="" enable-rich-text="false" emoji-fallback-support="false" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&amp;guid=d603a4ddba56c4cd896c15f6dfaadadb&amp;type=3#fa-solid-900&quot;); color: rgb(236, 23, 37);" />
+                            <ui:Label name="SelectedAttackIcon" text="" enable-rich-text="false" emoji-fallback-support="false" class="cell header-icon" />
+                            <ui:Label name="SelectedDefenceIcon" text="" enable-rich-text="false" emoji-fallback-support="false" class="cell header-icon" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement name="UnitStatsRow" class="table-row">

@@ -109,6 +109,10 @@
     -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
 }
 
+.header-icon {
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
+}
+
 .cell.value {
     width: 24px;
     -unity-text-align: middle-center;
