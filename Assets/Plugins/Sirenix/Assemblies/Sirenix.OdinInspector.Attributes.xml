@@ -694,7 +694,7 @@
             
             		private void MyAction()
             		{
-            			MyVector = Random.ontilemapphere;
+            			MyVector = Random.onUnitSphere;
             		}
             	}
              </code>
@@ -5575,7 +5575,7 @@
             If <c>true</c> disables the option to change display unit with the right-click context menu.
             </summary>
         </member>
-        <member name="M:Sirenix.OdinInspector.UnitAttribute.#ctor(Sirenix.OdinInspector.tilemap)">
+        <member name="M:Sirenix.OdinInspector.UnitAttribute.#ctor(Sirenix.OdinInspector.Units)">
             <summary>
             Displays the number as a unit field.
             </summary>
@@ -5587,21 +5587,21 @@
             </summary>
             <param name="unit">The name of the underlying value.</param>
         </member>
-        <member name="M:Sirenix.OdinInspector.UnitAttribute.#ctor(Sirenix.OdinInspector.tilemap,Sirenix.OdinInspector.tilemap)">
+        <member name="M:Sirenix.OdinInspector.UnitAttribute.#ctor(Sirenix.OdinInspector.Units,Sirenix.OdinInspector.Units)">
             <summary>
             Displays the number as a unit field.
             </summary>
             <param name="base">The unit of underlying value.</param>
             <param name="display">The unit to display the value as in the inspector.</param>
         </member>
-        <member name="M:Sirenix.OdinInspector.UnitAttribute.#ctor(Sirenix.OdinInspector.tilemap,System.String)">
+        <member name="M:Sirenix.OdinInspector.UnitAttribute.#ctor(Sirenix.OdinInspector.Units,System.String)">
             <summary>
             Displays the number as a unit field.
             </summary>
             <param name="base">The unit of underlying value.</param>
             <param name="display">The unit to display the value as in the inspector.</param>
         </member>
-        <member name="M:Sirenix.OdinInspector.UnitAttribute.#ctor(System.String,Sirenix.OdinInspector.tilemap)">
+        <member name="M:Sirenix.OdinInspector.UnitAttribute.#ctor(System.String,Sirenix.OdinInspector.Units)">
             <summary>
             Displays the number as a unit field.
             </summary>
@@ -5615,9 +5615,9 @@
             <param name="base">The unit of underlying value.</param>
             <param name="display">The unit to display the value as in the inspector.</param>
         </member>
-        <member name="T:Sirenix.OdinInspector.tilemap">
+        <member name="T:Sirenix.OdinInspector.Units">
             <summary>
-            tilemap for use with <see cref="T:Sirenix.OdinInspector.UnitAttribute"/> and <see cref="!:Sirenix.Utilities.Editor.UnitNumberUtility"/>.
+            Units for use with <see cref="T:Sirenix.OdinInspector.UnitAttribute"/> and <see cref="!:Sirenix.Utilities.Editor.UnitNumberUtility"/>.
             </summary>
         </member>
         <member name="T:Sirenix.OdinInspector.ValidateInputAttribute">

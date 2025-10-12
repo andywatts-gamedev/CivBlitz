@@ -9118,12 +9118,12 @@
         </member>
         <member name="T:Sirenix.Utilities.Editor.UnitCategory">
             <summary>
-            Categories of tilemap. A unit value can only be converted to another of the same category.
+            Categories of units. A unit value can only be converted to another of the same category.
             </summary>
         </member>
         <member name="T:Sirenix.Utilities.Editor.UnitNumberUtility">
             <summary>
-            Tools for converting between tilemap, for example, converting from inches to meters.
+            Tools for converting between units, for example, converting from inches to meters.
             </summary>
             <seealso cref="T:Sirenix.Utilities.Editor.UnitInfo"/>
             <seealso cref="T:Sirenix.OdinInspector.UnitAttribute"/>
@@ -9132,13 +9132,13 @@
             <summary>
             Gets all UnitInfo registered, both built-in and custom.
             </summary>
-            <returns>Enumerable of both built-in and custom tilemap.</returns>
+            <returns>Enumerable of both built-in and custom units.</returns>
         </member>
-        <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.GetUnitInfo(Sirenix.OdinInspector.tilemap)">
+        <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.GetUnitInfo(Sirenix.OdinInspector.Units)">
             <summary>
-            Gets the UnitInfo for the given tilemap enum value.
+            Gets the UnitInfo for the given Units enum value.
             </summary>
-            <param name="unit">tilemap enum value.</param>
+            <param name="unit">Units enum value.</param>
             <returns>UnitInfo for the unit.</returns>
             <exception cref="T:System.Exception">Throws for invalid unit input.</exception>
         </member>
@@ -9155,15 +9155,15 @@
             Finds the UnitInfo that best fits the given symbol within the given category.
             </summary>
             <param name="symbol">The symbol to find a unit for.</param>
-            <param name="unitCategory">The category to look for tilemap within.</param>
+            <param name="unitCategory">The category to look for units within.</param>
             <returns>The UnitInfo that best matches the given symbol.</returns>
             <exception cref="T:System.Exception">Throws when no match was found.</exception>
         </member>
-        <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.TryGetUnitInfo(Sirenix.OdinInspector.tilemap,Sirenix.Utilities.Editor.UnitInfo@)">
+        <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.TryGetUnitInfo(Sirenix.OdinInspector.Units,Sirenix.Utilities.Editor.UnitInfo@)">
             <summary>
-            Gets the UnitInfo for the given tilemap enum value.
+            Gets the UnitInfo for the given Units enum value.
             </summary>
-            <param name="unit">tilemap enum value.</param>
+            <param name="unit">Units enum value.</param>
             <param name="unitInfo">The UnitInfo matching the given unit value.</param>
             <returns><c>true</c> when a UnitInfo was found. Otherwise <c>false</c>.</returns>
         </member>
@@ -9180,57 +9180,57 @@
             Finds the UnitInfo that best fits the given symbol within the given category.
             </summary>
             <param name="symbol">The symbol to find a unit for.</param>
-            <param name="unitCategory">The category to look for tilemap within.</param>
+            <param name="unitCategory">The category to look for units within.</param>
             <param name="unitInfo">The UnitInfo that best matches the given symbol.</param>
             <returns><c>true</c> when a UnitInfo was found. Otherwise <c>false</c>.</returns>
         </member>
-        <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.ConvertUnitFromTo(System.Decimal,Sirenix.OdinInspector.tilemap,Sirenix.OdinInspector.tilemap)">
+        <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.ConvertUnitFromTo(System.Decimal,Sirenix.OdinInspector.Units,Sirenix.OdinInspector.Units)">
             <summary>
-            Converts between two tilemap. The tilemap must be of the same category.
+            Converts between two units. The units must be of the same category.
             </summary>
-            <param name="value">The value to convert. Should be in the <c>from</c> tilemap.</param>
+            <param name="value">The value to convert. Should be in the <c>from</c> units.</param>
             <param name="from">The unit to convert the value from. <c>value</c> should be in this unit.</param>
             <param name="to">To unit to convert the value to. Must be the same category as <c>from</c>.</param>
-            <returns>The <c>value</c> converted to <c>to</c> tilemap.</returns>
-            <exception cref="T:System.Exception">Throws when either 'from' or 'to' tilemap are invalid, or when the tilemap are of different categories.</exception>
+            <returns>The <c>value</c> converted to <c>to</c> units.</returns>
+            <exception cref="T:System.Exception">Throws when either 'from' or 'to' units are invalid, or when the units are of different categories.</exception>
             <example>
             <code>
             decimal meters = 5m;
-            decimal centimeters = ConverttilemapFromTo(meters, tilemap.Meter, tilemap.Centimeter);
+            decimal centimeters = ConvertUnitsFromTo(meters, Units.Meter, Units.Centimeter);
             // centimeters = 500
             </code>
             </example>
         </member>
         <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.ConvertUnitFromTo(System.Decimal,Sirenix.Utilities.Editor.UnitInfo,Sirenix.Utilities.Editor.UnitInfo)">
             <summary>
-            Converts between two tilemap. The tilemap must be of the same category.
+            Converts between two units. The units must be of the same category.
             </summary>
-            <param name="value">The value to convert. Should be in the <c>fromUnitInfo</c> tilemap.</param>
+            <param name="value">The value to convert. Should be in the <c>fromUnitInfo</c> units.</param>
             <param name="fromUnitInfo">The unit to convert the value from. <c>value</c> should be in this unit.</param>
             <param name="toUnitInfo">To unit to convert the value to. Must be the same category as <c>fromUnitInfo</c>.</param>
-            <returns>The <c>value</c> converted to <c>toUnitInfo</c> tilemap.</returns>
-            <exception cref="T:System.Exception">Throws when either 'fromUnitInfo' or 'toUnitInfo' tilemap are invalid, or when the tilemap are of different categories.</exception>
+            <returns>The <c>value</c> converted to <c>toUnitInfo</c> units.</returns>
+            <exception cref="T:System.Exception">Throws when either 'fromUnitInfo' or 'toUnitInfo' units are invalid, or when the units are of different categories.</exception>
             <example>
             <code>
             decimal meters = 5m;
-            decimal centimeters = ConverttilemapFromTo(meters, meterUnitInfo, centimeterUnitInfo);
+            decimal centimeters = ConvertUnitsFromTo(meters, meterUnitInfo, centimeterUnitInfo);
             // centimeters = 500
             </code>
             </example>
         </member>
-        <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.TryConvertUnitFromTo(System.Decimal,Sirenix.OdinInspector.tilemap,Sirenix.OdinInspector.tilemap,System.Decimal@)">
+        <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.TryConvertUnitFromTo(System.Decimal,Sirenix.OdinInspector.Units,Sirenix.OdinInspector.Units,System.Decimal@)">
             <summary>
-            Converts between two tilemap. The tilemap must be of the same category.
+            Converts between two units. The units must be of the same category.
             </summary>
-            <param name="value">The value to convert. Should be in the <c>from</c> tilemap.</param>
+            <param name="value">The value to convert. Should be in the <c>from</c> units.</param>
             <param name="from">The unit to convert the value from. <c>value</c> should be in this unit.</param>
             <param name="to">To unit to convert the value to. Must be the same category as <c>from</c>.</param>
-            <param name="converted">The <c>value</c> converted to <c>to</c> tilemap.</param>
+            <param name="converted">The <c>value</c> converted to <c>to</c> units.</param>
             <returns><c>true</c> when the unit was successfully converted. Otherwise <c>false</c>.</returns>
             <example>
             <code>
             decimal meters = 5m;
-            if (TryConverttilemapFromTo(meters, tilemap.Meter, tilemap.Centimeter, out decimal centimeters)
+            if (TryConvertUnitsFromTo(meters, Units.Meter, Units.Centimeter, out decimal centimeters)
             {
                 // centimeters = 500
             }
@@ -9239,17 +9239,17 @@
         </member>
         <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.TryConvertUnitFromTo(System.Decimal,Sirenix.Utilities.Editor.UnitInfo,Sirenix.Utilities.Editor.UnitInfo,System.Decimal@)">
             <summary>
-            Converts between two tilemap. The tilemap must be of the same category.
+            Converts between two units. The units must be of the same category.
             </summary>
-            <param name="value">The value to convert. Should be in the <c>fromUnitInfo</c> tilemap.</param>
+            <param name="value">The value to convert. Should be in the <c>fromUnitInfo</c> units.</param>
             <param name="fromUnitInfo">The unit to convert the value from. <c>value</c> should be in this unit.</param>
             <param name="toUnitInfo">To unit to convert the value to. Must be the same category as <c>fromUnitInfo</c>.</param>
-            <param name="converted">The <c>value</c> converted to <c>toUnitInfo</c> tilemap.</param>
+            <param name="converted">The <c>value</c> converted to <c>toUnitInfo</c> units.</param>
             <returns><c>true</c> when the unit was successfully converted. Otherwise <c>false</c>.</returns>
             <example>
             <code>
             decimal meters = 5m;
-            if (TryConverttilemapFromTo(meters, meterUnitInfo, centimeterUnitInfo, out decimal centimeters))
+            if (TryConvertUnitsFromTo(meters, meterUnitInfo, centimeterUnitInfo, out decimal centimeters))
             {
                 // centimeters = 500
             }
@@ -9257,21 +9257,21 @@
             </example>
             <exception cref="T:System.ArgumentNullException">Throws if either fromUnitInfo or toUnitInfo is null.</exception>
         </member>
-        <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.CanConvertBetween(Sirenix.OdinInspector.tilemap,Sirenix.OdinInspector.tilemap)">
+        <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.CanConvertBetween(Sirenix.OdinInspector.Units,Sirenix.OdinInspector.Units)">
             <summary>
-            Indicates whether or not a value can be converted between the given <c>a</c> and <c>b</c> tilemap.
+            Indicates whether or not a value can be converted between the given <c>a</c> and <c>b</c> units.
             </summary>
             <param name="a">Unit a.</param>
             <param name="b">Unit b.</param>
-            <returns><c>true</c> if both tilemap have the same category. Otherwise <c>false</c>.</returns>
+            <returns><c>true</c> if both units have the same category. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.CanConvertBetween(Sirenix.Utilities.Editor.UnitInfo,Sirenix.Utilities.Editor.UnitInfo)">
             <summary>
-            Indicates whether or not a value can be converted between the given <c>a</c> and <c>b</c> tilemap.
+            Indicates whether or not a value can be converted between the given <c>a</c> and <c>b</c> units.
             </summary>
             <param name="a">Unit a.</param>
             <param name="b">Unit b.</param>
-            <returns><c>true</c> if both tilemap have the same category. Otherwise <c>false</c>.</returns>
+            <returns><c>true</c> if both units have the same category. Otherwise <c>false</c>.</returns>
         </member>
         <member name="M:Sirenix.Utilities.Editor.UnitNumberUtility.AddCustomUnit(System.String,System.String[],System.String,System.Decimal)">
             <summary>
@@ -9280,7 +9280,7 @@
             </summary>
             <param name="name">The name of the unit. Duplicate names are not allowed.</param>
             <param name="symbols">Symbols used for the unit. First value in the array will be used as the primary symbol. Atleast 1 value required. Duplicate symbols are not allowed within the same category.</param>
-            <param name="unitCategory">The category of the unit. tilemap can only be converted to another of the same category. Custom categories are allowed.</param>
+            <param name="unitCategory">The category of the unit. Units can only be converted to another of the same category. Custom categories are allowed.</param>
             <param name="multiplier">The multiplier to convert the unit from the base value. For example, meters are the base unit of the distance category, therefore centimeters have a multipler of 100.</param>
             <example>
             <para>Example of adding centimeters as a custom unit.</para>
@@ -9296,7 +9296,7 @@
             </summary>
             <param name="name">The name of the unit. Duplicate names are not allowed.</param>
             <param name="symbols">Symbols used for the unit. First value in the array will be used as the primary symbol. Atleast 1 value required. Duplicate symbols are not allowed within the same category.</param>
-            <param name="unitCategory">The category of the unit. tilemap can only be converted to another of the same category. Custom categories are allowed.</param>
+            <param name="unitCategory">The category of the unit. Units can only be converted to another of the same category. Custom categories are allowed.</param>
             <param name="multiplier">The multiplier to convert the unit from the base value. For example, meters are the base unit of the distance category, therefore centimeters have a multipler of 100.</param>
             <example>
             <para>Example of adding centimeters as a custom unit.</para>
@@ -9313,7 +9313,7 @@
             </summary>
             <param name="name">The name of the unit. Duplicate names are not allowed.</param>
             <param name="symbols">Symbols used for the unit. First value in the array will be used as the primary symbol. Atleast 1 value required. Duplicate symbols are not allowed within the same category.</param>
-            <param name="unitCategory">The category of the unit. tilemap can only be converted to another of the same category. Custom categories are allowed.</param>
+            <param name="unitCategory">The category of the unit. Units can only be converted to another of the same category. Custom categories are allowed.</param>
             <param name="convertToBase">Method for converting a given value of the custom unit to the base unit. For example, for centimeter, use: <c>x =&gt; x / 100m;</c>.</param>
             <param name="convertFromBase">Method for converting a given value of the base unit to the custom unit. For example, for centimeter, use: <c>x =&gt; x * 100m;</c>.</param>
             <example>
@@ -9331,7 +9331,7 @@
             </summary>
             <param name="name">The name of the unit. Duplicate names are not allowed.</param>
             <param name="symbols">Symbols used for the unit. First value in the array will be used as the primary symbol. Atleast 1 value required. Duplicate symbols are not allowed within the same category.</param>
-            <param name="unitCategory">The category of the unit. tilemap can only be converted to another of the same category. Custom categories are allowed.</param>
+            <param name="unitCategory">The category of the unit. Units can only be converted to another of the same category. Custom categories are allowed.</param>
             <param name="convertToBase">Method for converting a given value of the custom unit to the base unit. For example, for centimeter, use: <c>x =&gt; x / 100m;</c>.</param>
             <param name="convertFromBase">Method for converting a given value of the base unit to the custom unit. For example, for centimeter, use: <c>x =&gt; x * 100m;</c>.</param>
             /// <example>
@@ -9343,7 +9343,7 @@
         </member>
         <member name="T:Sirenix.Utilities.Editor.UnitInfo">
             <summary>
-            Object describing tilemap, including name, symbols and how to convert it to other tilemap.
+            Object describing units, including name, symbols and how to convert it to other units.
             </summary>
         </member>
         <member name="F:Sirenix.Utilities.Editor.UnitInfo.Name">
@@ -9358,7 +9358,7 @@
         </member>
         <member name="F:Sirenix.Utilities.Editor.UnitInfo.UnitCategory">
             <summary>
-            The category of the unit. tilemap can only be converted within the same category.
+            The category of the unit. Units can only be converted within the same category.
             </summary>
         </member>
         <member name="F:Sirenix.Utilities.Editor.UnitInfo.Multiplier">

@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using System;
 
 public class UI : MonoBehaviour
 {
@@ -21,6 +23,7 @@ public class UI : MonoBehaviour
     private Label hoverTerrainLabel, hoverMovementCost;
     private Label hoverTerrainIcon, hoverTerrainAttack, hoverTerrainDefence;
     private Image playerCivIcon, aiCivIcon;
+    private Image selectedUnitSprite, hoverUnitSprite;
     private VisualElement selectedPanel, hoverPanel;
     private Button endTurnButton;
     private Vector2Int? selectedTile, hoveredTile;
@@ -40,6 +43,7 @@ public class UI : MonoBehaviour
         hoverPanel = root.Q("HoverPanel");
         
         // Get all UI elements
+        selectedUnitSprite = selectedPanel.Q<Image>("SelectedUnitSprite");
         selectedUnitLabel = selectedPanel.Q<Label>("SelectedUnitLabel"); 
         selectedHealth = selectedPanel.Q<Label>("SelectedHealth");
         selectedMovement = selectedPanel.Q<Label>("SelectedMovement");
@@ -55,6 +59,7 @@ public class UI : MonoBehaviour
         selectedTerrainAttack = selectedPanel.Q<Label>("SelectedTerrainAttack");
         selectedTerrainDefence = selectedPanel.Q<Label>("SelectedTerrainDefence");
 
+        hoverUnitSprite = hoverPanel.Q<Image>("HoverUnitSprite");
         hoverUnitLabel = hoverPanel.Q<Label>("HoverUnitLabel"); 
         hoverHealth = hoverPanel.Q<Label>("HoverHealth");
         hoverMovement = hoverPanel.Q<Label>("HoverMovement");
@@ -171,6 +176,18 @@ public class UI : MonoBehaviour
 
     private void UpdateSelectedPanel(UnitInstance unit)
     {
+        var sprite = GetUnitSprite(selectedTile.Value);
+        if (sprite != null)
+        {
+            selectedUnitSprite.sprite = sprite;
+            selectedUnitSprite.style.display = DisplayStyle.Flex;
+            Debug.Log($"Set selected sprite: {unit.unit.name} -> {sprite.name}");
+        }
+        else
+        {
+            selectedUnitSprite.style.display = DisplayStyle.None;
+            Debug.LogWarning($"No sprite found for unit at {selectedTile.Value}");
+        }
         selectedUnitLabel.text = unit.unit.name;
         selectedHealthIcon.text = HEALTH.ToString();
         selectedHealth.text = unit.health.ToString();
@@ -184,6 +201,16 @@ public class UI : MonoBehaviour
 
     private void UpdateHoverPanel(UnitInstance unit)
     {
+        var sprite = GetUnitSprite(hoveredTile.Value);
+        if (sprite != null)
+        {
+            hoverUnitSprite.sprite = sprite;
+            hoverUnitSprite.style.display = DisplayStyle.Flex;
+        }
+        else
+        {
+            hoverUnitSprite.style.display = DisplayStyle.None;
+        }
         hoverUnitLabel.text = unit.unit.name;
         hoverHealthIcon.text = HEALTH.ToString();
         hoverHealth.text = unit.health.ToString();
@@ -209,9 +236,17 @@ public class UI : MonoBehaviour
     void HandleCancel() { selectedPanel.style.display = DisplayStyle.None; selectedTile = null; }
     void HandleTileDeselected(Vector2Int pos) { selectedPanel.style.display = DisplayStyle.None; selectedTile = null; }
 
+    private Sprite GetUnitSprite(Vector2Int tilePos)
+    {
+        var unitTile = UnitManager.Instance.unitTilemap.GetTile((Vector3Int)tilePos) as UnitTile;
+        return unitTile?.unitSCOB?.sprite;
+    }
+
     void UpdateTurnLabels()
     {
         var player = Game.Instance.player;
+        if (player == null || UnitManager.Instance.civUnits.Count < 2) return;
+            
         var aiCiv = UnitManager.Instance.civUnits.Keys.First(c => c != player.civilization);
         
         playerCivIcon.image = Game.Instance.civilizations[player.civilization].icon;

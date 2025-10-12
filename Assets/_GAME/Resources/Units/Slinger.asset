@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dce9f45002814478d806633fc7160690, type: 3}
-  m_Name: Warrior
+  m_Name: Slinger
   m_EditorClassIdentifier: 
   unit:
-    name: Warrior
+    name: Slinger
+    type: 1
     health: 100
     movement: 1
-    melee: 20
-    ranged: 0
-    range: 0
-    cost: 160
+    melee: 5
+    ranged: 15
+    range: 1
+    cost: 140
     canTravelLand: 1
     canTravelCoast: 0
     canTravelOcean: 0
+  sprite: {fileID: -7377151962946689612, guid: 400199ea2bdafcd4291369b855ada389, type: 3}

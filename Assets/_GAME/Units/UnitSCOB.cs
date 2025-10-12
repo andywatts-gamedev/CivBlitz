@@ -4,4 +4,5 @@
 public class UnitSCOB : ScriptableObject
 {
     public Unit unit;
+    public Sprite sprite;
 }

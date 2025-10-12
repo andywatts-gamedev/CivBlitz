@@ -23,7 +23,12 @@ public class Game : MonoBehaviour
     public Vector3 flagScale = new Vector3(2f, 2f, 2f);
     public Vector3 unitScale = new Vector3(0.8f, 0.8f, 0.8f);
 
-    void Awake() => Instance = this;
+    void Awake()
+    {
+        Instance = this;
+        civilizations = Resources.LoadAll<CivilizationSCOB>("").ToDictionary(c => c.civilization, c => c);
+        Debug.Log("Civilizations: " + civilizations.Count);
+    }
 
     void Start()
     {
@@ -34,7 +39,6 @@ public class Game : MonoBehaviour
         events.OnDragEnded += HandleDragEnded;
         highlight.SetActive(false);
         if (pathPreview != null) pathPreview.SetActive(false);
-        civilizations = Resources.LoadAll<CivilizationSCOB>("").ToDictionary(c => c.civilization, c => c);
     }
 
     void OnDisable()
