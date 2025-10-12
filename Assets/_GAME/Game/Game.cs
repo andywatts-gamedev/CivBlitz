@@ -10,7 +10,9 @@ public class Game : MonoBehaviour
 
     [SerializeField] private InputEvents events;
     [SerializeField] private GameObject highlight;
+    [SerializeField] private GameObject pathPreview;
     private Vector2Int? selectedTile;
+    private bool isDragging;
 
     public CivilizationSCOB player;
     public CivilizationSCOB ai;
@@ -27,7 +29,11 @@ public class Game : MonoBehaviour
     {
         events.OnTileClicked += HandleTileClicked;
         events.OnCancel += HandleCancel;
+        events.OnDragStarted += HandleDragStarted;
+        events.OnDragUpdated += HandleDragUpdated;
+        events.OnDragEnded += HandleDragEnded;
         highlight.SetActive(false);
+        if (pathPreview != null) pathPreview.SetActive(false);
         civilizations = Resources.LoadAll<CivilizationSCOB>("").ToDictionary(c => c.civilization, c => c);
     }
 
@@ -35,43 +41,39 @@ public class Game : MonoBehaviour
     {
         events.OnTileClicked -= HandleTileClicked;
         events.OnCancel -= HandleCancel;
+        events.OnDragStarted -= HandleDragStarted;
+        events.OnDragUpdated -= HandleDragUpdated;
+        events.OnDragEnded -= HandleDragEnded;
     }
 
     private void HandleTileClicked(Vector2Int pos)
     {
         Debug.Log("HandleTileClicked: " + pos);
+        
+        // If clicking the same selected tile, deselect it
+        if (selectedTile.HasValue && selectedTile.Value == pos)
+        {
+            events.EmitTileDeselected(pos);
+            selectedTile = null;
+            highlight.SetActive(false);
+            return;
+        }
+
+        // If clicking a different tile, deselect current selection first
         if (selectedTile.HasValue)
         {
-            if (selectedTile.Value == pos)
-            {
-                events.EmitTileDeselected(pos);
-                selectedTile = null;
-                highlight.SetActive(false);
-                return;
-            }
-
-            if (IsValidMove(selectedTile.Value, pos))
-            {
-                Debug.Log("Valid move: " + selectedTile.Value + " -> " + pos);
-                MoveTo(selectedTile.Value, pos);
-                events.EmitTileDeselected(selectedTile.Value);
-                selectedTile = null;
-                highlight.SetActive(false);
-                return;
-            }
+            events.EmitTileDeselected(selectedTile.Value);
+            selectedTile = null;
+            highlight.SetActive(false);
         }
 
-        if (UnitManager.Instance.TryGetUnit(pos, out var unit) && unit.civ == player.civilization)
-        {
-            Debug.Log("Unit clicked: " + pos);
-            if (selectedTile.HasValue)
-                events.EmitTileDeselected(selectedTile.Value);
-            
-            selectedTile = pos;
-            events.EmitTileSelected(pos);
-            highlight.SetActive(true);
-            highlight.transform.position = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)pos);
-        }
+        // Always select any clicked tile and show its data
+        selectedTile = pos;
+        events.EmitTileSelected(pos);
+        
+        // Show outline for any selected tile
+        highlight.SetActive(true);
+        highlight.transform.position = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)pos);
     }
 
     private void HandleCancel()
@@ -143,5 +145,76 @@ public class Game : MonoBehaviour
         // Check if any player units can still move
         if (!UnitManager.Instance.units.Any(u => u.Value.civ == Game.Instance.player.civilization && u.Value.movesLeft > 0))
             TurnManager.Instance.EndTurn();
+    }
+
+    private void HandleDragStarted(Vector2Int fromTile, Vector2Int toTile)
+    {
+        Debug.Log($"Drag started: {fromTile} -> {toTile}");
+        if (!UnitManager.Instance.TryGetUnit(fromTile, out var unit) || unit.civ != player.civilization)
+            return;
+            
+        isDragging = true;
+        selectedTile = fromTile;
+        events.EmitTileSelected(fromTile);
+        highlight.SetActive(true);
+        highlight.transform.position = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)fromTile);
+        
+        UpdatePathPreview(fromTile, toTile);
+    }
+
+    private void HandleDragUpdated(Vector2Int fromTile, Vector2Int toTile)
+    {
+        if (!isDragging) return;
+        Debug.Log($"Drag updated: {fromTile} -> {toTile}");
+        UpdatePathPreview(fromTile, toTile);
+    }
+
+    private void HandleDragEnded(Vector2Int fromTile, Vector2Int toTile)
+    {
+        Debug.Log($"Drag ended: {fromTile} -> {toTile}");
+        isDragging = false;
+        
+        if (pathPreview != null) pathPreview.SetActive(false);
+        
+        if (IsValidMove(fromTile, toTile))
+        {
+            MoveTo(fromTile, toTile);
+            events.EmitTileDeselected(fromTile);
+            selectedTile = null;
+            highlight.SetActive(false);
+        }
+        else
+        {
+            // Invalid move - keep selection but clear preview
+            Debug.Log("Invalid drag move - cancelling");
+        }
+    }
+
+    private void UpdatePathPreview(Vector2Int fromTile, Vector2Int toTile)
+    {
+        if (pathPreview == null) return;
+        
+        var isValid = IsValidMove(fromTile, toTile);
+        pathPreview.SetActive(true);
+        
+        // Simple line preview from start to end
+        var startPos = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)fromTile);
+        var endPos = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)toTile);
+        
+        // Create a simple line renderer or use existing path preview system
+        var lineRenderer = pathPreview.GetComponent<LineRenderer>();
+        if (lineRenderer == null)
+        {
+            lineRenderer = pathPreview.AddComponent<LineRenderer>();
+            lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+            lineRenderer.startWidth = 0.1f;
+            lineRenderer.endWidth = 0.1f;
+            lineRenderer.positionCount = 2;
+        }
+        
+        lineRenderer.SetPosition(0, startPos);
+        lineRenderer.SetPosition(1, endPos);
+        lineRenderer.startColor = isValid ? Color.green : Color.red;
+        lineRenderer.endColor = isValid ? Color.green : Color.red;
     }
 } 

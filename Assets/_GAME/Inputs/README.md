@@ -6,6 +6,9 @@
    - `TileClicked`: Tile was clicked/touched
    - `Cancel`: Input was cancelled
    - `TileHovered`: Tile was hovered (mouse) or long pressed (touch)
+   - `DragStarted`: Drag gesture began from a tile
+   - `DragUpdated`: Drag gesture moved to new tile
+   - `DragEnded`: Drag gesture ended on a tile
 
 2. Game State Events
    - `TileSelected`: Valid selection made
@@ -23,28 +26,32 @@
    - Converts touch input to tile coordinates
    - Emits `TileClicked` and `Cancel` events
    - Emits `TileHovered` after 1s long press
+   - Emits drag events for drag-to-move gestures
    - Handles multi-touch if needed
 
 ## Event Sequences
 
-1. Initial Selection
+1. Unit Selection
    ```
-   User Click -> TileClicked -> CanSelectTile -> SelectTile -> TileSelected
+   User Click/Tap -> TileClicked -> CanSelectTile -> SelectTile -> TileSelected
    ```
 
 2. Deselection (Same Tile)
    ```
-   User Click -> TileClicked -> ClearSelection -> TileDeselected
+   User Click/Tap -> TileClicked -> ClearSelection -> TileDeselected
    ```
 
-3. Move
+3. Drag-to-Move (Primary Movement Method)
    ```
-   User Click -> TileClicked -> IsValidMove -> MoveTo -> ClearSelection -> TileDeselected
+   Touch Start on Unit -> DragStarted -> ShowPathPreview
+   Touch Move -> DragUpdated -> UpdatePathPreview
+   Touch End on Valid Tile -> DragEnded -> ExecuteMove -> TileDeselected
+   Touch End on Invalid Tile -> DragEnded -> CancelMove
    ```
 
-4. Combat
+4. Combat (via Drag-to-Move)
    ```
-   User Click -> TileClicked -> IsValidMove -> TryCombat -> ClearSelection -> TileDeselected
+   Drag to Enemy -> DragEnded -> TryCombat -> ClearSelection -> TileDeselected
    ```
 
 5. Turn End
