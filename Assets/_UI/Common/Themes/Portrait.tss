@@ -1,0 +1,10 @@
+@import url("Default.tss");
+
+@import url("/Assets/_UI/Game/Game-Common.uss");
+@import url("/Assets/_UI/Game/Game-Portrait.uss");
+
+@import url("/Assets/_UI/SelectedTile/SelectedTile-Common.uss");
+@import url("/Assets/_UI/SelectedTile/SelectedTile-Portrait.uss");
+
+
+VisualElement {}

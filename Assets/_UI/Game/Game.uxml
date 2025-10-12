@@ -3,10 +3,8 @@
         <ui:Image name="AICivIcon" class="civ-icon" />
         <ui:Image name="PlayerCivIcon" class="civ-icon" />
         <ui:Button text="End Turn" name="EndTurn" style="display: none;" />
-        <ui:Template src="project://database/Assets/_UI/SelectedTile.uxml" name="SelectedTile" />
+        <ui:Template src="project://database/Assets/_UI/SelectedTile/SelectedTile.uxml" name="SelectedTile" />
         <ui:Instance template="SelectedTile" name="SelectedTileContainer" />
-        <ui:Template src="project://database/Assets/_UI/HoverTile.uxml" name="HoverTile" />
-        <ui:Instance template="HoverTile" name="HoverTileContainer" />
     </ui:VisualElement>
 </ui:UXML>
 
