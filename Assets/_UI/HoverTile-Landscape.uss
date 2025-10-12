@@ -20,3 +20,22 @@
     top: 0;
 }
 
+/* Font Awesome icons for HoverTile */
+.cell.header-icon {
+    width: 24px;
+    -unity-text-align: middle-center;
+    color: #ffd700;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
+}
+
+.vital-icon {
+    color: #a0a0a0;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
+    margin-right: 2px;
+    font-size: 11px;
+}
+

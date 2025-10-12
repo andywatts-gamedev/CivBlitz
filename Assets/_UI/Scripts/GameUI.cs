@@ -28,12 +28,6 @@ public class GameUI : MonoBehaviour
     private Button endTurnButton;
     private Vector2Int? selectedTile, hoveredTile;
 
-    private const char HEALTH = '\uf21e';    // heartbeat
-    private const char SWORD = '\uf71c';     // sword
-    private const char WALK = '\uf554';      // person-walking
-    private const char BOW = '\uf71c';       // removing bow, using sword for now
-    private const char HEX = '\uf312';       // hex
-    private const char SHIELD = '\uf3ed';    // shield
 
     void Start()
     {
@@ -119,6 +113,9 @@ public class GameUI : MonoBehaviour
         var tile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)pos) as TerrainTile;
         var terrain = tile.terrainScob.terrain;
         selectedTerrainLabel.text = terrain.name;
+        // selectedMovementCost.text = terrain.movementCost.ToString();
+        selectedTerrainAttack.text = terrain.attackBonus.ToString();
+        selectedTerrainDefence.text = terrain.defenseBonus.ToString();
         
         if (!UnitManager.Instance.TryGetUnit(pos, out var unit))
         {
@@ -139,6 +136,9 @@ public class GameUI : MonoBehaviour
         hoverPanel.style.display = DisplayStyle.Flex;
         var terrain = tile.terrainScob.terrain;
         hoverTerrainLabel.text = terrain.name;
+        // hoverMovementCost.text = terrain.movementCost.ToString();
+        hoverTerrainAttack.text = terrain.attackBonus.ToString();
+        hoverTerrainDefence.text = terrain.defenseBonus.ToString();
         
         if (!UnitManager.Instance.TryGetUnit(pos, out var unit))
         {
@@ -159,7 +159,9 @@ public class GameUI : MonoBehaviour
         selectedMovement.style.display = display;
         selectedMovementIcon.style.display = display;
         selectedAttack.style.display = display;
+        selectedAttackIcon.style.display = display;
         selectedDefence.style.display = display;
+        selectedDefenceIcon.style.display = display;
     }
 
     private void SetHoverLabelsVisible(bool visible)
@@ -171,7 +173,9 @@ public class GameUI : MonoBehaviour
         hoverMovement.style.display = display;
         hoverMovementIcon.style.display = display;
         hoverAttack.style.display = display;
+        hoverAttackIcon.style.display = display;
         hoverDefence.style.display = display;
+        hoverDefenceIcon.style.display = display;
     }
 
     private void UpdateSelectedPanel(UnitInstance unit)
@@ -189,13 +193,9 @@ public class GameUI : MonoBehaviour
             Debug.LogWarning($"No sprite found for unit at {selectedTile.Value}");
         }
         selectedUnitLabel.text = unit.unit.name;
-        selectedHealthIcon.text = HEALTH.ToString();
         selectedHealth.text = unit.health.ToString();
-        selectedMovementIcon.text = WALK.ToString();
         selectedMovement.text = $"{unit.movesLeft}/{unit.unit.movement}";
-        selectedAttackIcon.text = SWORD.ToString();
         selectedAttack.text = unit.unit.melee.ToString();
-        selectedDefenceIcon.text = SHIELD.ToString();
         selectedDefence.text = unit.unit.ranged.ToString();
     }
 
@@ -212,13 +212,9 @@ public class GameUI : MonoBehaviour
             hoverUnitSprite.style.display = DisplayStyle.None;
         }
         hoverUnitLabel.text = unit.unit.name;
-        hoverHealthIcon.text = HEALTH.ToString();
         hoverHealth.text = unit.health.ToString();
-        hoverMovementIcon.text = WALK.ToString();
         hoverMovement.text = $"{unit.movesLeft}/{unit.unit.movement}";
-        hoverAttackIcon.text = SWORD.ToString();
         hoverAttack.text = unit.unit.melee.ToString();
-        hoverDefenceIcon.text = SHIELD.ToString();
         hoverDefence.text = unit.unit.ranged.ToString();
     }
 
