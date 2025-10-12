@@ -1,46 +1,37 @@
-.info-panel {
-    flex-grow: 0;
-    padding: 8px;
-    position: absolute;
-    bottom: 10px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 4px;
-    display: none;
-}
-
-.panel-content {
-    flex-direction: row;
-}
-
-.panel-stats {
-    flex-grow: 1;
-    min-width: 35%;
-}
-
-.unit-sprite {
-    width: 12%;
-    height: 100%;
-    flex-shrink: 0;
-}
-
-.sprite-left {
-    margin-right: 2%;
-}
-
 .sprite-right {
     margin-left: 2%;
 }
 
-#SelectedPanel {
-    left: 50%;
-    translate: -105% 0;
+.civ-icon {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-#HoverPanel {
-    left: 50%;
-    translate: 5% 0;
+#PlayerCivIcon {
+    bottom: 0;
+    left: 0;
 }
 
+#AICivIcon {
+    top: 0;
+    left: 0;
+}
+
+#EndTurn {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    translate: -50% 0;
+    width: 100px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+/* Common styles */
 .header-row {
     flex-direction: row;
     justify-content: space-between;
@@ -71,7 +62,7 @@
     color: #ffd700;
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
-    -unity-font-definition: url("project://database/Assets/_GAME/UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=daf2e9e4734e949068bd8e6d71a47c73&type=3#fa-solid-900");
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
 }
 
 .stat-value {
@@ -129,7 +120,7 @@
     color: #ffd700;
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
-    -unity-font-definition: url("project://database/Assets/_GAME/UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=daf2e9e4734e949068bd8e6d71a47c73&type=3#fa-solid-900");
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
 }
 
 .cell.value {
@@ -146,35 +137,6 @@
     color: white;
     font-size: 14px;
     margin-bottom: 5px;
-}
-
-.civ-icon {
-    position: absolute;
-    width: 48px;
-    height: 48px;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-#PlayerCivIcon {
-    bottom: 0;
-    left: 0;
-}
-
-#AICivIcon {
-    top: 0;
-    left: 0;
-}
-
-#EndTurn {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    translate: -50% 0;
-    width: 100px;
-    height: 30px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: rgb(255, 255, 255);
-    border-radius: 5px;
 }
 
 .unit-info {
@@ -218,7 +180,7 @@
     color: #a0a0a0;
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
-    -unity-font-definition: url("project://database/Assets/_GAME/UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=daf2e9e4734e949068bd8e6d71a47c73&type=3#fa-solid-900");
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
     margin-right: 2px;
     font-size: 11px;
 }
@@ -260,7 +222,7 @@
     color: #ffd700;
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
-    -unity-font-definition: url("project://database/Assets/_GAME/UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=daf2e9e4734e949068bd8e6d71a47c73&type=3#fa-solid-900");
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
     -unity-text-align: middle-left;
     background-color: rgba(40, 40, 40, 0.6);
     padding: 0;
@@ -270,10 +232,6 @@
 
 .unit-name {
     color: #ffd700;
-}
-
-.terrain-name {
-    color: #a0a0a0;
 }
 
 .value {
@@ -303,3 +261,4 @@
     color: white;
     -unity-text-align: middle-left;
 }
+

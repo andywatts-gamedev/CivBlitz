@@ -1,0 +1,22 @@
+#HoverTile {
+    position: absolute !important;
+    left: 50% !important;
+    translate: 5% 0 !important;
+    top: 1% !important;
+    bottom: auto !important;
+    width: auto;
+    max-width: 40%;
+    padding: 0.5%;
+}
+
+/* Ensure HoverTile TemplateContainer has proper sizing */
+#HoverTileContainer {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+

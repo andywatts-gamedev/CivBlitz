@@ -1,0 +1,145 @@
+.info-panel {
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 0.5%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    width: auto;
+    max-width: 40%;
+}
+
+/* Ensure SelectedTile TemplateContainer has proper sizing */
+#SelectedTileContainer {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.panel-content {
+    flex-direction: row;
+}
+
+.panel-stats {
+    flex-grow: 1;
+    min-width: 35%;
+}
+
+.unit-sprite {
+    width: 20%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+#SelectedUnitSprite {
+    display: none;
+}
+
+.sprite-left {
+    margin-right: 2%;
+}
+
+#SelectedTile {
+    left: 50%;
+    translate: -105% 0;
+    top: 1% !important;
+    bottom: auto !important;
+}
+
+.header-row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.stat-table {
+    width: 100%;
+}
+
+.table-row {
+    flex-direction: row;
+    margin: 2px 0;
+    height: 18px;
+    min-height: 18px;
+    max-height: 18px;
+}
+
+.table-row.header-row {
+    padding: 2px;
+}
+
+.value-columns {
+    display: flex;
+    flex-direction: row;
+    width: 60px;
+    flex-shrink: 0;
+    max-height: 18px;
+}
+
+.cell.empty {
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.cell.label {
+    width: 80px;
+    -unity-text-align: middle-right;
+    padding-right: 8px;
+    flex-shrink: 0;
+}
+
+.cell.label.unit-name {
+    color: #ffd700;
+}
+
+.cell.label.terrain-name {
+    color: #ffd700;
+}
+
+.cell.header-icon {
+    width: 24px;
+    -unity-text-align: middle-center;
+    color: #ffd700;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
+}
+
+.cell.value {
+    width: 24px;
+    -unity-text-align: middle-center;
+}
+
+.vitals-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    border-top-width: 1px;
+    border-top-color: rgba(255, 255, 255, 0.2);
+    font-size: 12px;
+}
+
+.vital-icon {
+    color: #a0a0a0;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
+    margin-right: 2px;
+    font-size: 11px;
+}
+
+.vital-value {
+    color: white;
+    min-width: 25px;
+}
+
+.vital-spacer {
+    width: 12px;
+    flex-shrink: 0;
+}
+

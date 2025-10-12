@@ -1,0 +1,264 @@
+.sprite-right {
+    margin-left: 2%;
+}
+
+.civ-icon {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#PlayerCivIcon {
+    bottom: 0;
+    left: 0;
+}
+
+#AICivIcon {
+    top: 0;
+    left: 0;
+}
+
+#EndTurn {
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    translate: -50% 0;
+    width: 100px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+/* Common styles */
+.header-row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.name-label {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.terrain-name {
+    color: #a0a0a0;
+}
+
+.stats-row {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 8px;
+}
+
+.stat-group {
+    flex-direction: row;
+    align-items: center;
+}
+
+.stat-icon {
+    color: #ffd700;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
+}
+
+.stat-value {
+    color: white;
+    min-width: 30px;
+}
+
+.stat-table {
+    width: 100%;
+}
+
+.table-row {
+    flex-direction: row;
+    margin: 2px 0;
+    height: 18px;
+    min-height: 18px;
+    max-height: 18px;
+}
+
+.table-row.header-row {
+    padding: 2px;
+}
+
+.value-columns {
+    display: flex;
+    flex-direction: row;
+    width: 60px;
+    flex-shrink: 0;
+    max-height: 18px;
+}
+
+.cell.empty {
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.cell.label {
+    width: 80px;
+    -unity-text-align: middle-right;
+    padding-right: 8px;
+    flex-shrink: 0;
+}
+
+.cell.label.unit-name {
+    color: #ffd700;
+}
+
+.cell.label.terrain-name {
+    color: #ffd700;
+}
+
+.cell.header-icon {
+    width: 24px;
+    -unity-text-align: middle-center;
+    color: #ffd700;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
+}
+
+.cell.value {
+    width: 24px;
+    -unity-text-align: middle-center;
+}
+
+.terrain-divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.terrain-label {
+    color: white;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.unit-info {
+    flex-direction: row;
+    align-items: center;
+}
+
+.health-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+}
+
+.health-value {
+    color: white;
+    font-size: 12px;
+}
+
+.movement-cost {
+    color: white;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.vitals-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    border-top-width: 1px;
+    border-top-color: rgba(255, 255, 255, 0.2);
+    font-size: 12px;
+}
+
+.vital-group {
+    flex-direction: row;
+    align-items: center;
+}
+
+.vital-icon {
+    color: #a0a0a0;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
+    margin-right: 2px;
+    font-size: 11px;
+}
+
+.vital-value {
+    color: white;
+    min-width: 25px;
+}
+
+.vital-spacer {
+    width: 12px;
+    flex-shrink: 0;
+}
+
+.table-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.table-grid > * {
+    display: flex;
+    flex-direction: row;
+}
+
+.column-label {
+    width: 80px;
+    -unity-text-align: right;
+    color: #a0a0a0;
+}
+
+.column-value {
+    width: 30px;
+    color: white;
+    -unity-text-align: left;
+}
+
+.header-icon {
+    color: #ffd700;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -unity-font-definition: url("project://database/Assets/_UI/Fonts/src/fa-solid-900.ttf?fileID=12800000&guid=d603a4ddba56c4cd896c15f6dfaadadb&type=3#fa-solid-900");
+    -unity-text-align: middle-left;
+    background-color: rgba(40, 40, 40, 0.6);
+    padding: 0;
+    font-size: 11px;
+    margin-bottom: 1px;
+}
+
+.unit-name {
+    color: #ffd700;
+}
+
+.value {
+    padding: 0;
+    color: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto 60px;
+    gap: 0;
+    margin-bottom: 2px;
+}
+
+.col-1 {
+    -unity-text-align: right;
+    padding-right: 6px;
+    font-size: 12px;
+    -unity-text-align: middle-right;
+}
+
+.col-2, .col-3 {
+    width: 30px;
+    flex-shrink: 0;
+    -unity-text-align: left;
+    font-size: 12px;
+    color: white;
+    -unity-text-align: middle-left;
+}
+

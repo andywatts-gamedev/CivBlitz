@@ -1,9 +1,9 @@
 @import url("Default.tss");
 
 @import url("/Assets/UI/MainMenu/MainMenu-Portrait.uss");
-
-
-
+@import url("/Assets/_UI/Game-Portrait.uss");
+@import url("/Assets/_UI/SelectedTile-Portrait.uss");
+@import url("/Assets/_UI/HoverTile-Portrait.uss");
 
 
 VisualElement {}

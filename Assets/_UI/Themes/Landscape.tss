@@ -1,10 +1,9 @@
 @import url("Default.tss");
 
 @import url("/Assets/UI/MainMenu/MainMenu-Landscape.uss");
-
-
-
-
+@import url("/Assets/_UI/Game-Landscape.uss");
+@import url("/Assets/_UI/SelectedTile-Landscape.uss");
+@import url("/Assets/_UI/HoverTile-Landscape.uss");
 
 
 

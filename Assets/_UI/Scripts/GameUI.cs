@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 using System;
 
-public class UI : MonoBehaviour
+public class GameUI : MonoBehaviour
 {
     [SerializeField] private InputEvents events;
     private UIDocument doc;
@@ -39,8 +39,8 @@ public class UI : MonoBehaviour
     {
         doc = GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
-        selectedPanel = root.Q("SelectedPanel");
-        hoverPanel = root.Q("HoverPanel");
+        selectedPanel = root.Q("SelectedTile");
+        hoverPanel = root.Q("HoverTile");
         
         // Get all UI elements
         selectedUnitSprite = selectedPanel.Q<Image>("SelectedUnitSprite");
@@ -254,3 +254,4 @@ public class UI : MonoBehaviour
         endTurnButton.SetEnabled(TurnManager.Instance.isPlayerTurn);
     }
 }
+

@@ -1,0 +1,12 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="Container" style="flex-grow: 1; position: absolute; left: 0; right: 0; bottom: 0; top: 0;">
+        <ui:Image name="AICivIcon" class="civ-icon" />
+        <ui:Image name="PlayerCivIcon" class="civ-icon" />
+        <ui:Button text="End Turn" name="EndTurn" style="display: none;" />
+        <ui:Template src="project://database/Assets/_UI/SelectedTile.uxml" name="SelectedTile" />
+        <ui:Instance template="SelectedTile" name="SelectedTileContainer" />
+        <ui:Template src="project://database/Assets/_UI/HoverTile.uxml" name="HoverTile" />
+        <ui:Instance template="HoverTile" name="HoverTileContainer" />
+    </ui:VisualElement>
+</ui:UXML>
+
