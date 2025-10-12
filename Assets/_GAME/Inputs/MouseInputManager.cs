@@ -53,7 +53,7 @@ public class MouseInputManager : MonoBehaviour
             UpdateTilePosition(mousePos);
             // Debug.Log($"{GetType().Name}: Mouse moved");
             events.EmitMouseMoved();
-            events.EmitMouseMovedToTile(tile);
+            events.EmitPointerMovedToTile(tile);
         }
         else if (lastTile.HasValue)
         {

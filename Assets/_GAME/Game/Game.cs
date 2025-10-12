@@ -167,6 +167,18 @@ public class Game : MonoBehaviour
         if (!isDragging) return;
         Debug.Log($"Drag updated: {fromTile} -> {toTile}");
         UpdatePathPreview(fromTile, toTile);
+        
+        // Show hover panel for enemy units during drag
+        if (UnitManager.Instance.TryGetUnit(toTile, out var targetUnit) && targetUnit.civ != player.civilization)
+        {
+            Debug.Log($"Dragging over enemy unit: {targetUnit.unit.name}");
+            events.EmitTileHovered(toTile);
+        }
+        else
+        {
+            // Clear hover panel when not dragging over enemy units
+            events.EmitHoverCleared();
+        }
     }
 
     private void HandleDragEnded(Vector2Int fromTile, Vector2Int toTile)
@@ -175,6 +187,9 @@ public class Game : MonoBehaviour
         isDragging = false;
         
         if (pathPreview != null) pathPreview.SetActive(false);
+        
+        // Clear hover panel when drag ends
+        events.EmitHoverCleared();
         
         if (IsValidMove(fromTile, toTile))
         {

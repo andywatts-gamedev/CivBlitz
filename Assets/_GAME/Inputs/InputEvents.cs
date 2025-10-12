@@ -16,8 +16,11 @@ public class InputEvents : ScriptableObject
     public event System.Action OnMouseMoved;
     public void EmitMouseMoved() => OnMouseMoved?.Invoke();
 
-    public event System.Action<Vector2Int?> OnMouseMovedToTile;
-    public void EmitMouseMovedToTile(Vector2Int? tile) => OnMouseMovedToTile?.Invoke(tile);
+    public event System.Action<Vector2Int?> OnPointerMovedToTile;
+    public void EmitPointerMovedToTile(Vector2Int? tile) => OnPointerMovedToTile?.Invoke(tile);
+    
+    public event System.Action OnHoverCleared;
+    public void EmitHoverCleared() => OnHoverCleared?.Invoke();
 
     // Drag events for drag-to-move
     public event System.Action<Vector2Int, Vector2Int> OnDragStarted;

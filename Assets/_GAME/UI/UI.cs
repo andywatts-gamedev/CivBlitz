@@ -80,7 +80,8 @@ public class UI : MonoBehaviour
         // Subscribe to events
         events.OnTileSelected += HandleTileSelected;
         events.OnTileHovered += HandleTileHovered;
-        events.OnMouseMovedToTile += HandleMouseMovedToTile;
+        events.OnPointerMovedToTile += HandlePointerMovedToTile;
+        events.OnHoverCleared += HandleHoverCleared;
         events.OnCancel += HandleCancel;
         events.OnTileDeselected += HandleTileDeselected;
         TurnManager.Instance.OnTurnChanged += UpdateTurnLabels;
@@ -92,7 +93,8 @@ public class UI : MonoBehaviour
     {
         events.OnTileSelected -= HandleTileSelected;
         events.OnTileHovered -= HandleTileHovered;
-        events.OnMouseMovedToTile -= HandleMouseMovedToTile;
+        events.OnPointerMovedToTile -= HandlePointerMovedToTile;
+        events.OnHoverCleared -= HandleHoverCleared;
         events.OnCancel -= HandleCancel;
         events.OnTileDeselected -= HandleTileDeselected;
         TurnManager.Instance.OnTurnChanged -= UpdateTurnLabels;
@@ -195,7 +197,7 @@ public class UI : MonoBehaviour
 
     void HandleTileSelected(Vector2Int pos) { ShowSelectedTile(pos); }
     void HandleTileHovered(Vector2Int pos) { ShowHoveredTile(pos); }
-    void HandleMouseMovedToTile(Vector2Int? tile) 
+    void HandlePointerMovedToTile(Vector2Int? tile) 
     { 
         if (hoveredTile.HasValue && (!tile.HasValue || tile.Value != hoveredTile.Value))
         {
@@ -203,6 +205,7 @@ public class UI : MonoBehaviour
             hoveredTile = null;
         }
     }
+    void HandleHoverCleared() { hoverPanel.style.display = DisplayStyle.None; hoveredTile = null; }
     void HandleCancel() { selectedPanel.style.display = DisplayStyle.None; selectedTile = null; }
     void HandleTileDeselected(Vector2Int pos) { selectedPanel.style.display = DisplayStyle.None; selectedTile = null; }
 
