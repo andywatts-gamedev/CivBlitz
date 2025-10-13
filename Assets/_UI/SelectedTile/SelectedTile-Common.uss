@@ -5,5 +5,4 @@
 
 .cell.row-name
 {
-    width: 40px;
 }
