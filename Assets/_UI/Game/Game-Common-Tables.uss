@@ -1,0 +1,39 @@
+.table
+{
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.row
+{
+    flex-direction: row;
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+    
+.attack, .defense
+{
+    width: 32px;
+    color: blue;
+    -unity-text-align: middle-center;
+}
+
+.cell
+{
+    color: white;
+    -unity-text-align: middle-center;
+}
+
+.cell.header
+{
+    color: rgb(245, 188, 24);
+}
+
+.cell.row-name
+{
+    color: green;
+    -unity-text-align: middle-right;
+    color: rgb(245, 188, 24);
+}
+
