@@ -1,8 +1,17 @@
+#SelectedTileContainer
+{
+    display: none;
+    position: absolute;
+    right: 52%;
+}
+
 .attack, .defense
 {
-    width: 32px;
+    width: 64px;
+    font-size: 32px;
 }
 
 .cell.row-name
 {
+    font-size: 32px;
 }

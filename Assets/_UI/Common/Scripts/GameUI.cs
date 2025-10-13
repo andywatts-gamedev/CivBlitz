@@ -1,88 +1,35 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Linq;
-using System.Collections.Generic;
-using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
-using System;
 
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private InputEvents events;
     private UIDocument doc;
-    private Label selectedUnitLabel, selectedHealth, selectedMovement;
-    private Label selectedHealthIcon, selectedMovementIcon;
-    private Label selectedAttack, selectedDefence;
-    private Label selectedAttackIcon, selectedDefenceIcon;
-    private Label selectedTerrainLabel, selectedMovementCost;
-    private Label selectedTerrainIcon, selectedTerrainAttack, selectedTerrainDefence;
-    private Label hoverUnitLabel, hoverHealth, hoverMovement;
-    private Label hoverHealthIcon, hoverMovementIcon;
-    private Label hoverAttack, hoverDefence;
-    private Label hoverAttackIcon, hoverDefenceIcon;
-    private Label hoverTerrainLabel, hoverMovementCost;
-    private Label hoverTerrainIcon, hoverTerrainAttack, hoverTerrainDefence;
-    private Image playerCivIcon, aiCivIcon;
-    private Image selectedUnitSprite, hoverUnitSprite;
-    private VisualElement selectedPanel, hoverPanel;
-    private Button endTurnButton;
-    private Vector2Int? selectedTile, hoveredTile;
 
+    private VisualElement selectedTileContainer, unitRow, tileRow;
+    private Label unitAttack, unitDefense, tileAttack, tileDefense, unitName, tileName;
+    private Vector2Int? selectedTile;
 
     void Start()
     {
         doc = GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
-        selectedPanel = root.Q("SelectedTile");
-        hoverPanel = root.Q("HoverTile");
-        
-        // Get all UI elements
-        selectedUnitSprite = selectedPanel.Q<Image>("SelectedUnitSprite");
-        selectedUnitLabel = selectedPanel.Q<Label>("SelectedUnitLabel"); 
-        selectedHealth = selectedPanel.Q<Label>("SelectedHealth");
-        selectedMovement = selectedPanel.Q<Label>("SelectedMovement");
-        selectedHealthIcon = selectedPanel.Q<Label>("SelectedHealthIcon");
-        selectedMovementIcon = selectedPanel.Q<Label>("SelectedMovementIcon");
-        selectedAttack = selectedPanel.Q<Label>("SelectedAttack");
-        selectedDefence = selectedPanel.Q<Label>("SelectedDefence");
-        selectedAttackIcon = selectedPanel.Q<Label>("SelectedAttackIcon");
-        selectedDefenceIcon = selectedPanel.Q<Label>("SelectedDefenceIcon");
-        selectedTerrainLabel = selectedPanel.Q<Label>("SelectedTerrainLabel");
-        selectedMovementCost = selectedPanel.Q<Label>("SelectedMovementCost");
-        selectedTerrainIcon = selectedPanel.Q<Label>("SelectedTerrainIcon");
-        selectedTerrainAttack = selectedPanel.Q<Label>("SelectedTerrainAttack");
-        selectedTerrainDefence = selectedPanel.Q<Label>("SelectedTerrainDefence");
 
-        hoverUnitSprite = hoverPanel.Q<Image>("HoverUnitSprite");
-        hoverUnitLabel = hoverPanel.Q<Label>("HoverUnitLabel"); 
-        hoverHealth = hoverPanel.Q<Label>("HoverHealth");
-        hoverMovement = hoverPanel.Q<Label>("HoverMovement");
-        hoverHealthIcon = hoverPanel.Q<Label>("HoverHealthIcon");
-        hoverMovementIcon = hoverPanel.Q<Label>("HoverMovementIcon");
-        hoverAttack = hoverPanel.Q<Label>("HoverAttack");
-        hoverDefence = hoverPanel.Q<Label>("HoverDefence");
-        hoverAttackIcon = hoverPanel.Q<Label>("HoverAttackIcon");
-        hoverDefenceIcon = hoverPanel.Q<Label>("HoverDefenceIcon");
-        hoverTerrainLabel = hoverPanel.Q<Label>("HoverTerrainLabel");
-        hoverMovementCost = hoverPanel.Q<Label>("HoverMovementCost");
-        hoverTerrainIcon = hoverPanel.Q<Label>("HoverTerrainIcon");
-        hoverTerrainAttack = hoverPanel.Q<Label>("HoverTerrainAttack");
-        hoverTerrainDefence = hoverPanel.Q<Label>("HoverTerrainDefence");
+        selectedTileContainer = root.Q("SelectedTileContainer");
+        unitRow = selectedTileContainer.Q("UnitRow");
+        unitName = selectedTileContainer.Q<Label>("UnitName");
+        unitAttack = selectedTileContainer.Q<Label>("UnitAttack");
+        unitDefense = selectedTileContainer.Q<Label>("UnitDefense");
+        tileName = selectedTileContainer.Q<Label>("TileName");
+        tileAttack = selectedTileContainer.Q<Label>("TileAttack");
+        tileDefense = selectedTileContainer.Q<Label>("TileDefense");
 
-        playerCivIcon = root.Q<Image>("PlayerCivIcon");
-        aiCivIcon = root.Q<Image>("AICivIcon");
-        endTurnButton = root.Q<Button>("EndTurn") ?? CreateEndTurnButton(root);
-
-        selectedPanel.style.display = DisplayStyle.None;
-        hoverPanel.style.display = DisplayStyle.None;
-        
-        // Subscribe to events
         events.OnTileSelected += HandleTileSelected;
-        events.OnTileHovered += HandleTileHovered;
-        events.OnPointerMovedToTile += HandlePointerMovedToTile;
-        events.OnHoverCleared += HandleHoverCleared;
-        events.OnCancel += HandleCancel;
         events.OnTileDeselected += HandleTileDeselected;
+        events.OnCancel += HandleCancel;
+
         TurnManager.Instance.OnTurnChanged += UpdateTurnLabels;
         
         UpdateTurnLabels();
@@ -91,151 +38,42 @@ public class GameUI : MonoBehaviour
     void OnDisable() 
     {
         events.OnTileSelected -= HandleTileSelected;
-        events.OnTileHovered -= HandleTileHovered;
-        events.OnPointerMovedToTile -= HandlePointerMovedToTile;
-        events.OnHoverCleared -= HandleHoverCleared;
         events.OnCancel -= HandleCancel;
         events.OnTileDeselected -= HandleTileDeselected;
         TurnManager.Instance.OnTurnChanged -= UpdateTurnLabels;
     }
 
-    private Button CreateEndTurnButton(VisualElement root)
-    {
-        var btn = new Button(() => TurnManager.Instance.EndTurn()) { text = "End Turn" };
-        root.Add(btn);
-        return btn;
-    }
 
     private void ShowSelectedTile(Vector2Int pos)
     {
         selectedTile = pos;
-        selectedPanel.style.display = DisplayStyle.Flex;
+        selectedTileContainer.style.display = DisplayStyle.Flex;
+
+        // Display Unit Row
+        unitRow.style.display = DisplayStyle.None;
+        if (UnitManager.Instance.TryGetUnit(pos, out var unit))
+        {
+            unitName.text = unit.unit.name;
+            unitAttack.text = unit.unit.melee.ToString();
+            unitDefense.text = unit.unit.ranged.ToString();
+            unitRow.style.display = DisplayStyle.Flex;
+        }
+
+        // Display Tile Row
         var tile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)pos) as TerrainTile;
         var terrain = tile.terrainScob.terrain;
-        selectedTerrainLabel.text = terrain.name;
-        // selectedMovementCost.text = terrain.movementCost.ToString();
-        selectedTerrainAttack.text = terrain.attackBonus.ToString();
-        selectedTerrainDefence.text = terrain.defenseBonus.ToString();
-        
-        if (!UnitManager.Instance.TryGetUnit(pos, out var unit))
-        {
-            SetSelectedLabelsVisible(false);
-            return;
-        }
-
-        UpdateSelectedPanel(unit);
-        SetSelectedLabelsVisible(true);
+        tileName.text = terrain.name;
+        tileAttack.text = terrain.attackBonus.ToString();
+        tileDefense.text = terrain.defenseBonus.ToString();
     }
 
-    private void ShowHoveredTile(Vector2Int pos)
-    {
-        hoveredTile = pos;
-        var tile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)pos) as TerrainTile;
-        if (tile == null)
-            return;
-        hoverPanel.style.display = DisplayStyle.Flex;
-        var terrain = tile.terrainScob.terrain;
-        hoverTerrainLabel.text = terrain.name;
-        // hoverMovementCost.text = terrain.movementCost.ToString();
-        hoverTerrainAttack.text = terrain.attackBonus.ToString();
-        hoverTerrainDefence.text = terrain.defenseBonus.ToString();
-        
-        if (!UnitManager.Instance.TryGetUnit(pos, out var unit))
-        {
-            SetHoverLabelsVisible(false);
-            return;
-        }
-
-        UpdateHoverPanel(unit);
-        SetHoverLabelsVisible(true);
-    }
-
-    private void SetSelectedLabelsVisible(bool visible)
-    {
-        var display = visible ? DisplayStyle.Flex : DisplayStyle.None;
-        selectedUnitLabel.style.display = display;
-        selectedHealth.style.display = display;
-        selectedHealthIcon.style.display = display;
-        selectedMovement.style.display = display;
-        selectedMovementIcon.style.display = display;
-        selectedAttack.style.display = display;
-        selectedAttackIcon.style.display = display;
-        selectedDefence.style.display = display;
-        selectedDefenceIcon.style.display = display;
-    }
-
-    private void SetHoverLabelsVisible(bool visible)
-    {
-        var display = visible ? DisplayStyle.Flex : DisplayStyle.None;
-        hoverUnitLabel.style.display = display;
-        hoverHealth.style.display = display;
-        hoverHealthIcon.style.display = display;
-        hoverMovement.style.display = display;
-        hoverMovementIcon.style.display = display;
-        hoverAttack.style.display = display;
-        hoverAttackIcon.style.display = display;
-        hoverDefence.style.display = display;
-        hoverDefenceIcon.style.display = display;
-    }
-
-    private void UpdateSelectedPanel(UnitInstance unit)
-    {
-        var sprite = GetUnitSprite(selectedTile.Value);
-        if (sprite != null)
-        {
-            selectedUnitSprite.sprite = sprite;
-            selectedUnitSprite.style.display = DisplayStyle.Flex;
-            Debug.Log($"Set selected sprite: {unit.unit.name} -> {sprite.name}");
-        }
-        else
-        {
-            selectedUnitSprite.style.display = DisplayStyle.None;
-            Debug.LogWarning($"No sprite found for unit at {selectedTile.Value}");
-        }
-        selectedUnitLabel.text = unit.unit.name;
-        selectedHealth.text = unit.health.ToString();
-        selectedMovement.text = $"{unit.movesLeft}/{unit.unit.movement}";
-        selectedAttack.text = unit.unit.melee.ToString();
-        selectedDefence.text = unit.unit.ranged.ToString();
-    }
-
-    private void UpdateHoverPanel(UnitInstance unit)
-    {
-        var sprite = GetUnitSprite(hoveredTile.Value);
-        if (sprite != null)
-        {
-            hoverUnitSprite.sprite = sprite;
-            hoverUnitSprite.style.display = DisplayStyle.Flex;
-        }
-        else
-        {
-            hoverUnitSprite.style.display = DisplayStyle.None;
-        }
-        hoverUnitLabel.text = unit.unit.name;
-        hoverHealth.text = unit.health.ToString();
-        hoverMovement.text = $"{unit.movesLeft}/{unit.unit.movement}";
-        hoverAttack.text = unit.unit.melee.ToString();
-        hoverDefence.text = unit.unit.ranged.ToString();
-    }
-
-    void HandleTileSelected(Vector2Int pos) { ShowSelectedTile(pos); }
-    void HandleTileHovered(Vector2Int pos) { ShowHoveredTile(pos); }
-    void HandlePointerMovedToTile(Vector2Int? tile) 
+    void HandleTileSelected(Vector2Int pos) => ShowSelectedTile(pos);
+    void HandleCancel() { selectedTileContainer.style.display = DisplayStyle.None; selectedTile = null; }
+    void HandleTileDeselected(Vector2Int pos) 
     { 
-        if (hoveredTile.HasValue && (!tile.HasValue || tile.Value != hoveredTile.Value))
-        {
-            hoverPanel.style.display = DisplayStyle.None;
-            hoveredTile = null;
-        }
-    }
-    void HandleHoverCleared() { hoverPanel.style.display = DisplayStyle.None; hoveredTile = null; }
-    void HandleCancel() { selectedPanel.style.display = DisplayStyle.None; selectedTile = null; }
-    void HandleTileDeselected(Vector2Int pos) { selectedPanel.style.display = DisplayStyle.None; selectedTile = null; }
-
-    private Sprite GetUnitSprite(Vector2Int tilePos)
-    {
-        var unitTile = UnitManager.Instance.unitTilemap.GetTile((Vector3Int)tilePos) as UnitTile;
-        return unitTile?.unitSCOB?.sprite;
+        selectedTile = null; 
+        selectedTileContainer.style.display = DisplayStyle.None; 
+        unitRow.style.display = DisplayStyle.None;
     }
 
     void UpdateTurnLabels()
@@ -244,10 +82,6 @@ public class GameUI : MonoBehaviour
         if (player == null || UnitManager.Instance.civUnits.Count < 2) return;
             
         var aiCiv = UnitManager.Instance.civUnits.Keys.First(c => c != player.civilization);
-        
-        playerCivIcon.image = Game.Instance.civilizations[player.civilization].icon;
-        aiCivIcon.image = Game.Instance.civilizations[aiCiv].icon;
-        endTurnButton.SetEnabled(TurnManager.Instance.isPlayerTurn);
     }
 }
 

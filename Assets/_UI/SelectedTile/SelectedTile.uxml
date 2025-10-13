@@ -1,19 +1,19 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <ui:VisualElement name="SelectedTile" class="table">
-        <ui:VisualElement name="VisualElement" class="row">
+        <ui:VisualElement name="HeaderRow" class="row">
             <ui:Label class="cell row-name" />
-            <ui:Label name="SelectedAttackIcon" text="" class="cell header attack font-awesome" />
-            <ui:Label name="SelectedDefenseIcon" text="" class="cell header defense font-awesome" />
+            <ui:Label name="AttackIcon" text="" class="cell header attack font-awesome" />
+            <ui:Label name="DefenseIcon" text="" class="cell header defense font-awesome" />
         </ui:VisualElement>
-        <ui:VisualElement name="VisualElement" class="row">
-            <ui:Label text="labellabel" class="cell row-name" />
-            <ui:Label name="SelectedAttackIcon" text="A" class="cell attack" />
-            <ui:Label name="SelectedDefenseIcon" text="D" class="cell defense" />
+        <ui:VisualElement name="UnitRow" class="row">
+            <ui:Label name="UnitName" text="label" class="cell row-name" />
+            <ui:Label name="UnitAttack" text="33" class="cell attack" />
+            <ui:Label name="UnitDefense" text="23" class="cell defense" />
         </ui:VisualElement>
-        <ui:VisualElement name="VisualElement" class="row">
-            <ui:Label text="label" class="cell row-name" />
-            <ui:Label name="SelectedTileUnitAttack" text="33" class="cell attack" />
-            <ui:Label name="SelectedTileUnitDefense" text="23" class="cell defense" />
+        <ui:VisualElement name="TileRow" class="row">
+            <ui:Label name="TileName" text="labellabel" class="cell row-name" />
+            <ui:Label name="TileAttack" text="A" class="cell attack" />
+            <ui:Label name="TileDefense" text="D" class="cell defense" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
