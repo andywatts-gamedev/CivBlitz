@@ -1,0 +1,19 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="TargetTile" class="table">
+        <ui:VisualElement name="HeaderRow" class="row">
+            <ui:Label name="AttackIcon" text="" class="cell header attack font-awesome" />
+            <ui:Label name="DefenseIcon" text="" class="cell header defense font-awesome" />
+            <ui:Label class="cell row-name" />
+        </ui:VisualElement>
+        <ui:VisualElement name="UnitRow" class="row">
+            <ui:Label name="UnitAttack" text="33" class="cell attack" />
+            <ui:Label name="UnitDefense" text="23" class="cell defense" />
+            <ui:Label name="UnitName" text="label" class="cell row-name" />
+        </ui:VisualElement>
+        <ui:VisualElement name="TileRow" class="row">
+            <ui:Label name="TileAttack" text="A" class="cell attack" />
+            <ui:Label name="TileDefense" text="D" class="cell defense" />
+            <ui:Label name="TileName" text="labellabel" class="cell row-name" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -8,4 +8,7 @@
 @import url("/Assets/_UI/SelectedTile/SelectedTile-Common.uss");
 @import url("/Assets/_UI/SelectedTile/SelectedTile-Landscape.uss");
 
+@import url("/Assets/_UI/TargetTile/TargetTile-Common.uss");
+@import url("/Assets/_UI/TargetTile/TargetTile-Landscape.uss");
+
 VisualElement {}

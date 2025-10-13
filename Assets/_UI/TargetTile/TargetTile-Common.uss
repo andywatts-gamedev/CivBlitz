@@ -1,0 +1,22 @@
+#TargetTileContainer
+{
+    display: none;
+    position: absolute;
+    left: 52%;
+}
+
+#TargetTile
+{
+    align-items: flex-start;
+}
+
+.attack, .defense
+{
+    width: 64px;
+    font-size: 32px;
+}
+
+.cell.row-name
+{
+    font-size: 32px;
+}
