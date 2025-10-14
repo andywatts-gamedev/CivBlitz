@@ -16,6 +16,12 @@
     font-size: 32px;
 }
 
+.attack
+{
+    display: none;
+}
+
+
 .cell.row-name
 {
     font-size: 32px;
