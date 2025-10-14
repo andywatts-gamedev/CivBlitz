@@ -45,12 +45,14 @@ public class SelectedTileUI : MonoBehaviour
         if (UnitManager.Instance.TryGetUnit(pos, out var unit))
         {
             unitName.text = unit.unit.name;
-            unitAttack.text = unit.unit.melee.ToString();
-            unitDefense.text = unit.unit.ranged.ToString();
+            unitAttack.text = (unit.unit.type == UnitType.Ranged ? unit.unit.ranged : unit.unit.melee).ToString();
+            unitDefense.text = unit.unit.melee.ToString();
             unitRow.style.display = DisplayStyle.Flex;
         }
 
         var tile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)pos) as TerrainTile;
+        if (tile == null) return;
+        
         var terrain = tile.terrainScob.terrain;
         tileName.text = terrain.name;
         tileAttack.text = terrain.attackBonus.ToString();
