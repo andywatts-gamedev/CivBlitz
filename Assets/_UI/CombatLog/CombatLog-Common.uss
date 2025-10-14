@@ -1,8 +1,12 @@
-.combat-log-panel {
+#CombatLogContainer
+{
     display: none;
+}
+
+.combat-log-panel {
+    display: flex;
     flex-shrink: 0;
     border-radius: 6px; 
-    background-color: rgba(0, 0, 0, 0.8);
     padding: 10px 20px;
     min-width: 280px;
     max-width: 350px;
@@ -15,11 +19,12 @@
 }
 
 .combat-entry {
-    border-radius: 4px;
+    border-radius: 5px;
     padding: 6px 8px;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
     border-left-width: 3px;
     border-left-color: rgb(245, 188, 24);
+    background-color: rgba(20, 20, 20, 0.9);
 }
 
 .combat-row {
@@ -44,7 +49,6 @@
 .combat-vs {
     font-size: 16px;
     color: rgb(150, 150, 150);
-    -unity-text-align: middle-center;
 }
 
 .combat-stat {

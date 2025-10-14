@@ -234,6 +234,7 @@ public class Game : MonoBehaviour
         if (lineRenderer == null)
         {
             lineRenderer = pathPreview.AddComponent<LineRenderer>();
+            
             // Use Unity's default line material
             lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended"));
             lineRenderer.startWidth = 0.3f;
@@ -241,6 +242,23 @@ public class Game : MonoBehaviour
             lineRenderer.positionCount = 2;
             lineRenderer.useWorldSpace = true;
             lineRenderer.sortingOrder = 10; // Make sure it renders on top
+            
+            // Mobile compatibility settings for proper width taper
+            lineRenderer.alignment = LineAlignment.TransformZ;
+            lineRenderer.textureMode = LineTextureMode.Tile;
+            lineRenderer.generateLightingData = false;
+            lineRenderer.numCapVertices = 4; // Smooth caps
+            lineRenderer.numCornerVertices = 4; // Smooth corners
+            
+            // Ensure proper rendering on mobile
+            lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            lineRenderer.receiveShadows = false;
+            
+            // Force width curve for mobile - some mobile GPUs ignore startWidth/endWidth
+            var widthCurve = new AnimationCurve();
+            widthCurve.AddKey(0f, 0.3f); // Start width
+            widthCurve.AddKey(1f, 0.1f); // End width
+            lineRenderer.widthCurve = widthCurve;
         }
         
         // Set positions with slight offset to avoid z-fighting

@@ -40,7 +40,9 @@ public class CombatLogUI : MonoBehaviour
     {
         if (panel == null) return;
         
+        // Always show the panel when combat happens
         panel.style.display = DisplayStyle.Flex;
+        panel.SetEnabled(true);
         
         var entry = new VisualElement();
         entry.AddToClassList("combat-entry");
@@ -93,40 +95,40 @@ public class CombatLogUI : MonoBehaviour
         healthRow.AddToClassList("combat-row");
         healthRow.AddToClassList("combat-health-row");
         
-        // Left column - defender health
-        var defenderHealthCol = new VisualElement();
-        defenderHealthCol.AddToClassList("combat-health-col");
-        defenderHealthCol.AddToClassList("combat-health-col-left");
+        // Left column - attacker health
+        var attackerHealthCol = new VisualElement();
+        attackerHealthCol.AddToClassList("combat-health-col");
+        attackerHealthCol.AddToClassList("combat-health-col-left");
         
-        var defenderHealth = new Label($"{e.defenderHealthBefore} → {e.defenderHealthAfter}");
-        defenderHealth.AddToClassList("combat-health-text");
+        var attackerHealth = new Label($"{e.attackerHealthBefore} → {e.attackerHealthAfter}");
+        attackerHealth.AddToClassList("combat-health-text");
         
         var heartGlyph1 = new Label(HEART_GLYPH);
         heartGlyph1.AddToClassList("combat-glyph");
         heartGlyph1.AddToClassList("font-awesome");
         heartGlyph1.AddToClassList("combat-heart");
         
-        defenderHealthCol.Add(defenderHealth);
-        defenderHealthCol.Add(heartGlyph1);
+        attackerHealthCol.Add(attackerHealth);
+        attackerHealthCol.Add(heartGlyph1);
         
-        // Right column - attacker health
-        var attackerHealthCol = new VisualElement();
-        attackerHealthCol.AddToClassList("combat-health-col");
-        attackerHealthCol.AddToClassList("combat-health-col-right");
+        // Right column - defender health
+        var defenderHealthCol = new VisualElement();
+        defenderHealthCol.AddToClassList("combat-health-col");
+        defenderHealthCol.AddToClassList("combat-health-col-right");
         
         var heartGlyph2 = new Label(HEART_GLYPH);
         heartGlyph2.AddToClassList("combat-glyph");
         heartGlyph2.AddToClassList("font-awesome");
         heartGlyph2.AddToClassList("combat-heart");
         
-        var attackerHealth = new Label($"{e.attackerHealthBefore} → {e.attackerHealthAfter}");
-        attackerHealth.AddToClassList("combat-health-text");
+        var defenderHealth = new Label($"{e.defenderHealthBefore} → {e.defenderHealthAfter}");
+        defenderHealth.AddToClassList("combat-health-text");
         
-        attackerHealthCol.Add(heartGlyph2);
-        attackerHealthCol.Add(attackerHealth);
+        defenderHealthCol.Add(heartGlyph2);
+        defenderHealthCol.Add(defenderHealth);
         
-        healthRow.Add(defenderHealthCol);
         healthRow.Add(attackerHealthCol);
+        healthRow.Add(defenderHealthCol);
         entry.Add(healthRow);
 
         entriesContainer.Add(entry);
