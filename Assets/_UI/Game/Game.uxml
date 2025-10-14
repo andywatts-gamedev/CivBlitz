@@ -4,4 +4,7 @@
 
     <ui:Template name="TargetTile" src="project://database/Assets/_UI/TargetTile/TargetTile.uxml" />
     <ui:Instance template="TargetTile" name="TargetTileContainer" />
+
+    <ui:Template name="CombatLog" src="project://database/Assets/_UI/CombatLog/CombatLog.uxml" />
+    <ui:Instance template="CombatLog" name="CombatLogContainer" />
 </ui:UXML>

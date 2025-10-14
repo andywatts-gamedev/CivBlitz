@@ -11,4 +11,7 @@
 @import url("/Assets/_UI/TargetTile/Targetile-Common.uss");
 @import url("/Assets/_UI/Targetile/Targetile-Portrait.uss");
 
+@import url("/Assets/_UI/CombatLog/CombatLog-Common.uss");
+@import url("/Assets/_UI/CombatLog/CombatLog-Portrait.uss");
+
 VisualElement {}

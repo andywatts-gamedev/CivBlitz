@@ -1,0 +1,57 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="CombatLog" class="combat-log-panel">
+        <ui:VisualElement name="CombatEntries" class="combat-log-entries">
+            <!-- Sample combat entry for UI Builder preview -->
+            <ui:VisualElement class="combat-entry">
+                <!-- Row 1: Unit names -->
+                <ui:VisualElement class="combat-row">
+                    <!-- Left column - Attacker -->
+                    <ui:VisualElement class="combat-health-col combat-health-col-left">
+                        <ui:Label name="AttackerName" text="Warrior" class="combat-name" />
+                    </ui:VisualElement>
+                    
+                    <!-- Center - VS -->
+                    <ui:VisualElement class="combat-vs-container">
+                        <ui:Label text=" vs. " class="combat-vs" />
+                    </ui:VisualElement>
+                    
+                    <!-- Right column - Defender -->
+                    <ui:VisualElement class="combat-health-col combat-health-col-right">
+                        <ui:Label name="DefenderName" text="Slinger" class="combat-name" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                
+                <!-- Row 2: Attack/Defense stats -->
+                <ui:VisualElement class="combat-row">
+                    <!-- Left column - Attack -->
+                    <ui:VisualElement class="combat-health-col combat-health-col-left">
+                        <ui:Label name="AttackStrength" text="20" class="combat-stat" />
+                        <ui:Label name="AttackGlyph" text="&#xf71c;" class="combat-glyph font-awesome" />
+                    </ui:VisualElement>
+                    
+                    <!-- Right column - Defense -->
+                    <ui:VisualElement class="combat-health-col combat-health-col-right">
+                        <ui:Label text="&#xf3ed;" class="combat-glyph font-awesome" />
+                        <ui:Label name="DefenseStrength" text="5" class="combat-stat" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                
+                <!-- Row 3: Health before/after -->
+                <ui:VisualElement class="combat-row combat-health-row">
+                    <!-- Left column - defender health -->
+                    <ui:VisualElement class="combat-health-col combat-health-col-left">
+                        <ui:Label name="DefenderHealth" text="100 → 37" class="combat-health-text" />
+                        <ui:Label text="&#xf004;" class="combat-glyph font-awesome combat-heart" />
+                    </ui:VisualElement>
+                    
+                    <!-- Right column - attacker health -->
+                    <ui:VisualElement class="combat-health-col combat-health-col-right">
+                        <ui:Label text="&#xf004;" class="combat-glyph font-awesome combat-heart" />
+                        <ui:Label name="AttackerHealth" text="100 → 84" class="combat-health-text" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
+

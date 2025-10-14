@@ -1,0 +1,93 @@
+.combat-log-panel {
+    display: none;
+    flex-shrink: 0;
+    border-radius: 6px; 
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    min-width: 280px;
+    max-width: 350px;
+    max-height: 500px;
+    flex-direction: column;
+}
+
+.combat-log-entries {
+    flex-direction: column-reverse;
+}
+
+.combat-entry {
+    border-radius: 4px;
+    padding: 6px 8px;
+    margin-bottom: 6px;
+    border-left-width: 3px;
+    border-left-color: rgb(245, 188, 24);
+}
+
+.combat-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2px;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.combat-name {
+    font-size: 20px;
+    -unity-font-style: bold;
+}
+
+.combat-vs-container {
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+}
+
+.combat-vs {
+    font-size: 16px;
+    color: rgb(150, 150, 150);
+    -unity-text-align: middle-center;
+}
+
+.combat-stat {
+    font-size: 18px;
+    color: rgb(100, 200, 255);
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.combat-glyph {
+    font-size: 18px;
+    margin-left: 3px;
+    margin-right: 3px;
+    color: rgb(245, 188, 24);
+}
+
+.combat-health-row {
+    justify-content: space-between;
+}
+
+.combat-health-col {
+    flex-direction: row;
+    align-items: center;
+    width: 45%;
+}
+
+.combat-health-col-left {
+    justify-content: flex-end;
+}
+
+.combat-health-col-right {
+    justify-content: flex-start;
+}
+
+.combat-health-text {
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    margin-left: 3px;
+    margin-right: 3px;
+    -unity-font-style: bold;
+}
+
+.combat-heart {
+    color: rgb(255, 80, 80);
+}
+
