@@ -235,8 +235,11 @@ public class Game : MonoBehaviour
         {
             lineRenderer = pathPreview.AddComponent<LineRenderer>();
             
-            // Use Unity's default line material
-            lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended"));
+            // Use URP-compatible material
+            var shader = Shader.Find("Universal Render Pipeline/Unlit");
+            if (shader == null) shader = Shader.Find("Universal Render Pipeline/2D/Sprite-Lit-Default");
+            if (shader == null) shader = Shader.Find("Sprites/Default");
+            lineRenderer.material = new Material(shader);
             lineRenderer.startWidth = 0.3f;
             lineRenderer.endWidth = 0.1f;
             lineRenderer.positionCount = 2;

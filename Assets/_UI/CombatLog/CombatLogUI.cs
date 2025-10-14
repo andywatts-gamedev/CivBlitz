@@ -44,6 +44,18 @@ public class CombatLogUI : MonoBehaviour
         panel.style.display = DisplayStyle.Flex;
         panel.SetEnabled(true);
         
+        // Clear any placeholder entries from UXML on first real combat
+        if (entriesContainer.childCount > 0)
+        {
+            // Check if the first child is a placeholder (has no real combat data)
+            var firstChild = entriesContainer[0];
+            if (firstChild.Q<Label>("AttackerName") != null)
+            {
+                // This is the placeholder entry from UXML, remove it
+                entriesContainer.RemoveAt(0);
+            }
+        }
+        
         var entry = new VisualElement();
         entry.AddToClassList("combat-entry");
 
@@ -100,7 +112,10 @@ public class CombatLogUI : MonoBehaviour
         attackerHealthCol.AddToClassList("combat-health-col");
         attackerHealthCol.AddToClassList("combat-health-col-left");
         
-        var attackerHealth = new Label($"{e.attackerHealthBefore} → {e.attackerHealthAfter}");
+        var attackerHealthText = e.attackerHealthBefore == e.attackerHealthAfter 
+            ? e.attackerHealthBefore.ToString() 
+            : $"{e.attackerHealthBefore} → {e.attackerHealthAfter}";
+        var attackerHealth = new Label(attackerHealthText);
         attackerHealth.AddToClassList("combat-health-text");
         
         var heartGlyph1 = new Label(HEART_GLYPH);
@@ -121,7 +136,10 @@ public class CombatLogUI : MonoBehaviour
         heartGlyph2.AddToClassList("font-awesome");
         heartGlyph2.AddToClassList("combat-heart");
         
-        var defenderHealth = new Label($"{e.defenderHealthBefore} → {e.defenderHealthAfter}");
+        var defenderHealthText = e.defenderHealthBefore == e.defenderHealthAfter 
+            ? e.defenderHealthBefore.ToString() 
+            : $"{e.defenderHealthBefore} → {e.defenderHealthAfter}";
+        var defenderHealth = new Label(defenderHealthText);
         defenderHealth.AddToClassList("combat-health-text");
         
         defenderHealthCol.Add(heartGlyph2);
