@@ -7,4 +7,10 @@
 
     <ui:Template name="CombatLog" src="project://database/Assets/_UI/CombatLog/CombatLog.uxml" />
     <ui:Instance template="CombatLog" name="CombatLogContainer" />
+
+    <ui:Template name="UnitButtons" src="project://database/Assets/_UI/UnitButtons/UnitButtons.uxml" />
+    <ui:Instance template="UnitButtons" name="UnitButtonsContainer" />
+
+    <ui:Template name="GameButtons" src="project://database/Assets/_UI/GameButtons/GameButtons.uxml" />
+    <ui:Instance template="GameButtons" name="GameButtonsContainer" />
 </ui:UXML>

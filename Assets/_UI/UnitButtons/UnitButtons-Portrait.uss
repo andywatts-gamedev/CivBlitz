@@ -1,0 +1,8 @@
+#UnitButtonsContainer {
+    display: none;
+    position: absolute;
+    right: 2%;
+    bottom: 8%;
+    width: auto;
+    height: auto;
+}

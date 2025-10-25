@@ -124,4 +124,42 @@ public class UnitManager : MonoBehaviour
             units.Remove(position);
         }
     }
+
+    public UnitInstance GetNextReadyUnit()
+    {
+        foreach (var kvp in units)
+        {
+            var unit = kvp.Value;
+            if (unit.civ == Game.Instance.player.civilization && 
+                unit.movesLeft > 0 && 
+                unit.state == UnitState.Ready)
+            {
+                return unit;
+            }
+        }
+        return null;
+    }
+
+    public void ResetUnitStates()
+    {
+        var positions = new List<Vector2Int>(units.Keys);
+        foreach (var pos in positions)
+        {
+            var unit = units[pos];
+            if (unit.state == UnitState.Resting)
+            {
+                unit.state = UnitState.Ready;
+                units[pos] = unit;
+            }
+        }
+    }
+
+    public void SetUnitState(Vector2Int position, UnitState newState)
+    {
+        if (units.TryGetValue(position, out var unit))
+        {
+            unit.state = newState;
+            units[position] = unit;
+        }
+    }
 } 

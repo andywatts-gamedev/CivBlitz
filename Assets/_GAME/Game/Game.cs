@@ -147,14 +147,16 @@ public class Game : MonoBehaviour
         UnitManager.Instance.MoveUnit(from, to);
         
         // Check if any player units can still move
-        if (!UnitManager.Instance.units.Any(u => u.Value.civ == Game.Instance.player.civilization && u.Value.movesLeft > 0))
+        if (!UnitManager.Instance.units.Any(u => u.Value.civ == Game.Instance.player.civilization && u.Value.movesLeft > 0 && u.Value.state == UnitState.Ready))
             TurnManager.Instance.EndTurn();
     }
 
     private void HandleDragStarted(Vector2Int fromTile, Vector2Int toTile)
     {
         Debug.Log($"Drag started: {fromTile} -> {toTile}");
-        if (!UnitManager.Instance.TryGetUnit(fromTile, out var unit) || unit.civ != player.civilization)
+        if (!UnitManager.Instance.TryGetUnit(fromTile, out var unit) || 
+            unit.civ != player.civilization || 
+            unit.state != UnitState.Ready)
             return;
             
         isDragging = true;

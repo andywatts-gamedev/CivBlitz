@@ -1,6 +1,13 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+public enum UnitState
+{
+    Ready,
+    Resting,
+    Fortified
+}
+
 public class UnitInstance
 {
     public Unit unit;
@@ -8,6 +15,7 @@ public class UnitInstance
     public Vector2Int position;
     public int movesLeft;
     public int health;
+    public UnitState state;
 
     public UnitInstance(Unit unit, Civilization civ, Vector2Int pos)
     {
@@ -16,5 +24,6 @@ public class UnitInstance
         this.position = pos;
         this.movesLeft = unit.movement;
         this.health = unit.health;
+        this.state = UnitState.Ready;
     }
 }

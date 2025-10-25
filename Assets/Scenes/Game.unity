@@ -715,6 +715,7 @@ GameObject:
   - component: {fileID: 842609488}
   - component: {fileID: 842609487}
   - component: {fileID: 842609489}
+  - component: {fileID: 842609490}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -823,6 +824,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75dbcc833e1e5462687cbd47e69390ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatLogUI
+--- !u!114 &842609490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842609482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f732bf9a6709c4fd3a9c370433d3b6fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitButtonsUI
+  events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
 --- !u!1 &852271061
 GameObject:
   m_ObjectHideFlags: 0

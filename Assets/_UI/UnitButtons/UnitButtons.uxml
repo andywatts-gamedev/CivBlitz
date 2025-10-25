@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="UnitButtons" class="unit-buttons-panel">
+        <ui:Button name="RestButton" text="&#xf236;" class="unit-action-button font-awesome" />
+        <ui:Button name="FortifyButton" text="&#xf3ed;" class="unit-action-button font-awesome" />
+    </ui:VisualElement>
+</ui:UXML>

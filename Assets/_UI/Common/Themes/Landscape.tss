@@ -14,4 +14,10 @@
 @import url("/Assets/_UI/CombatLog/CombatLog-Common.uss");
 @import url("/Assets/_UI/CombatLog/CombatLog-Landscape.uss");
 
+@import url("/Assets/_UI/UnitButtons/UnitButtons-Common.uss");
+@import url("/Assets/_UI/UnitButtons/UnitButtons-Landscape.uss");
+
+@import url("/Assets/_UI/GameButtons/GameButtons-Common.uss");
+@import url("/Assets/_UI/GameButtons/GameButtons-Landscape.uss");
+
 VisualElement {}

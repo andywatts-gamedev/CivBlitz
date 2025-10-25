@@ -1,0 +1,5 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="GameButtons" class="game-buttons-panel">
+        <ui:Button name="TurnButton" text="&#xf04e;" class="turn-button font-awesome" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -80,5 +80,6 @@ public class TurnManager : Singleton<TurnManager>
         OnTurnChanged?.Invoke();
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         UnitManager.Instance.ResetMoves();
+        UnitManager.Instance.ResetUnitStates();
     }
 } 
