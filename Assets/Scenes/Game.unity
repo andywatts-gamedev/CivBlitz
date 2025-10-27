@@ -716,6 +716,7 @@ GameObject:
   - component: {fileID: 842609487}
   - component: {fileID: 842609489}
   - component: {fileID: 842609490}
+  - component: {fileID: 842609491}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -755,7 +756,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 842609482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fda94ad931c543ad9e9d8c0a3e83b27, type: 3}
+  m_Script: {fileID: 11500000, guid: 298f5e3a5efcc46f9b63d1de95f5b115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &842609485
@@ -780,7 +781,7 @@ Transform:
   m_GameObject: {fileID: 842609482}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.21102, y: -0.12715, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -795,7 +796,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 842609482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ca26e9def8848bdbd7643498c33e48, type: 3}
+  m_Script: {fileID: 11500000, guid: d799126b65b5146bf8bef2821bbfd0da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectedTileUI
   events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
@@ -808,7 +809,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 842609482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d23155989c744029b36f10880774416, type: 3}
+  m_Script: {fileID: 11500000, guid: 99679a8abf9ce4e69b42b01344e88a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetTileUI
   events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
@@ -833,9 +834,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 842609482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f732bf9a6709c4fd3a9c370433d3b6fd, type: 3}
+  m_Script: {fileID: 11500000, guid: c18b44e5f3d754283aa8da6b4e5ad9b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitButtonsUI
+  events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
+--- !u!114 &842609491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842609482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 515a6340d3b004ac482e90a4f2e9ec84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameButtonsUI
   events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
 --- !u!1 &852271061
 GameObject:

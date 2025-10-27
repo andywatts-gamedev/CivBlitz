@@ -105,6 +105,7 @@ public class CombatManager : Singleton<CombatManager>
                 
                 UnitManager.Instance.UpdateUnit(attackerPos, attacker);
                 UnitManager.Instance.UpdateUnit(defenderPos, defender);
+                UnitManager.Instance.EmitMovesConsumed();
                 
                 StartCoroutine(CombatCoroutine(
                     combatEvent,

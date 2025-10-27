@@ -5,23 +5,26 @@
     padding: 1%;
 }
 
-.turn-button {
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
+.next-unit-button,
+.next-turn-button {
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
     background-color: rgba(0, 0, 0, 0.7);
-    border-width: 2px;
+    border-width: 3px;
     border-color: rgba(255, 255, 255, 0.8);
     color: white;
-    font-size: 24px;
+    font-size: 36px;
     -unity-text-align: middle-center;
 }
 
-.turn-button:hover {
+.next-unit-button:hover,
+.next-turn-button:hover {
     background-color: rgba(0, 0, 0, 0.9);
     border-color: white;
 }
 
-.turn-button:active {
+.next-unit-button:active,
+.next-turn-button:active {
     background-color: rgba(255, 255, 255, 0.2);
 }

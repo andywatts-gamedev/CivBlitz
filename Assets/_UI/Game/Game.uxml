@@ -1,16 +1,12 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <ui:Template name="SelectedTile" src="project://database/Assets/_UI/SelectedTile/SelectedTile.uxml?fileID=9197481963319205126&amp;guid=45837e208e898492199118405d74ab88&amp;type=3#SelectedTile" />
+    <ui:Template name="TargetTile" src="project://database/Assets/_UI/TargetTile/TargetTile.uxml?fileID=9197481963319205126&amp;guid=84c87e0837a754982955235f33841f1c&amp;type=3#TargetTile" />
+    <ui:Template name="CombatLog" src="project://database/Assets/_UI/CombatLog/CombatLog.uxml?fileID=9197481963319205126&amp;guid=353a86522d57644f0b7acca85f87738f&amp;type=3#CombatLog" />
+    <ui:Template name="UnitButtons" src="project://database/Assets/_UI/UnitButtons/UnitButtons.uxml?fileID=9197481963319205126&amp;guid=7c8922d88a62b4487bb25b795571eedf&amp;type=3#UnitButtons" />
+    <ui:Template name="GameButtons" src="project://database/Assets/_UI/GameButtons/GameButtons.uxml?fileID=9197481963319205126&amp;guid=b9d2af5345d4f4cd688312f829ef9dde&amp;type=3#GameButtons" />
     <ui:Instance template="SelectedTile" name="SelectedTileContainer" />
-
-    <ui:Template name="TargetTile" src="project://database/Assets/_UI/TargetTile/TargetTile.uxml" />
     <ui:Instance template="TargetTile" name="TargetTileContainer" />
-
-    <ui:Template name="CombatLog" src="project://database/Assets/_UI/CombatLog/CombatLog.uxml" />
     <ui:Instance template="CombatLog" name="CombatLogContainer" />
-
-    <ui:Template name="UnitButtons" src="project://database/Assets/_UI/UnitButtons/UnitButtons.uxml" />
-    <ui:Instance template="UnitButtons" name="UnitButtonsContainer" />
-
-    <ui:Template name="GameButtons" src="project://database/Assets/_UI/GameButtons/GameButtons.uxml" />
+    <ui:Instance template="UnitButtons" name="UnitButtonsContainer" style="display: none;" />
     <ui:Instance template="GameButtons" name="GameButtonsContainer" />
 </ui:UXML>

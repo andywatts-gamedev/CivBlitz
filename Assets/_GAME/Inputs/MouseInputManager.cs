@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class MouseInputManager : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class MouseInputManager : MonoBehaviour
             {
                 Debug.Log($"{GetType().Name}: Clicked on tile {tile.Value}");
                 events.EmitTileClicked(tile.Value);
+            }
+            else
+            {
+                Debug.Log($"{GetType().Name}: Clicked on UI element, ignoring");
             }
         };
         inputs.Mouse.Cancel.performed += _ => {
@@ -105,10 +110,27 @@ public class MouseInputManager : MonoBehaviour
 
     protected Vector2Int? GetTileXY(Vector2 screenPos)
     {
+        // Check if click hit UI first
+        if (IsPointerOverUI(screenPos))
+        {
+            return null;
+        }
+            
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, -Camera.main.transform.position.z));
         worldPosition.z = 0;
         var cell = grid.WorldToCell(worldPosition);
         return (Vector2Int)cell;
+    }
+
+    protected bool IsPointerOverUI(Vector2 screenPos)
+    {
+        // Unity 2025+ documentation confirms IsPointerOverGameObject() works with UI Toolkit
+        if (EventSystem.current == null)
+        {
+            return false;
+        }
+        
+        return EventSystem.current.IsPointerOverGameObject();
     }
 
     private void OnEnable() => inputs.Enable();

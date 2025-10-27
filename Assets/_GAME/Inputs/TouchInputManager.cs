@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using UnityEngine.EventSystems;
 
 public class TouchInputManager : MonoBehaviour
 {
@@ -34,6 +35,10 @@ public class TouchInputManager : MonoBehaviour
                 touchStartTime = Time.time;
                 hasEmittedHover = false;
                 isDragging = false;
+            }
+            else
+            {
+                Debug.Log($"{GetType().Name}: Touch started on UI element, ignoring");
             }
         };
         inputs.Touch.PrimaryContact.canceled += _ => {
@@ -113,10 +118,27 @@ public class TouchInputManager : MonoBehaviour
 
     protected Vector2Int? GetTileXY(Vector2 screenPos)
     {
+        // Check if click hit UI first
+        if (IsPointerOverUI(screenPos))
+        {
+            return null;
+        }
+            
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, -Camera.main.transform.position.z));
         worldPosition.z = 0;
         var cell = grid.WorldToCell(worldPosition);
         return (Vector2Int)cell;
+    }
+
+    protected bool IsPointerOverUI(Vector2 screenPos)
+    {
+        // Unity 2025+ documentation confirms IsPointerOverGameObject() works with UI Toolkit
+        if (EventSystem.current == null)
+        {
+            return false;
+        }
+        
+        return EventSystem.current.IsPointerOverGameObject();
     }
 
     private void OnEnable() => inputs.Enable();

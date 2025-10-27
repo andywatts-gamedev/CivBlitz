@@ -33,6 +33,7 @@ public class Game : MonoBehaviour
     void Start()
     {
         events.OnTileClicked += HandleTileClicked;
+        events.OnTileSelected += HandleTileSelected;
         events.OnCancel += HandleCancel;
         events.OnDragStarted += HandleDragStarted;
         events.OnDragUpdated += HandleDragUpdated;
@@ -44,6 +45,7 @@ public class Game : MonoBehaviour
     void OnDisable()
     {
         events.OnTileClicked -= HandleTileClicked;
+        events.OnTileSelected -= HandleTileSelected;
         events.OnCancel -= HandleCancel;
         events.OnDragStarted -= HandleDragStarted;
         events.OnDragUpdated -= HandleDragUpdated;
@@ -76,6 +78,24 @@ public class Game : MonoBehaviour
         events.EmitTileSelected(pos);
         
         // Show outline for any selected tile
+        highlight.SetActive(true);
+        highlight.transform.position = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)pos);
+    }
+
+    private void HandleTileSelected(Vector2Int pos)
+    {
+        Debug.Log("HandleTileSelected: " + pos);
+        
+        // If selecting a different tile, deselect current selection first
+        if (selectedTile.HasValue && selectedTile.Value != pos)
+        {
+            events.EmitTileDeselected(selectedTile.Value);
+            selectedTile = null;
+            highlight.SetActive(false);
+        }
+
+        // Select the new tile and show highlight
+        selectedTile = pos;
         highlight.SetActive(true);
         highlight.transform.position = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)pos);
     }
@@ -145,6 +165,7 @@ public class Game : MonoBehaviour
             
         unit.movesLeft--;
         UnitManager.Instance.MoveUnit(from, to);
+        UnitManager.Instance.EmitMovesConsumed();
         
         // Check if any player units can still move
         if (!UnitManager.Instance.units.Any(u => u.Value.civ == Game.Instance.player.civilization && u.Value.movesLeft > 0 && u.Value.state == UnitState.Ready))

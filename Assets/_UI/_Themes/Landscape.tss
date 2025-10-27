@@ -1,0 +1,26 @@
+@import url("Default.tss");
+
+@import url("/Assets/_UI/Game/Game-Common.uss");
+@import url("/Assets/_UI/Game/Game-Common-Tables.uss");
+
+@import url("/Assets/_UI/Game/Game-Landscape.uss");
+
+@import url("/Assets/_UI/SelectedTile/SelectedTile-Common.uss");
+@import url("/Assets/_UI/SelectedTile/SelectedTile-Landscape.uss");
+
+@import url("/Assets/_UI/TargetTile/TargetTile-Common.uss");
+@import url("/Assets/_UI/TargetTile/TargetTile-Landscape.uss");
+
+@import url("/Assets/_UI/CombatLog/CombatLog-Common.uss");
+@import url("/Assets/_UI/CombatLog/CombatLog-Landscape.uss");
+
+@import url("/Assets/_UI/UnitButtons/UnitButtons-Common.uss");
+@import url("/Assets/_UI/UnitButtons/UnitButtons-Landscape.uss");
+
+@import url("/Assets/_UI/GameButtons/GameButtons-Common.uss");
+@import url("/Assets/_UI/GameButtons/GameButtons-Landscape.uss");
+@import url("/Assets/_UI/GameButtons/GameButtons-Portrait.uss");
+
+VisualElement {}
+
+/* Force refresh */

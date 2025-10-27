@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class UnitManager : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class UnitManager : MonoBehaviour
     private const float MOVE_DURATION = 1f;
     
     public bool isMoving;
+    
+    // Events for UI updates
+    public event Action OnUnitMoved;
+    public event Action OnMovesConsumed;
+    public event Action OnUnitStateChanged;
 
     [Sirenix.OdinInspector.ShowInInspector] public Dictionary<Vector2Int, UnitInstance> units = new();
     [Sirenix.OdinInspector.ShowInInspector] public Dictionary<Civilization, List<UnitInstance>> civUnits = new();
@@ -96,6 +102,7 @@ public class UnitManager : MonoBehaviour
 
         Destroy(movingUnit);
         isMoving = false;
+        OnUnitMoved?.Invoke();
     }
 
     public bool HasUnitAt(Vector2Int position) => units.ContainsKey(position);
@@ -152,6 +159,7 @@ public class UnitManager : MonoBehaviour
                 units[pos] = unit;
             }
         }
+        OnUnitStateChanged?.Invoke();
     }
 
     public void SetUnitState(Vector2Int position, UnitState newState)
@@ -160,6 +168,12 @@ public class UnitManager : MonoBehaviour
         {
             unit.state = newState;
             units[position] = unit;
+            OnUnitStateChanged?.Invoke();
         }
+    }
+    
+    public void EmitMovesConsumed()
+    {
+        OnMovesConsumed?.Invoke();
     }
 } 

@@ -28,6 +28,12 @@ public class TurnManager : Singleton<TurnManager>
         }
         isPlayerTurn = false;
         OnTurnChanged?.Invoke();
+        // Don't auto-start AI turn - wait for user to click Next Turn button
+    }
+    
+    public void StartAITurn()
+    {
+        if (isAITurnInProgress || isPlayerTurn) return;
         StartCoroutine(DoAITurn());
     }
 
@@ -38,7 +44,7 @@ public class TurnManager : Singleton<TurnManager>
         }
         isPlayerTurn = false;
         OnTurnChanged?.Invoke();
-        StartCoroutine(DoAITurn());
+        // Don't auto-start AI turn - wait for user to click Next Turn button
     }
 
     private IEnumerator DoAITurn() {

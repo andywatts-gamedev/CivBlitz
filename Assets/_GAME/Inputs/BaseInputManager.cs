@@ -2,6 +2,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public abstract class BaseInputManager : MonoBehaviour
 {
@@ -24,10 +25,34 @@ public abstract class BaseInputManager : MonoBehaviour
 
     public Vector2Int? GetTileXY(Vector2 screenPos)
     {
-        // TODO check if UI.  (over IsPointerOverGameObject)
+        // Check if click hit UI first
+        if (IsPointerOverUI(screenPos))
+        {
+            return null;
+        }
+            
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, -Camera.main.transform.position.z));
         worldPosition.z = 0;
         var cell = grid.WorldToCell(worldPosition);
         return (Vector2Int)cell;
+    }
+
+    protected bool IsPointerOverUI(Vector2 screenPos)
+    {
+        // Unity 2025+ documentation confirms IsPointerOverGameObject() works with UI Toolkit
+        if (EventSystem.current == null)
+        {
+            Debug.LogWarning($"{GetType().Name}: No EventSystem found in scene!");
+            return false;
+        }
+        
+        bool hitUI = EventSystem.current.IsPointerOverGameObject();
+        Debug.Log($"{GetType().Name}: IsPointerOverGameObject() = {hitUI} at {screenPos}");
+        
+        if (hitUI)
+        {
+            Debug.Log($"{GetType().Name}: UI hit detected at {screenPos} (IsPointerOverGameObject)");
+        }
+        return hitUI;
     }
 } 

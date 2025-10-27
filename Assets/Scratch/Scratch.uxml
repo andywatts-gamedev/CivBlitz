@@ -1,0 +1,4 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Label text="Label" style="font-size: 128px; background-color: rgb(255, 255, 255);" />
+    <ui:Label text="  " style="font-size: 128px; background-color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/_UI/Common/Fonts/src/fa-regular-400.ttf?fileID=12800000&amp;guid=daf2e9e4734e949068bd8e6d71a47c73&amp;type=3#fa-regular-400&quot;);" />
+</ui:UXML>

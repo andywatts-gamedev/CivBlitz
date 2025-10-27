@@ -128,6 +128,71 @@ TemplateContainer {
 - Check ThemeManager has correct TSS references in scene
 - Ensure no inline styles in UXML files
 
+## Font Awesome Integration
+
+### Available Font Files
+Located in `Assets/_UI/Common/Fonts/src/`:
+- **fa-solid-900.ttf** - Solid icons (primary)
+- **fa-regular-400.ttf** - Regular/outline icons
+- **fa-light-300.ttf** - Light weight icons
+- **fa-thin-100.ttf** - Thin weight icons
+- **fa-brands-400.ttf** - Brand logos
+- **fa-sharp-solid-900.ttf** - Sharp solid icons
+- **fa-sharp-regular-400.ttf** - Sharp regular icons
+- **fa-sharp-light-300.ttf** - Sharp light icons
+- **fa-sharp-thin-100.ttf** - Sharp thin icons
+- **fa-duotone-900.ttf** - Duotone icons
+- **fa-v4compatibility.ttf** - Legacy compatibility
+
+### Font Classes
+```css
+/* Base Font Awesome Classes */
+.fa-solid { /* Uses fa-solid-900.ttf */ }
+.fa-regular { /* Uses fa-regular-400.ttf */ }
+.font-awesome { /* Uses fa-solid-900.ttf (fallback) */ }
+
+/* Specific Icon Classes */
+.fa-play { /* Play icon - uses fa-regular-400.ttf */ }
+.fa-forward { /* Forward icon - uses fa-solid-900.ttf */ }
+.fa-shield { /* Shield icon - uses fa-solid-900.ttf */ }
+.fa-bed { /* Bed icon - uses fa-solid-900.ttf */ }
+```
+
+### Available Icons by Style
+
+#### Solid Style (`fa-solid`) - Primary
+- **Shield**: `&#xf3ed;` (fortify/defense) ✅
+- **Sword**: `&#xf71c;` (combat/attack) ✅
+- **Play**: `&#xf04b;` (next unit action) ✅
+- **Fast Forward**: `&#xf04e;` (double play) ✅
+- **Fast Forward Step**: `&#xf050;` (next turn) ✅
+- **Bed**: `&#xf236;` (rest) ✅
+- **Circle Play**: `&#xf144;` (alternative play) ✅
+
+#### Regular Style (`fa-regular`) - Limited
+- **Shield**: `&#xf3ed;` (fortify/defense) ❌ Not available
+- **Play**: `&#xf04b;` (next unit action) ✅ Available
+- **Fast Forward**: `&#xf04e;` (double play) ❌ Not available
+- **Fast Forward Step**: `&#xf050;` (next turn) ❌ Not available
+- **Bed**: `&#xf236;` (rest) ❌ Not available
+
+**Note**: Most action icons (forward, shield, bed) are only available in Solid style. Play icon is available in Regular style.
+
+### Icon Usage Guidelines
+1. **Specific classes**: Use `.fa-play`, `.fa-forward`, `.fa-shield`, `.fa-bed` for specific icons
+2. **Base classes**: Use `.fa-solid` or `.fa-regular` for general Font Awesome styling
+3. **Icon codes**: Use HTML entity format `&#xfXXX;` in UXML
+4. **Testing**: Test icons in UI Builder viewport (Inspector may show squares)
+5. **Fallback**: If specific icon doesn't work, check Font Awesome documentation for style availability
+
+### Button Panel Icons
+- **Game Buttons**: 
+  - Play (`&#xf04b;`) with class `fa-play` (next unit)
+  - Fast Forward Step (`&#xf050;`) with class `fa-forward` (next turn)
+- **Unit Buttons**: 
+  - Rest (`&#xf236;`) with class `fa-bed`
+  - Fortify (`&#xf3ed;`) with class `fa-shield`
+
 ## Migration Notes
 This system was migrated from `_GAME/UI/` to `_UI/` with the following changes:
 - Renamed `UI.cs` → `GameUI.cs`
@@ -135,3 +200,43 @@ This system was migrated from `_GAME/UI/` to `_UI/` with the following changes:
 - Created orientation-specific USS files
 - Updated all font paths and GUIDs
 - Consolidated theme management
+- Added Font Awesome icon system
+
+
+
+
+
+
+Font Awesome v6.5.2
+F132 Shield
+f3ed shield halved
+F312 Hex
+F554 Walk
+F6B9 Archer
+F71C Sword
+F71D Crossed Swords
+f015 Home
+
+
+f04b Play
+f051 Forward-step
+f04e Forward
+f050 Forward Fast
+f2f9 Rotate right
+
+e57d Camp
+f6bb Tent
+e1b4 House Turret
+e486 fort
+e586 observation tower
+
+
+
+
+Actions: Regular
+Table: Solid
+
+
+
+
+
