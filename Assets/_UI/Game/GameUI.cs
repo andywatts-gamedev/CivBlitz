@@ -4,15 +4,17 @@ using System.Linq;
 
 public class GameUI : MonoBehaviour
 {
+    [SerializeField] private GameEvent onTurnChanged;
+    
     void Start()
     {
-        TurnManager.Instance.OnTurnChanged += UpdateTurnLabels;
+        if (onTurnChanged != null) onTurnChanged.Handler += UpdateTurnLabels;
         UpdateTurnLabels();
     }
 
     void OnDisable() 
     {
-        TurnManager.Instance.OnTurnChanged -= UpdateTurnLabels;
+        if (onTurnChanged != null) onTurnChanged.Handler -= UpdateTurnLabels;
     }
 
     void UpdateTurnLabels()

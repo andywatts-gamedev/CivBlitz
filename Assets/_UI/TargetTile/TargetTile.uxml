@@ -1,8 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <ui:VisualElement name="TargetTile" class="table">
         <ui:VisualElement name="HeaderRow" class="row">
-            <ui:Label name="AttackIcon" text="" class="cell header attack font-awesome" />
-            <ui:Label name="DefenseIcon" text="" class="cell header defense font-awesome" />
+            <ui:Label name="AttackIcon" text="\uf71c" parse-escape-sequences="true" class="cell header attack font-awesome" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&amp;guid=e550a4ad826a24de7848b919a31ce3bb&amp;type=2#fa-regular-400 SDF&quot;);" />
+            <ui:Label name="DefenseIcon" text="\uf3ed" parse-escape-sequences="true" class="cell header defense font-awesome" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&amp;guid=e550a4ad826a24de7848b919a31ce3bb&amp;type=2#fa-regular-400 SDF&quot;);" />
             <ui:Label class="cell row-name" />
         </ui:VisualElement>
         <ui:VisualElement name="UnitRow" class="row">

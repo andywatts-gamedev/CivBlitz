@@ -1,0 +1,39 @@
+name: Run Tests
+
+on:
+  push:
+    branches: [ main, feat/* ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Run PlayMode Tests
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: game-ci/unity-test-runner@v2
+      env:
+        UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+      with:
+        testMode: PlayMode
+        artifactsPath: test-results
+        
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: Test results
+        path: test-results
+        
+    - name: Test Summary
+      if: always()
+      run: |
+        echo "## Test Results" >> $GITHUB_STEP_SUMMARY
+        if [ -f test-results/results.xml ]; then
+          grep -o 'total="[0-9]*"' test-results/results.xml >> $GITHUB_STEP_SUMMARY || true
+          grep -o 'passed="[0-9]*"' test-results/results.xml >> $GITHUB_STEP_SUMMARY || true
+          grep -o 'failed="[0-9]*"' test-results/results.xml >> $GITHUB_STEP_SUMMARY || true
+        fi
+

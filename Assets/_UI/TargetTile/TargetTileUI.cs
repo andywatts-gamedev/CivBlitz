@@ -44,10 +44,15 @@ public class TargetTileUI : MonoBehaviour
         unitRow.style.display = DisplayStyle.None;
         if (UnitManager.Instance.TryGetUnit(pos, out var unit))
         {
+            Debug.Log($"TargetTile: Found unit at {pos}: {unit.unit.name}");
             unitName.text = unit.unit.name;
             unitAttack.text = unit.unit.melee.ToString();
             unitDefense.text = unit.unit.ranged.ToString();
             unitRow.style.display = DisplayStyle.Flex;
+        }
+        else
+        {
+            Debug.Log($"TargetTile: No unit at {pos}");
         }
 
         var tile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)pos) as TerrainTile;

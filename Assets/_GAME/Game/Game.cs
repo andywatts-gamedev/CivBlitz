@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
 
-public class Game : MonoBehaviour
+public class Game : Singleton<Game>
 {
-    public static Game Instance { get; private set; }
-
     [SerializeField] private InputEvents events;
     [SerializeField] private GameObject highlight;
     [SerializeField] private GameObject pathPreview;
@@ -23,9 +21,9 @@ public class Game : MonoBehaviour
     public Vector3 flagScale = new Vector3(2f, 2f, 2f);
     public Vector3 unitScale = new Vector3(0.8f, 0.8f, 0.8f);
 
-    void Awake()
+    protected override void Awake()
     {
-        Instance = this;
+        base.Awake();
         civilizations = Resources.LoadAll<CivilizationSCOB>("").ToDictionary(c => c.civilization, c => c);
         Debug.Log("Civilizations: " + civilizations.Count);
     }
@@ -153,8 +151,6 @@ public class Game : MonoBehaviour
         Debug.Log("MoveTo: " + from + " -> " + to);
         if (!IsValidMove(from, to))
             return;
-            
-        var unit = UnitManager.Instance.units[from];
         
         if (UnitManager.Instance.TryGetUnit(to, out var target))
         {
@@ -163,13 +159,8 @@ public class Game : MonoBehaviour
             return;
         }
             
-        unit.movesLeft--;
         UnitManager.Instance.MoveUnit(from, to);
         UnitManager.Instance.EmitMovesConsumed();
-        
-        // Check if any player units can still move
-        if (!UnitManager.Instance.units.Any(u => u.Value.civ == Game.Instance.player.civilization && u.Value.movesLeft > 0 && u.Value.state == UnitState.Ready))
-            TurnManager.Instance.EndTurn();
     }
 
     private void HandleDragStarted(Vector2Int fromTile, Vector2Int toTile)

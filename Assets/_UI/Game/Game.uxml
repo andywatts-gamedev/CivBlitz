@@ -7,6 +7,6 @@
     <ui:Instance template="SelectedTile" name="SelectedTileContainer" />
     <ui:Instance template="TargetTile" name="TargetTileContainer" />
     <ui:Instance template="CombatLog" name="CombatLogContainer" />
-    <ui:Instance template="UnitButtons" name="UnitButtonsContainer" style="display: none;" />
+    <ui:Instance template="UnitButtons" name="UnitButtonsContainer" style="display: flex; -unity-text-align: upper-left; bottom: 8%;" />
     <ui:Instance template="GameButtons" name="GameButtonsContainer" />
 </ui:UXML>

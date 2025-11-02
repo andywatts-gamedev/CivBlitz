@@ -95,3 +95,7 @@
     color: rgb(255, 80, 80);
 }
 
+.font-awesome {
+    -unity-font-definition: url("project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&guid=e550a4ad826a24de7848b919a31ce3bb&type=2#fa-regular-400 SDF");
+}
+

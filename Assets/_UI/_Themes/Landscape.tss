@@ -19,7 +19,6 @@
 
 @import url("/Assets/_UI/GameButtons/GameButtons-Common.uss");
 @import url("/Assets/_UI/GameButtons/GameButtons-Landscape.uss");
-@import url("/Assets/_UI/GameButtons/GameButtons-Portrait.uss");
 
 VisualElement {}
 

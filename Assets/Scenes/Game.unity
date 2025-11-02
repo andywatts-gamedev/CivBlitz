@@ -195,6 +195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMoving: 0
+  onUnitMoved: {fileID: 11400000, guid: d88da9706206b41688755afc3e877cb2, type: 2}
+  onMovesConsumed: {fileID: 11400000, guid: ca5919c0bd89340c5b196215ba1d3dba, type: 2}
+  onUnitStateChanged: {fileID: 11400000, guid: 5ba35d0a2bc3042eb87560653a4ac473, type: 2}
   terrainTilemap: {fileID: 968581144}
   unitTilemap: {fileID: 1959565035}
 --- !u!1 &358606137
@@ -696,6 +699,7 @@ Transform:
   m_Children:
   - {fileID: 1364731693}
   - {fileID: 1590416287}
+  - {fileID: 1909002149}
   - {fileID: 236614168}
   - {fileID: 1706681609}
   m_Father: {fileID: 0}
@@ -759,6 +763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298f5e3a5efcc46f9b63d1de95f5b115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onTurnChanged: {fileID: 11400000, guid: 10e39820c0a9c42b3b3ecf61e7ee953a, type: 2}
 --- !u!114 &842609485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,6 +805,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectedTileUI
   events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
+  onUnitMoved: {fileID: 11400000, guid: d88da9706206b41688755afc3e877cb2, type: 2}
+  onMovesConsumed: {fileID: 11400000, guid: ca5919c0bd89340c5b196215ba1d3dba, type: 2}
+  onUnitStateChanged: {fileID: 11400000, guid: 5ba35d0a2bc3042eb87560653a4ac473, type: 2}
+  onTurnChanged: {fileID: 11400000, guid: 10e39820c0a9c42b3b3ecf61e7ee953a, type: 2}
 --- !u!114 &842609488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,6 +822,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TargetTileUI
   events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
+  onUnitMoved: {fileID: 11400000, guid: d88da9706206b41688755afc3e877cb2, type: 2}
+  onMovesConsumed: {fileID: 11400000, guid: ca5919c0bd89340c5b196215ba1d3dba, type: 2}
+  onTurnChanged: {fileID: 11400000, guid: 10e39820c0a9c42b3b3ecf61e7ee953a, type: 2}
 --- !u!114 &842609489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1843,7 +1855,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1590416287}
   - component: {fileID: 1590416289}
-  - component: {fileID: 1590416288}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -1866,19 +1877,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 785604382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1590416288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1590416286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08edc9749d8854d03b02a2daa46ba934, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayerTurn: 1
 --- !u!114 &1590416289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2199,6 +2197,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 785604382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1909002148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1909002149}
+  - component: {fileID: 1909002150}
+  m_Layer: 0
+  m_Name: Turn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1909002149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909002148}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 785604382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1909002150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909002148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08edc9749d8854d03b02a2daa46ba934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerTurn: 1
+  onTurnChanged: {fileID: 11400000, guid: 10e39820c0a9c42b3b3ecf61e7ee953a, type: 2}
 --- !u!1 &1959565032
 GameObject:
   m_ObjectHideFlags: 0

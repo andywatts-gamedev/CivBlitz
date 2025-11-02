@@ -4,9 +4,14 @@ using UnityEngine.UIElements;
 public class UnitButtonsUI : MonoBehaviour
 {
     [SerializeField] private InputEvents events;
+    [SerializeField] private GameEvent onUnitMoved;
+    [SerializeField] private GameEvent onMovesConsumed;
+    [SerializeField] private GameEvent onUnitStateChanged;
+    [SerializeField] private GameEvent onTurnChanged;
+    
     private UIDocument doc;
     private VisualElement container;
-    private Button restButton, fortifyButton;
+    private Button moveButton, restButton;
     private Vector2Int? selectedTile;
     
 
@@ -16,17 +21,17 @@ public class UnitButtonsUI : MonoBehaviour
         var root = doc.rootVisualElement;
 
         container = root.Q("UnitButtonsContainer");
+        moveButton = root.Q<Button>("MoveButton");
         restButton = root.Q<Button>("RestButton");
-        fortifyButton = root.Q<Button>("FortifyButton");
+        
+        if (moveButton != null)
+        {
+            moveButton.clicked += HandleMoveClicked;
+        }
         
         if (restButton != null)
         {
             restButton.clicked += HandleRestClicked;
-        }
-        
-        if (fortifyButton != null)
-        {
-            fortifyButton.clicked += HandleFortifyClicked;
         }
 
         events.OnTileSelected += HandleTileSelected;
@@ -34,10 +39,10 @@ public class UnitButtonsUI : MonoBehaviour
         events.OnCancel += HandleCancel;
         
         // Subscribe to game events for button state updates
-        TurnManager.Instance.OnTurnChanged += UpdateButtonStates;
-        UnitManager.Instance.OnUnitMoved += UpdateButtonStates;
-        UnitManager.Instance.OnMovesConsumed += UpdateButtonStates;
-        UnitManager.Instance.OnUnitStateChanged += UpdateButtonStates;
+        if (onTurnChanged != null) onTurnChanged.Handler += UpdateButtonStates;
+        if (onUnitMoved != null) onUnitMoved.Handler += UpdateButtonStates;
+        if (onMovesConsumed != null) onMovesConsumed.Handler += UpdateButtonStates;
+        if (onUnitStateChanged != null) onUnitStateChanged.Handler += UpdateButtonStates;
         
         // Start hidden
         container.style.display = DisplayStyle.None;
@@ -45,25 +50,24 @@ public class UnitButtonsUI : MonoBehaviour
 
     void OnDisable()
     {
+        if (moveButton != null)
+        {
+            moveButton.clicked -= HandleMoveClicked;
+        }
+        
         if (restButton != null)
         {
             restButton.clicked -= HandleRestClicked;
-        }
-        
-        if (fortifyButton != null)
-        {
-            fortifyButton.clicked -= HandleFortifyClicked;
         }
         
         events.OnTileSelected -= HandleTileSelected;
         events.OnTileDeselected -= HandleTileDeselected;
         events.OnCancel -= HandleCancel;
         
-        // Unsubscribe from game events
-        TurnManager.Instance.OnTurnChanged -= UpdateButtonStates;
-        UnitManager.Instance.OnUnitMoved -= UpdateButtonStates;
-        UnitManager.Instance.OnMovesConsumed -= UpdateButtonStates;
-        UnitManager.Instance.OnUnitStateChanged -= UpdateButtonStates;
+        if (onTurnChanged != null) onTurnChanged.Handler -= UpdateButtonStates;
+        if (onUnitMoved != null) onUnitMoved.Handler -= UpdateButtonStates;
+        if (onMovesConsumed != null) onMovesConsumed.Handler -= UpdateButtonStates;
+        if (onUnitStateChanged != null) onUnitStateChanged.Handler -= UpdateButtonStates;
     }
 
     private void UpdateButtonVisibility()
@@ -89,17 +93,30 @@ public class UnitButtonsUI : MonoBehaviour
             return;
         }
 
+        bool canMove = unit.state == UnitState.Ready && unit.movesLeft > 0;
         bool canRest = unit.state == UnitState.Ready && unit.movesLeft > 0;
-        bool canFortify = unit.state == UnitState.Ready && unit.movesLeft > 0;
+        
+        if (moveButton != null)
+        {
+            moveButton.SetEnabled(canMove);
+        }
         
         if (restButton != null)
         {
             restButton.SetEnabled(canRest);
         }
+    }
+
+    private void HandleMoveClicked()
+    {
+        if (!selectedTile.HasValue) return;
         
-        if (fortifyButton != null)
+        if (UnitManager.Instance.TryGetUnit(selectedTile.Value, out var unit) &&
+            unit.civ == Game.Instance.player.civilization &&
+            unit.state == UnitState.Ready)
         {
-            fortifyButton.SetEnabled(canFortify);
+            // Enter move mode - this will be handled by input managers
+            events.EmitMoveModeStarted(selectedTile.Value);
         }
     }
 
@@ -112,18 +129,6 @@ public class UnitButtonsUI : MonoBehaviour
             unit.state == UnitState.Ready)
         {
             UnitManager.Instance.SetUnitState(selectedTile.Value, UnitState.Resting);
-        }
-    }
-
-    private void HandleFortifyClicked()
-    {
-        if (!selectedTile.HasValue) return;
-        
-        if (UnitManager.Instance.TryGetUnit(selectedTile.Value, out var unit) &&
-            unit.civ == Game.Instance.player.civilization &&
-            unit.state == UnitState.Ready)
-        {
-            UnitManager.Instance.SetUnitState(selectedTile.Value, UnitState.Fortified);
         }
     }
 

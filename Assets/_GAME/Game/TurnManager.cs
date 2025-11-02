@@ -6,7 +6,9 @@ using System.Linq;
 public class TurnManager : Singleton<TurnManager>
 {
     public bool isPlayerTurn = true;
-    public event Action OnTurnChanged;
+    
+    [SerializeField] private GameEvent onTurnChanged;
+    
     private Texture2D waitCursor;
     private bool isAITurnInProgress;
     private MinMaxAI ai;
@@ -27,7 +29,7 @@ public class TurnManager : Singleton<TurnManager>
             return;
         }
         isPlayerTurn = false;
-        OnTurnChanged?.Invoke();
+        onTurnChanged?.Invoke();
         // Don't auto-start AI turn - wait for user to click Next Turn button
     }
     
@@ -43,7 +45,7 @@ public class TurnManager : Singleton<TurnManager>
             yield return null;
         }
         isPlayerTurn = false;
-        OnTurnChanged?.Invoke();
+        onTurnChanged?.Invoke();
         // Don't auto-start AI turn - wait for user to click Next Turn button
     }
 
@@ -81,11 +83,12 @@ public class TurnManager : Singleton<TurnManager>
             yield return new WaitForSeconds(0.5f);
         }
         
-        isPlayerTurn = true;
-        isAITurnInProgress = false;
-        OnTurnChanged?.Invoke();
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         UnitManager.Instance.ResetMoves();
         UnitManager.Instance.ResetUnitStates();
+        
+        isPlayerTurn = true;
+        isAITurnInProgress = false;
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        onTurnChanged?.Invoke();
     }
 } 

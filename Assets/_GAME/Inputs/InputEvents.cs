@@ -38,4 +38,8 @@ public class InputEvents : ScriptableObject
 
     public event System.Action<Vector2Int> OnTileDeselected;
     public void EmitTileDeselected(Vector2Int tile) => OnTileDeselected?.Invoke(tile);
+
+    // Move mode events
+    public event System.Action<Vector2Int> OnMoveModeStarted;
+    public void EmitMoveModeStarted(Vector2Int unitTile) => OnMoveModeStarted?.Invoke(unitTile);
 } 

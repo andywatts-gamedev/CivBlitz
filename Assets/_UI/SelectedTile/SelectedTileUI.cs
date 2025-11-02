@@ -7,7 +7,7 @@ public class SelectedTileUI : MonoBehaviour
     [SerializeField] private InputEvents events;
     private UIDocument doc;
     private VisualElement container, unitRow;
-    private Label unitAttack, unitDefense, tileAttack, tileDefense, unitName, tileName;
+    private Label unitAttack, unitDefense, tileAttack, tileDefense, unitName, tileName, attackIcon;
     private Vector2Int? selectedTile;
 
     void Start()
@@ -23,6 +23,7 @@ public class SelectedTileUI : MonoBehaviour
         tileName = container.Q<Label>("TileName");
         tileAttack = container.Q<Label>("TileAttack");
         tileDefense = container.Q<Label>("TileDefense");
+        attackIcon = container.Q<Label>("AttackIcon");
 
         events.OnTileSelected += HandleTileSelected;
         events.OnTileDeselected += HandleTileDeselected;
@@ -42,12 +43,29 @@ public class SelectedTileUI : MonoBehaviour
         container.style.display = DisplayStyle.Flex;
 
         unitRow.style.display = DisplayStyle.None;
-        if (UnitManager.Instance.TryGetUnit(pos, out var unit))
+        bool hasUnit = UnitManager.Instance.TryGetUnit(pos, out var unit);
+        
+        if (hasUnit)
         {
+            Debug.Log($"SelectedTile: Found unit at {pos}: {unit.unit.name}");
             unitName.text = unit.unit.name;
             unitAttack.text = (unit.unit.type == UnitType.Ranged ? unit.unit.ranged : unit.unit.melee).ToString();
             unitDefense.text = unit.unit.melee.ToString();
             unitRow.style.display = DisplayStyle.Flex;
+            
+            // Show attack column when unit exists
+            attackIcon.style.display = DisplayStyle.Flex;
+            unitAttack.style.display = DisplayStyle.Flex;
+            tileAttack.style.display = DisplayStyle.Flex;
+        }
+        else
+        {
+            Debug.Log($"SelectedTile: No unit at {pos}");
+            
+            // Hide attack column when no unit
+            attackIcon.style.display = DisplayStyle.None;
+            unitAttack.style.display = DisplayStyle.None;
+            tileAttack.style.display = DisplayStyle.None;
         }
 
         var tile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)pos) as TerrainTile;

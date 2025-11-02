@@ -2,18 +2,18 @@
     <ui:VisualElement name="SelectedTile" class="table">
         <ui:VisualElement name="HeaderRow" class="row">
             <ui:Label parse-escape-sequences="true" class="cell row-name" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&amp;guid=e550a4ad826a24de7848b919a31ce3bb&amp;type=2#fa-regular-400 SDF&quot;);" />
-            <ui:Label name="AttackIcon" text="" class="cell header attack font-awesome" />
             <ui:Label name="DefenseIcon" text="\uf3ed" parse-escape-sequences="true" class="cell header defense font-awesome" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&amp;guid=e550a4ad826a24de7848b919a31ce3bb&amp;type=2#fa-regular-400 SDF&quot;);" />
+            <ui:Label name="AttackIcon" text="\uf71c" parse-escape-sequences="true" class="cell header attack font-awesome" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&amp;guid=e550a4ad826a24de7848b919a31ce3bb&amp;type=2#fa-regular-400 SDF&quot;);" />
         </ui:VisualElement>
         <ui:VisualElement name="UnitRow" class="row">
             <ui:Label name="UnitName" text="label" class="cell row-name" />
-            <ui:Label name="UnitAttack" text="33" class="cell attack" />
             <ui:Label name="UnitDefense" text="23" class="cell defense" />
+            <ui:Label name="UnitAttack" text="33" class="cell attack" />
         </ui:VisualElement>
         <ui:VisualElement name="TileRow" class="row">
             <ui:Label name="TileName" text="labellabel" class="cell row-name" />
-            <ui:Label name="TileAttack" text="A" class="cell attack" />
             <ui:Label name="TileDefense" text="D" class="cell defense" />
+            <ui:Label name="TileAttack" text="A" class="cell attack" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

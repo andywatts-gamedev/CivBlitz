@@ -4,26 +4,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class UnitManager : MonoBehaviour
+public class UnitManager : Singleton<UnitManager>
 {
-    public static UnitManager Instance { get; private set; }
     private const float MOVE_DURATION = 1f;
     
     public bool isMoving;
     
-    // Events for UI updates
-    public event Action OnUnitMoved;
-    public event Action OnMovesConsumed;
-    public event Action OnUnitStateChanged;
-
+    [SerializeField] private GameEvent onUnitMoved;
+    [SerializeField] private GameEvent onMovesConsumed;
+    [SerializeField] private GameEvent onUnitStateChanged;
+    
     [Sirenix.OdinInspector.ShowInInspector] public Dictionary<Vector2Int, UnitInstance> units = new();
     [Sirenix.OdinInspector.ShowInInspector] public Dictionary<Civilization, List<UnitInstance>> civUnits = new();
 
     public Dictionary<Civilization, Tilemap> flags = new();
     public Tilemap terrainTilemap;
     public Tilemap unitTilemap;
-
-    void Awake() => Instance = this;
 
     public void RegisterUnit(Civilization civ, Unit unit, Vector2Int pos)
     {
@@ -56,6 +52,7 @@ public class UnitManager : MonoBehaviour
         {
             units.Remove(from);
             unit.position = to;
+            unit.movesLeft--;
             units[to] = unit;
             
             // var civUnitsList = civUnits[unit.civ];
@@ -102,7 +99,7 @@ public class UnitManager : MonoBehaviour
 
         Destroy(movingUnit);
         isMoving = false;
-        OnUnitMoved?.Invoke();
+        onUnitMoved?.Invoke();
     }
 
     public bool HasUnitAt(Vector2Int position) => units.ContainsKey(position);
@@ -159,7 +156,7 @@ public class UnitManager : MonoBehaviour
                 units[pos] = unit;
             }
         }
-        OnUnitStateChanged?.Invoke();
+        onUnitStateChanged?.Invoke();
     }
 
     public void SetUnitState(Vector2Int position, UnitState newState)
@@ -168,12 +165,12 @@ public class UnitManager : MonoBehaviour
         {
             unit.state = newState;
             units[position] = unit;
-            OnUnitStateChanged?.Invoke();
+            onUnitStateChanged?.Invoke();
         }
     }
     
     public void EmitMovesConsumed()
     {
-        OnMovesConsumed?.Invoke();
+        onMovesConsumed?.Invoke();
     }
 } 
