@@ -37,7 +37,7 @@ public class GameButtonsUITests
             var units = new List<UnitInstance>(unitManager.civUnits[playerCiv]);
             foreach (var unit in units)
             {
-                unit.movesLeft = 0;
+                unit.actionsLeft = 0;
                 unitManager.UpdateUnit(unit.position, unit);
             }
         }
@@ -75,7 +75,7 @@ public class GameButtonsUITests
             var units = new List<UnitInstance>(unitManager.civUnits[playerCiv]);
             foreach (var unit in units)
             {
-                unit.movesLeft = 0;
+                unit.actionsLeft = 0;
                 unitManager.UpdateUnit(unit.position, unit);
             }
         }

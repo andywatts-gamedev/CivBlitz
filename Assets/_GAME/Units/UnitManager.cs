@@ -52,7 +52,7 @@ public class UnitManager : Singleton<UnitManager>
         {
             units.Remove(from);
             unit.position = to;
-            unit.movesLeft--;
+            unit.actionsLeft--;
             units[to] = unit;
             
             // var civUnitsList = civUnits[unit.civ];
@@ -110,7 +110,7 @@ public class UnitManager : Singleton<UnitManager>
         foreach (var pos in positions)
         {
             var unit = units[pos];
-            unit.movesLeft = unit.unit.movement;
+            unit.actionsLeft = unit.unit.movement;
             units[pos] = unit;
         }
     }
@@ -135,7 +135,7 @@ public class UnitManager : Singleton<UnitManager>
         {
             var unit = kvp.Value;
             if (unit.civ == Game.Instance.player.civilization && 
-                unit.movesLeft > 0 && 
+                unit.actionsLeft > 0 && 
                 unit.state == UnitState.Ready)
             {
                 return unit;

@@ -111,17 +111,30 @@ public class Game : Singleton<Game>
     public bool IsValidMove(Vector2Int from, Vector2Int to)
     {
         if (!UnitManager.Instance.TryGetUnit(from, out var unit))
+        {
+            Debug.Log($"IsValidMove: No unit at {from}");
             return false;
+        }
             
-        if (unit.movesLeft <= 0)
+        if (unit.actionsLeft <= 0)
+        {
+            Debug.Log($"IsValidMove: Unit has no actions left ({unit.actionsLeft})");
             return false;
+        }
             
         if (UnitManager.Instance.isMoving || CombatManager.Instance.isCombatMoving)
+        {
+            Debug.Log($"IsValidMove: Movement in progress");
             return false;
+        }
 
         // Get terrain at target
         var terrainTile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)to) as TerrainTile;
-        if (terrainTile == null) return false;
+        if (terrainTile == null)
+        {
+            Debug.Log($"IsValidMove: No terrain tile at {to}");
+            return false;
+        }
         
         // Check if unit can travel on terrain
         var terrain = terrainTile.terrainScob.terrain;
@@ -130,18 +143,31 @@ public class Game : Singleton<Game>
             TerrainType.Coast => unit.unit.canTravelCoast,
             _ => unit.unit.canTravelLand
         };
-        if (!canTravel) return false;
+        if (!canTravel)
+        {
+            Debug.Log($"IsValidMove: Unit cannot travel on terrain type {terrain.type}");
+            return false;
+        }
         
         // Check movement cost
-        if (unit.movesLeft < terrain.movementCost)
+        if (unit.actionsLeft < terrain.movementCost)
+        {
+            Debug.Log($"IsValidMove: Insufficient actions ({unit.actionsLeft}) for terrain cost ({terrain.movementCost})");
             return false;
+        }
             
         var validMoves = HexGrid.GetValidMoves(from, unit.unit.movement, UnitManager.Instance.unitTilemap);
         if (!validMoves.Contains(to))
+        {
+            Debug.Log($"IsValidMove: {to} not in valid moves range");
             return false;
+        }
 
         if (UnitManager.Instance.TryGetUnit(to, out var target) && target.civ == unit.civ)
+        {
+            Debug.Log($"IsValidMove: Friendly unit at {to}");
             return false;
+        }
             
         return true;
     }

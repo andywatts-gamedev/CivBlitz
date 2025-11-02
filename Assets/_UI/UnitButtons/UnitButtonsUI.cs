@@ -93,17 +93,34 @@ public class UnitButtonsUI : MonoBehaviour
             return;
         }
 
-        bool canMove = unit.state == UnitState.Ready && unit.movesLeft > 0;
-        bool canRest = unit.state == UnitState.Ready && unit.movesLeft > 0;
+        bool canMove = unit.state == UnitState.Ready && unit.actionsLeft > 0;
+        bool canRest = unit.state == UnitState.Ready && unit.actionsLeft > 0;
+        bool isResting = unit.state == UnitState.Resting;
         
         if (moveButton != null)
         {
             moveButton.SetEnabled(canMove);
+            // Update action point label if it exists
+            var actionLabel = moveButton.Q<Label>("ActionPointsLabel");
+            if (actionLabel != null)
+            {
+                actionLabel.text = unit.actionsLeft.ToString();
+            }
         }
         
         if (restButton != null)
         {
             restButton.SetEnabled(canRest);
+            
+            // Toggle active class based on unit state
+            if (isResting)
+            {
+                restButton.AddToClassList("active");
+            }
+            else
+            {
+                restButton.RemoveFromClassList("active");
+            }
         }
     }
 

@@ -57,14 +57,14 @@ public class TurnManager : Singleton<TurnManager>
 
         foreach (var aiCiv in UnitManager.Instance.civUnits.Keys.Where(c => c != Game.Instance.player.civilization)) {
             // Move each AI unit for this civ
-            while (UnitManager.Instance.civUnits[aiCiv].Any(u => u.movesLeft > 0))
+            while (UnitManager.Instance.civUnits[aiCiv].Any(u => u.actionsLeft > 0))
             {
                 var (from, to) = ai.GetBestMove(aiCiv); // Assuming ai.GetBestMove takes a civ param now
                 if (from == Vector2Int.zero && to == Vector2Int.zero) break;
                 
                 if (from == to) continue;
                 
-                if (!UnitManager.Instance.TryGetUnit(from, out var unit) || unit.movesLeft <= 0) continue;
+                if (!UnitManager.Instance.TryGetUnit(from, out var unit) || unit.actionsLeft <= 0) continue;
                 
                 if (UnitManager.Instance.HasUnitAt(to))
                     CombatManager.Instance.TryCombat(from, to);
@@ -75,7 +75,7 @@ public class TurnManager : Singleton<TurnManager>
                 
                 if (UnitManager.Instance.TryGetUnit(to, out var movedUnit))
                 {
-                    movedUnit.movesLeft = 0;
+                    movedUnit.actionsLeft = 0;
                     UnitManager.Instance.UpdateUnit(to, movedUnit);
                 }
             }

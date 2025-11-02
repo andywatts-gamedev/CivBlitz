@@ -11,7 +11,7 @@ public class MinMaxAI : MonoBehaviour
         var bestScore = float.MinValue;
         var bestMove = (from: Vector2Int.zero, to: Vector2Int.zero);
         
-        foreach (var unit in UnitManager.Instance.civUnits[aiCiv].Where(u => u.movesLeft > 0))
+        foreach (var unit in UnitManager.Instance.civUnits[aiCiv].Where(u => u.actionsLeft > 0))
         {
             var pos = unit.position;
             var possibleMoves = HexGrid.GetValidMoves(pos, unit.unit.movement, UnitManager.Instance.unitTilemap);

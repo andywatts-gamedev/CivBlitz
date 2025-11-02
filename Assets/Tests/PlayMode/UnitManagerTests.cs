@@ -109,10 +109,10 @@ public class UnitManagerTests
         unitManager.RegisterUnit(civ, unit, pos);
         
         var updated = unitManager.units[pos];
-        updated.movesLeft = 1;
+        updated.actionsLeft = 1;
         unitManager.UpdateUnit(pos, updated);
         
-        Assert.AreEqual(1, unitManager.units[pos].movesLeft);
+        Assert.AreEqual(1, unitManager.units[pos].actionsLeft);
     }
 
     [Test]

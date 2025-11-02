@@ -101,7 +101,7 @@ public class CombatManager : Singleton<CombatManager>
                 
                 defender.health -= attackDamage;
                 attacker.health -= retaliationDamage;
-                attacker.movesLeft = 0;
+                attacker.actionsLeft = 0;
                 
                 UnitManager.Instance.UpdateUnit(attackerPos, attacker);
                 UnitManager.Instance.UpdateUnit(defenderPos, defender);
@@ -235,7 +235,7 @@ public class CombatManager : Singleton<CombatManager>
 
         // Only check for turn end if player was the attacker
         if (e.attackerCiv == Game.Instance.player.civilization && 
-            !UnitManager.Instance.units.Any(u => u.Value.civ == Game.Instance.player.civilization && u.Value.movesLeft > 0))
+            !UnitManager.Instance.units.Any(u => u.Value.civ == Game.Instance.player.civilization && u.Value.actionsLeft > 0))
             TurnManager.Instance.EndTurn();
     }
 
