@@ -107,5 +107,4 @@ public class GameButtonsUITests
         Assert.AreEqual(DisplayStyle.Flex, nextUnitButton.style.display.value);
         Assert.AreEqual(DisplayStyle.None, nextTurnButton.style.display.value);
     }
-
-
+}
