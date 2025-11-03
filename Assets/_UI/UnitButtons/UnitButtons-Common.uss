@@ -4,6 +4,7 @@
     justify-content: flex-start;
     padding: 1%;
     gap: 10px;
+    picking-mode: position;
 }
 
 .unit-action-button {
@@ -16,15 +17,16 @@
     color: white;
     font-size: 30px;
     -unity-text-align: middle-center;
+    picking-mode: position;
 }
 
-.unit-action-button:hover {
+.unit-action-button:hover:enabled {
     background-color: rgba(0, 0, 0, 0.9);
     border-color: white;
 }
 
-.unit-action-button:active {
-    background-color: rgba(255, 255, 255, 0.2);
+.unit-action-button:focus {
+    border-color: rgba(255, 255, 255, 0.8);
 }
 
 .unit-action-button:disabled {
@@ -34,23 +36,11 @@
 }
 
 .unit-action-button.active {
-    background-color: rgba(255, 215, 0, 0.3);
-    border-color: rgba(255, 215, 0, 1);
-    border-width: 4px;
+    background-color: rgba(255, 215, 0, 0.3) !important;
+    border-color: rgba(255, 215, 0, 1) !important;
+    border-width: 4px !important;
 }
 
-.action-points-label {
-    position: absolute;
-    bottom: -8px;
-    right: -8px;
-    width: 24px;
-    height: 24px;
-    background-color: rgba(0, 0, 0, 0.9);
-    border-radius: 12px;
-    border-width: 2px;
-    border-color: white;
-    color: white;
-    font-size: 14px;
-    -unity-text-align: middle-center;
-    -unity-font-style: bold;
+.unit-action-button.active:focus {
+    border-color: rgba(255, 215, 0, 1) !important;
 }

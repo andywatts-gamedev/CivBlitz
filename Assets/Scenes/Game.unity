@@ -820,10 +820,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99679a8abf9ce4e69b42b01344e88a20, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TargetTileUI
+  m_EditorClassIdentifier: Assembly-CSharp::GameButtonsUI
   events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
   onUnitMoved: {fileID: 11400000, guid: d88da9706206b41688755afc3e877cb2, type: 2}
   onMovesConsumed: {fileID: 11400000, guid: ca5919c0bd89340c5b196215ba1d3dba, type: 2}
+  onUnitStateChanged: {fileID: 11400000, guid: 5ba35d0a2bc3042eb87560653a4ac473, type: 2}
   onTurnChanged: {fileID: 11400000, guid: 10e39820c0a9c42b3b3ecf61e7ee953a, type: 2}
 --- !u!114 &842609489
 MonoBehaviour:

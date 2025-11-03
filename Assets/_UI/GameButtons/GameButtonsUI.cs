@@ -7,6 +7,7 @@ public class GameButtonsUI : MonoBehaviour
     [SerializeField] private InputEvents events;
     [SerializeField] private GameEvent onUnitMoved;
     [SerializeField] private GameEvent onMovesConsumed;
+    [SerializeField] private GameEvent onUnitStateChanged;
     [SerializeField] private GameEvent onTurnChanged;
     
     private UIDocument doc;
@@ -50,6 +51,7 @@ public class GameButtonsUI : MonoBehaviour
         if (onTurnChanged != null) onTurnChanged.Handler += UpdateButtonState;
         if (onUnitMoved != null) onUnitMoved.Handler += UpdateButtonState;
         if (onMovesConsumed != null) onMovesConsumed.Handler += UpdateButtonState;
+        if (onUnitStateChanged != null) onUnitStateChanged.Handler += UpdateButtonState;
         
         UpdateButtonState();
     }
@@ -73,6 +75,7 @@ public class GameButtonsUI : MonoBehaviour
         if (onTurnChanged != null) onTurnChanged.Handler -= UpdateButtonState;
         if (onUnitMoved != null) onUnitMoved.Handler -= UpdateButtonState;
         if (onMovesConsumed != null) onMovesConsumed.Handler -= UpdateButtonState;
+        if (onUnitStateChanged != null) onUnitStateChanged.Handler -= UpdateButtonState;
     }
 
 

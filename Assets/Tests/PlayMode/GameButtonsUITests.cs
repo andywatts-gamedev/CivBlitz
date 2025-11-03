@@ -53,6 +53,42 @@ public class GameButtonsUITests
     }
 
     [UnityTest]
+    public IEnumerator NextTurnButton_ShowsWhenAllUnitsResting()
+    {
+        yield return null;
+        
+        var unitManager = UnitManager.Instance;
+        var doc = GameObject.Find("UI").GetComponent<UIDocument>();
+        var root = doc.rootVisualElement;
+        
+        var nextUnitButton = root.Q<Button>("NextUnitButton");
+        var nextTurnButton = root.Q<Button>("NextTurnButton");
+        
+        Assert.IsNotNull(nextUnitButton);
+        Assert.IsNotNull(nextTurnButton);
+        
+        // Set all player units to Resting state
+        var playerCiv = Game.Instance.player.civilization;
+        if (unitManager.civUnits.ContainsKey(playerCiv))
+        {
+            var units = new List<UnitInstance>(unitManager.civUnits[playerCiv]);
+            foreach (var unit in units)
+            {
+                unitManager.SetUnitState(unit.position, UnitState.Resting);
+            }
+        }
+        
+        yield return null;
+        
+        // NextTurnButton should show, NextUnitButton should hide
+        Assert.AreEqual(DisplayStyle.None, nextUnitButton.style.display.value, 
+            "NextUnitButton should be hidden when all units are resting");
+        Assert.AreEqual(DisplayStyle.Flex, nextTurnButton.style.display.value,
+            "NextTurnButton should be visible when all units are resting");
+        Assert.AreEqual("\uf2f9", nextTurnButton.text, "Should show rotate icon");
+    }
+
+    [UnityTest]
     public IEnumerator NextTurnButton_ChangesToSpinner_DuringAITurn()
     {
         yield return null;

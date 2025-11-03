@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
-using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class TouchInputManager : MonoBehaviour
 {
     [SerializeField] protected InputEvents events;
     [SerializeField] protected Grid grid;
+    [SerializeField] private UIDocument uiDocument;
     private MyInputActions inputs;
     private Vector2Int? lastTouchedTile;
     private Vector2Int? dragStartTile;
@@ -22,23 +23,32 @@ public class TouchInputManager : MonoBehaviour
 
     private void Awake()
     {
+        // Find UIDocument if not assigned
+        if (uiDocument == null)
+        {
+            uiDocument = FindFirstObjectByType<UIDocument>();
+            if (uiDocument != null)
+            {
+                Debug.Log($"TouchInputManager: Found UIDocument on {uiDocument.gameObject.name}, panel={uiDocument.rootVisualElement.panel}");
+            }
+            else
+            {
+                Debug.LogWarning("TouchInputManager: No UIDocument found in scene");
+            }
+        }
+        
         inputs = new MyInputActions();
         inputs.Touch.PrimaryContact.started += _ => {
             var touchPos = inputs.Touch.PrimaryPosition.ReadValue<Vector2>();
             var tile = GetTileXY(touchPos);
             if (tile.HasValue)
             {
-                Debug.Log($"{GetType().Name}: Touch started on tile {tile.Value}");
                 lastTouchedTile = tile;
                 dragStartTile = tile;
                 lastTouchPosition = touchPos;
                 touchStartTime = Time.time;
                 hasEmittedHover = false;
                 isDragging = false;
-            }
-            else
-            {
-                Debug.Log($"{GetType().Name}: Touch started on UI element, ignoring");
             }
         };
         inputs.Touch.PrimaryContact.canceled += _ => {
@@ -48,7 +58,6 @@ public class TouchInputManager : MonoBehaviour
                 var endTile = GetTileXY(touchPos);
                 if (endTile.HasValue)
                 {
-                    Debug.Log($"{GetType().Name}: Drag ended from {dragStartTile.Value} to {endTile.Value}");
                     events.EmitDragEnded(dragStartTile.Value, endTile.Value);
                 }
                 isDragging = false;
@@ -60,12 +69,10 @@ public class TouchInputManager : MonoBehaviour
                 var pressTime = Time.time - touchStartTime;
                 if (pressTime >= LONG_PRESS_DELAY)
                 {
-                    Debug.Log($"{GetType().Name}: Long press detected on tile {lastTouchedTile.Value} after {pressTime:F1}s");
                     events.EmitTileHovered(lastTouchedTile.Value);
                 }
                 else
                 {
-                    Debug.Log($"{GetType().Name}: Short press detected on tile {lastTouchedTile.Value} after {pressTime:F1}s");
                     events.EmitTileClicked(lastTouchedTile.Value);
                 }
             }
@@ -73,12 +80,10 @@ public class TouchInputManager : MonoBehaviour
         };
         
         events.OnTileSelected += pos => {
-            Debug.Log($"{GetType().Name}: Tile {pos} selected");
             isSelected = true;
             selectedTile = pos;
         };
         events.OnTileDeselected += _ => {
-            Debug.Log($"{GetType().Name}: Tile deselected");
             isSelected = false;
             selectedTile = null;
         };
@@ -97,7 +102,6 @@ public class TouchInputManager : MonoBehaviour
                 var currentTile = GetTileXY(touchPos);
                 if (currentTile.HasValue)
                 {
-                    Debug.Log($"{GetType().Name}: Drag started from {dragStartTile.Value} to {currentTile.Value}");
                     events.EmitDragStarted(dragStartTile.Value, currentTile.Value);
                     lastDragTile = currentTile;
                 }
@@ -109,7 +113,6 @@ public class TouchInputManager : MonoBehaviour
             var currentTile = GetTileXY(touchPos);
             if (currentTile.HasValue && currentTile != lastDragTile)
             {
-                Debug.Log($"{GetType().Name}: Drag updated from {dragStartTile.Value} to {currentTile.Value}");
                 events.EmitDragUpdated(dragStartTile.Value, currentTile.Value);
                 lastDragTile = currentTile;
             }
@@ -132,13 +135,27 @@ public class TouchInputManager : MonoBehaviour
 
     protected bool IsPointerOverUI(Vector2 screenPos)
     {
-        // Unity 2025+ documentation confirms IsPointerOverGameObject() works with UI Toolkit
-        if (EventSystem.current == null)
+        if (uiDocument == null || uiDocument.rootVisualElement == null)
         {
             return false;
         }
         
-        return EventSystem.current.IsPointerOverGameObject();
+        var root = uiDocument.rootVisualElement;
+        var panel = root.panel;
+        if (panel == null)
+        {
+            return false;
+        }
+        
+        // Unity Input System uses bottom-left origin, but UI Toolkit uses top-left origin
+        // We need to flip the Y coordinate before converting to panel space
+        Vector2 flippedScreenPos = new Vector2(screenPos.x, Screen.height - screenPos.y);
+        var panelPos = RuntimePanelUtils.ScreenToPanel(panel, flippedScreenPos);
+        
+        // Use panel.Pick() - this respects picking-mode in USS and UXML
+        var pickedElement = panel.Pick(panelPos);
+        
+        return pickedElement != null && pickedElement != root;
     }
 
     private void OnEnable() => inputs.Enable();

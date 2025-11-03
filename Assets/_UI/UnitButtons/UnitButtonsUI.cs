@@ -100,12 +100,6 @@ public class UnitButtonsUI : MonoBehaviour
         if (moveButton != null)
         {
             moveButton.SetEnabled(canMove);
-            // Update action point label if it exists
-            var actionLabel = moveButton.Q<Label>("ActionPointsLabel");
-            if (actionLabel != null)
-            {
-                actionLabel.text = unit.actionsLeft.ToString();
-            }
         }
         
         if (restButton != null)
@@ -115,11 +109,17 @@ public class UnitButtonsUI : MonoBehaviour
             // Toggle active class based on unit state
             if (isResting)
             {
-                restButton.AddToClassList("active");
+                if (!restButton.ClassListContains("active"))
+                {
+                    restButton.AddToClassList("active");
+                }
             }
             else
             {
-                restButton.RemoveFromClassList("active");
+                if (restButton.ClassListContains("active"))
+                {
+                    restButton.RemoveFromClassList("active");
+                }
             }
         }
     }
@@ -141,11 +141,13 @@ public class UnitButtonsUI : MonoBehaviour
     {
         if (!selectedTile.HasValue) return;
         
-        if (UnitManager.Instance.TryGetUnit(selectedTile.Value, out var unit) &&
-            unit.civ == Game.Instance.player.civilization &&
-            unit.state == UnitState.Ready)
+        if (UnitManager.Instance.TryGetUnit(selectedTile.Value, out var unit))
         {
-            UnitManager.Instance.SetUnitState(selectedTile.Value, UnitState.Resting);
+            if (unit.civ == Game.Instance.player.civilization && unit.state == UnitState.Ready)
+            {
+                UnitManager.Instance.SetUnitState(selectedTile.Value, UnitState.Resting);
+                UpdateButtonStates();
+            }
         }
     }
 
