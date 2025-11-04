@@ -31,15 +31,4 @@ public class InputEvents : ScriptableObject
 
     public event System.Action<Vector2Int, Vector2Int> OnDragEnded;
     public void EmitDragEnded(Vector2Int fromTile, Vector2Int toTile) => OnDragEnded?.Invoke(fromTile, toTile);
-
-    // Game state events
-    public event System.Action<Vector2Int> OnTileSelected;
-    public void EmitTileSelected(Vector2Int tile) => OnTileSelected?.Invoke(tile);
-
-    public event System.Action<Vector2Int> OnTileDeselected;
-    public void EmitTileDeselected(Vector2Int tile) => OnTileDeselected?.Invoke(tile);
-
-    // Move mode events
-    public event System.Action<Vector2Int> OnMoveModeStarted;
-    public void EmitMoveModeStarted(Vector2Int unitTile) => OnMoveModeStarted?.Invoke(unitTile);
 } 

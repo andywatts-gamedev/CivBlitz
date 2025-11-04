@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class TouchInputManager : MonoBehaviour
 {
     [SerializeField] protected InputEvents events;
+    [SerializeField] protected GameStateEvents gameStateEvents;
     [SerializeField] protected Grid grid;
     [SerializeField] private UIDocument uiDocument;
     private MyInputActions inputs;
@@ -79,11 +80,11 @@ public class TouchInputManager : MonoBehaviour
             lastTouchedTile = null;
         };
         
-        events.OnTileSelected += pos => {
+        gameStateEvents.OnTileSelected += pos => {
             isSelected = true;
             selectedTile = pos;
         };
-        events.OnTileDeselected += _ => {
+        gameStateEvents.OnTileDeselected += _ => {
             isSelected = false;
             selectedTile = null;
         };

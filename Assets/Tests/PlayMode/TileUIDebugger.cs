@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 /// </summary>
 public class TileUIDebugger : MonoBehaviour
 {
-    [SerializeField] private InputEvents events;
+    [SerializeField] private GameStateEvents gameStateEvents;
     
     void Update()
     {
@@ -52,7 +52,7 @@ public class TileUIDebugger : MonoBehaviour
             Debug.Log($"No unit at {pos}");
         }
         
-        events.EmitTileSelected(pos);
+        gameStateEvents.EmitTileSelected(pos);
     }
     
     void TestTileWithUnit()

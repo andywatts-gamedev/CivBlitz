@@ -38,8 +38,8 @@ public class UnitButtonsUITests
         var testUnit = playerUnits[0];
         
         // Select unit
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(testUnit.position);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>()[0];
+        gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
         // Verify button visible
@@ -73,8 +73,8 @@ public class UnitButtonsUITests
         var testUnit = playerUnits[0];
         
         // Select unit
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(testUnit.position);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>()[0];
+        gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
         // Ensure unit is ready
@@ -104,8 +104,8 @@ public class UnitButtonsUITests
         var testUnit = playerUnits[0];
         
         // Select unit and set to resting
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(testUnit.position);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>()[0];
+        gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
         unitManager.SetUnitState(testUnit.position, UnitState.Resting);
@@ -114,11 +114,11 @@ public class UnitButtonsUITests
         Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should have 'active' class after setting to Resting");
         
         // Deselect unit
-        events[0].EmitTileDeselected(testUnit.position);
+        gameStateEvents.EmitTileDeselected(testUnit.position);
         yield return null;
         
         // Reselect unit
-        events[0].EmitTileSelected(testUnit.position);
+        gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
         // Verify active state persists
@@ -144,8 +144,8 @@ public class UnitButtonsUITests
         var testUnit = playerUnits[0];
         
         // Select unit and set to resting
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(testUnit.position);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>()[0];
+        gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
         unitManager.SetUnitState(testUnit.position, UnitState.Resting);
@@ -168,7 +168,7 @@ public class UnitButtonsUITests
         yield return null;
         
         // Reselect unit - should no longer be resting
-        events[0].EmitTileSelected(testUnit.position);
+        gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
         // Verify unit is back to Ready state
@@ -202,8 +202,8 @@ public class UnitButtonsUITests
         unitManager.UpdateUnit(testUnit.position, testUnit);
         
         // Select unit
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(testUnit.position);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>()[0];
+        gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
         // Verify rest button disabled
@@ -235,8 +235,8 @@ public class UnitButtonsUITests
         }
         
         // Select unit
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(testUnit.position);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>()[0];
+        gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
         // Verify rest button enabled

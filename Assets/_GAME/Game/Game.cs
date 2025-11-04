@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 public class Game : Singleton<Game>
 {
     [SerializeField] private InputEvents events;
+    [SerializeField] private GameStateEvents gameStateEvents;
     [SerializeField] private GameObject highlight;
     [SerializeField] private GameObject pathPreview;
     private Vector2Int? selectedTile;
@@ -31,7 +32,7 @@ public class Game : Singleton<Game>
     void Start()
     {
         events.OnTileClicked += HandleTileClicked;
-        events.OnTileSelected += HandleTileSelected;
+        gameStateEvents.OnTileSelected += HandleTileSelected;
         events.OnCancel += HandleCancel;
         events.OnDragStarted += HandleDragStarted;
         events.OnDragUpdated += HandleDragUpdated;
@@ -43,7 +44,7 @@ public class Game : Singleton<Game>
     void OnDisable()
     {
         events.OnTileClicked -= HandleTileClicked;
-        events.OnTileSelected -= HandleTileSelected;
+        gameStateEvents.OnTileSelected -= HandleTileSelected;
         events.OnCancel -= HandleCancel;
         events.OnDragStarted -= HandleDragStarted;
         events.OnDragUpdated -= HandleDragUpdated;
@@ -57,7 +58,7 @@ public class Game : Singleton<Game>
         // If clicking the same selected tile, deselect it
         if (selectedTile.HasValue && selectedTile.Value == pos)
         {
-            events.EmitTileDeselected(pos);
+            gameStateEvents.EmitTileDeselected(pos);
             selectedTile = null;
             highlight.SetActive(false);
             return;
@@ -66,14 +67,14 @@ public class Game : Singleton<Game>
         // If clicking a different tile, deselect current selection first
         if (selectedTile.HasValue)
         {
-            events.EmitTileDeselected(selectedTile.Value);
+            gameStateEvents.EmitTileDeselected(selectedTile.Value);
             selectedTile = null;
             highlight.SetActive(false);
         }
 
         // Always select any clicked tile and show its data
         selectedTile = pos;
-        events.EmitTileSelected(pos);
+        gameStateEvents.EmitTileSelected(pos);
         
         // Show outline for any selected tile
         highlight.SetActive(true);
@@ -87,7 +88,7 @@ public class Game : Singleton<Game>
         // If selecting a different tile, deselect current selection first
         if (selectedTile.HasValue && selectedTile.Value != pos)
         {
-            events.EmitTileDeselected(selectedTile.Value);
+            gameStateEvents.EmitTileDeselected(selectedTile.Value);
             selectedTile = null;
             highlight.SetActive(false);
         }
@@ -102,7 +103,7 @@ public class Game : Singleton<Game>
     {
         if (selectedTile.HasValue)
         {
-            events.EmitTileDeselected(selectedTile.Value);
+            gameStateEvents.EmitTileDeselected(selectedTile.Value);
             selectedTile = null;
             highlight.SetActive(false);
         }
@@ -175,7 +176,7 @@ public class Game : Singleton<Game>
             
         isDragging = true;
         selectedTile = fromTile;
-        events.EmitTileSelected(fromTile);
+        gameStateEvents.EmitTileSelected(fromTile);
         highlight.SetActive(true);
         highlight.transform.position = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)fromTile);
         
@@ -214,7 +215,7 @@ public class Game : Singleton<Game>
         if (IsValidMove(fromTile, toTile))
         {
             MoveTo(fromTile, toTile);
-            events.EmitTileDeselected(fromTile);
+            gameStateEvents.EmitTileDeselected(fromTile);
             selectedTile = null;
             highlight.SetActive(false);
         }

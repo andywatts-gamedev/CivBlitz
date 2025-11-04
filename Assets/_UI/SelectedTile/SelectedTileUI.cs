@@ -4,6 +4,7 @@ using UnityEngine.Tilemaps;
 
 public class SelectedTileUI : MonoBehaviour
 {
+    [SerializeField] private GameStateEvents gameStateEvents;
     [SerializeField] private InputEvents events;
     private UIDocument doc;
     private VisualElement container, unitRow;
@@ -25,15 +26,15 @@ public class SelectedTileUI : MonoBehaviour
         tileDefense = container.Q<Label>("TileDefense");
         attackIcon = container.Q<Label>("AttackIcon");
 
-        events.OnTileSelected += HandleTileSelected;
-        events.OnTileDeselected += HandleTileDeselected;
+        gameStateEvents.OnTileSelected += HandleTileSelected;
+        gameStateEvents.OnTileDeselected += HandleTileDeselected;
         events.OnCancel += HandleCancel;
     }
 
     void OnDisable() 
     {
-        events.OnTileSelected -= HandleTileSelected;
-        events.OnTileDeselected -= HandleTileDeselected;
+        gameStateEvents.OnTileSelected -= HandleTileSelected;
+        gameStateEvents.OnTileDeselected -= HandleTileDeselected;
         events.OnCancel -= HandleCancel;
     }
 

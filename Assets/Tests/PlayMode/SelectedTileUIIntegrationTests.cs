@@ -40,10 +40,10 @@ public class SelectedTileUIIntegrationTests
             yield break;
         }
         
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        Assert.IsTrue(events.Length > 0);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>();
+        Assert.IsTrue(gameStateEvents.Length > 0);
         
-        events[0].EmitTileSelected(unitPos.Value);
+        gameStateEvents[0].EmitTileSelected(unitPos.Value);
         yield return null;
         
         var selectedTileUI = Object.FindObjectOfType<SelectedTileUI>();
@@ -82,8 +82,8 @@ public class SelectedTileUIIntegrationTests
         while (unitManager.HasUnitAt(emptyPos))
             emptyPos += Vector2Int.one;
         
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(emptyPos);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>();
+        gameStateEvents[0].EmitTileSelected(emptyPos);
         yield return null;
         
         var selectedTileUI = Object.FindObjectOfType<SelectedTileUI>();
@@ -113,8 +113,8 @@ public class SelectedTileUIIntegrationTests
             yield break;
         }
         
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(unitPos.Value);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>();
+        gameStateEvents[0].EmitTileSelected(unitPos.Value);
         yield return null;
         
         var selectedTileUI = Object.FindObjectOfType<SelectedTileUI>();
@@ -143,8 +143,8 @@ public class SelectedTileUIIntegrationTests
         while (unitManager.HasUnitAt(emptyPos))
             emptyPos += Vector2Int.one;
         
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(emptyPos);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>();
+        gameStateEvents[0].EmitTileSelected(emptyPos);
         yield return null;
         
         var selectedTileUI = Object.FindObjectOfType<SelectedTileUI>();
@@ -183,8 +183,8 @@ public class SelectedTileUIIntegrationTests
             yield break;
         }
         
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(meleePos.Value);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>();
+        gameStateEvents[0].EmitTileSelected(meleePos.Value);
         yield return null;
         
         var selectedTileUI = Object.FindObjectOfType<SelectedTileUI>();
@@ -218,8 +218,8 @@ public class SelectedTileUIIntegrationTests
             yield break;
         }
         
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(rangedPos.Value);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>();
+        gameStateEvents[0].EmitTileSelected(rangedPos.Value);
         yield return null;
         
         var selectedTileUI = Object.FindObjectOfType<SelectedTileUI>();
@@ -267,8 +267,8 @@ public class SelectedTileUIIntegrationTests
         var unitManager = UnitManager.Instance;
         var anyPos = new Vector2Int(0, 0);
         
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(anyPos);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>();
+        gameStateEvents[0].EmitTileSelected(anyPos);
         yield return null;
         
         var selectedTileUI = Object.FindObjectOfType<SelectedTileUI>();
@@ -305,8 +305,8 @@ public class SelectedTileUIIntegrationTests
             yield break;
         }
         
-        var events = Resources.FindObjectsOfTypeAll<InputEvents>();
-        events[0].EmitTileSelected(unitPos.Value);
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>();
+        gameStateEvents[0].EmitTileSelected(unitPos.Value);
         yield return null;
         
         var selectedTileUI = Object.FindObjectOfType<SelectedTileUI>();

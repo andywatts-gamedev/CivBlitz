@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class MouseInputManager : MonoBehaviour
 {
     [SerializeField] protected InputEvents events;
+    [SerializeField] protected GameStateEvents gameStateEvents;
     [SerializeField] protected Grid grid;
     private MyInputActions inputs;
     private Vector2 lastMousePos;
@@ -38,11 +39,11 @@ public class MouseInputManager : MonoBehaviour
             events.EmitCancel();
         };
         
-        events.OnTileSelected += pos => {
+        gameStateEvents.OnTileSelected += pos => {
             Debug.Log($"{GetType().Name}: Tile {pos} selected");
             isSelected = true;
         };
-        events.OnTileDeselected += _ => {
+        gameStateEvents.OnTileDeselected += _ => {
             Debug.Log($"{GetType().Name}: Tile deselected");
             isSelected = false;
         };

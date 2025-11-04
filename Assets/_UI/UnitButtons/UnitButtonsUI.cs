@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 public class UnitButtonsUI : MonoBehaviour
 {
-    [SerializeField] private InputEvents events;
+    [SerializeField] private GameStateEvents gameStateEvents;
     [SerializeField] private GameEvent onUnitMoved;
     [SerializeField] private GameEvent onMovesConsumed;
     [SerializeField] private GameEvent onUnitStateChanged;
@@ -34,9 +34,8 @@ public class UnitButtonsUI : MonoBehaviour
             restButton.clicked += HandleRestClicked;
         }
 
-        events.OnTileSelected += HandleTileSelected;
-        events.OnTileDeselected += HandleTileDeselected;
-        events.OnCancel += HandleCancel;
+        gameStateEvents.OnTileSelected += HandleTileSelected;
+        gameStateEvents.OnTileDeselected += HandleTileDeselected;
         
         // Subscribe to game events for button state updates
         if (onTurnChanged != null) onTurnChanged.Handler += UpdateButtonStates;
@@ -60,9 +59,8 @@ public class UnitButtonsUI : MonoBehaviour
             restButton.clicked -= HandleRestClicked;
         }
         
-        events.OnTileSelected -= HandleTileSelected;
-        events.OnTileDeselected -= HandleTileDeselected;
-        events.OnCancel -= HandleCancel;
+        gameStateEvents.OnTileSelected -= HandleTileSelected;
+        gameStateEvents.OnTileDeselected -= HandleTileDeselected;
         
         if (onTurnChanged != null) onTurnChanged.Handler -= UpdateButtonStates;
         if (onUnitMoved != null) onUnitMoved.Handler -= UpdateButtonStates;
@@ -133,7 +131,7 @@ public class UnitButtonsUI : MonoBehaviour
             unit.state == UnitState.Ready)
         {
             // Enter move mode - this will be handled by input managers
-            events.EmitMoveModeStarted(selectedTile.Value);
+            gameStateEvents.EmitMoveModeStarted(selectedTile.Value);
         }
     }
 
@@ -154,12 +152,6 @@ public class UnitButtonsUI : MonoBehaviour
     private void HandleTileSelected(Vector2Int pos)
     {
         selectedTile = pos;
-        UpdateButtonStates();
-    }
-
-    private void HandleCancel()
-    {
-        selectedTile = null;
         UpdateButtonStates();
     }
 

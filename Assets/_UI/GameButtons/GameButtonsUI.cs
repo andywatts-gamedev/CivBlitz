@@ -4,7 +4,7 @@ using System;
 
 public class GameButtonsUI : MonoBehaviour
 {
-    [SerializeField] private InputEvents events;
+    [SerializeField] private GameStateEvents gameStateEvents;
     [SerializeField] private GameEvent onUnitMoved;
     [SerializeField] private GameEvent onMovesConsumed;
     [SerializeField] private GameEvent onUnitStateChanged;
@@ -43,9 +43,8 @@ public class GameButtonsUI : MonoBehaviour
             Debug.LogError("GameButtonsUI: Next turn button not found!");
         }
 
-        events.OnTileSelected += HandleTileSelected;
-        events.OnTileDeselected += HandleTileDeselected;
-        events.OnCancel += HandleCancel;
+        gameStateEvents.OnTileSelected += HandleTileSelected;
+        gameStateEvents.OnTileDeselected += HandleTileDeselected;
         
         // Subscribe to game events for button state updates
         if (onTurnChanged != null) onTurnChanged.Handler += UpdateButtonState;
@@ -68,9 +67,8 @@ public class GameButtonsUI : MonoBehaviour
             nextTurnButton.clicked -= HandleNextTurnClicked;
         }
         
-        events.OnTileSelected -= HandleTileSelected;
-        events.OnTileDeselected -= HandleTileDeselected;
-        events.OnCancel -= HandleCancel;
+        gameStateEvents.OnTileSelected -= HandleTileSelected;
+        gameStateEvents.OnTileDeselected -= HandleTileDeselected;
         
         if (onTurnChanged != null) onTurnChanged.Handler -= UpdateButtonState;
         if (onUnitMoved != null) onUnitMoved.Handler -= UpdateButtonState;
@@ -112,12 +110,16 @@ public class GameButtonsUI : MonoBehaviour
         {
             // Select next ready unit
             selectedTile = nextReadyUnit.position;
-            events.EmitTileSelected(nextReadyUnit.position);
+            gameStateEvents.EmitTileSelected(nextReadyUnit.position);
         }
     }
 
     private void HandleNextTurnClicked()
     {
+        if (selectedTile.HasValue)
+        {
+            gameStateEvents.EmitTileDeselected(selectedTile.Value);
+        }
         TurnManager.Instance.EndTurn();
         TurnManager.Instance.StartAITurn();
     }
@@ -125,11 +127,6 @@ public class GameButtonsUI : MonoBehaviour
     private void HandleTileSelected(Vector2Int pos)
     {
         selectedTile = pos;
-    }
-
-    private void HandleCancel()
-    {
-        selectedTile = null;
     }
 
     private void HandleTileDeselected(Vector2Int pos)
