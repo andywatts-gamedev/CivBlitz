@@ -86,12 +86,16 @@ public class GameButtonsUI : MonoBehaviour
         bool hasReadyUnits = nextReadyUnit != null;
         bool isAITurn = !turnManager.isPlayerTurn;
         
+        Debug.Log($"[GameButtonsUI] UpdateButtonState called - isAITurn: {isAITurn}, hasReadyUnits: {hasReadyUnits}");
+        
         // Show spinner during AI turn
         if (isAITurn)
         {
             nextUnitButton.style.display = DisplayStyle.None;
             nextTurnButton.style.display = DisplayStyle.Flex;
             nextTurnButton.text = "\uf021"; // Sync icon (available in regular)
+            
+            Debug.Log($"[GameButtonsUI] AI Turn - NextUnit: Hidden, NextTurn: Visible, Icon: \\uf021");
         }
         else
         {
@@ -99,6 +103,10 @@ public class GameButtonsUI : MonoBehaviour
             nextUnitButton.style.display = hasReadyUnits ? DisplayStyle.Flex : DisplayStyle.None;
             nextTurnButton.style.display = hasReadyUnits ? DisplayStyle.None : DisplayStyle.Flex;
             nextTurnButton.text = "\uf021"; // Sync icon (available in regular)
+            
+            Debug.Log($"[GameButtonsUI] Player Turn - NextUnit: {(hasReadyUnits ? "Visible" : "Hidden")}, NextTurn: {(hasReadyUnits ? "Hidden" : "Visible")}");
+            Debug.Log($"[GameButtonsUI] NextUnitButton.text: '{nextUnitButton.text}' (expected \\uf04b)");
+            Debug.Log($"[GameButtonsUI] NextTurnButton.text: '{nextTurnButton.text}' (\\uf021)");
         }
     }
 
