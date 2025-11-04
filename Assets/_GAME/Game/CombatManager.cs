@@ -34,6 +34,7 @@ public class CombatManager : Singleton<CombatManager>
     public bool isCombatMoving;
     
     public event System.Action<CombatEvent> OnCombatResolved;
+    public event System.Action<Civilization> OnGameOver;
 
     public bool TryCombat(Vector2Int attackerPos, Vector2Int defenderPos) {
         if (!UnitManager.Instance.TryGetUnit(attackerPos, out var attacker) || 
@@ -187,6 +188,13 @@ public class CombatManager : Singleton<CombatManager>
             UnitManager.Instance.RemoveUnit(e.attackerPos);
             Destroy(attackerFlagSprite);
             Destroy(attackerUnitSprite);
+        }
+        
+        // Check for game over after unit removal
+        var winner = UnitManager.Instance.CheckForGameOver();
+        if (winner.HasValue)
+        {
+            OnGameOver?.Invoke(winner.Value);
         }
         
         // Return animation for survivors

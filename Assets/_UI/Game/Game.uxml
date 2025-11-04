@@ -4,9 +4,11 @@
     <ui:Template name="CombatLog" src="project://database/Assets/_UI/CombatLog/CombatLog.uxml?fileID=9197481963319205126&amp;guid=353a86522d57644f0b7acca85f87738f&amp;type=3#CombatLog" />
     <ui:Template name="UnitButtons" src="project://database/Assets/_UI/UnitButtons/UnitButtons.uxml?fileID=9197481963319205126&amp;guid=7c8922d88a62b4487bb25b795571eedf&amp;type=3#UnitButtons" />
     <ui:Template name="GameButtons" src="project://database/Assets/_UI/GameButtons/GameButtons.uxml?fileID=9197481963319205126&amp;guid=b9d2af5345d4f4cd688312f829ef9dde&amp;type=3#GameButtons" />
+    <ui:Template name="GameOver" src="project://database/Assets/_UI/GameOver/GameOver.uxml" />
     <ui:Instance template="SelectedTile" name="SelectedTileContainer" />
     <ui:Instance template="TargetTile" name="TargetTileContainer" />
     <ui:Instance template="CombatLog" name="CombatLogContainer" />
     <ui:Instance template="UnitButtons" name="UnitButtonsContainer" picking-mode="Position" style="display: flex; -unity-text-align: upper-left;" />
     <ui:Instance template="GameButtons" name="GameButtonsContainer" picking-mode="Position" style="width: 5%;" />
+    <ui:Instance template="GameOver" name="GameOverContainer" />
 </ui:UXML>

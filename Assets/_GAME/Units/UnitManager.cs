@@ -173,4 +173,19 @@ public class UnitManager : Singleton<UnitManager>
     {
         onMovesConsumed?.Invoke();
     }
+
+    public bool HasUnitsForCivilization(Civilization civ)
+    {
+        return civUnits.ContainsKey(civ) && civUnits[civ].Count > 0;
+    }
+
+    public Civilization? CheckForGameOver()
+    {
+        var playerHasUnits = HasUnitsForCivilization(Game.Instance.player.civilization);
+        var aiHasUnits = HasUnitsForCivilization(Game.Instance.ai.civilization);
+        
+        if (!playerHasUnits) return Game.Instance.ai.civilization;
+        if (!aiHasUnits) return Game.Instance.player.civilization;
+        return null;
+    }
 } 

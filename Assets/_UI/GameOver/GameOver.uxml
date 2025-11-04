@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="GameOverContainer" class="game-over-container">
+        <ui:VisualElement class="game-over-panel">
+            <ui:Label name="GameOverMessage" text="You Won!" class="game-over-message" />
+            <ui:Button name="RestartButton" text="Restart" class="restart-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
+
