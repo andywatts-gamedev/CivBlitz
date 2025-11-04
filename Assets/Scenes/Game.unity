@@ -328,6 +328,7 @@ MonoBehaviour:
   events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
   gameStateEvents: {fileID: 11400000, guid: b964296b5dcd14b71806bd1c856e99f4, type: 2}
   grid: {fileID: 649436932}
+  uiDocument: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,6 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
+  gameStateEvents: {fileID: 0}
   grid: {fileID: 649436932}
 --- !u!1 &576595455
 GameObject:
@@ -876,7 +878,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 842609482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00000000000000000000000000000000, type: 3}
+  m_Script: {fileID: 11500000, guid: a4f6e64f4ee7c442a9e383b95d2f3229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverUI
 --- !u!1 &852271061

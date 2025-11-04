@@ -91,14 +91,14 @@ public class GameButtonsUI : MonoBehaviour
         {
             nextUnitButton.style.display = DisplayStyle.None;
             nextTurnButton.style.display = DisplayStyle.Flex;
-            nextTurnButton.text = "\uf110"; // Spinner icon
+            nextTurnButton.text = "\uf021"; // Sync icon (available in regular)
         }
         else
         {
             // Show/hide buttons based on game state
             nextUnitButton.style.display = hasReadyUnits ? DisplayStyle.Flex : DisplayStyle.None;
             nextTurnButton.style.display = hasReadyUnits ? DisplayStyle.None : DisplayStyle.Flex;
-            nextTurnButton.text = "\uf2f9"; // Rotate icon
+            nextTurnButton.text = "\uf021"; // Sync icon (available in regular)
         }
     }
 

@@ -85,7 +85,7 @@ public class GameButtonsUITests
             "NextUnitButton should be hidden when all units are resting");
         Assert.AreEqual(DisplayStyle.Flex, nextTurnButton.style.display.value,
             "NextTurnButton should be visible when all units are resting");
-        Assert.AreEqual("\uf2f9", nextTurnButton.text, "Should show rotate icon");
+        Assert.AreEqual("\uf021", nextTurnButton.text, "Should show sync icon");
     }
 
     [UnityTest]
@@ -131,7 +131,7 @@ public class GameButtonsUITests
         // During AI turn: should show spinner
         Assert.AreEqual(DisplayStyle.None, nextUnitButton.style.display.value);
         Assert.AreEqual(DisplayStyle.Flex, nextTurnButton.style.display.value);
-        Assert.AreEqual("\uf110", nextTurnButton.text); // Spinner icon
+        Assert.AreEqual("\uf021", nextTurnButton.text); // Sync icon
         
         // Wait for AI turn to complete
         while (!turnManager.isPlayerTurn)
