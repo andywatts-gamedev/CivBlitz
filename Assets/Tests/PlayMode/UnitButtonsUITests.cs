@@ -177,12 +177,94 @@ public class UnitButtonsUITests
         Assert.IsFalse(restButton.ClassListContains("active"), "RestButton should NOT be active after new turn");
     }
 
+    [UnityTest]
+    public IEnumerator RestButton_ClearsActive_WhenToggledFromRestingToReady()
+    {
+        yield return null;
+        
+        var unitManager = UnitManager.Instance;
+        var game = Game.Instance;
+        var doc = GameObject.Find("UI").GetComponent<UIDocument>();
+        var root = doc.rootVisualElement;
+        var restButton = root.Q<Button>("RestButton");
+        
+        // Get player unit
+        var playerCiv = game.player.civilization;
+        var playerUnits = unitManager.civUnits[playerCiv];
+        var testUnit = playerUnits[0];
+        
+        // Select unit and set to resting
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>()[0];
+        gameStateEvents.EmitTileSelected(testUnit.position);
+        yield return null;
+        
+        unitManager.SetUnitState(testUnit.position, UnitState.Resting);
+        yield return null;
+        
+        Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should be active when resting");
+        Assert.AreEqual(UnitState.Resting, testUnit.state, "Unit should be Resting");
+        
+        // Toggle back to Ready
+        unitManager.SetUnitState(testUnit.position, UnitState.Ready);
+        yield return null;
+        
+        // Verify unit returned to Ready state and button updated
+        Assert.IsTrue(unitManager.TryGetUnit(testUnit.position, out var updatedUnit), "Unit should exist");
+        Assert.AreEqual(UnitState.Ready, updatedUnit.state, "Unit should be Ready after toggling off rest");
+        Assert.IsFalse(restButton.ClassListContains("active"), "RestButton should NOT be active after toggling off");
+    }
+
+    [UnityTest]
+    public IEnumerator RestButton_TogglesActiveClass_ThroughMultipleStateChanges()
+    {
+        yield return null;
+        
+        var unitManager = UnitManager.Instance;
+        var game = Game.Instance;
+        var doc = GameObject.Find("UI").GetComponent<UIDocument>();
+        var root = doc.rootVisualElement;
+        var restButton = root.Q<Button>("RestButton");
+        
+        // Get player unit
+        var playerCiv = game.player.civilization;
+        var playerUnits = unitManager.civUnits[playerCiv];
+        var testUnit = playerUnits[0];
+        
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>()[0];
+        gameStateEvents.EmitTileSelected(testUnit.position);
+        yield return null;
+        
+        // Toggle to Resting
+        unitManager.SetUnitState(testUnit.position, UnitState.Resting);
+        yield return null;
+        
+        Assert.IsTrue(unitManager.TryGetUnit(testUnit.position, out var unit1), "Unit should exist");
+        Assert.AreEqual(UnitState.Resting, unit1.state, "Unit should be Resting after first toggle");
+        Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should be active");
+        
+        // Toggle to Ready
+        unitManager.SetUnitState(testUnit.position, UnitState.Ready);
+        yield return null;
+        
+        Assert.IsTrue(unitManager.TryGetUnit(testUnit.position, out var unit2), "Unit should exist");
+        Assert.AreEqual(UnitState.Ready, unit2.state, "Unit should be Ready after second toggle");
+        Assert.IsFalse(restButton.ClassListContains("active"), "RestButton should NOT be active");
+        
+        // Toggle to Resting again
+        unitManager.SetUnitState(testUnit.position, UnitState.Resting);
+        yield return null;
+        
+        Assert.IsTrue(unitManager.TryGetUnit(testUnit.position, out var unit3), "Unit should exist");
+        Assert.AreEqual(UnitState.Resting, unit3.state, "Unit should be Resting after third toggle");
+        Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should be active again");
+    }
+
     #endregion
 
     #region Rest Button Disabled Tests
 
     [UnityTest]
-    public IEnumerator RestButton_Disabled_WhenNoActionsLeft()
+    public IEnumerator RestButton_Disabled_WhenReadyAndNoActionsLeft()
     {
         yield return null;
         
@@ -199,6 +281,7 @@ public class UnitButtonsUITests
         var testUnit = playerUnits[0];
         
         testUnit.actionsLeft = 0;
+        testUnit.state = UnitState.Ready;
         unitManager.UpdateUnit(testUnit.position, testUnit);
         
         // Select unit
@@ -206,8 +289,39 @@ public class UnitButtonsUITests
         gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
-        // Verify rest button disabled
-        Assert.IsFalse(restButton.enabledSelf, "RestButton should be disabled when no actions left");
+        // Verify rest button disabled when Ready and no actions
+        Assert.IsFalse(restButton.enabledSelf, "RestButton should be disabled when Ready and no actions left");
+    }
+
+    [UnityTest]
+    public IEnumerator RestButton_Enabled_WhenRestingEvenWithNoActions()
+    {
+        yield return null;
+        
+        var unitManager = UnitManager.Instance;
+        var game = Game.Instance;
+        var doc = GameObject.Find("UI").GetComponent<UIDocument>();
+        var root = doc.rootVisualElement;
+        
+        var restButton = root.Q<Button>("RestButton");
+        
+        // Get player unit, set to resting with no actions
+        var playerCiv = game.player.civilization;
+        var playerUnits = unitManager.civUnits[playerCiv];
+        var testUnit = playerUnits[0];
+        
+        testUnit.actionsLeft = 0;
+        testUnit.state = UnitState.Resting;
+        unitManager.UpdateUnit(testUnit.position, testUnit);
+        
+        // Select unit
+        var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>()[0];
+        gameStateEvents.EmitTileSelected(testUnit.position);
+        yield return null;
+        
+        // Verify rest button enabled when Resting (to allow toggling off)
+        Assert.IsTrue(restButton.enabledSelf, "RestButton should be enabled when Resting even with no actions");
+        Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should be active when Resting");
     }
 
     [UnityTest]

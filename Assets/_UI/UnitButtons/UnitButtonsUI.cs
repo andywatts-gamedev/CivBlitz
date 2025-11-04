@@ -92,8 +92,8 @@ public class UnitButtonsUI : MonoBehaviour
         }
 
         bool canMove = unit.state == UnitState.Ready && unit.actionsLeft > 0;
-        bool canRest = unit.state == UnitState.Ready && unit.actionsLeft > 0;
         bool isResting = unit.state == UnitState.Resting;
+        bool canToggleRest = (unit.state == UnitState.Ready && unit.actionsLeft > 0) || isResting;
         
         if (moveButton != null)
         {
@@ -102,7 +102,7 @@ public class UnitButtonsUI : MonoBehaviour
         
         if (restButton != null)
         {
-            restButton.SetEnabled(canRest);
+            restButton.SetEnabled(canToggleRest);
             
             // Toggle active class based on unit state
             if (isResting)
@@ -141,9 +141,11 @@ public class UnitButtonsUI : MonoBehaviour
         
         if (UnitManager.Instance.TryGetUnit(selectedTile.Value, out var unit))
         {
-            if (unit.civ == Game.Instance.player.civilization && unit.state == UnitState.Ready)
+            if (unit.civ == Game.Instance.player.civilization)
             {
-                UnitManager.Instance.SetUnitState(selectedTile.Value, UnitState.Resting);
+                // Toggle rest state
+                var newState = unit.state == UnitState.Resting ? UnitState.Ready : UnitState.Resting;
+                UnitManager.Instance.SetUnitState(selectedTile.Value, newState);
                 UpdateButtonStates();
             }
         }
