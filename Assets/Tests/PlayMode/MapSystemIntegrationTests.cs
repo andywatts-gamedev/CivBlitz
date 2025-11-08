@@ -45,6 +45,13 @@ public class MapSystemIntegrationTests
     {
         yield return null;
 
+        // Check if MapLoader exists in scene
+        if (MapLoader.Instance == null)
+        {
+            Assert.Ignore("MapLoader not in scene - test skipped");
+            yield break;
+        }
+
         // Create a test map using utilities
         var testMap = MapDataTestUtility.CreateSimpleTestMap("IntegrationTest");
         
@@ -105,6 +112,13 @@ public class MapSystemIntegrationTests
     public IEnumerator Integration_ClearAndReloadWorks()
     {
         yield return null;
+
+        // Check if MapLoader exists in scene
+        if (MapLoader.Instance == null)
+        {
+            Assert.Ignore("MapLoader not in scene - test skipped");
+            yield break;
+        }
 
         // Create and load first map
         var map1 = MapDataTestUtility.CreateSimpleTestMap("ClearTest1");

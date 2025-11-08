@@ -16,10 +16,10 @@ public static class MapDataTestUtility
     /// </summary>
     public static void LoadCommonResources()
     {
-        cachedGrassTerrain = UnityEngine.Resources.Load<TerrainScob>("Grass");
-        cachedOceanTerrain = UnityEngine.Resources.Load<TerrainScob>("Ocean");
-        cachedWarriorUnit = UnityEngine.Resources.Load<UnitSCOB>("Warrior");
-        cachedSlingerUnit = UnityEngine.Resources.Load<UnitSCOB>("Slinger");
+        cachedGrassTerrain = UnityEngine.Resources.Load<TerrainScob>("Terrain/Grass");
+        cachedOceanTerrain = UnityEngine.Resources.Load<TerrainScob>("Terrain/Ocean");
+        cachedWarriorUnit = UnityEngine.Resources.Load<UnitSCOB>("Units/Warrior");
+        cachedSlingerUnit = UnityEngine.Resources.Load<UnitSCOB>("Units/Slinger");
     }
 
     /// <summary>
@@ -151,10 +151,10 @@ public static class MapDataTestUtility
     /// </summary>
     public static class Resources
     {
-        public static TerrainScob GrassTerrain => cachedGrassTerrain ?? (cachedGrassTerrain = UnityEngine.Resources.Load<TerrainScob>("Grass"));
-        public static TerrainScob OceanTerrain => cachedOceanTerrain ?? (cachedOceanTerrain = UnityEngine.Resources.Load<TerrainScob>("Ocean"));
-        public static UnitSCOB WarriorUnit => cachedWarriorUnit ?? (cachedWarriorUnit = UnityEngine.Resources.Load<UnitSCOB>("Warrior"));
-        public static UnitSCOB SlingerUnit => cachedSlingerUnit ?? (cachedSlingerUnit = UnityEngine.Resources.Load<UnitSCOB>("Slinger"));
+        public static TerrainScob GrassTerrain => cachedGrassTerrain ?? (cachedGrassTerrain = UnityEngine.Resources.Load<TerrainScob>("Terrain/Grass"));
+        public static TerrainScob OceanTerrain => cachedOceanTerrain ?? (cachedOceanTerrain = UnityEngine.Resources.Load<TerrainScob>("Terrain/Ocean"));
+        public static UnitSCOB WarriorUnit => cachedWarriorUnit ?? (cachedWarriorUnit = UnityEngine.Resources.Load<UnitSCOB>("Units/Warrior"));
+        public static UnitSCOB SlingerUnit => cachedSlingerUnit ?? (cachedSlingerUnit = UnityEngine.Resources.Load<UnitSCOB>("Units/Slinger"));
     }
 }
 

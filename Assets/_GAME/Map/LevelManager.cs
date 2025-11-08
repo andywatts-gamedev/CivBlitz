@@ -6,6 +6,9 @@ public class LevelManager : Singleton<LevelManager>
     [Title("Level Progression")]
     [SerializeField] private MapData[] levels;
     
+    [Tooltip("If true, loads the first level on game start")]
+    [SerializeField] private bool loadFirstLevelOnStart = false;
+    
     [ShowInInspector, ReadOnly]
     private int currentLevelIndex = 0;
 
@@ -20,6 +23,13 @@ public class LevelManager : Singleton<LevelManager>
         if (CombatManager.Instance != null)
         {
             CombatManager.Instance.OnGameOver += HandleGameOver;
+        }
+        
+        // Auto-load first level if configured
+        if (loadFirstLevelOnStart && levels != null && levels.Length > 0)
+        {
+            Debug.Log("[LevelManager] Auto-loading first level on start");
+            LoadLevel(0);
         }
     }
 

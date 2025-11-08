@@ -63,7 +63,9 @@ public class GameOverUI : MonoBehaviour
         // Update button text based on outcome
         if (restartButton != null)
         {
-            if (playerWon && LevelManager.Instance != null && LevelManager.Instance.HasNextLevel())
+            bool hasLevels = LevelManager.Instance != null && LevelManager.Instance.GetTotalLevels() > 0;
+            
+            if (playerWon && hasLevels && LevelManager.Instance.HasNextLevel())
             {
                 restartButton.text = "Next Level";
             }
@@ -96,8 +98,8 @@ public class GameOverUI : MonoBehaviour
             container.style.display = DisplayStyle.None;
         }
 
-        // If LevelManager exists, use it for progression
-        if (LevelManager.Instance != null)
+        // If LevelManager exists AND has levels configured, use it for progression
+        if (LevelManager.Instance != null && LevelManager.Instance.GetTotalLevels() > 0)
         {
             if (playerWon)
             {
@@ -110,7 +112,8 @@ public class GameOverUI : MonoBehaviour
         }
         else
         {
-            // Fallback to scene reload if no LevelManager
+            // Fallback to scene reload if no LevelManager or no levels configured
+            Debug.Log("[GameOverUI] No levels configured, reloading scene");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

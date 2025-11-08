@@ -43,8 +43,8 @@ public class MapLoader : MonoBehaviour
 
     private void BuildTileCaches()
     {
-        // Load all terrain tiles
-        var terrainTiles = Resources.LoadAll<TerrainTile>("");
+        // Load all terrain tiles from Resources
+        var terrainTiles = Resources.LoadAll<TerrainTile>("Tiles/Terrain");
         terrainTileCache = new Dictionary<TerrainScob, TerrainTile>();
         foreach (var tile in terrainTiles)
         {
@@ -55,8 +55,8 @@ public class MapLoader : MonoBehaviour
         }
         Debug.Log($"[MapLoader] Loaded {terrainTileCache.Count} terrain tiles");
 
-        // Load all unit tiles
-        var unitTiles = Resources.LoadAll<UnitTile>("");
+        // Load all unit tiles from Resources
+        var unitTiles = Resources.LoadAll<UnitTile>("Tiles/Units");
         unitTileCache = new Dictionary<UnitSCOB, UnitTile>();
         foreach (var tile in unitTiles)
         {
@@ -80,14 +80,17 @@ public class MapLoader : MonoBehaviour
             }
         }
         
-        // Load flag tile
+        // Load flag tile from Resources
         if (flagTile == null)
         {
-            var flags = Resources.LoadAll<Tile>("").Where(t => t.name == "UnitFlag").ToArray();
-            if (flags.Length > 0)
+            flagTile = Resources.Load<Tile>("Tiles/Units/UnitFlag");
+            if (flagTile != null)
             {
-                flagTile = flags[0];
-                Debug.Log("[MapLoader] Loaded flag tile");
+                Debug.Log("[MapLoader] Loaded flag tile from Resources");
+            }
+            else
+            {
+                Debug.LogWarning("[MapLoader] UnitFlag tile not found in Resources/Tiles/Units/");
             }
         }
     }

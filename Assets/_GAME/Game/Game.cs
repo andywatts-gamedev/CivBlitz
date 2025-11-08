@@ -25,7 +25,7 @@ public class Game : Singleton<Game>
     protected override void Awake()
     {
         base.Awake();
-        civilizations = Resources.LoadAll<CivilizationSCOB>("").ToDictionary(c => c.civilization, c => c);
+        civilizations = Resources.LoadAll<CivilizationSCOB>("Civilizations").ToDictionary(c => c.civilization, c => c);
         Debug.Log("Civilizations: " + civilizations.Count);
     }
 
