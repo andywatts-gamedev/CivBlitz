@@ -23,9 +23,20 @@ public class GameOverUI : MonoBehaviour
             restartButton.clicked += HandleRestart;
         }
         
-        CombatManager.Instance.OnGameOver += HandleGameOver;
+        if (CombatManager.Instance != null)
+        {
+            CombatManager.Instance.OnGameOver += HandleGameOver;
+            Debug.Log("[GameOverUI] Subscribed to OnGameOver event");
+        }
+        else
+        {
+            Debug.LogError("[GameOverUI] CombatManager.Instance is null!");
+        }
         
-        container.style.display = DisplayStyle.None;
+        if (container != null)
+        {
+            container.style.display = DisplayStyle.None;
+        }
     }
 
     void OnDisable()
@@ -44,8 +55,18 @@ public class GameOverUI : MonoBehaviour
     private void HandleGameOver(Civilization winner)
     {
         var playerWon = winner == Game.Instance.player.civilization;
-        messageLabel.text = playerWon ? "You Won!" : "You Lost!";
-        container.style.display = DisplayStyle.Flex;
+        var message = playerWon ? "You Won!" : "You Lost!";
+        Debug.Log($"[GameOverUI] Game Over! Winner: {winner}, Player won: {playerWon}, Message: {message}");
+        if (messageLabel != null) messageLabel.text = message;
+        if (container != null)
+        {
+            container.style.display = DisplayStyle.Flex;
+            Debug.Log($"[GameOverUI] Container display set to Flex");
+        }
+        else
+        {
+            Debug.LogError("[GameOverUI] Container is null!");
+        }
     }
 
     private void HandleRestart()

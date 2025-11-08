@@ -240,11 +240,6 @@ public class CombatManager : Singleton<CombatManager>
         
         // Fire combat event for UI
         OnCombatResolved?.Invoke(e);
-
-        // Only check for turn end if player was the attacker
-        if (e.attackerCiv == Game.Instance.player.civilization && 
-            !UnitManager.Instance.units.Any(u => u.Value.civ == Game.Instance.player.civilization && u.Value.actionsLeft > 0))
-            TurnManager.Instance.EndTurn();
     }
 
     private GameObject CreateMovingSprite(Tile tile, Vector2Int pos, Civilization civ, bool isFlag)

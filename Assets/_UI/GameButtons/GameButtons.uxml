@@ -1,6 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <ui:VisualElement name="GameButtons" class="game-buttons-panel" picking-mode="Position">
+    <ui:VisualElement name="GameButtons" class="game-buttons-panel">
         <ui:Button name="NextUnitButton" text="\uf04b" parse-escape-sequences="true" class="turn-button next-unit-button" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&amp;guid=e550a4ad826a24de7848b919a31ce3bb&amp;type=2#fa-regular-400 SDF&quot;); -unity-text-align: middle-center;" />
-        <ui:Button name="NextTurnButton" text="\uf021" parse-escape-sequences="true" class="turn-button next-turn-button" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&amp;guid=e550a4ad826a24de7848b919a31ce3bb&amp;type=2#fa-regular-400 SDF&quot;); display: none;" />
+        <ui:Button name="NextTurnButton" parse-escape-sequences="true" text="\uf2f9" class="turn-button next-turn-button" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&amp;guid=e550a4ad826a24de7848b919a31ce3bb&amp;type=2#fa-regular-400 SDF&quot;); display: none;" />
+        <ui:Button name="AiTurnButton" parse-escape-sequences="true" text="\uf110" class="turn-button next-turn-button" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&amp;guid=e550a4ad826a24de7848b919a31ce3bb&amp;type=2#fa-regular-400 SDF&quot;); display: none;" />
     </ui:VisualElement>
 </ui:UXML>

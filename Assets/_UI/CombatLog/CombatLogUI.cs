@@ -3,6 +3,8 @@ using UnityEngine.UIElements;
 
 public class CombatLogUI : MonoBehaviour
 {
+    [SerializeField] private GameEvent onTurnChanged;
+    
     private UIDocument doc;
     private VisualElement panel, entriesContainer;
     private const int MAX_ENTRIES = 20;
@@ -19,21 +21,45 @@ public class CombatLogUI : MonoBehaviour
         var root = doc.rootVisualElement;
 
         panel = root.Q("CombatLogContainer");
-        if (panel == null) return;
+        if (panel == null) {
+            Debug.LogError("[CombatLogUI] CombatLogContainer not found!");
+            return;
+        }
         
         entriesContainer = panel.Q("CombatEntries");
+        if (entriesContainer == null) {
+            Debug.LogError("[CombatLogUI] CombatEntries not found!");
+        }
 
         // Start hidden until first combat
         panel.style.display = DisplayStyle.None;
 
         if (CombatManager.Instance != null)
             CombatManager.Instance.OnCombatResolved += HandleCombatResolved;
+        
+        if (onTurnChanged != null) {
+            onTurnChanged.Handler += ClearLog;
+            Debug.Log($"[CombatLogUI] Subscribed to {onTurnChanged.name}");
+        } else {
+            Debug.LogWarning("[CombatLogUI] onTurnChanged is NULL!");
+        }
     }
 
     void OnDisable()
     {
         if (CombatManager.Instance != null)
             CombatManager.Instance.OnCombatResolved -= HandleCombatResolved;
+        
+        if (onTurnChanged != null)
+            onTurnChanged.Handler -= ClearLog;
+    }
+    
+    void ClearLog()
+    {
+        Debug.Log($"[CombatLogUI] ClearLog called, entries={entriesContainer?.childCount}");
+        if (entriesContainer == null) return;
+        entriesContainer.Clear();
+        panel.style.display = DisplayStyle.None;
     }
 
     void HandleCombatResolved(CombatEvent e)

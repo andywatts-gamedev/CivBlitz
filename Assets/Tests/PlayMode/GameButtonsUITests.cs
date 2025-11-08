@@ -85,7 +85,6 @@ public class GameButtonsUITests
             "NextUnitButton should be hidden when all units are resting");
         Assert.AreEqual(DisplayStyle.Flex, nextTurnButton.style.display.value,
             "NextTurnButton should be visible when all units are resting");
-        Assert.AreEqual("\uf021", nextTurnButton.text, "Should show sync icon");
     }
 
     [UnityTest]
@@ -100,9 +99,11 @@ public class GameButtonsUITests
         
         var nextUnitButton = root.Q<Button>("NextUnitButton");
         var nextTurnButton = root.Q<Button>("NextTurnButton");
+        var aiTurnButton = root.Q<Button>("AiTurnButton");
         
         Assert.IsNotNull(nextUnitButton);
         Assert.IsNotNull(nextTurnButton);
+        Assert.IsNotNull(aiTurnButton);
         
         // Consume all player unit moves
         var playerCiv = Game.Instance.player.civilization;
@@ -130,8 +131,8 @@ public class GameButtonsUITests
         
         // During AI turn: should show spinner
         Assert.AreEqual(DisplayStyle.None, nextUnitButton.style.display.value);
-        Assert.AreEqual(DisplayStyle.Flex, nextTurnButton.style.display.value);
-        Assert.AreEqual("\uf021", nextTurnButton.text); // Sync icon
+        Assert.AreEqual(DisplayStyle.None, nextTurnButton.style.display.value);
+        Assert.AreEqual(DisplayStyle.Flex, aiTurnButton.style.display.value);
         
         // Wait for AI turn to complete
         while (!turnManager.isPlayerTurn)
@@ -142,5 +143,6 @@ public class GameButtonsUITests
         // After AI turn: should show next unit button
         Assert.AreEqual(DisplayStyle.Flex, nextUnitButton.style.display.value);
         Assert.AreEqual(DisplayStyle.None, nextTurnButton.style.display.value);
+        Assert.AreEqual(DisplayStyle.None, aiTurnButton.style.display.value);
     }
 }

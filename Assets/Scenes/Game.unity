@@ -842,6 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75dbcc833e1e5462687cbd47e69390ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatLogUI
+  onTurnChanged: {fileID: 11400000, guid: 10e39820c0a9c42b3b3ecf61e7ee953a, type: 2}
 --- !u!114 &842609490
 MonoBehaviour:
   m_ObjectHideFlags: 0
