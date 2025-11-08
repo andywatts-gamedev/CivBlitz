@@ -67,14 +67,21 @@ public class TouchInputManager : MonoBehaviour
             }
             else if (lastTouchedTile.HasValue)
             {
-                var pressTime = Time.time - touchStartTime;
-                if (pressTime >= LONG_PRESS_DELAY)
+                if (Map.Instance.HasTerrainAt(lastTouchedTile.Value))
                 {
-                    events.EmitTileHovered(lastTouchedTile.Value);
+                    var pressTime = Time.time - touchStartTime;
+                    if (pressTime >= LONG_PRESS_DELAY)
+                    {
+                        events.EmitTileHovered(lastTouchedTile.Value);
+                    }
+                    else
+                    {
+                        events.EmitTileClicked(lastTouchedTile.Value);
+                    }
                 }
                 else
                 {
-                    events.EmitTileClicked(lastTouchedTile.Value);
+                    Debug.Log($"{GetType().Name}: Touched empty area at {lastTouchedTile.Value}, ignoring");
                 }
             }
             lastTouchedTile = null;

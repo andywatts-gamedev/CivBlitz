@@ -33,10 +33,10 @@ public class LevelProgressionTests
         }
 
         // Load resources
-        grassTerrain = Resources.Load<TerrainScob>("Terrain/Grass");
-        warriorUnit = Resources.Load<UnitSCOB>("Units/Warrior");
-        japanCiv = Resources.Load<CivilizationSCOB>("Civilizations/Japan");
-        romeCiv = Resources.Load<CivilizationSCOB>("Civilizations/Rome");
+        grassTerrain = Resources.Load<TerrainScob>("Grass");
+        warriorUnit = Resources.Load<UnitSCOB>("Warrior");
+        japanCiv = Resources.Load<CivilizationSCOB>("Japan");
+        romeCiv = Resources.Load<CivilizationSCOB>("Rome");
 
         // Check if resources are available
         if (grassTerrain == null || warriorUnit == null)
@@ -114,8 +114,8 @@ public class LevelProgressionTests
         }
 
         // Load resources
-        grassTerrain = Resources.Load<TerrainScob>("Terrain/Grass");
-        warriorUnit = Resources.Load<UnitSCOB>("Units/Warrior");
+        grassTerrain = Resources.Load<TerrainScob>("Grass");
+        warriorUnit = Resources.Load<UnitSCOB>("Warrior");
 
         // Check if resources are available
         if (grassTerrain == null || warriorUnit == null)

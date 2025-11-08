@@ -13,13 +13,9 @@ public class Map : MonoBehaviour
 
     void Awake() => Instance = this;
 
-
-    void Start()
-    {
-
-    }
-
-
+    public bool HasTerrainAt(Vector2Int position) => tilemap != null && tilemap.GetTile((Vector3Int)position) != null;
+    public TerrainTile GetTerrainAt(Vector2Int position) => tilemap?.GetTile((Vector3Int)position) as TerrainTile;
+    
     // public bool IsWithinBounds(int2 xy) => xy.x >= 0 && xy.y >= 0 && xy.x < size.x && xy.y < size.y;
     // public bool IsWithinBounds(Vector3 worldPos) => worldPos.x >= 0 && worldPos.y >= 0 && worldPos.x < size.x && worldPos.y < size.y;
 }

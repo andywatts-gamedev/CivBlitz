@@ -25,7 +25,7 @@ public class Game : Singleton<Game>
     protected override void Awake()
     {
         base.Awake();
-        civilizations = Resources.LoadAll<CivilizationSCOB>("Civilizations").ToDictionary(c => c.civilization, c => c);
+        civilizations = Resources.LoadAll<CivilizationSCOB>("").ToDictionary(c => c.civilization, c => c);
         Debug.Log("Civilizations: " + civilizations.Count);
     }
 
@@ -33,6 +33,7 @@ public class Game : Singleton<Game>
     {
         events.OnTileClicked += HandleTileClicked;
         gameStateEvents.OnTileSelected += HandleTileSelected;
+        gameStateEvents.OnTileDeselected += HandleTileDeselected;
         events.OnCancel += HandleCancel;
         events.OnDragStarted += HandleDragStarted;
         events.OnDragUpdated += HandleDragUpdated;
@@ -45,6 +46,7 @@ public class Game : Singleton<Game>
     {
         events.OnTileClicked -= HandleTileClicked;
         gameStateEvents.OnTileSelected -= HandleTileSelected;
+        gameStateEvents.OnTileDeselected -= HandleTileDeselected;
         events.OnCancel -= HandleCancel;
         events.OnDragStarted -= HandleDragStarted;
         events.OnDragUpdated -= HandleDragUpdated;
@@ -72,11 +74,12 @@ public class Game : Singleton<Game>
             highlight.SetActive(false);
         }
 
-        // Always select any clicked tile and show its data
+        // Select the clicked tile and show its data
+        // (Input managers already validated terrain exists)
         selectedTile = pos;
         gameStateEvents.EmitTileSelected(pos);
         
-        // Show outline for any selected tile
+        // Show outline for selected tile
         highlight.SetActive(true);
         highlight.transform.position = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)pos);
     }
@@ -97,6 +100,12 @@ public class Game : Singleton<Game>
         selectedTile = pos;
         highlight.SetActive(true);
         highlight.transform.position = UnitManager.Instance.flags[player.civilization].CellToWorld((Vector3Int)pos);
+    }
+
+    private void HandleTileDeselected(Vector2Int pos)
+    {
+        selectedTile = null;
+        highlight.SetActive(false);
     }
 
     private void HandleCancel()

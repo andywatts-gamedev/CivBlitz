@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="HealthBarContainer" class="health-bar-container">
+        <ui:VisualElement name="HealthBarBackground" class="health-bar-bg">
+            <ui:VisualElement name="HealthBarFill" class="health-bar-fill" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
+

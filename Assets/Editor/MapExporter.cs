@@ -9,6 +9,7 @@ public class MapExporter : EditorWindow
     private string assetName = "ExportedMap";
     private string savePath = "Assets/_GAME/Map/MapData";
     private MapData mapDataToImport;
+    private MapData mapDataToExportTo;
 
     [MenuItem("Tools/Map Exporter")]
     public static void ShowWindow()
@@ -43,24 +44,46 @@ public class MapExporter : EditorWindow
         EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
         EditorGUILayout.Space();
 
-        // EXPORT SECTION
-        EditorGUILayout.LabelField("Export Scene to MapData", EditorStyles.boldLabel);
-        assetName = EditorGUILayout.TextField("Asset Name:", assetName);
-        savePath = EditorGUILayout.TextField("Save Path:", savePath);
-
-        EditorGUILayout.Space();
-
-        if (GUILayout.Button("Export Current Scene", GUILayout.Height(30)))
+        // UPDATE EXISTING MAP SECTION
+        EditorGUILayout.LabelField("Update Existing Map", EditorStyles.boldLabel);
+        mapDataToExportTo = (MapData)EditorGUILayout.ObjectField("MapData:", mapDataToExportTo, typeof(MapData), false);
+        
+        EditorGUI.BeginDisabledGroup(mapDataToExportTo == null);
+        if (GUILayout.Button("Update Map", GUILayout.Height(30)))
         {
-            ExportScene();
+            UpdateExistingMap();
         }
+        EditorGUI.EndDisabledGroup();
 
         EditorGUILayout.Space();
         EditorGUILayout.HelpBox(
-            "Export will scan the current scene's tilemaps and create a MapData asset.\n\n" +
-            "It will export:\n" +
-            "- Terrain tiles from the Terrain tilemap\n" +
-            "- Unit placements from CivilizationTilemap components",
+            "Updates the selected MapData with current scene tilemaps.",
+            MessageType.Info
+        );
+
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+        EditorGUILayout.Space();
+
+        // CREATE NEW MAP SECTION
+        EditorGUILayout.LabelField("Create New Map", EditorStyles.boldLabel);
+        assetName = EditorGUILayout.TextField("Asset Name:", assetName);
+        savePath = EditorGUILayout.TextField("Save Path:", savePath);
+
+        EditorGUI.BeginDisabledGroup(string.IsNullOrEmpty(assetName));
+        if (GUILayout.Button("Create New Map", GUILayout.Height(30)))
+        {
+            CreateNewMap();
+        }
+        EditorGUI.EndDisabledGroup();
+
+        EditorGUILayout.Space();
+        EditorGUILayout.HelpBox(
+            "Creates a new MapData asset from current scene tilemaps.\n\n" +
+            "Exports:\n" +
+            "- Terrain tiles from Terrain tilemap\n" +
+            "- Unit placements from CivilizationTilemap components\n" +
+            "- Unit overrides from Overrides tilemap (optional)",
             MessageType.Info
         );
     }
@@ -99,6 +122,9 @@ public class MapExporter : EditorWindow
             EditorUtility.DisplayDialog("Error", "No CivilizationTilemap components found in scene!", "OK");
             return;
         }
+        
+        // Find overrides tilemap (optional)
+        var overridesTilemap = GameObject.Find("Overrides")?.GetComponent<Tilemap>();
 
         // Build tile caches using AssetDatabase
         var terrainTileGuids = AssetDatabase.FindAssets("t:TerrainTile");
@@ -138,8 +164,22 @@ public class MapExporter : EditorWindow
 
         var civTilemapLookup = civTilemaps.ToDictionary(ct => ct.civ.civilization, ct => ct);
 
+        // Build override tile cache
+        var overrideTileGuids = AssetDatabase.FindAssets("t:UnitOverrideTile");
+        var overrideTilesByHealth = new Dictionary<int, UnitOverrideTile>();
+        foreach (var guid in overrideTileGuids)
+        {
+            var path = AssetDatabase.GUIDToAssetPath(guid);
+            var tile = AssetDatabase.LoadAssetAtPath<UnitOverrideTile>(path);
+            if (tile != null && tile.healthOverride > 0)
+            {
+                overrideTilesByHealth[tile.healthOverride] = tile;
+            }
+        }
+
         // Clear existing tiles
         terrainTilemap.ClearAllTiles();
+        if (overridesTilemap != null) overridesTilemap.ClearAllTiles();
         foreach (var civTilemap in civTilemaps)
         {
             if (civTilemap.flags != null) civTilemap.flags.ClearAllTiles();
@@ -191,6 +231,20 @@ public class MapExporter : EditorWindow
             {
                 Debug.LogWarning($"[MapImporter] No tile found for unit: {unitPlacement.unit?.name} at {unitPlacement.position}");
             }
+            
+            // Place override tile if unit has health override
+            if (unitPlacement.healthOverride > 0 && overridesTilemap != null)
+            {
+                if (overrideTilesByHealth.TryGetValue(unitPlacement.healthOverride, out var overrideTile))
+                {
+                    overridesTilemap.SetTile((Vector3Int)unitPlacement.position, overrideTile);
+                    Debug.Log($"[MapImporter] Placed override tile at {unitPlacement.position}: {unitPlacement.healthOverride}%");
+                }
+                else
+                {
+                    Debug.LogWarning($"[MapImporter] No override tile found for {unitPlacement.healthOverride}% health. Create a UnitOverrideTile with healthOverride={unitPlacement.healthOverride}");
+                }
+            }
         }
 
         UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
@@ -206,21 +260,124 @@ public class MapExporter : EditorWindow
             "OK");
     }
 
-    private void ExportScene()
+    private void UpdateExistingMap()
+    {
+        if (mapDataToExportTo == null) return;
+        
+        var mapData = ExportSceneToMapData();
+        if (mapData == null) return;
+        
+        var fullPath = AssetDatabase.GetAssetPath(mapDataToExportTo);
+        var assetFileName = System.IO.Path.GetFileNameWithoutExtension(fullPath);
+        
+        // Copy data to existing asset
+        EditorUtility.CopySerialized(mapData, mapDataToExportTo);
+        
+        // Fix name to match filename
+        mapDataToExportTo.name = assetFileName;
+        
+        EditorUtility.SetDirty(mapDataToExportTo);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        
+        // Verify the data was copied
+        Debug.Log($"[MapExporter] Verification - MapData now has {mapDataToExportTo.unitPlacements.Length} units");
+        foreach (var unit in mapDataToExportTo.unitPlacements)
+        {
+            if (unit.healthOverride > 0)
+            {
+                Debug.Log($"[MapExporter] Verification - Unit at {unit.position} has {unit.healthOverride}% health in saved asset");
+            }
+        }
+        
+        // Clean up temporary MapData
+        DestroyImmediate(mapData);
+        
+        // Select the updated asset
+        EditorGUIUtility.PingObject(mapDataToExportTo);
+        Selection.activeObject = mapDataToExportTo;
+
+        Debug.Log($"[MapExporter] Updated {mapDataToExportTo.name}:\n" +
+                  $"  - Size: {mapDataToExportTo.size.x}x{mapDataToExportTo.size.y}\n" +
+                  $"  - {mapDataToExportTo.terrainTiles.Length} terrain tiles\n" +
+                  $"  - {mapDataToExportTo.unitPlacements.Length} units");
+
+        var unitsWithOverrides = mapDataToExportTo.unitPlacements.Count(u => u.healthOverride > 0);
+        EditorUtility.DisplayDialog("Success",
+            $"Map updated successfully!\n\n" +
+            $"Updated: {mapDataToExportTo.name}\n" +
+            $"Size: {mapDataToExportTo.size.x} x {mapDataToExportTo.size.y}\n" +
+            $"Terrain: {mapDataToExportTo.terrainTiles.Length}\n" +
+            $"Units: {mapDataToExportTo.unitPlacements.Length}\n" +
+            $"Units with overrides: {unitsWithOverrides}",
+            "OK");
+    }
+
+    private void CreateNewMap()
+    {
+        if (string.IsNullOrEmpty(assetName)) return;
+        
+        var mapData = ExportSceneToMapData();
+        if (mapData == null) return;
+        
+        // Ensure directory exists
+        if (!AssetDatabase.IsValidFolder(savePath))
+        {
+            var folders = savePath.Split('/');
+            var currentPath = folders[0];
+            for (int i = 1; i < folders.Length; i++)
+            {
+                var nextPath = currentPath + "/" + folders[i];
+                if (!AssetDatabase.IsValidFolder(nextPath))
+                {
+                    AssetDatabase.CreateFolder(currentPath, folders[i]);
+                }
+                currentPath = nextPath;
+            }
+        }
+
+        var fullPath = $"{savePath}/{assetName}.asset";
+        mapData.name = assetName; // Set object name to match filename
+        AssetDatabase.CreateAsset(mapData, fullPath);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
+        // Select the created asset
+        EditorGUIUtility.PingObject(mapData);
+        Selection.activeObject = mapData;
+
+        Debug.Log($"[MapExporter] Created {fullPath}:\n" +
+                  $"  - Size: {mapData.size.x}x{mapData.size.y}\n" +
+                  $"  - {mapData.terrainTiles.Length} terrain tiles\n" +
+                  $"  - {mapData.unitPlacements.Length} units");
+
+        var unitsWithOverrides = mapData.unitPlacements.Count(u => u.healthOverride > 0);
+        EditorUtility.DisplayDialog("Success",
+            $"Map created successfully!\n\n" +
+            $"Name: {assetName}\n" +
+            $"Size: {mapData.size.x} x {mapData.size.y}\n" +
+            $"Terrain: {mapData.terrainTiles.Length}\n" +
+            $"Units: {mapData.unitPlacements.Length}\n" +
+            $"Units with overrides: {unitsWithOverrides}\n\n" +
+            $"Saved to: {fullPath}",
+            "OK");
+    }
+
+    private MapData ExportSceneToMapData()
     {
         // Find the terrain tilemap
         var map = FindObjectOfType<Map>();
         if (map == null)
         {
             EditorUtility.DisplayDialog("Error", "No Map component found in scene!", "OK");
-            return;
+            return null;
         }
 
         var terrainTilemap = GameObject.Find("Terrain")?.GetComponent<Tilemap>();
         if (terrainTilemap == null)
         {
             EditorUtility.DisplayDialog("Error", "No Terrain tilemap found in scene!", "OK");
-            return;
+            return null;
         }
 
         // Find all civilization tilemaps
@@ -228,7 +385,18 @@ public class MapExporter : EditorWindow
         if (civTilemaps.Length == 0)
         {
             EditorUtility.DisplayDialog("Error", "No CivilizationTilemap components found in scene!", "OK");
-            return;
+            return null;
+        }
+        
+        // Find overrides tilemap (optional)
+        var overridesTilemap = GameObject.Find("Overrides")?.GetComponent<Tilemap>();
+        if (overridesTilemap != null)
+        {
+            Debug.Log($"[MapExporter] Found Overrides tilemap");
+        }
+        else
+        {
+            Debug.Log($"[MapExporter] No Overrides tilemap found (optional)");
         }
 
         // Create MapData
@@ -271,11 +439,34 @@ public class MapExporter : EditorWindow
                     var unitTile = civTilemap.units.GetTile(pos) as UnitTile;
                     if (unitTile != null && unitTile.unitSCOB != null)
                     {
+                        // Check for override tile at this position
+                        int healthOverride = 0;
+                        if (overridesTilemap != null)
+                        {
+                            var anyTile = overridesTilemap.GetTile(pos);
+                            if (anyTile != null)
+                            {
+                                Debug.Log($"[MapExporter] Found tile at {pos}: {anyTile.name} (Type: {anyTile.GetType().Name})");
+                            }
+                            
+                            var overrideTile = anyTile as UnitOverrideTile;
+                            if (overrideTile != null)
+                            {
+                                healthOverride = overrideTile.healthOverride;
+                                Debug.Log($"[MapExporter] Found health override at {pos}: {healthOverride}%");
+                            }
+                            else if (anyTile != null)
+                            {
+                                Debug.LogWarning($"[MapExporter] Tile at {pos} is type '{anyTile.GetType().Name}', not UnitOverrideTile. Change the tile's Script field to UnitOverrideTile.");
+                            }
+                        }
+                        
                         unitPlacementList.Add(new UnitPlacement
                         {
                             position = (Vector2Int)pos,
                             civilization = civTilemap.civ.civilization,
-                            unit = unitTile.unitSCOB
+                            unit = unitTile.unitSCOB,
+                            healthOverride = healthOverride
                         });
                         minX = Mathf.Min(minX, pos.x);
                         minY = Mathf.Min(minY, pos.y);
@@ -290,73 +481,40 @@ public class MapExporter : EditorWindow
         if (terrainDataList.Count == 0 && unitPlacementList.Count == 0)
         {
             EditorUtility.DisplayDialog("Warning", "No tiles or units found to export!", "OK");
-            mapData.size = Vector2Int.zero;
-            mapData.terrainTiles = terrainDataList.ToArray();
-            mapData.unitPlacements = unitPlacementList.ToArray();
+            return null;
         }
-        else
+
+        var offset = new Vector2Int(minX, minY);
+        mapData.size = new Vector2Int(maxX - minX + 1, maxY - minY + 1);
+
+        // Normalize terrain positions
+        for (int i = 0; i < terrainDataList.Count; i++)
         {
-            var offset = new Vector2Int(minX, minY);
-            mapData.size = new Vector2Int(maxX - minX + 1, maxY - minY + 1);
-
-            // Normalize terrain positions
-            for (int i = 0; i < terrainDataList.Count; i++)
-            {
-                var terrain = terrainDataList[i];
-                terrain.position -= offset;
-                terrainDataList[i] = terrain;
-            }
-            mapData.terrainTiles = terrainDataList.ToArray();
-
-            // Normalize unit positions
-            for (int i = 0; i < unitPlacementList.Count; i++)
-            {
-                var unit = unitPlacementList[i];
-                unit.position -= offset;
-                unitPlacementList[i] = unit;
-            }
-            mapData.unitPlacements = unitPlacementList.ToArray();
+            var terrain = terrainDataList[i];
+            terrain.position -= offset;
+            terrainDataList[i] = terrain;
         }
+        mapData.terrainTiles = terrainDataList.ToArray();
 
-        // Ensure directory exists
-        if (!AssetDatabase.IsValidFolder(savePath))
+        // Normalize unit positions
+        for (int i = 0; i < unitPlacementList.Count; i++)
         {
-            var folders = savePath.Split('/');
-            var currentPath = folders[0];
-            for (int i = 1; i < folders.Length; i++)
+            var unit = unitPlacementList[i];
+            unit.position -= offset;
+            unitPlacementList[i] = unit;
+        }
+        mapData.unitPlacements = unitPlacementList.ToArray();
+        
+        // Debug: Log final unit placements with overrides
+        foreach (var unit in mapData.unitPlacements)
+        {
+            if (unit.healthOverride > 0)
             {
-                var nextPath = currentPath + "/" + folders[i];
-                if (!AssetDatabase.IsValidFolder(nextPath))
-                {
-                    AssetDatabase.CreateFolder(currentPath, folders[i]);
-                }
-                currentPath = nextPath;
+                Debug.Log($"[MapExporter] Final MapData has unit at {unit.position} with {unit.healthOverride}% health");
             }
         }
-
-        // Save asset
-        var fullPath = $"{savePath}/{assetName}.asset";
-        AssetDatabase.CreateAsset(mapData, fullPath);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-
-        // Select the created asset
-        EditorGUIUtility.PingObject(mapData);
-        Selection.activeObject = mapData;
-
-        Debug.Log($"[MapExporter] Exported map to {fullPath}:\n" +
-                  $"  - Size: {mapData.size.x}x{mapData.size.y}\n" +
-                  $"  - {mapData.terrainTiles.Length} terrain tiles\n" +
-                  $"  - {mapData.unitPlacements.Length} units");
-
-        EditorUtility.DisplayDialog("Success",
-            $"Map exported successfully!\n\n" +
-            $"Size: {mapData.size.x} x {mapData.size.y}\n" +
-            $"Terrain tiles: {mapData.terrainTiles.Length}\n" +
-            $"Units: {mapData.unitPlacements.Length}\n\n" +
-            $"Coordinates normalized to (0,0) origin.\n" +
-            $"Saved to: {fullPath}",
-            "OK");
+        
+        return mapData;
     }
 }
 

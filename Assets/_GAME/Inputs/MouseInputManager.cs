@@ -25,8 +25,15 @@ public class MouseInputManager : MonoBehaviour
             var tile = GetTileXY(mousePos);
             if (tile.HasValue)
             {
-                Debug.Log($"{GetType().Name}: Clicked on tile {tile.Value}");
-                events.EmitTileClicked(tile.Value);
+                if (Map.Instance.HasTerrainAt(tile.Value))
+                {
+                    Debug.Log($"{GetType().Name}: Clicked on tile {tile.Value}");
+                    events.EmitTileClicked(tile.Value);
+                }
+                else
+                {
+                    Debug.Log($"{GetType().Name}: Clicked on empty area at {tile.Value}, ignoring");
+                }
             }
             else
             {

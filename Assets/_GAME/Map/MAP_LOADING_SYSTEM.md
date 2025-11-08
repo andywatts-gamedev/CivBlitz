@@ -41,6 +41,7 @@ The map loading system allows you to:
    - Open the Game scene
    - Paint terrain on the Terrain tilemap
    - Paint units on the civilization tilemaps (Japan/Rome)
+   - (Optional) Paint overrides on the Overrides tilemap for custom health/properties
 
 2. **Export to MapData**
    - Go to `Tools > Map Exporter`
@@ -57,7 +58,13 @@ The map loading system allows you to:
    - ⚠️ WARNING: This clears existing tiles!
    - Now you can edit the imported map
 
-4. **Set Up Level Progression**
+4. **Unit Overrides (Advanced)**
+   - Create UnitOverrideTile assets with custom health values
+   - Add "Overrides" tilemap to your Map GameObject
+   - Paint override tiles at unit positions needing modifications
+   - See `Assets/_GAME/Units/UNIT_OVERRIDES.md` for details
+
+5. **Set Up Level Progression**
    - Find the LevelManager GameObject in the scene
    - Add your MapData assets to the "Levels" array in order
    - The game will progress through them sequentially

@@ -28,6 +28,11 @@ public struct UnitPlacement
     [HorizontalGroup("Split")]
     [Required]
     public UnitSCOB unit;
+    
+    [HorizontalGroup("Override")]
+    [LabelWidth(80)]
+    [Tooltip("0 = use unit's default health")]
+    public int healthOverride;
 }
 
 [CreateAssetMenu(menuName = "ScriptableObject/MapData")]

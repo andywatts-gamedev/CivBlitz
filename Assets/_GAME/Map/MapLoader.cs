@@ -9,6 +9,7 @@ public class MapLoader : MonoBehaviour
     
     [SerializeField] private Tilemap terrainTilemap;
     [SerializeField] private Tilemap unitTilemap;
+    [SerializeField] private Tilemap overridesTilemap;
     [SerializeField] private List<CivilizationTilemap> civilizationTilemaps;
     [SerializeField] private Tile flagTile;
     [SerializeField] private MapData initialMapData;
@@ -44,7 +45,7 @@ public class MapLoader : MonoBehaviour
     private void BuildTileCaches()
     {
         // Load all terrain tiles from Resources
-        var terrainTiles = Resources.LoadAll<TerrainTile>("Tiles/Terrain");
+        var terrainTiles = Resources.LoadAll<TerrainTile>("Tiles");
         terrainTileCache = new Dictionary<TerrainScob, TerrainTile>();
         foreach (var tile in terrainTiles)
         {
@@ -56,7 +57,7 @@ public class MapLoader : MonoBehaviour
         Debug.Log($"[MapLoader] Loaded {terrainTileCache.Count} terrain tiles");
 
         // Load all unit tiles from Resources
-        var unitTiles = Resources.LoadAll<UnitTile>("Tiles/Units");
+        var unitTiles = Resources.LoadAll<UnitTile>("Tiles");
         unitTileCache = new Dictionary<UnitSCOB, UnitTile>();
         foreach (var tile in unitTiles)
         {
@@ -83,14 +84,14 @@ public class MapLoader : MonoBehaviour
         // Load flag tile from Resources
         if (flagTile == null)
         {
-            flagTile = Resources.Load<Tile>("Tiles/Units/UnitFlag");
+            flagTile = Resources.Load<Tile>("Tiles/UnitFlag");
             if (flagTile != null)
             {
                 Debug.Log("[MapLoader] Loaded flag tile from Resources");
             }
             else
             {
-                Debug.LogWarning("[MapLoader] UnitFlag tile not found in Resources/Tiles/Units/");
+                Debug.LogWarning("[MapLoader] UnitFlag tile not found in Resources");
             }
         }
     }
@@ -204,6 +205,16 @@ public class MapLoader : MonoBehaviour
                 unitPlacement.unit.unit,
                 unitPlacement.position
             );
+            
+            // Apply health override if set (percentage)
+            if (unitPlacement.healthOverride > 0)
+            {
+                var registeredUnit = UnitManager.Instance.GetUnitAt(unitPlacement.position);
+                var maxHealth = unitPlacement.unit.unit.health;
+                registeredUnit.health = Mathf.RoundToInt(maxHealth * unitPlacement.healthOverride / 100f);
+                UnitManager.Instance.UpdateUnit(unitPlacement.position, registeredUnit);
+                Debug.Log($"[MapLoader] Applied {unitPlacement.healthOverride}% health to unit at {unitPlacement.position}: {registeredUnit.health} HP");
+            }
         }
         Debug.Log($"[MapLoader] Loaded {mapData.unitPlacements.Length} units");
 

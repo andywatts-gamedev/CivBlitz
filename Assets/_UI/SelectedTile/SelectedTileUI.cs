@@ -42,8 +42,8 @@ public class SelectedTileUI : MonoBehaviour
     {
         selectedTile = pos;
         container.style.display = DisplayStyle.Flex;
-
         unitRow.style.display = DisplayStyle.None;
+        
         bool hasUnit = UnitManager.Instance.TryGetUnit(pos, out var unit);
         
         if (hasUnit)
@@ -70,12 +70,13 @@ public class SelectedTileUI : MonoBehaviour
         }
 
         var tile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)pos) as TerrainTile;
-        if (tile == null) return;
-        
-        var terrain = tile.terrainScob.terrain;
-        tileName.text = terrain.name;
-        tileAttack.text = terrain.attackBonus.ToString();
-        tileDefense.text = terrain.defenseBonus.ToString();
+        if (tile != null)
+        {
+            var terrain = tile.terrainScob.terrain;
+            tileName.text = terrain.name;
+            tileAttack.text = terrain.attackBonus.ToString();
+            tileDefense.text = terrain.defenseBonus.ToString();
+        }
     }
 
     void HandleTileSelected(Vector2Int pos) => ShowTile(pos);

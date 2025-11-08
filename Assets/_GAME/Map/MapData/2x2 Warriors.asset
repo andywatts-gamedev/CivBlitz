@@ -26,6 +26,8 @@ MonoBehaviour:
   - position: {x: 1, y: 0}
     civilization: 2
     unit: {fileID: 11400000, guid: 6f5d412e2213b4359b46d4c8f92e41ec, type: 2}
+    healthOverride: 0
   - position: {x: 1, y: 2}
     civilization: 1
     unit: {fileID: 11400000, guid: 6f5d412e2213b4359b46d4c8f92e41ec, type: 2}
+    healthOverride: 75
