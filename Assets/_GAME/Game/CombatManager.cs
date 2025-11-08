@@ -252,5 +252,9 @@ public class CombatManager : Singleton<CombatManager>
         return SpriteUtils.CreateMovingUnitSprite(tile, pos, civ, isFlag);
     }
 
+    // Test helpers
+    public void TriggerCombatResolvedForTest(CombatEvent e) => OnCombatResolved?.Invoke(e);
+    public void TriggerGameOverForTest(Civilization winner) => OnGameOver?.Invoke(winner);
+
 } 
 
