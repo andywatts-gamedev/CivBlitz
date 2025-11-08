@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db80ce2b8ed546b4b7752f41ab426b8, type: 3}
+  m_Name: 2x2 Warriors
+  m_EditorClassIdentifier: CivBlitz.Game::MapData
+  size: {x: 2, y: 3}
+  terrainTiles:
+  - position: {x: 1, y: 0}
+    terrain: {fileID: 11400000, guid: da590036bb7d84d9292979dc796c743b, type: 2}
+  - position: {x: 0, y: 1}
+    terrain: {fileID: 11400000, guid: da590036bb7d84d9292979dc796c743b, type: 2}
+  - position: {x: 1, y: 1}
+    terrain: {fileID: 11400000, guid: da590036bb7d84d9292979dc796c743b, type: 2}
+  - position: {x: 1, y: 2}
+    terrain: {fileID: 11400000, guid: da590036bb7d84d9292979dc796c743b, type: 2}
+  unitPlacements:
+  - position: {x: 1, y: 0}
+    civilization: 2
+    unit: {fileID: 11400000, guid: 6f5d412e2213b4359b46d4c8f92e41ec, type: 2}
+  - position: {x: 1, y: 2}
+    civilization: 1
+    unit: {fileID: 11400000, guid: 6f5d412e2213b4359b46d4c8f92e41ec, type: 2}

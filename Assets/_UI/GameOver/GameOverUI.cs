@@ -8,6 +8,7 @@ public class GameOverUI : MonoBehaviour
     private VisualElement container;
     private Label messageLabel;
     private Button restartButton;
+    private bool playerWon = false;
 
     void Start()
     {
@@ -54,10 +55,28 @@ public class GameOverUI : MonoBehaviour
 
     private void HandleGameOver(Civilization winner)
     {
-        var playerWon = winner == Game.Instance.player.civilization;
+        playerWon = winner == Game.Instance.player.civilization;
         var message = playerWon ? "You Won!" : "You Lost!";
         Debug.Log($"[GameOverUI] Game Over! Winner: {winner}, Player won: {playerWon}, Message: {message}");
         if (messageLabel != null) messageLabel.text = message;
+        
+        // Update button text based on outcome
+        if (restartButton != null)
+        {
+            if (playerWon && LevelManager.Instance != null && LevelManager.Instance.HasNextLevel())
+            {
+                restartButton.text = "Next Level";
+            }
+            else if (playerWon)
+            {
+                restartButton.text = "Play Again";
+            }
+            else
+            {
+                restartButton.text = "Retry";
+            }
+        }
+        
         if (container != null)
         {
             container.style.display = DisplayStyle.Flex;
@@ -71,7 +90,29 @@ public class GameOverUI : MonoBehaviour
 
     private void HandleRestart()
     {
-        SceneManager.LoadScene("Game");
+        // Hide UI
+        if (container != null)
+        {
+            container.style.display = DisplayStyle.None;
+        }
+
+        // If LevelManager exists, use it for progression
+        if (LevelManager.Instance != null)
+        {
+            if (playerWon)
+            {
+                LevelManager.Instance.LoadNextLevel();
+            }
+            else
+            {
+                LevelManager.Instance.RestartCurrentLevel();
+            }
+        }
+        else
+        {
+            // Fallback to scene reload if no LevelManager
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
 

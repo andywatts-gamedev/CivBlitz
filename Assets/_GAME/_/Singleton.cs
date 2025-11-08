@@ -7,6 +7,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     private static T _instance;
     private static readonly object _instanceLock = new object();
     private static bool _quitting = false;
+    private static bool _destroying = false;
 
     public static T Instance
     {
@@ -14,7 +15,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             lock (_instanceLock)
             {
-                if (_instance == null && !_quitting)
+                if (_instance == null && !_quitting && !_destroying)
                 {
 
                     _instance = GameObject.FindObjectOfType<T>();
@@ -32,6 +33,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
+        _destroying = false;
         Init();
         if (_instance == null) { 
             _instance = gameObject.GetComponent<T>();
@@ -47,6 +49,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (_instance == this)
         {
+            _destroying = true;
             _instance = null;
         }
     }

@@ -9,6 +9,13 @@ public class CivilizationTilemap : MonoBehaviour
 
     void Start()
     {
+        // If MapLoader already loaded from MapData, skip scene-based loading
+        if (MapLoader.Instance != null && MapLoader.Instance.IsMapLoadedFromData())
+        {
+            Debug.Log($"[CivilizationTilemap] Skipping scene load for {civ.name}, using MapData");
+            return;
+        }
+
         UnitManager.Instance.flags[civ.civilization] = flags;
 
         // Loop over civ flags and register units
