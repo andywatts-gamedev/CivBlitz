@@ -255,6 +255,8 @@ public class Game : Singleton<Game>
         var startPos = UnitManager.Instance.terrainTilemap.CellToWorld((Vector3Int)fromTile);
         var endPos = UnitManager.Instance.terrainTilemap.CellToWorld((Vector3Int)toTile);
         
+        Debug.Log($"LineRenderer: startPos={startPos}, endPos={endPos}");
+        
         // Create or get line renderer
         var lineRenderer = pathPreview.GetComponent<LineRenderer>();
         if (lineRenderer == null)
@@ -266,35 +268,37 @@ public class Game : Singleton<Game>
             if (shader == null) shader = Shader.Find("Universal Render Pipeline/2D/Sprite-Lit-Default");
             if (shader == null) shader = Shader.Find("Sprites/Default");
             lineRenderer.material = new Material(shader);
-            lineRenderer.startWidth = 0.3f;
-            lineRenderer.endWidth = 0.1f;
+            lineRenderer.startWidth = 0.5f;
+            lineRenderer.endWidth = 0.3f;
             lineRenderer.positionCount = 2;
             lineRenderer.useWorldSpace = true;
-            lineRenderer.sortingOrder = 10; // Make sure it renders on top
+            lineRenderer.sortingOrder = 10;
             
-            // Mobile compatibility settings for proper width taper
-            lineRenderer.alignment = LineAlignment.TransformZ;
+            // For top-down XZ view
+            lineRenderer.alignment = LineAlignment.View; // Always face camera
             lineRenderer.textureMode = LineTextureMode.Tile;
             lineRenderer.generateLightingData = false;
-            lineRenderer.numCapVertices = 4; // Smooth caps
-            lineRenderer.numCornerVertices = 4; // Smooth corners
+            lineRenderer.numCapVertices = 4;
+            lineRenderer.numCornerVertices = 4;
             
-            // Ensure proper rendering on mobile
             lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             lineRenderer.receiveShadows = false;
             
-            // Force width curve for mobile - some mobile GPUs ignore startWidth/endWidth
             var widthCurve = new AnimationCurve();
-            widthCurve.AddKey(0f, 0.3f); // Start width
-            widthCurve.AddKey(1f, 0.1f); // End width
+            widthCurve.AddKey(0f, 0.5f);
+            widthCurve.AddKey(1f, 0.3f);
             lineRenderer.widthCurve = widthCurve;
+            
+            Debug.Log($"LineRenderer created with shader: {shader?.name ?? "NULL"}");
         }
         
-        // Set Y height for XZ plane (camera at Y=10, ground at Y=0)
-        startPos.y = 0.5f;
-        endPos.y = 0.5f;
+        // Set Y height above ground for XZ plane
+        startPos.y = 1f;
+        endPos.y = 1f;
         lineRenderer.SetPosition(0, startPos);
         lineRenderer.SetPosition(1, endPos);
+        
+        Debug.Log($"LineRenderer positions set: {startPos} -> {endPos}");
         
         // Set colors based on validity with alpha for better visibility
         var color = isValid ? new Color(0, 1, 0, 0.8f) : new Color(1, 0, 0, 0.8f);

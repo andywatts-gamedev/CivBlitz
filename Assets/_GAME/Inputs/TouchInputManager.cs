@@ -46,6 +46,7 @@ public class TouchInputManager : MonoBehaviour
         inputs = new MyInputActions();
         inputs.Touch.PrimaryContact.started += _ => {
             var touchPos = inputs.Touch.PrimaryPosition.ReadValue<Vector2>();
+            Debug.LogWarning($"[Touch] Contact started at {touchPos}, CameraController={(cameraController != null ? "OK" : "NULL")}");
             var tile = GetTileXZ(touchPos);
             
             lastTouchPosition = touchPos;
@@ -54,10 +55,18 @@ public class TouchInputManager : MonoBehaviour
             isDragging = false;
             isPanning = false;
             
-            if (tile.HasValue)
+            // Only set dragStartTile if it's a valid tile with terrain
+            if (tile.HasValue && Map.Instance.HasTerrainAt(tile.Value))
             {
                 lastTouchedTile = tile;
                 dragStartTile = tile;
+                Debug.LogWarning($"[Touch] Started on valid tile {tile.Value}");
+            }
+            else
+            {
+                lastTouchedTile = null;
+                dragStartTile = null;
+                Debug.LogWarning($"[Touch] Started off-map or on UI at tile {tile}");
             }
         };
         
@@ -147,12 +156,19 @@ public class TouchInputManager : MonoBehaviour
                     {
                         events.EmitDragStarted(dragStartTile.Value, currentTile.Value);
                         lastDragTile = currentTile;
+                        Debug.Log($"[Touch] Unit drag started from {dragStartTile.Value}");
                     }
                 }
-                else if (!startedOnUI)
+                else if (!startedOnUI && !dragStartTile.HasValue)
                 {
+                    // Only pan if we didn't start on a valid tile
                     isPanning = true;
                     lastTouchPosition = touchPos; // Reset to current position to prevent jump
+                    Debug.LogWarning($"[Touch] Pan started, distance={distance}, dragStartTile={dragStartTile}");
+                }
+                else
+                {
+                    Debug.Log($"[Touch] No action: startedOnUI={startedOnUI}, dragStartTile={dragStartTile}, isSelected={isSelected}");
                 }
             }
         }
@@ -160,7 +176,14 @@ public class TouchInputManager : MonoBehaviour
         {
             var touchPos = inputs.Touch.PrimaryPosition.ReadValue<Vector2>();
             var delta = touchPos - lastTouchPosition;
-            cameraController?.Pan(-delta);
+            if (cameraController != null)
+            {
+                cameraController.Pan(-delta);
+            }
+            else
+            {
+                Debug.LogError("[Touch] CameraController is NULL during pan!");
+            }
             lastTouchPosition = touchPos;
         }
         else if (isDragging && dragStartTile.HasValue)

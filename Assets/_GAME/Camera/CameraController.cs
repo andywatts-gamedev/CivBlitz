@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private CinemachineCamera vcam;
     [SerializeField] private float minZoom = 2f;
     [SerializeField] private float maxZoom = 10f;
-    [SerializeField] private float zoomSpeed = 0.1f;
+    [SerializeField] private float zoomSpeed = 0.3f;
 
     private Transform vcamTransform;
 
