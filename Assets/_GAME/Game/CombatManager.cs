@@ -48,8 +48,22 @@ public class CombatManager : Singleton<CombatManager>
             if (isRanged && distance > attacker.unit.range) return false;
             
             // Use ranged or melee strength based on unit type
-            var attackerStrength = isRanged ? attacker.unit.ranged : attacker.unit.melee;
-            var defenderStrength = defender.unit.melee;
+            var attackerBaseStrength = isRanged ? attacker.unit.ranged : attacker.unit.melee;
+            var defenderBaseStrength = defender.unit.melee;
+            
+            // Terrain modifiers for defender
+            var defenderTerrainBonus = 0;
+            var defenderTile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)defenderPos) as TerrainTile;
+            if (defenderTile != null)
+            {
+                var terrain = defenderTile.terrainScob.terrain;
+                if (terrain.height == TerrainHeight.Hill) defenderTerrainBonus += 3;
+                // TODO: Woods/Rainforest bonuses will come from features tilemap
+            }
+            
+            // Combat strength scales with health percentage (Civ 6 style)
+            var attackerStrength = Mathf.RoundToInt(attackerBaseStrength * (attacker.health / (float)attacker.unit.health));
+            var defenderStrength = Mathf.RoundToInt((defenderBaseStrength + defenderTerrainBonus) * (defender.health / (float)defender.unit.health));
             var strengthDiff = attackerStrength - defenderStrength;
             
             // Attack damage

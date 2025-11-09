@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 public class CombatLogUI : MonoBehaviour
 {
     [SerializeField] private GameEvent onTurnChanged;
+    [SerializeField] private GameEvent onMapLoaded;
     
     private UIDocument doc;
     private VisualElement panel, entriesContainer;
@@ -43,6 +44,9 @@ public class CombatLogUI : MonoBehaviour
         } else {
             Debug.LogWarning("[CombatLogUI] onTurnChanged is NULL!");
         }
+        
+        if (onMapLoaded != null)
+            onMapLoaded.Handler += ClearLog;
     }
 
     void OnDisable()
@@ -52,6 +56,9 @@ public class CombatLogUI : MonoBehaviour
         
         if (onTurnChanged != null)
             onTurnChanged.Handler -= ClearLog;
+        
+        if (onMapLoaded != null)
+            onMapLoaded.Handler -= ClearLog;
     }
     
     void ClearLog()

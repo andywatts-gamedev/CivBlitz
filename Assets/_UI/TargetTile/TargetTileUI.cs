@@ -6,7 +6,7 @@ public class TargetTileUI : MonoBehaviour
 {
     [SerializeField] private InputEvents events;
     private UIDocument doc;
-    private VisualElement container, unitRow;
+    private VisualElement container, unitRow, tileRow;
     private Label unitAttack, unitDefense, tileAttack, tileDefense, unitName, tileName;
     private Vector2Int? targetTile;
 
@@ -17,6 +17,7 @@ public class TargetTileUI : MonoBehaviour
 
         container = root.Q("TargetTileContainer");
         unitRow = container.Q("UnitRow");
+        tileRow = container.Q("TileRow");
         unitName = container.Q<Label>("UnitName");
         unitAttack = container.Q<Label>("UnitAttack");
         unitDefense = container.Q<Label>("UnitDefense");
@@ -62,6 +63,7 @@ public class TargetTileUI : MonoBehaviour
         tileName.text = terrain.name;
         tileAttack.text = terrain.attackBonus.ToString();
         tileDefense.text = terrain.defenseBonus.ToString();
+        tileRow.style.display = (terrain.attackBonus != 0 || terrain.defenseBonus != 0) ? DisplayStyle.Flex : DisplayStyle.None;
     }
 
     void HandleTileHovered(Vector2Int pos) => ShowTile(pos);

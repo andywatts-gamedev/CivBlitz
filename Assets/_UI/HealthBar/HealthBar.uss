@@ -1,6 +1,8 @@
 .health-bar-container {
-    width: 40px;
-    height: 6px;
+    width: 80px;
+    height: 12px;
+    left: -20px;
+    top: 20px;
 }
 
 .health-bar-bg {

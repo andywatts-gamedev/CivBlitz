@@ -868,6 +868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatLogUI
   onTurnChanged: {fileID: 11400000, guid: 10e39820c0a9c42b3b3ecf61e7ee953a, type: 2}
+  onMapLoaded: {fileID: 11400000, guid: 6a4e69b8b7b9349fc9f91ed350146649, type: 2}
 --- !u!114 &842609490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1985,7 +1986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: CivBlitz.Game::LevelManager
   levels:
   - {fileID: 11400000, guid: 73551a64676e946aab77289b815c8a87, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 5b0ed4d5209b6424599509b297aef78c, type: 2}
   loadFirstLevelOnStart: 1
 --- !u!1 &1986724571
 GameObject:
@@ -2029,7 +2030,7 @@ Tilemap:
   m_GameObject: {fileID: 1986724571}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: 1, y: 2, z: 0}
+  - first: {x: 1, y: 0, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0

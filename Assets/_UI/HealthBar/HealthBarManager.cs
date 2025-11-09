@@ -129,6 +129,9 @@ public class HealthBarManager : MonoBehaviour
 
     private void UpdateHealthBarPosition(Vector2Int unitPos, VisualElement healthBar)
     {
+        if (UnitManager.Instance == null || Game.Instance == null) return;
+        if (!UnitManager.Instance.flags.ContainsKey(Game.Instance.player.civilization)) return;
+        
         var flagsTilemap = UnitManager.Instance.flags[Game.Instance.player.civilization];
         if (flagsTilemap == null) return;
 

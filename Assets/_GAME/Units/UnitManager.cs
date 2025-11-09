@@ -118,6 +118,7 @@ public class UnitManager : Singleton<UnitManager>
     public void UpdateUnit(Vector2Int pos, UnitInstance unit)
     {
         units[pos] = unit;
+        onUnitStateChanged?.Invoke();
     }
 
     public void RemoveUnit(Vector2Int position)
@@ -126,6 +127,7 @@ public class UnitManager : Singleton<UnitManager>
         {
             civUnits[unit.civ].Remove(unit);
             units.Remove(position);
+            onUnitStateChanged?.Invoke();
         }
     }
 
