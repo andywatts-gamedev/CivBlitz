@@ -13,6 +13,7 @@ public class MapLoader : MonoBehaviour
     [SerializeField] private List<CivilizationTilemap> civilizationTilemaps;
     [SerializeField] private Tile flagTile;
     [SerializeField] private MapData initialMapData;
+    [SerializeField] private GameEvent onMapLoaded;
 
     private Dictionary<TerrainScob, TerrainTile> terrainTileCache;
     private Dictionary<UnitSCOB, UnitTile> unitTileCache;
@@ -228,6 +229,7 @@ public class MapLoader : MonoBehaviour
         }
 
         Debug.Log($"[MapLoader] Map loaded successfully");
+        onMapLoaded?.Invoke();
     }
 
     public bool IsMapLoadedFromData()

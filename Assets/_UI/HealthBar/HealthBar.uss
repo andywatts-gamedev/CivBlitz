@@ -1,5 +1,4 @@
 .health-bar-container {
-    position: absolute;
     width: 40px;
     height: 6px;
 }

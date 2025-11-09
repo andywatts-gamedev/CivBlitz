@@ -693,6 +693,7 @@ MonoBehaviour:
   - {fileID: 1648742330}
   flagTile: {fileID: 11400000, guid: fda311ce2cbbc4450aba021dfd3268ad, type: 2}
   initialMapData: {fileID: 0}
+  onMapLoaded: {fileID: 11400000, guid: 6a4e69b8b7b9349fc9f91ed350146649, type: 2}
 --- !u!1 &785604380
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +749,7 @@ GameObject:
   - component: {fileID: 842609490}
   - component: {fileID: 842609491}
   - component: {fileID: 842609492}
+  - component: {fileID: 842609493}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -905,6 +907,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f6e64f4ee7c442a9e383b95d2f3229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverUI
+--- !u!114 &842609493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842609482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6cde81613d54573aafb454c101fe66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CivBlitz.UI::HealthBarManager
+  healthBarDocument: {fileID: 842609483}
+  healthBarTemplate: {fileID: 9197481963319205126, guid: cc8ee50ccb4f0434ba71fc83868cd7be, type: 3}
+  onUnitStateChanged: {fileID: 11400000, guid: 5ba35d0a2bc3042eb87560653a4ac473, type: 2}
+  onUnitMoved: {fileID: 11400000, guid: d88da9706206b41688755afc3e877cb2, type: 2}
+  onMapLoaded: {fileID: 11400000, guid: 6a4e69b8b7b9349fc9f91ed350146649, type: 2}
 --- !u!1 &852271061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1127,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 3, y: 3, z: 1}
+  m_Size: {x: 2, y: 3, z: 1}
   m_TileAnchor: {x: 0, y: 0, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -2013,43 +2032,21 @@ Tilemap:
   - first: {x: 1, y: 2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 1
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: d403761529d62437ca43f67035bb94e7, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -3978658362796080635, guid: 0581ff7eb4cc24d5996f6790d3ab7cfb, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 0
-    m_Data:
-      e00: 0.8
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 0.8
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 0.8
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
   - m_RefCount: 1
     m_Data:
       e00: 1
@@ -2077,7 +2074,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 0.11311854, g: 0.7735849, b: 0.6584447, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 4, y: 3, z: 1}
+  m_Size: {x: 2, y: 3, z: 1}
   m_TileAnchor: {x: 0, y: 0.2, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -2104,7 +2101,7 @@ TilemapRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986724571}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

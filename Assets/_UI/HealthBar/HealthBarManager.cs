@@ -9,6 +9,7 @@ public class HealthBarManager : MonoBehaviour
     [SerializeField] private VisualTreeAsset healthBarTemplate;
     [SerializeField] private GameEvent onUnitStateChanged;
     [SerializeField] private GameEvent onUnitMoved;
+    [SerializeField] private GameEvent onMapLoaded;
 
     private VisualElement root;
     private Dictionary<Vector2Int, VisualElement> healthBars = new();
@@ -26,6 +27,7 @@ public class HealthBarManager : MonoBehaviour
         // Subscribe to unit events
         if (onUnitStateChanged != null) onUnitStateChanged.Handler += UpdateHealthBars;
         if (onUnitMoved != null) onUnitMoved.Handler += UpdateHealthBars;
+        if (onMapLoaded != null) onMapLoaded.Handler += UpdateHealthBars;
 
         // Initial update
         UpdateHealthBars();
@@ -35,6 +37,7 @@ public class HealthBarManager : MonoBehaviour
     {
         if (onUnitStateChanged != null) onUnitStateChanged.Handler -= UpdateHealthBars;
         if (onUnitMoved != null) onUnitMoved.Handler -= UpdateHealthBars;
+        if (onMapLoaded != null) onMapLoaded.Handler -= UpdateHealthBars;
     }
 
     void Update()
@@ -45,6 +48,8 @@ public class HealthBarManager : MonoBehaviour
 
     private void UpdateHealthBars()
     {
+        Debug.Log("[HealthBarManager] UpdateHealthBars called");
+        
         // Clear existing health bars
         foreach (var bar in healthBars.Values)
         {
@@ -52,7 +57,10 @@ public class HealthBarManager : MonoBehaviour
         }
         healthBars.Clear();
 
+        if (UnitManager.Instance == null) return;
+
         // Create health bars for damaged units
+        int created = 0;
         foreach (var kvp in UnitManager.Instance.units)
         {
             var pos = kvp.Key;
@@ -60,12 +68,14 @@ public class HealthBarManager : MonoBehaviour
             var maxHealth = unit.unit.health;
             var currentHealth = unit.health;
 
-            // Only show if damaged
             if (currentHealth < maxHealth)
             {
                 CreateHealthBar(pos, currentHealth, maxHealth);
+                created++;
             }
         }
+        
+        Debug.Log($"[HealthBarManager] Created {created} health bars from {UnitManager.Instance.units.Count} units");
     }
 
     private void CreateHealthBar(Vector2Int pos, int currentHealth, int maxHealth)
@@ -102,11 +112,11 @@ public class HealthBarManager : MonoBehaviour
             fill.AddToClassList("medium-health");
         }
 
-        root.Add(healthBar);
-        healthBars[pos] = container;
+    root.Add(healthBar);
+    healthBars[pos] = healthBar;
 
-        // Set initial position
-        UpdateHealthBarPosition(pos, container);
+    // Set initial position
+    UpdateHealthBarPosition(pos, healthBar);
     }
 
     private void UpdateHealthBarPositions()
@@ -119,22 +129,36 @@ public class HealthBarManager : MonoBehaviour
 
     private void UpdateHealthBarPosition(Vector2Int unitPos, VisualElement healthBar)
     {
-        // Get unit's world position
         var flagsTilemap = UnitManager.Instance.flags[Game.Instance.player.civilization];
         if (flagsTilemap == null) return;
 
         var worldPos = flagsTilemap.CellToWorld((Vector3Int)unitPos);
-        worldPos.y += 1.2f; // Position above unit
+        worldPos.y += 1.2f;
 
-        // Convert to screen position
         var screenPos = Camera.main.WorldToScreenPoint(worldPos);
         
-        // Flip Y for UI Toolkit coordinate system
-        screenPos.y = Screen.height - screenPos.y;
+        // Check if behind camera
+        if (screenPos.z < 0)
+        {
+            healthBar.style.display = DisplayStyle.None;
+            return;
+        }
+        
+        healthBar.style.display = DisplayStyle.Flex;
+        healthBar.style.position = Position.Absolute;
+        
+        // Get panel dimensions (UI Toolkit may differ from Screen dimensions)
+        float panelWidth = root.resolvedStyle.width;
+        float panelHeight = root.resolvedStyle.height;
+        
+        // Scale from screen space to panel space
+        float uiX = (screenPos.x / Screen.width) * panelWidth;
+        float uiY = ((Screen.height - screenPos.y) / Screen.height) * panelHeight;
 
-        // Center the health bar
-        healthBar.style.left = screenPos.x - 20; // Half of width (40px)
-        healthBar.style.top = screenPos.y;
+        healthBar.style.left = uiX - 20;
+        healthBar.style.top = uiY;
+        
+        // Debug.Log($"[HealthBar] Unit {unitPos}: screen={screenPos}, Panel={panelWidth}x{panelHeight}, UI=({uiX - 20}, {uiY})");
     }
 }
 
