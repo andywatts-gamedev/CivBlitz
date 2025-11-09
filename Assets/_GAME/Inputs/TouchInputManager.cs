@@ -9,6 +9,7 @@ public class TouchInputManager : MonoBehaviour
     [SerializeField] protected GameStateEvents gameStateEvents;
     [SerializeField] protected Grid grid;
     [SerializeField] private UIDocument uiDocument;
+    [SerializeField] private CameraController cameraController;
     private MyInputActions inputs;
     private Vector2Int? lastTouchedTile;
     private Vector2Int? dragStartTile;
@@ -18,9 +19,13 @@ public class TouchInputManager : MonoBehaviour
     private const float DRAG_THRESHOLD = 20f; // pixels
     private bool hasEmittedHover;
     private bool isDragging;
+    private bool isPanning;
     private bool isSelected;
     private Vector2Int? selectedTile;
     private Vector2 lastTouchPosition;
+    private bool isSecondTouchActive;
+    private Vector2 lastPinchCenter;
+    private float lastPinchDistance;
 
     private void Awake()
     {
@@ -41,22 +46,41 @@ public class TouchInputManager : MonoBehaviour
         inputs = new MyInputActions();
         inputs.Touch.PrimaryContact.started += _ => {
             var touchPos = inputs.Touch.PrimaryPosition.ReadValue<Vector2>();
-            var tile = GetTileXY(touchPos);
+            var tile = GetTileXZ(touchPos);
+            
+            lastTouchPosition = touchPos;
+            touchStartTime = Time.time;
+            hasEmittedHover = false;
+            isDragging = false;
+            isPanning = false;
+            
             if (tile.HasValue)
             {
                 lastTouchedTile = tile;
                 dragStartTile = tile;
-                lastTouchPosition = touchPos;
-                touchStartTime = Time.time;
-                hasEmittedHover = false;
-                isDragging = false;
             }
         };
+        
+        inputs.Touch.SecondaryContact.started += _ => {
+            isSecondTouchActive = true;
+            isDragging = false;
+            isPanning = false;
+            UpdatePinch();
+        };
+        
+        inputs.Touch.SecondaryContact.canceled += _ => {
+            isSecondTouchActive = false;
+            lastPinchDistance = 0;
+        };
         inputs.Touch.PrimaryContact.canceled += _ => {
-            if (isDragging && dragStartTile.HasValue)
+            if (isPanning)
+            {
+                isPanning = false;
+            }
+            else if (isDragging && dragStartTile.HasValue)
             {
                 var touchPos = inputs.Touch.PrimaryPosition.ReadValue<Vector2>();
-                var endTile = GetTileXY(touchPos);
+                var endTile = GetTileXZ(touchPos);
                 if (endTile.HasValue)
                 {
                     events.EmitDragEnded(dragStartTile.Value, endTile.Value);
@@ -99,26 +123,50 @@ public class TouchInputManager : MonoBehaviour
 
     private void Update()
     {
-        if (lastTouchedTile.HasValue && !isDragging)
+        if (isSecondTouchActive)
+        {
+            UpdatePinch();
+            return;
+        }
+        
+        if (!isDragging && !isPanning)
         {
             var touchPos = inputs.Touch.PrimaryPosition.ReadValue<Vector2>();
             var distance = Vector2.Distance(touchPos, lastTouchPosition);
             
-            if (distance > DRAG_THRESHOLD && dragStartTile.HasValue)
+            if (distance > DRAG_THRESHOLD)
             {
-                isDragging = true;
-                var currentTile = GetTileXY(touchPos);
-                if (currentTile.HasValue)
+                bool startedOnSelectedTile = dragStartTile.HasValue && isSelected && dragStartTile == selectedTile;
+                bool startedOnUI = IsPointerOverUI(lastTouchPosition);
+                
+                if (startedOnSelectedTile && !startedOnUI)
                 {
-                    events.EmitDragStarted(dragStartTile.Value, currentTile.Value);
-                    lastDragTile = currentTile;
+                    isDragging = true;
+                    var currentTile = GetTileXZ(touchPos);
+                    if (currentTile.HasValue)
+                    {
+                        events.EmitDragStarted(dragStartTile.Value, currentTile.Value);
+                        lastDragTile = currentTile;
+                    }
+                }
+                else if (!startedOnUI)
+                {
+                    isPanning = true;
+                    lastTouchPosition = touchPos; // Reset to current position to prevent jump
                 }
             }
+        }
+        else if (isPanning)
+        {
+            var touchPos = inputs.Touch.PrimaryPosition.ReadValue<Vector2>();
+            var delta = touchPos - lastTouchPosition;
+            cameraController?.Pan(-delta);
+            lastTouchPosition = touchPos;
         }
         else if (isDragging && dragStartTile.HasValue)
         {
             var touchPos = inputs.Touch.PrimaryPosition.ReadValue<Vector2>();
-            var currentTile = GetTileXY(touchPos);
+            var currentTile = GetTileXZ(touchPos);
             if (currentTile.HasValue && currentTile != lastDragTile)
             {
                 events.EmitDragUpdated(dragStartTile.Value, currentTile.Value);
@@ -126,19 +174,46 @@ public class TouchInputManager : MonoBehaviour
             }
         }
     }
+    
+    private void UpdatePinch()
+    {
+        var pos1 = inputs.Touch.PrimaryPosition.ReadValue<Vector2>();
+        var pos2 = inputs.Touch.SecondaryPosition.ReadValue<Vector2>();
+        
+        var pinchCenter = (pos1 + pos2) / 2f;
+        var pinchDistance = Vector2.Distance(pos1, pos2);
+        
+        if (lastPinchDistance > 0)
+        {
+            var delta = pinchDistance - lastPinchDistance;
+            cameraController?.ZoomAtPoint(delta * 0.01f, pinchCenter);
+        }
+        
+        lastPinchCenter = pinchCenter;
+        lastPinchDistance = pinchDistance;
+    }
 
-    protected Vector2Int? GetTileXY(Vector2 screenPos)
+    protected Vector2Int? GetTileXZ(Vector2 screenPos)
     {
         // Check if click hit UI first
         if (IsPointerOverUI(screenPos))
         {
             return null;
         }
-            
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, -Camera.main.transform.position.z));
-        worldPosition.z = 0;
-        var cell = grid.WorldToCell(worldPosition);
-        return (Vector2Int)cell;
+        
+        // Raycast to XZ plane at Y=0
+        var ray = Camera.main.ScreenPointToRay(screenPos);
+        var plane = new Plane(Vector3.up, Vector3.zero);
+        
+        if (plane.Raycast(ray, out float distance))
+        {
+            var worldPosition = ray.GetPoint(distance);
+            var cell = grid.WorldToCell(worldPosition);
+            // Grid has CellSwizzle=XZY, so cell.y is actually world Z
+            return new Vector2Int(cell.x, cell.y);
+        }
+        
+        return null;
     }
 
     protected bool IsPointerOverUI(Vector2 screenPos)

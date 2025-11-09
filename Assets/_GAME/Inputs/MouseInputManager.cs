@@ -22,7 +22,7 @@ public class MouseInputManager : MonoBehaviour
         inputs = new MyInputActions();
         inputs.Mouse.Click.performed += _ => {
             var mousePos = Mouse.current.position.ReadValue();
-            var tile = GetTileXY(mousePos);
+            var tile = GetTileXZ(mousePos);
             if (tile.HasValue)
             {
                 if (Map.Instance.HasTerrainAt(tile.Value))
@@ -62,7 +62,7 @@ public class MouseInputManager : MonoBehaviour
         
         if (Vector2.Distance(mousePos, lastMousePos) > 0.1f)
         {
-            var tile = GetTileXY(mousePos);
+            var tile = GetTileXZ(mousePos);
             UpdateTilePosition(mousePos);
             // Debug.Log($"{GetType().Name}: Mouse moved");
             events.EmitMouseMoved();
@@ -78,7 +78,7 @@ public class MouseInputManager : MonoBehaviour
 
     private void UpdateTilePosition(Vector2 screenPos)
     {
-        var tile = GetTileXY(screenPos);
+        var tile = GetTileXZ(screenPos);
         
         if (tile.HasValue)
         {
@@ -116,18 +116,27 @@ public class MouseInputManager : MonoBehaviour
         }
     }
 
-    protected Vector2Int? GetTileXY(Vector2 screenPos)
+    protected Vector2Int? GetTileXZ(Vector2 screenPos)
     {
         // Check if click hit UI first
         if (IsPointerOverUI(screenPos))
         {
             return null;
         }
-            
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, -Camera.main.transform.position.z));
-        worldPosition.z = 0;
-        var cell = grid.WorldToCell(worldPosition);
-        return (Vector2Int)cell;
+        
+        // Raycast to XZ plane at Y=0
+        var ray = Camera.main.ScreenPointToRay(screenPos);
+        var plane = new Plane(Vector3.up, Vector3.zero);
+        
+        if (plane.Raycast(ray, out float distance))
+        {
+            var worldPosition = ray.GetPoint(distance);
+            var cell = grid.WorldToCell(worldPosition);
+            // Grid has CellSwizzle=XZY, so cell.y is actually world Z
+            return new Vector2Int(cell.x, cell.y);
+        }
+        
+        return null;
     }
 
     protected bool IsPointerOverUI(Vector2 screenPos)

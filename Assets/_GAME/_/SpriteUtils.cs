@@ -12,6 +12,7 @@ public static class SpriteUtils
         spriteRenderer.sortingOrder = sortingOrder;
         go.transform.position = position;
         go.transform.localScale = scale;
+        go.transform.rotation = Quaternion.Euler(90, 0, 0); // Face up for XZ plane
         return go;
     }
 

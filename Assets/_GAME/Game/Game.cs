@@ -290,9 +290,9 @@ public class Game : Singleton<Game>
             lineRenderer.widthCurve = widthCurve;
         }
         
-        // Set positions with slight offset to avoid z-fighting
-        startPos.z = -0.1f;
-        endPos.z = -0.1f;
+        // Set Y height for XZ plane (camera at Y=10, ground at Y=0)
+        startPos.y = 0.5f;
+        endPos.y = 0.5f;
         lineRenderer.SetPosition(0, startPos);
         lineRenderer.SetPosition(1, endPos);
         

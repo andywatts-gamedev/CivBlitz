@@ -23,18 +23,27 @@ public abstract class BaseInputManager : MonoBehaviour
         return offsets.Any(o => (src + o).Equals(tgt));
     }
 
-    public Vector2Int? GetTileXY(Vector2 screenPos)
+    public Vector2Int? GetTileXZ(Vector2 screenPos)
     {
         // Check if click hit UI first
         if (IsPointerOverUI(screenPos))
         {
             return null;
         }
-            
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.x, screenPos.y, -Camera.main.transform.position.z));
-        worldPosition.z = 0;
-        var cell = grid.WorldToCell(worldPosition);
-        return (Vector2Int)cell;
+        
+        // Raycast to XZ plane at Y=0
+        var ray = Camera.main.ScreenPointToRay(screenPos);
+        var plane = new Plane(Vector3.up, Vector3.zero);
+        
+        if (plane.Raycast(ray, out float distance))
+        {
+            var worldPosition = ray.GetPoint(distance);
+            var cell = grid.WorldToCell(worldPosition);
+            // Grid has CellSwizzle=XZY, so cell.y is actually world Z
+            return new Vector2Int(cell.x, cell.y);
+        }
+        
+        return null;
     }
 
     protected bool IsPointerOverUI(Vector2 screenPos)
