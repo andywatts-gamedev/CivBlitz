@@ -7,7 +7,7 @@ public class TargetTileUI : MonoBehaviour
     [SerializeField] private InputEvents events;
     private UIDocument doc;
     private VisualElement container, unitRow, tileRow;
-    private Label unitAttack, unitDefense, tileAttack, tileDefense, unitName, tileName;
+    private Label unitAttack, tileDefense, unitName, tileName;
     private Vector2Int? targetTile;
 
     void Start()
@@ -20,9 +20,7 @@ public class TargetTileUI : MonoBehaviour
         tileRow = container.Q("TileRow");
         unitName = container.Q<Label>("UnitName");
         unitAttack = container.Q<Label>("UnitAttack");
-        unitDefense = container.Q<Label>("UnitDefense");
         tileName = container.Q<Label>("TileName");
-        tileAttack = container.Q<Label>("TileAttack");
         tileDefense = container.Q<Label>("TileDefense");
 
         events.OnTileHovered += HandleTileHovered;
@@ -40,30 +38,27 @@ public class TargetTileUI : MonoBehaviour
     private void ShowTile(Vector2Int pos)
     {
         targetTile = pos;
-        container.style.display = DisplayStyle.Flex;
-
         unitRow.style.display = DisplayStyle.None;
-        if (UnitManager.Instance.TryGetUnit(pos, out var unit))
+        tileRow.style.display = DisplayStyle.None;
+
+        bool hasUnit = UnitManager.Instance.TryGetUnit(pos, out var unit);
+        if (hasUnit)
         {
-            Debug.Log($"TargetTile: Found unit at {pos}: {unit.unit.name}");
             unitName.text = unit.unit.name;
-            unitAttack.text = unit.unit.melee.ToString();
-            unitDefense.text = unit.unit.ranged.ToString();
+            unitAttack.text = (unit.unit.type == UnitType.Ranged ? unit.unit.ranged : unit.unit.melee).ToString();
             unitRow.style.display = DisplayStyle.Flex;
-        }
-        else
-        {
-            Debug.Log($"TargetTile: No unit at {pos}");
         }
 
         var tile = UnitManager.Instance.terrainTilemap.GetTile((Vector3Int)pos) as TerrainTile;
-        if (tile == null) return;
-        
-        var terrain = tile.terrainScob.terrain;
-        tileName.text = terrain.name;
-        tileAttack.text = terrain.attackBonus.ToString();
-        tileDefense.text = terrain.defenseBonus.ToString();
-        tileRow.style.display = (terrain.attackBonus != 0 || terrain.defenseBonus != 0) ? DisplayStyle.Flex : DisplayStyle.None;
+        if (tile != null)
+        {
+            var terrain = tile.terrainScob.terrain;
+            tileName.text = terrain.name;
+            tileDefense.text = terrain.defenseBonus.ToString();
+            if (terrain.defenseBonus != 0) tileRow.style.display = DisplayStyle.Flex;
+        }
+
+        container.style.display = (hasUnit || (tile != null && tile.terrainScob.terrain.defenseBonus != 0)) ? DisplayStyle.Flex : DisplayStyle.None;
     }
 
     void HandleTileHovered(Vector2Int pos) => ShowTile(pos);

@@ -6,6 +6,40 @@
 ## Overview
 The UI system is built using Unity's UI Toolkit with a modular template-based design. All UI files are consolidated in the `_UI` folder with orientation-specific styling.
 
+## Quick Reference for AI
+
+### Key UI Components
+- **SelectedTileUI** - Shows selected tile/unit info (attack for units, defense for terrain)
+- **TargetTileUI** - Shows hover target info during combat (same layout as SelectedTile)
+- **GameUI** - Main game UI controller (turn management)
+
+### Element Naming Convention
+- **Template instances** (in Game.uxml): Append "Container" suffix (e.g., `SelectedTileContainer`, `TargetTileContainer`)
+- **Root elements** (inside template UXML): Match template name (e.g., `SelectedTile`, `TargetTile`)
+- **Child elements**: Use PascalCase names (e.g., `UnitRow`, `TileRow`)
+- **Labels**: Append type suffix (e.g., `UnitName`, `UnitAttack`, `TileDefense`)
+- No deprecated elements: removed `UnitDefense`, `TileAttack` from both SelectedTile and TargetTile
+
+### CSS Class Pattern
+- `.info-row` - Horizontal layout container
+- `.name-label` - Left-aligned name display
+- `.icon-label` - Font Awesome glyph
+- `.value-label` - Right-aligned numeric value
+- `.font-awesome` - Font Awesome font reference
+
+### File Organization
+Each UI component has 4 files:
+1. `ComponentName.uxml` - Structure (root element named `ComponentName`)
+2. `ComponentName-Common.uss` - Shared styles
+3. `ComponentName-Portrait.uss` - Portrait orientation
+4. `ComponentName-Landscape.uss` - Landscape orientation
+
+### Template System
+- Templates defined in component UXML files (e.g., `SelectedTile.uxml` has root element `SelectedTile`)
+- Templates instantiated in `Game.uxml` with "Container" suffix (e.g., `<ui:Instance template="SelectedTile" name="SelectedTileContainer" />`)
+- Controllers query template instance name: `root.Q("SelectedTileContainer")`
+- Child elements queried from container: `container.Q("UnitRow")`
+
 ## Architecture
 
 ### File Structure
@@ -36,24 +70,64 @@ _UI/
 
 ### SelectedTile Panel
 - **Purpose**: Shows info about the currently selected unit/tile
-- **Visibility**: Controlled by `selectedPanel.style.display = DisplayStyle.Flex/None`
-- **Positioning**: 
-  - Landscape: `left: 1%, top: 1%` (top-left corner)
-  - Portrait: `left: 1%, top: 1%` (top-left corner)
-- **Content**: Unit stats, terrain info, health, movement points
+- **Visibility**: Controlled by `container.style.display = DisplayStyle.Flex/None`
+- **Element Hierarchy**:
+  - `SelectedTileContainer` - Template instance name in Game.uxml (query this from root)
+  - `SelectedTile` - Root element inside SelectedTile.uxml template
+- **Structure**: Two separate rows without table layout
+  - **UnitRow**: Shows unit name, attack icon, attack value
+    - Elements: `UnitName` (name-label), `AttackIcon` (icon-label), `UnitAttack` (value-label)
+    - Only displays attack, no defense value
+  - **TileRow**: Shows terrain name, defense icon, defense value
+    - Elements: `TileName` (name-label), `DefenseIcon` (icon-label), `TileDefense` (value-label)
+    - Only displays defense, no attack value
+- **Layout**: Horizontal rows with name on left, icon and value on right
+- **Icons**:
+  - Attack: `\uf71c` (sword glyph)
+  - Defense: `\uf3ed` (shield-halved glyph)
+  - Both use Font Awesome 651 Regular font
+- **Design**: Simple two-row layout, no table structure
+  - Row 1: Unit info (attack focused)
+  - Row 2: Terrain info (defense focused)
+- **Files**:
+  - `SelectedTile.uxml` - UI structure
+  - `SelectedTile-Common.uss` - Shared styles (row layout, fonts)
+  - `SelectedTile-Portrait.uss` - Portrait orientation styles
+  - `SelectedTile-Landscape.uss` - Landscape orientation styles
+  - `SelectedTileUI.cs` - Controller script
 
-### HoverTile Panel  
+### TargetTile Panel  
 - **Purpose**: Shows info about the hovered unit/tile (for targeting during combat)
-- **Visibility**: Controlled by `hoverPanel.style.display = DisplayStyle.Flex/None`
-- **Positioning**:
-  - Landscape: `right: 1%, top: 1%` (top-right corner)
-  - Portrait: `right: 1%, top: 1%` (top-right corner)
-- **Content**: Target unit stats, terrain info, health, movement points
+- **Visibility**: Controlled by `container.style.display = DisplayStyle.Flex/None`
+- **Element Hierarchy**:
+  - `TargetTileContainer` - Template instance name in Game.uxml (query this from root)
+  - `TargetTile` - Root element inside TargetTile.uxml template
+- **Structure**: Two separate rows without table layout, reverse order from SelectedTile
+  - **UnitRow**: Shows attack value, attack icon, unit name (right to left)
+    - Elements: `UnitAttack` (value-label), `AttackIcon` (icon-label), `UnitName` (name-label)
+    - Only displays attack, no defense value
+  - **TileRow**: Shows defense value, defense icon, terrain name (right to left)
+    - Elements: `TileDefense` (value-label), `DefenseIcon` (icon-label), `TileName` (name-label)
+    - Only displays defense, no attack value
+- **Layout**: Horizontal rows with value on left, icon in middle, name on right
+- **Icons**:
+  - Attack: `\uf71c` (sword glyph)
+  - Defense: `\uf3ed` (shield-halved glyph)
+  - Both use Font Awesome 651 Regular font
+- **Design**: Simple two-row layout, no table structure
+  - Row 1: Unit info (attack focused)
+  - Row 2: Terrain info (defense focused)
+- **Files**:
+  - `TargetTile.uxml` - UI structure
+  - `TargetTile-Common.uss` - Shared styles (row layout, fonts)
+  - `TargetTile-Portrait.uss` - Portrait orientation styles
+  - `TargetTile-Landscape.uss` - Landscape orientation styles
+  - `TargetTileUI.cs` - Controller script
 
 ### Simultaneous Display
 Both panels can be visible simultaneously during combat scenarios:
 - SelectedTile shows your attacking unit's stats
-- HoverTile shows the target unit's stats
+- TargetTile shows the target unit's stats
 - Positioned on opposite sides to avoid overlap
 
 ## Responsive Design
@@ -69,25 +143,83 @@ Both panels can be visible simultaneously during combat scenarios:
 - **Portrait**: Panels at top-left and top-right (same layout)
 - **Font paths**: Updated to use `_UI/Fonts/` instead of `_GAME/UI/Fonts/`
 
-## GameUI Controller
+## SelectedTileUI Controller
 
-### Key Methods
+### Element References
 ```csharp
-// Panel visibility control
-selectedPanel.style.display = DisplayStyle.Flex/None;
-hoverPanel.style.display = DisplayStyle.Flex/None;
+private VisualElement container, unitRow, tileRow;
+private Label unitAttack, tileDefense, unitName, tileName;
+```
 
-// Element queries (updated for new structure)
-selectedPanel = root.Q("SelectedTile");
-hoverPanel = root.Q("HoverTile");
+### Initialization
+```csharp
+// Query the template instance from Game.uxml root
+container = root.Q("SelectedTileContainer");
+// Query child elements from within the template
+unitRow = container.Q("UnitRow");
+tileRow = container.Q("TileRow");
+unitName = container.Q<Label>("UnitName");
+unitAttack = container.Q<Label>("UnitAttack");
+tileName = container.Q<Label>("TileName");
+tileDefense = container.Q<Label>("TileDefense");
 ```
 
 ### Event Handling
-- `HandleTileSelected()` - Shows SelectedTile panel
-- `HandleTileHovered()` - Shows HoverTile panel  
-- `HandleHoverCleared()` - Hides HoverTile panel
+- `HandleTileSelected(Vector2Int pos)` - Shows SelectedTile panel with tile/unit info
 - `HandleCancel()` - Hides SelectedTile panel
-- `HandleTileDeselected()` - Hides SelectedTile panel
+- `HandleTileDeselected(Vector2Int pos)` - Hides SelectedTile panel
+
+### Display Logic
+- **UnitRow**: Shows when tile has a unit, hides otherwise
+  - `unitName.text` = unit.unit.name
+  - `unitAttack.text` = ranged attack for ranged units, melee for melee units
+- **TileRow**: Shows when terrain has defense bonus > 0, hides otherwise
+  - `tileName.text` = terrain.name
+  - `tileDefense.text` = terrain.defenseBonus
+
+### Styling Classes
+- `.info-row` - Horizontal flex row with center alignment
+- `.name-label` - Unit/terrain name (flex-grow: 1, font-size: 32px)
+- `.icon-label` - Font Awesome icon (font-size: 32px, margins for spacing)
+- `.value-label` - Numeric value (font-size: 32px, width: 64px)
+- `.font-awesome` - Font Awesome font definition
+
+## TargetTileUI Controller
+
+### Element References
+```csharp
+private VisualElement container, unitRow, tileRow;
+private Label unitAttack, tileDefense, unitName, tileName;
+```
+
+### Initialization
+```csharp
+// Query the template instance from Game.uxml root
+container = root.Q("TargetTileContainer");
+// Query child elements from within the template
+unitRow = container.Q("UnitRow");
+tileRow = container.Q("TileRow");
+unitName = container.Q<Label>("UnitName");
+unitAttack = container.Q<Label>("UnitAttack");
+tileName = container.Q<Label>("TileName");
+tileDefense = container.Q<Label>("TileDefense");
+```
+
+### Event Handling
+- `HandleTileHovered(Vector2Int pos)` - Shows TargetTile panel with tile/unit info
+- `HandlePointerMovedToTile(Vector2Int? tile)` - Hides panel if pointer moved away from target
+- `HandleHoverCleared()` - Hides TargetTile panel
+
+### Display Logic
+- **UnitRow**: Shows when tile has a unit, hides otherwise
+  - `unitName.text` = unit.unit.name
+  - `unitAttack.text` = ranged attack for ranged units, melee for melee units
+- **TileRow**: Shows when terrain has defense bonus > 0, hides otherwise
+  - `tileName.text` = terrain.name
+  - `tileDefense.text` = terrain.defenseBonus
+
+### Styling Classes
+Same as SelectedTileUI
 
 ## TemplateContainer Fix
 **Critical**: TemplateContainers need explicit height to contain absolutely positioned panels:

@@ -9,7 +9,7 @@ public class Game : Singleton<Game>
     [SerializeField] private InputEvents events;
     [SerializeField] private GameStateEvents gameStateEvents;
     [SerializeField] private GameObject highlight;
-    [SerializeField] private GameObject pathPreview;
+    private GameObject pathPreview;
     private Vector2Int? selectedTile;
     private bool isDragging;
 
@@ -39,7 +39,6 @@ public class Game : Singleton<Game>
         events.OnDragUpdated += HandleDragUpdated;
         events.OnDragEnded += HandleDragEnded;
         highlight.SetActive(false);
-        if (pathPreview != null) pathPreview.SetActive(false);
     }
 
     void OnDisable()
@@ -178,9 +177,9 @@ public class Game : Singleton<Game>
     private void HandleDragStarted(Vector2Int fromTile, Vector2Int toTile)
     {
         Debug.Log($"Drag started: {fromTile} -> {toTile}");
-        if (!UnitManager.Instance.TryGetUnit(fromTile, out var unit) || 
-            unit.civ != player.civilization || 
-            unit.state != UnitState.Ready)
+        bool hasUnit = UnitManager.Instance.TryGetUnit(fromTile, out var unit);
+        Debug.Log($"HasUnit: {hasUnit}, PlayerCiv: {player?.civilization}, UnitCiv: {unit?.civ}, UnitState: {unit?.state}");
+        if (!hasUnit || unit.civ != player.civilization || unit.state != UnitState.Ready)
             return;
             
         isDragging = true;
@@ -244,18 +243,24 @@ public class Game : Singleton<Game>
         {
             pathPreview = new GameObject("PathPreview");
             pathPreview.transform.SetParent(transform);
-            Debug.Log("Created pathPreview GameObject");
         }
         
         var isValid = IsValidMove(fromTile, toTile);
-        Debug.Log($"Move valid: {isValid}");
         pathPreview.SetActive(true);
         
         // Use the terrain tilemap for consistent world positioning
         var startPos = UnitManager.Instance.terrainTilemap.CellToWorld((Vector3Int)fromTile);
         var endPos = UnitManager.Instance.terrainTilemap.CellToWorld((Vector3Int)toTile);
         
-        Debug.Log($"LineRenderer: startPos={startPos}, endPos={endPos}");
+        Debug.Log($"Tilemap position: {UnitManager.Instance.terrainTilemap.transform.position}");
+        Debug.Log($"CellToWorld before offset: start={startPos}, end={endPos}");
+        
+        // Offset Y slightly above terrain
+        var offsetY = 1f;
+        startPos = new Vector3(startPos.x, startPos.y + offsetY, startPos.z);
+        endPos = new Vector3(endPos.x, endPos.y + offsetY, endPos.z);
+        
+        Debug.Log($"Final positions: start={startPos}, end={endPos}");
         
         // Create or get line renderer
         var lineRenderer = pathPreview.GetComponent<LineRenderer>();
@@ -292,9 +297,6 @@ public class Game : Singleton<Game>
             Debug.Log($"LineRenderer created with shader: {shader?.name ?? "NULL"}");
         }
         
-        // Set Y height above ground for XZ plane
-        startPos.y = 1f;
-        endPos.y = 1f;
         lineRenderer.SetPosition(0, startPos);
         lineRenderer.SetPosition(1, endPos);
         

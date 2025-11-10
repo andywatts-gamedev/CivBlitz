@@ -1105,7 +1105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1110131520
 Transform:
   m_ObjectHideFlags: 0
@@ -1588,7 +1588,6 @@ MonoBehaviour:
   events: {fileID: 11400000, guid: 23026cfb94d904e1093f2b7d529f19b7, type: 2}
   gameStateEvents: {fileID: 11400000, guid: b964296b5dcd14b71806bd1c856e99f4, type: 2}
   highlight: {fileID: 576595455}
-  pathPreview: {fileID: 0}
   player: {fileID: 11400000, guid: 9e5c2d5b9453742efba7c9de0d04083a, type: 2}
   ai: {fileID: 11400000, guid: 39ce15cfa3b7349de961f9ee79b8d5be, type: 2}
   flagScale: {x: 2, y: 2, z: 2}

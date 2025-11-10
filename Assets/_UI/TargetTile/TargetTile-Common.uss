@@ -1,15 +1,39 @@
-#TargetTile
-{
+#TargetTile {
     align-items: flex-start;
+    background-color: rgba(20, 20, 20, 0.9);
+    border-radius: 6px;
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.3);
+    padding: 12px;
 }
 
-.attack, .defense
-{
+.info-row {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.value-label {
+    font-size: 32px;
     width: 64px;
-    font-size: 32px;
+    color: white;
+    -unity-text-align: middle-left;
 }
 
-.cell.row-name
-{
+.icon-label {
     font-size: 32px;
+    margin-left: 8px;
+    margin-right: 8px;
+    color: rgb(245, 188, 24);
+}
+
+.name-label {
+    font-size: 32px;
+    flex-grow: 1;
+    color: rgb(245, 188, 24);
+    -unity-text-align: middle-right;
+}
+
+.font-awesome {
+    -unity-font-definition: url("project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&guid=e550a4ad826a24de7848b919a31ce3bb&type=2#fa-regular-400 SDF");
 }

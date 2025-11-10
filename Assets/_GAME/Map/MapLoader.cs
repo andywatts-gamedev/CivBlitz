@@ -40,7 +40,15 @@ public class MapLoader : MonoBehaviour
             Debug.Log("[MapLoader] No MapData provided, using scene tilemaps");
             // Scene-based loading will happen via CivilizationTilemap.Start()
             mapLoadedFromData = false;
+            StartCoroutine(CenterAfterSceneLoad());
         }
+    }
+
+    private System.Collections.IEnumerator CenterAfterSceneLoad()
+    {
+        yield return new WaitForEndOfFrame();
+        CenterCameraOnMap();
+        onMapLoaded?.Invoke();
     }
 
     private void BuildTileCaches()
@@ -140,6 +148,34 @@ public class MapLoader : MonoBehaviour
         Debug.Log("[MapLoader] Map cleared");
     }
 
+    public void CenterCameraOnMap()
+    {
+        if (terrainTilemap == null) return;
+
+        terrainTilemap.CompressBounds();
+        var bounds = terrainTilemap.cellBounds;
+        
+        var sum = Vector3.zero;
+        var count = 0;
+        foreach (var pos in bounds.allPositionsWithin)
+        {
+            if (terrainTilemap.GetTile(pos) != null)
+            {
+                sum += terrainTilemap.GetCellCenterWorld(pos);
+                count++;
+            }
+        }
+        
+        if (count == 0) return;
+        var centerWorld = sum / count;
+        
+        var vcam = FindAnyObjectByType<Unity.Cinemachine.CinemachineCamera>();
+        if (vcam != null)
+        {
+            vcam.transform.position = new Vector3(centerWorld.x, vcam.transform.position.y, centerWorld.z);
+        }
+    }
+
     public void LoadMap(MapData mapData)
     {
         if (mapData == null)
@@ -229,6 +265,7 @@ public class MapLoader : MonoBehaviour
         }
 
         Debug.Log($"[MapLoader] Map loaded successfully");
+        CenterCameraOnMap();
         onMapLoaded?.Invoke();
     }
 
