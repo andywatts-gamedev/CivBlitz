@@ -53,7 +53,7 @@ public class GameButtonsUITests
     }
 
     [UnityTest]
-    public IEnumerator NextTurnButton_ShowsWhenAllUnitsResting()
+    public IEnumerator NextTurnButton_ShowsWhenAllUnitsFortified()
     {
         yield return null;
         
@@ -67,14 +67,14 @@ public class GameButtonsUITests
         Assert.IsNotNull(nextUnitButton);
         Assert.IsNotNull(nextTurnButton);
         
-        // Set all player units to Resting state
+        // Set all player units to Fortified state
         var playerCiv = Game.Instance.player.civilization;
         if (unitManager.civUnits.ContainsKey(playerCiv))
         {
             var units = new List<UnitInstance>(unitManager.civUnits[playerCiv]);
             foreach (var unit in units)
             {
-                unitManager.SetUnitState(unit.position, UnitState.Resting);
+                unitManager.SetUnitState(unit.position, UnitState.Fortified);
             }
         }
         

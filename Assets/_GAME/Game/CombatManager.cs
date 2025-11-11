@@ -61,9 +61,12 @@ public class CombatManager : Singleton<CombatManager>
                 defenderTerrainBonus = defenderTile.terrainScob.terrain.defenseBonus;
             }
             
+            // Fortified unit bonus
+            var defenderFortifiedBonus = defender.state == UnitState.Fortified ? Game.Instance.fortifiedDefenseBonus : 0;
+            
             // Combat strength scales with health percentage (Civ 6 style)
             var attackerStrength = Mathf.RoundToInt(attackerBaseStrength * (attacker.health / (float)attacker.unit.health));
-            var defenderStrength = Mathf.RoundToInt((defenderBaseStrength + defenderTerrainBonus) * (defender.health / (float)defender.unit.health));
+            var defenderStrength = Mathf.RoundToInt((defenderBaseStrength + defenderTerrainBonus + defenderFortifiedBonus) * (defender.health / (float)defender.unit.health));
             var strengthDiff = attackerStrength - defenderStrength;
             
             // Attack damage
@@ -75,21 +78,21 @@ public class CombatManager : Singleton<CombatManager>
             
             if (attackDamage > 0)
             {
-                var attackerFlagTilemap = UnitManager.Instance.flags[attacker.civ];
-                var defenderFlagTilemap = UnitManager.Instance.flags[defender.civ];
+                var attackerStateTilemap = UnitManager.Instance.flags[attacker.civ];
+                var defenderStateTilemap = UnitManager.Instance.flags[defender.civ];
                 var unitTilemap = UnitManager.Instance.unitTilemap;
 
                 var attackerCellPos = new Vector3Int(attackerPos.x, attackerPos.y, 0);
                 var defenderCellPos = new Vector3Int(defenderPos.x, defenderPos.y, 0);
                 
-                var attackerFlagTile = attackerFlagTilemap.GetTile(attackerCellPos) as Tile;
-                var defenderFlagTile = defenderFlagTilemap.GetTile(defenderCellPos) as Tile;
+                var attackerStateTile = attackerStateTilemap.GetTile(attackerCellPos) as Tile;
+                var defenderStateTile = defenderStateTilemap.GetTile(defenderCellPos) as Tile;
                 var attackerUnitTile = unitTilemap.GetTile(attackerCellPos) as UnitTile;
                 var defenderUnitTile = unitTilemap.GetTile(defenderCellPos) as UnitTile;
                 
-                if (attackerFlagTile == null || defenderFlagTile == null || 
+                if (attackerStateTile == null || defenderStateTile == null || 
                     attackerUnitTile == null || defenderUnitTile == null) {
-                    Debug.LogError($"Missing tiles - Attacker: flag={attackerFlagTile}, unit={attackerUnitTile} at {attackerPos}, Defender: flag={defenderFlagTile}, unit={defenderUnitTile} at {defenderPos}");
+                    Debug.LogError($"Missing tiles - Attacker: state={attackerStateTile}, unit={attackerUnitTile} at {attackerPos}, Defender: state={defenderStateTile}, unit={defenderUnitTile} at {defenderPos}");
                     
                     // Wait for move animation to complete
                     if (UnitManager.Instance.isMoving)
@@ -126,7 +129,7 @@ public class CombatManager : Singleton<CombatManager>
                 
                 StartCoroutine(CombatCoroutine(
                     combatEvent,
-                    attackerFlagTile, defenderFlagTile,
+                    attackerStateTile, defenderStateTile,
                     attackerUnitTile, defenderUnitTile
                 ));
                 return true;
@@ -142,37 +145,37 @@ public class CombatManager : Singleton<CombatManager>
 
     private IEnumerator CombatCoroutine(
         CombatEvent e,
-        Tile attackerFlagTile, Tile defenderFlagTile,
+        Tile attackerStateTile, Tile defenderStateTile,
         UnitTile attackerUnitTile, UnitTile defenderUnitTile)
     {
         isCombatMoving = true;
         combatPositions.Clear();
         
-        var attackerFlagTilemap = UnitManager.Instance.flags[e.attackerCiv];
-        var defenderFlagTilemap = UnitManager.Instance.flags[e.defenderCiv];
+        var attackerStateTilemap = UnitManager.Instance.flags[e.attackerCiv];
+        var defenderStateTilemap = UnitManager.Instance.flags[e.defenderCiv];
         var unitTilemap = UnitManager.Instance.unitTilemap;
         
         var attackerCellPos = new Vector3Int(e.attackerPos.x, e.attackerPos.y, 0);
         var defenderCellPos = new Vector3Int(e.defenderPos.x, e.defenderPos.y, 0);
         
         // Hide tiles
-        attackerFlagTilemap.SetTile(attackerCellPos, null);
-        defenderFlagTilemap.SetTile(defenderCellPos, null);
+        attackerStateTilemap.SetTile(attackerCellPos, null);
+        defenderStateTilemap.SetTile(defenderCellPos, null);
         unitTilemap.SetTile(attackerCellPos, null);
         unitTilemap.SetTile(defenderCellPos, null);
         
         // Create moving sprites
-        var attackerFlagSprite = CreateMovingSprite(attackerFlagTile, e.attackerPos, e.attackerCiv, true);
+        var attackerStateSprite = CreateMovingSprite(attackerStateTile, e.attackerPos, e.attackerCiv, true);
         var attackerUnitSprite = CreateMovingSprite(attackerUnitTile, e.attackerPos, e.attackerCiv, false);
-        var defenderFlagSprite = CreateMovingSprite(defenderFlagTile, e.defenderPos, e.defenderCiv, true);
+        var defenderStateSprite = CreateMovingSprite(defenderStateTile, e.defenderPos, e.defenderCiv, true);
         var defenderUnitSprite = CreateMovingSprite(defenderUnitTile, e.defenderPos, e.defenderCiv, false);
 
         // Colors
         var attackerColor = Game.Instance.civilizations[e.attackerCiv].color;
         var defenderColor = Game.Instance.civilizations[e.defenderCiv].color;
         
-        var start = attackerFlagTilemap.CellToWorld(attackerCellPos);
-        var end = defenderFlagTilemap.CellToWorld(defenderCellPos);
+        var start = attackerStateTilemap.CellToWorld(attackerCellPos);
+        var end = defenderStateTilemap.CellToWorld(defenderCellPos);
         
         // For ranged: attacker stays put, defender reacts
         // For melee: both move toward each other
@@ -188,9 +191,9 @@ public class CombatManager : Singleton<CombatManager>
             var lerpedAttackerPos = Vector3.Lerp(start, attackerMeetingPoint, t);
             var lerpedDefenderPos = Vector3.Lerp(end, defenderMeetingPoint, t);
             
-            attackerFlagSprite.transform.position = lerpedAttackerPos;
+            attackerStateSprite.transform.position = lerpedAttackerPos;
             attackerUnitSprite.transform.position = lerpedAttackerPos;
-            defenderFlagSprite.transform.position = lerpedDefenderPos;
+            defenderStateSprite.transform.position = lerpedDefenderPos;
             defenderUnitSprite.transform.position = lerpedDefenderPos;
             
             combatPositions[e.attackerPos] = lerpedAttackerPos;
@@ -201,21 +204,21 @@ public class CombatManager : Singleton<CombatManager>
         
         FloatingCombatText.Create(
             e.isRanged ? defenderMeetingPoint + Vector3.up * 0.5f : attackerMeetingPoint + Vector3.up * 0.5f,
-            e.attackDamage, defenderColor, defenderFlagTilemap.CellToWorld(defenderCellPos),
-            e.retaliationDamage, attackerColor, attackerFlagTilemap.CellToWorld(attackerCellPos)
+            e.attackDamage, defenderColor, defenderStateTilemap.CellToWorld(defenderCellPos),
+            e.retaliationDamage, attackerColor, attackerStateTilemap.CellToWorld(attackerCellPos)
         );
         
         if (e.defenderKilled)
         {
             UnitManager.Instance.RemoveUnit(e.defenderPos);
-            Destroy(defenderFlagSprite);
+            Destroy(defenderStateSprite);
             Destroy(defenderUnitSprite);
         }
         
         if (e.attackerKilled)
         {
             UnitManager.Instance.RemoveUnit(e.attackerPos);
-            Destroy(attackerFlagSprite);
+            Destroy(attackerStateSprite);
             Destroy(attackerUnitSprite);
         }
         
@@ -237,13 +240,13 @@ public class CombatManager : Singleton<CombatManager>
                 
                 if (!e.attackerKilled) {
                     var pos = Vector3.Lerp(attackerMeetingPoint, start, t);
-                    attackerFlagSprite.transform.position = pos;
+                    attackerStateSprite.transform.position = pos;
                     attackerUnitSprite.transform.position = pos;
                     combatPositions[e.attackerPos] = pos;
                 }
                 if (!e.defenderKilled) {
                     var pos = Vector3.Lerp(defenderMeetingPoint, end, t);
-                    defenderFlagSprite.transform.position = pos;
+                    defenderStateSprite.transform.position = pos;
                     defenderUnitSprite.transform.position = pos;
                     combatPositions[e.defenderPos] = pos;
                 }
@@ -251,22 +254,24 @@ public class CombatManager : Singleton<CombatManager>
             }
         }
         
-        // Restore tiles for survivors
+        // Restore tiles for survivors (Ready state after combat)
         if (!e.attackerKilled) {
-            attackerFlagTilemap.SetTile(attackerCellPos, attackerFlagTile);
-            attackerFlagTilemap.SetTransformMatrix(attackerCellPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale));
+            var readyStateTile = MapLoader.Instance.GetStateTileForState(UnitState.Ready);
+            attackerStateTilemap.SetTile(attackerCellPos, readyStateTile);
+            attackerStateTilemap.SetTransformMatrix(attackerCellPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale));
             unitTilemap.SetTile(attackerCellPos, attackerUnitTile);
             unitTilemap.SetTransformMatrix(attackerCellPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.unitScale));
-            Destroy(attackerFlagSprite);
+            Destroy(attackerStateSprite);
             Destroy(attackerUnitSprite);
         }
         
         if (!e.defenderKilled) {
-            defenderFlagTilemap.SetTile(defenderCellPos, defenderFlagTile);
-            defenderFlagTilemap.SetTransformMatrix(defenderCellPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale));
+            var readyStateTile = MapLoader.Instance.GetStateTileForState(UnitState.Ready);
+            defenderStateTilemap.SetTile(defenderCellPos, readyStateTile);
+            defenderStateTilemap.SetTransformMatrix(defenderCellPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale));
             unitTilemap.SetTile(defenderCellPos, defenderUnitTile);
             unitTilemap.SetTransformMatrix(defenderCellPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.unitScale));
-            Destroy(defenderFlagSprite);
+            Destroy(defenderStateSprite);
             Destroy(defenderUnitSprite);
         }
         
@@ -275,12 +280,14 @@ public class CombatManager : Singleton<CombatManager>
         {
             attacker.health -= e.retaliationDamage;
             attacker.actionsLeft = 0;
+            // Fortified units stay fortified when attacking (unlike moved units)
             UnitManager.Instance.UpdateUnit(e.attackerPos, attacker);
         }
         
         if (!e.defenderKilled && UnitManager.Instance.TryGetUnit(e.defenderPos, out var defender))
         {
             defender.health -= e.attackDamage;
+            // Fortified defenders stay fortified after being attacked
             UnitManager.Instance.UpdateUnit(e.defenderPos, defender);
         }
         

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c760d8edfd7344bf584c1451719d8dae, type: 3}
-  m_Name: Warrior
+  m_Script: {fileID: 11500000, guid: 1be7f74e3968a47a3afdb8f9c3ccbeda, type: 3}
+  m_Name: Ready
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -5413309669775169461, guid: cf4b9470e27994642bb1a251a77c8091, type: 3}
+  m_Sprite: {fileID: 4071976658266373814, guid: 7a3f4cd6353b294468b1139ee4b97dfb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -34,4 +34,4 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  unitSCOB: {fileID: 11400000, guid: 6f5d412e2213b4359b46d4c8f92e41ec, type: 2}
+  unitState: 0

@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <ui:VisualElement name="UnitButtons" class="unit-buttons-panel" picking-mode="Position">
+    <ui:VisualElement name="UnitButtons" class="unit-buttons-panel">
         <ui:Button name="MoveButton" text="\uf554" parse-escape-sequences="true" class="unit-action-button fa-move" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&amp;guid=e550a4ad826a24de7848b919a31ce3bb&amp;type=2#fa-regular-400 SDF&quot;);" />
-        <ui:Button name="RestButton" text="\uf6bb" parse-escape-sequences="true" class="unit-action-button fa-bed" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&amp;guid=e550a4ad826a24de7848b919a31ce3bb&amp;type=2#fa-regular-400 SDF&quot;);" />
+        <ui:Button name="FortifyButton" text="\uf132" parse-escape-sequences="true" class="unit-action-button fa-shield" style="-unity-font-definition: url(&quot;project://database/Assets/_UI/_Fonts/Font%20Awesome%20651/fa-regular-400%20SDF.asset?fileID=11400000&amp;guid=e550a4ad826a24de7848b919a31ce3bb&amp;type=2#fa-regular-400 SDF&quot;);" />
     </ui:VisualElement>
 </ui:UXML>

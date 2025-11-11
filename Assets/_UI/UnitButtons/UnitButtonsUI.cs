@@ -11,7 +11,7 @@ public class UnitButtonsUI : MonoBehaviour
     
     private UIDocument doc;
     private VisualElement container;
-    private Button moveButton, restButton;
+    private Button moveButton, fortifyButton;
     private Vector2Int? selectedTile;
     
 
@@ -22,16 +22,16 @@ public class UnitButtonsUI : MonoBehaviour
 
         container = root.Q("UnitButtonsContainer");
         moveButton = root.Q<Button>("MoveButton");
-        restButton = root.Q<Button>("RestButton");
+        fortifyButton = root.Q<Button>("FortifyButton");
         
         if (moveButton != null)
         {
             moveButton.clicked += HandleMoveClicked;
         }
         
-        if (restButton != null)
+        if (fortifyButton != null)
         {
-            restButton.clicked += HandleRestClicked;
+            fortifyButton.clicked += HandleFortifyClicked;
         }
 
         gameStateEvents.OnTileSelected += HandleTileSelected;
@@ -54,9 +54,9 @@ public class UnitButtonsUI : MonoBehaviour
             moveButton.clicked -= HandleMoveClicked;
         }
         
-        if (restButton != null)
+        if (fortifyButton != null)
         {
-            restButton.clicked -= HandleRestClicked;
+            fortifyButton.clicked -= HandleFortifyClicked;
         }
         
         gameStateEvents.OnTileSelected -= HandleTileSelected;
@@ -92,31 +92,31 @@ public class UnitButtonsUI : MonoBehaviour
         }
 
         bool canMove = unit.state == UnitState.Ready && unit.actionsLeft > 0;
-        bool isResting = unit.state == UnitState.Resting;
-        bool canToggleRest = (unit.state == UnitState.Ready && unit.actionsLeft > 0) || isResting;
+        bool isFortified = unit.state == UnitState.Fortified;
+        bool canToggleFortify = (unit.state == UnitState.Ready && unit.actionsLeft > 0) || isFortified;
         
         if (moveButton != null)
         {
             moveButton.SetEnabled(canMove);
         }
         
-        if (restButton != null)
+        if (fortifyButton != null)
         {
-            restButton.SetEnabled(canToggleRest);
+            fortifyButton.SetEnabled(canToggleFortify);
             
             // Toggle active class based on unit state
-            if (isResting)
+            if (isFortified)
             {
-                if (!restButton.ClassListContains("active"))
+                if (!fortifyButton.ClassListContains("active"))
                 {
-                    restButton.AddToClassList("active");
+                    fortifyButton.AddToClassList("active");
                 }
             }
             else
             {
-                if (restButton.ClassListContains("active"))
+                if (fortifyButton.ClassListContains("active"))
                 {
-                    restButton.RemoveFromClassList("active");
+                    fortifyButton.RemoveFromClassList("active");
                 }
             }
         }
@@ -135,7 +135,7 @@ public class UnitButtonsUI : MonoBehaviour
         }
     }
 
-    private void HandleRestClicked()
+    private void HandleFortifyClicked()
     {
         if (!selectedTile.HasValue) return;
         
@@ -143,8 +143,8 @@ public class UnitButtonsUI : MonoBehaviour
         {
             if (unit.civ == Game.Instance.player.civilization)
             {
-                // Toggle rest state
-                var newState = unit.state == UnitState.Resting ? UnitState.Ready : UnitState.Resting;
+                // Toggle fortified state
+                var newState = unit.state == UnitState.Fortified ? UnitState.Ready : UnitState.Fortified;
                 UnitManager.Instance.SetUnitState(selectedTile.Value, newState);
                 UpdateButtonStates();
             }

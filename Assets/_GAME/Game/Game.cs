@@ -21,6 +21,7 @@ public class Game : Singleton<Game>
 
     public Vector3 flagScale = new Vector3(2f, 2f, 2f);
     public Vector3 unitScale = new Vector3(0.8f, 0.8f, 0.8f);
+    public int fortifiedDefenseBonus = 3;
 
     protected override void Awake()
     {

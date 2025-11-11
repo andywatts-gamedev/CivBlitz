@@ -11,12 +11,13 @@ public class MapLoader : MonoBehaviour
     [SerializeField] private Tilemap unitTilemap;
     [SerializeField] private Tilemap overridesTilemap;
     [SerializeField] private List<CivilizationTilemap> civilizationTilemaps;
-    [SerializeField] private Tile flagTile;
     [SerializeField] private MapData initialMapData;
     [SerializeField] private GameEvent onMapLoaded;
+    [SerializeField] private Tile fallbackStateTile; // Temporary fallback while migrating to UnitStateTiles
 
     private Dictionary<TerrainScob, TerrainTile> terrainTileCache;
     private Dictionary<UnitSCOB, UnitTile> unitTileCache;
+    private Dictionary<UnitState, UnitStateTile> unitStateTileCache;
     private Dictionary<Civilization, CivilizationTilemap> civTilemapCache;
     private bool mapLoadedFromData = false;
 
@@ -66,7 +67,7 @@ public class MapLoader : MonoBehaviour
         Debug.Log($"[MapLoader] Loaded {terrainTileCache.Count} terrain tiles");
 
         // Load all unit tiles from Resources
-        var unitTiles = Resources.LoadAll<UnitTile>("Tiles");
+        var unitTiles = Resources.LoadAll<UnitTile>("Units");
         unitTileCache = new Dictionary<UnitSCOB, UnitTile>();
         foreach (var tile in unitTiles)
         {
@@ -76,6 +77,21 @@ public class MapLoader : MonoBehaviour
             }
         }
         Debug.Log($"[MapLoader] Loaded {unitTileCache.Count} unit tiles");
+
+        // Load unit state tiles from Resources (for Ready/Fortified state indicators)
+        var unitStateTiles = Resources.LoadAll<UnitStateTile>("States");
+        unitStateTileCache = new Dictionary<UnitState, UnitStateTile>();
+        foreach (var tile in unitStateTiles)
+        {
+            Debug.Log($"[MapLoader] Found UnitStateTile: {tile.name}, state={tile.unitState}");
+            unitStateTileCache[tile.unitState] = tile;
+        }
+        Debug.Log($"[MapLoader] Loaded {unitStateTileCache.Count} unit state tiles");
+        
+        if (unitStateTileCache.Count == 0)
+        {
+            Debug.LogWarning("[MapLoader] No UnitStateTile assets found in Resources/States. Using fallback tile. Create UnitStateTile assets for Ready and Fortified states.");
+        }
 
         // Build civilization tilemap lookup
         civTilemapCache = new Dictionary<Civilization, CivilizationTilemap>();
@@ -87,20 +103,6 @@ public class MapLoader : MonoBehaviour
                 {
                     civTilemapCache[civTilemap.civ.civilization] = civTilemap;
                 }
-            }
-        }
-        
-        // Load flag tile from Resources
-        if (flagTile == null)
-        {
-            flagTile = Resources.Load<Tile>("Tiles/UnitFlag");
-            if (flagTile != null)
-            {
-                Debug.Log("[MapLoader] Loaded flag tile from Resources");
-            }
-            else
-            {
-                Debug.LogWarning("[MapLoader] UnitFlag tile not found in Resources");
             }
         }
     }
@@ -121,7 +123,7 @@ public class MapLoader : MonoBehaviour
             unitTilemap.ClearAllTiles();
         }
         
-        // Clear civilization tilemaps (flags and units)
+        // Clear civilization tilemaps (state indicators and units)
         if (civilizationTilemaps != null)
         {
             foreach (var civTilemap in civilizationTilemaps)
@@ -223,20 +225,32 @@ public class MapLoader : MonoBehaviour
             // Grid uses XZY swizzle: position.x=worldX, position.y=worldZ, z=0
             var cellPos = new Vector3Int(unitPlacement.position.x, unitPlacement.position.y, 0);
             
-            // Place flag
-            if (flagTile != null && civTilemap.flags != null)
+            // Place unit state indicator (Ready by default)
+            if (civTilemap.flags != null)
             {
-                civTilemap.flags.SetTile(cellPos, flagTile);
-                // Scale the flag
-                var matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale);
-                civTilemap.flags.SetTransformMatrix(cellPos, matrix);
+                Tile stateTileToPlace = null;
+                if (unitStateTileCache.TryGetValue(UnitState.Ready, out var stateTile))
+                {
+                    stateTileToPlace = stateTile;
+                }
+                else if (fallbackStateTile != null)
+                {
+                    stateTileToPlace = fallbackStateTile;
+                    Debug.LogWarning($"[MapLoader] Using fallback state tile for unit at {unitPlacement.position}");
+                }
+                
+                if (stateTileToPlace != null)
+                {
+                    civTilemap.flags.SetTile(cellPos, stateTileToPlace);
+                    var matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale);
+                    civTilemap.flags.SetTransformMatrix(cellPos, matrix);
+                }
             }
 
             // Place unit sprite
             if (unitTileCache.TryGetValue(unitPlacement.unit, out var unitTile) && civTilemap.units != null)
             {
                 civTilemap.units.SetTile(cellPos, unitTile);
-                // Scale the unit
                 var matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.unitScale);
                 civTilemap.units.SetTransformMatrix(cellPos, matrix);
             }
@@ -260,7 +274,7 @@ public class MapLoader : MonoBehaviour
         }
         Debug.Log($"[MapLoader] Loaded {mapData.unitPlacements.Length} units");
 
-        // Register flag tilemaps with UnitManager
+        // Register state indicator tilemaps with UnitManager
         foreach (var kvp in civTilemapCache)
         {
             if (kvp.Value.flags != null)
@@ -277,6 +291,18 @@ public class MapLoader : MonoBehaviour
     public bool IsMapLoadedFromData()
     {
         return mapLoadedFromData;
+    }
+
+    public UnitStateTile GetStateTileForState(UnitState state)
+    {
+        if (unitStateTileCache.TryGetValue(state, out var tile))
+        {
+            return tile;
+        }
+        
+        // Fallback: return the fallback tile as UnitStateTile (will be cast to Tile)
+        Debug.LogWarning($"[MapLoader] No UnitStateTile found for state {state}, using fallback");
+        return fallbackStateTile as UnitStateTile;
     }
 }
 

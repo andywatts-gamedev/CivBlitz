@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c760d8edfd7344bf584c1451719d8dae, type: 3}
-  m_Name: Slinger
+  m_Script: {fileID: 11500000, guid: 1be7f74e3968a47a3afdb8f9c3ccbeda, type: 3}
+  m_Name: Fortified
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1107124231209231601, guid: cf4b9470e27994642bb1a251a77c8091, type: 3}
+  m_Sprite: {fileID: 6713885205108735225, guid: 4288383dd9c6a8c479f170c8217e3cd2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -32,6 +32,6 @@ MonoBehaviour:
     e32: 0
     e33: 1
   m_InstancedGameObject: {fileID: 0}
-  m_Flags: 1
+  m_Flags: 0
   m_ColliderType: 1
-  unitSCOB: {fileID: 11400000, guid: b26470ad9b4c2405cbf72622cf17f11a, type: 2}
+  unitState: 1

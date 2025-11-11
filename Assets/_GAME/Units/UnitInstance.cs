@@ -4,7 +4,6 @@ using UnityEngine.Tilemaps;
 public enum UnitState
 {
     Ready,
-    Resting,
     Fortified
 }
 

@@ -662,9 +662,9 @@ MonoBehaviour:
   civilizationTilemaps:
   - {fileID: 1321226075}
   - {fileID: 1648742330}
-  flagTile: {fileID: 11400000, guid: fda311ce2cbbc4450aba021dfd3268ad, type: 2}
   initialMapData: {fileID: 0}
   onMapLoaded: {fileID: 11400000, guid: 6a4e69b8b7b9349fc9f91ed350146649, type: 2}
+  fallbackStateTile: {fileID: 0}
 --- !u!1 &785604380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,7 +1495,7 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 97acf0f4661e944cdb48aa1fa3b7acc0, type: 2}
+    m_Data: {fileID: 11400000, guid: d3ba7ed4a1d0142eab782ad6fe258afd, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 4071976658266373814, guid: 7a3f4cd6353b294468b1139ee4b97dfb, type: 3}
@@ -1647,6 +1647,7 @@ MonoBehaviour:
   ai: {fileID: 11400000, guid: 39ce15cfa3b7349de961f9ee79b8d5be, type: 2}
   flagScale: {x: 2, y: 2, z: 2}
   unitScale: {x: 0.8, y: 0.8, z: 0.8}
+  campedDefenseBonus: 3
 --- !u!1 &1607100489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,7 +1821,7 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 97acf0f4661e944cdb48aa1fa3b7acc0, type: 2}
+    m_Data: {fileID: 11400000, guid: d3ba7ed4a1d0142eab782ad6fe258afd, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 4071976658266373814, guid: 7a3f4cd6353b294468b1139ee4b97dfb, type: 3}
@@ -2091,7 +2092,7 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 2
-    m_Data: {fileID: 11400000, guid: 2e94761f4d56e468a8592ac6ca8f1f65, type: 2}
+    m_Data: {fileID: 11400000, guid: b3ec591b50dd1493bbd2680167b2f0cc, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 2
     m_Data: {fileID: -5413309669775169461, guid: cf4b9470e27994642bb1a251a77c8091, type: 3}

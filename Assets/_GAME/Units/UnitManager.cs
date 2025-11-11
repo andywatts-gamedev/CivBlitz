@@ -53,27 +53,24 @@ public class UnitManager : Singleton<UnitManager>
             units.Remove(from);
             unit.position = to;
             unit.actionsLeft--;
+            unit.state = UnitState.Ready; // Un-fortify on move
             units[to] = unit;
             
-            // var civUnitsList = civUnits[unit.civ];
-            // var index = civUnitsList.FindIndex(u => u.position == from);
-            // if (index != -1)
-            // {
-            //     civUnitsList[index] = unit;
-            // }
+            // State indicator (Ready after move)
+            var stateTilemap = flags[unit.civ];
+            var oldStateTile = stateTilemap.GetTile((Vector3Int)from) as Tile;
+            stateTilemap.SetTile((Vector3Int)from, null);
+            var movingStateIndicator = SpriteUtils.CreateMovingUnitSprite(oldStateTile, from, unit.civ, true);
             
-            // Flag
-            var flagsTilemap = flags[unit.civ];
-            var flagTile = flagsTilemap.GetTile((Vector3Int)from) as Tile;
-            flagsTilemap.SetTile((Vector3Int)from, null);
-            var movingFlag = SpriteUtils.CreateMovingUnitSprite(flagTile, from, unit.civ, true);
+            // Get Ready state tile for destination
+            var readyStateTile = MapLoader.Instance.GetStateTileForState(UnitState.Ready);
 
             // Unit
             var unitTile = unitTilemap.GetTile((Vector3Int)from) as Tile;
             unitTilemap.SetTile((Vector3Int)from, null);
             var movingUnit = SpriteUtils.CreateMovingUnitSprite(unitTile, from, unit.civ, false);
 
-            StartCoroutine(MoveCoroutine(flagsTilemap, movingFlag, (Vector3Int)from, (Vector3Int)to, flagTile, Game.Instance.flagScale));
+            StartCoroutine(MoveCoroutine(stateTilemap, movingStateIndicator, (Vector3Int)from, (Vector3Int)to, readyStateTile, Game.Instance.flagScale));
             StartCoroutine(MoveCoroutine(unitTilemap, movingUnit, (Vector3Int)from, (Vector3Int)to, unitTile, Game.Instance.unitScale));
         }
     }
@@ -110,8 +107,11 @@ public class UnitManager : Singleton<UnitManager>
         foreach (var pos in positions)
         {
             var unit = units[pos];
-            unit.actionsLeft = unit.unit.movement;
-            units[pos] = unit;
+            if (unit.state != UnitState.Fortified)
+            {
+                unit.actionsLeft = unit.unit.movement;
+                units[pos] = unit;
+            }
         }
     }
 
@@ -148,16 +148,7 @@ public class UnitManager : Singleton<UnitManager>
 
     public void ResetUnitStates()
     {
-        var positions = new List<Vector2Int>(units.Keys);
-        foreach (var pos in positions)
-        {
-            var unit = units[pos];
-            if (unit.state == UnitState.Resting)
-            {
-                unit.state = UnitState.Ready;
-                units[pos] = unit;
-            }
-        }
+        // No-op: Fortified state persists across turns
         onUnitStateChanged?.Invoke();
     }
 
@@ -167,6 +158,17 @@ public class UnitManager : Singleton<UnitManager>
         {
             unit.state = newState;
             units[position] = unit;
+            
+            // Update visual state indicator on tilemap
+            var stateTile = MapLoader.Instance.GetStateTileForState(newState);
+            if (stateTile != null && flags.TryGetValue(unit.civ, out var stateTilemap))
+            {
+                var cellPos = new Vector3Int(position.x, position.y, 0);
+                stateTilemap.SetTile(cellPos, stateTile);
+                var matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale);
+                stateTilemap.SetTransformMatrix(cellPos, matrix);
+            }
+            
             onUnitStateChanged?.Invoke();
         }
     }

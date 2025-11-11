@@ -18,7 +18,7 @@ public class UnitButtonsUITests
     #region Rest Button Active State Tests
 
     [UnityTest]
-    public IEnumerator RestButton_ShowsActiveState_WhenUnitResting()
+    public IEnumerator FortifyButton_ShowsActiveState_WhenUnitFortified()
     {
         yield return null;
         
@@ -27,8 +27,8 @@ public class UnitButtonsUITests
         var doc = GameObject.Find("UI").GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
         
-        var restButton = root.Q<Button>("RestButton");
-        Assert.IsNotNull(restButton, "RestButton not found");
+        var fortifyButton = root.Q<Button>("FortifyButton");
+        Assert.IsNotNull(fortifyButton, "FortifyButton not found");
         
         // Get player unit
         var playerCiv = game.player.civilization;
@@ -43,19 +43,19 @@ public class UnitButtonsUITests
         yield return null;
         
         // Verify button visible
-        Assert.AreEqual(DisplayStyle.Flex, restButton.parent.style.display.value, "Unit buttons should be visible");
+        Assert.AreEqual(DisplayStyle.Flex, fortifyButton.parent.style.display.value, "Unit buttons should be visible");
         
         // Click rest button
         var unitButtonsUI = GameObject.Find("UI").GetComponent<UnitButtonsUI>();
-        unitManager.SetUnitState(testUnit.position, UnitState.Resting);
+        unitManager.SetUnitState(testUnit.position, UnitState.Fortified);
         yield return null;
         
         // Verify button has active class
-        Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should have 'active' class when unit is resting");
+        Assert.IsTrue(fortifyButton.ClassListContains("active"), "FortifyButton should have 'active' class when unit is fortified");
     }
 
     [UnityTest]
-    public IEnumerator RestButton_ShowsDefaultState_WhenUnitReady()
+    public IEnumerator FortifyButton_ShowsDefaultState_WhenUnitReady()
     {
         yield return null;
         
@@ -64,8 +64,8 @@ public class UnitButtonsUITests
         var doc = GameObject.Find("UI").GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
         
-        var restButton = root.Q<Button>("RestButton");
-        Assert.IsNotNull(restButton);
+        var fortifyButton = root.Q<Button>("FortifyButton");
+        Assert.IsNotNull(fortifyButton);
         
         // Get player unit
         var playerCiv = game.player.civilization;
@@ -82,11 +82,11 @@ public class UnitButtonsUITests
         yield return null;
         
         // Verify button does NOT have active class
-        Assert.IsFalse(restButton.ClassListContains("active"), "RestButton should NOT have 'active' class when unit is ready");
+        Assert.IsFalse(fortifyButton.ClassListContains("active"), "FortifyButton should NOT have 'active' class when unit is ready");
     }
 
     [UnityTest]
-    public IEnumerator RestButton_ActiveState_Persists_WhenReselectingUnit()
+    public IEnumerator FortifyButton_ActiveState_Persists_WhenReselectingUnit()
     {
         yield return null;
         
@@ -95,23 +95,23 @@ public class UnitButtonsUITests
         var doc = GameObject.Find("UI").GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
         
-        var restButton = root.Q<Button>("RestButton");
-        Assert.IsNotNull(restButton, "RestButton not found");
+        var fortifyButton = root.Q<Button>("FortifyButton");
+        Assert.IsNotNull(fortifyButton, "FortifyButton not found");
         
         // Get player unit
         var playerCiv = game.player.civilization;
         var playerUnits = unitManager.civUnits[playerCiv];
         var testUnit = playerUnits[0];
         
-        // Select unit and set to resting
+        // Select unit and set to fortified
         var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>()[0];
         gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
-        unitManager.SetUnitState(testUnit.position, UnitState.Resting);
+        unitManager.SetUnitState(testUnit.position, UnitState.Fortified);
         yield return null;
         
-        Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should have 'active' class after setting to Resting");
+        Assert.IsTrue(fortifyButton.ClassListContains("active"), "FortifyButton should have 'active' class after setting to Fortified");
         
         // Deselect unit
         gameStateEvents.EmitTileDeselected(testUnit.position);
@@ -122,7 +122,7 @@ public class UnitButtonsUITests
         yield return null;
         
         // Verify active state persists
-        Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should still have 'active' class after reselecting");
+        Assert.IsTrue(fortifyButton.ClassListContains("active"), "FortifyButton should still have 'active' class after reselecting");
     }
 
     [UnityTest]
@@ -136,22 +136,22 @@ public class UnitButtonsUITests
         var doc = GameObject.Find("UI").GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
         
-        var restButton = root.Q<Button>("RestButton");
+        var fortifyButton = root.Q<Button>("FortifyButton");
         
         // Get player unit
         var playerCiv = game.player.civilization;
         var playerUnits = unitManager.civUnits[playerCiv];
         var testUnit = playerUnits[0];
         
-        // Select unit and set to resting
+        // Select unit and set to fortified
         var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>()[0];
         gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
-        unitManager.SetUnitState(testUnit.position, UnitState.Resting);
+        unitManager.SetUnitState(testUnit.position, UnitState.Fortified);
         yield return null;
         
-        Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should be active before turn ends");
+        Assert.IsTrue(fortifyButton.ClassListContains("active"), "FortifyButton should be active before turn ends");
         
         // End turn and complete AI turn
         turnManager.EndTurn();
@@ -167,18 +167,18 @@ public class UnitButtonsUITests
         }
         yield return null;
         
-        // Reselect unit - should no longer be resting
+        // Reselect unit - should no longer be fortified
         gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
         // Verify unit is back to Ready state
         Assert.IsTrue(unitManager.TryGetUnit(testUnit.position, out var updatedUnit), "Unit should exist");
         Assert.AreEqual(UnitState.Ready, updatedUnit.state, "Unit state should be Ready after new turn");
-        Assert.IsFalse(restButton.ClassListContains("active"), "RestButton should NOT be active after new turn");
+        Assert.IsFalse(fortifyButton.ClassListContains("active"), "FortifyButton should NOT be active after new turn");
     }
 
     [UnityTest]
-    public IEnumerator RestButton_ClearsActive_WhenToggledFromRestingToReady()
+    public IEnumerator FortifyButton_ClearsActive_WhenToggledFromFortifiedToReady()
     {
         yield return null;
         
@@ -186,23 +186,23 @@ public class UnitButtonsUITests
         var game = Game.Instance;
         var doc = GameObject.Find("UI").GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
-        var restButton = root.Q<Button>("RestButton");
+        var fortifyButton = root.Q<Button>("FortifyButton");
         
         // Get player unit
         var playerCiv = game.player.civilization;
         var playerUnits = unitManager.civUnits[playerCiv];
         var testUnit = playerUnits[0];
         
-        // Select unit and set to resting
+        // Select unit and set to fortified
         var gameStateEvents = Resources.FindObjectsOfTypeAll<GameStateEvents>()[0];
         gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
-        unitManager.SetUnitState(testUnit.position, UnitState.Resting);
+        unitManager.SetUnitState(testUnit.position, UnitState.Fortified);
         yield return null;
         
-        Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should be active when resting");
-        Assert.AreEqual(UnitState.Resting, testUnit.state, "Unit should be Resting");
+        Assert.IsTrue(fortifyButton.ClassListContains("active"), "FortifyButton should be active when fortified");
+        Assert.AreEqual(UnitState.Fortified, testUnit.state, "Unit should be Fortified");
         
         // Toggle back to Ready
         unitManager.SetUnitState(testUnit.position, UnitState.Ready);
@@ -211,11 +211,11 @@ public class UnitButtonsUITests
         // Verify unit returned to Ready state and button updated
         Assert.IsTrue(unitManager.TryGetUnit(testUnit.position, out var updatedUnit), "Unit should exist");
         Assert.AreEqual(UnitState.Ready, updatedUnit.state, "Unit should be Ready after toggling off rest");
-        Assert.IsFalse(restButton.ClassListContains("active"), "RestButton should NOT be active after toggling off");
+        Assert.IsFalse(fortifyButton.ClassListContains("active"), "FortifyButton should NOT be active after toggling off");
     }
 
     [UnityTest]
-    public IEnumerator RestButton_TogglesActiveClass_ThroughMultipleStateChanges()
+    public IEnumerator FortifyButton_TogglesActiveClass_ThroughMultipleStateChanges()
     {
         yield return null;
         
@@ -223,7 +223,7 @@ public class UnitButtonsUITests
         var game = Game.Instance;
         var doc = GameObject.Find("UI").GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
-        var restButton = root.Q<Button>("RestButton");
+        var fortifyButton = root.Q<Button>("FortifyButton");
         
         // Get player unit
         var playerCiv = game.player.civilization;
@@ -234,13 +234,13 @@ public class UnitButtonsUITests
         gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
-        // Toggle to Resting
-        unitManager.SetUnitState(testUnit.position, UnitState.Resting);
+        // Toggle to Fortified
+        unitManager.SetUnitState(testUnit.position, UnitState.Fortified);
         yield return null;
         
         Assert.IsTrue(unitManager.TryGetUnit(testUnit.position, out var unit1), "Unit should exist");
-        Assert.AreEqual(UnitState.Resting, unit1.state, "Unit should be Resting after first toggle");
-        Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should be active");
+        Assert.AreEqual(UnitState.Fortified, unit1.state, "Unit should be Fortified after first toggle");
+        Assert.IsTrue(fortifyButton.ClassListContains("active"), "FortifyButton should be active");
         
         // Toggle to Ready
         unitManager.SetUnitState(testUnit.position, UnitState.Ready);
@@ -248,15 +248,15 @@ public class UnitButtonsUITests
         
         Assert.IsTrue(unitManager.TryGetUnit(testUnit.position, out var unit2), "Unit should exist");
         Assert.AreEqual(UnitState.Ready, unit2.state, "Unit should be Ready after second toggle");
-        Assert.IsFalse(restButton.ClassListContains("active"), "RestButton should NOT be active");
+        Assert.IsFalse(fortifyButton.ClassListContains("active"), "FortifyButton should NOT be active");
         
-        // Toggle to Resting again
-        unitManager.SetUnitState(testUnit.position, UnitState.Resting);
+        // Toggle to Fortified again
+        unitManager.SetUnitState(testUnit.position, UnitState.Fortified);
         yield return null;
         
         Assert.IsTrue(unitManager.TryGetUnit(testUnit.position, out var unit3), "Unit should exist");
-        Assert.AreEqual(UnitState.Resting, unit3.state, "Unit should be Resting after third toggle");
-        Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should be active again");
+        Assert.AreEqual(UnitState.Fortified, unit3.state, "Unit should be Fortified after third toggle");
+        Assert.IsTrue(fortifyButton.ClassListContains("active"), "FortifyButton should be active again");
     }
 
     #endregion
@@ -264,7 +264,7 @@ public class UnitButtonsUITests
     #region Rest Button Disabled Tests
 
     [UnityTest]
-    public IEnumerator RestButton_Disabled_WhenReadyAndNoActionsLeft()
+    public IEnumerator FortifyButton_Disabled_WhenReadyAndNoActionsLeft()
     {
         yield return null;
         
@@ -273,7 +273,7 @@ public class UnitButtonsUITests
         var doc = GameObject.Find("UI").GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
         
-        var restButton = root.Q<Button>("RestButton");
+        var fortifyButton = root.Q<Button>("FortifyButton");
         
         // Get player unit and deplete actions
         var playerCiv = game.player.civilization;
@@ -290,11 +290,11 @@ public class UnitButtonsUITests
         yield return null;
         
         // Verify rest button disabled when Ready and no actions
-        Assert.IsFalse(restButton.enabledSelf, "RestButton should be disabled when Ready and no actions left");
+        Assert.IsFalse(fortifyButton.enabledSelf, "FortifyButton should be disabled when Ready and no actions left");
     }
 
     [UnityTest]
-    public IEnumerator RestButton_Enabled_WhenRestingEvenWithNoActions()
+    public IEnumerator FortifyButton_Enabled_WhenFortifiedEvenWithNoActions()
     {
         yield return null;
         
@@ -303,15 +303,15 @@ public class UnitButtonsUITests
         var doc = GameObject.Find("UI").GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
         
-        var restButton = root.Q<Button>("RestButton");
+        var fortifyButton = root.Q<Button>("FortifyButton");
         
-        // Get player unit, set to resting with no actions
+        // Get player unit, set to fortified with no actions
         var playerCiv = game.player.civilization;
         var playerUnits = unitManager.civUnits[playerCiv];
         var testUnit = playerUnits[0];
         
         testUnit.actionsLeft = 0;
-        testUnit.state = UnitState.Resting;
+        testUnit.state = UnitState.Fortified;
         unitManager.UpdateUnit(testUnit.position, testUnit);
         
         // Select unit
@@ -319,13 +319,13 @@ public class UnitButtonsUITests
         gameStateEvents.EmitTileSelected(testUnit.position);
         yield return null;
         
-        // Verify rest button enabled when Resting (to allow toggling off)
-        Assert.IsTrue(restButton.enabledSelf, "RestButton should be enabled when Resting even with no actions");
-        Assert.IsTrue(restButton.ClassListContains("active"), "RestButton should be active when Resting");
+        // Verify rest button enabled when Fortified (to allow toggling off)
+        Assert.IsTrue(fortifyButton.enabledSelf, "FortifyButton should be enabled when Fortified even with no actions");
+        Assert.IsTrue(fortifyButton.ClassListContains("active"), "FortifyButton should be active when Fortified");
     }
 
     [UnityTest]
-    public IEnumerator RestButton_Enabled_WhenHasActions()
+    public IEnumerator FortifyButton_Enabled_WhenHasActions()
     {
         yield return null;
         
@@ -334,7 +334,7 @@ public class UnitButtonsUITests
         var doc = GameObject.Find("UI").GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
         
-        var restButton = root.Q<Button>("RestButton");
+        var fortifyButton = root.Q<Button>("FortifyButton");
         
         // Get player unit with actions
         var playerCiv = game.player.civilization;
@@ -354,7 +354,7 @@ public class UnitButtonsUITests
         yield return null;
         
         // Verify rest button enabled
-        Assert.IsTrue(restButton.enabledSelf, "RestButton should be enabled when unit has actions");
+        Assert.IsTrue(fortifyButton.enabledSelf, "FortifyButton should be enabled when unit has actions");
     }
 
     #endregion
