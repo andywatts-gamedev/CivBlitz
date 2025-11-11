@@ -193,7 +193,9 @@ public class MapLoader : MonoBehaviour
         {
             if (terrainData.terrain != null && terrainTileCache.TryGetValue(terrainData.terrain, out var tile))
             {
-                terrainTilemap.SetTile((Vector3Int)terrainData.position, tile);
+                // Grid uses XZY swizzle: position.x=worldX, position.y=worldZ, z=0
+                var cellPos = new Vector3Int(terrainData.position.x, terrainData.position.y, 0);
+                terrainTilemap.SetTile(cellPos, tile);
             }
             else
             {
@@ -218,22 +220,25 @@ public class MapLoader : MonoBehaviour
                 continue;
             }
 
+            // Grid uses XZY swizzle: position.x=worldX, position.y=worldZ, z=0
+            var cellPos = new Vector3Int(unitPlacement.position.x, unitPlacement.position.y, 0);
+            
             // Place flag
             if (flagTile != null && civTilemap.flags != null)
             {
-                civTilemap.flags.SetTile((Vector3Int)unitPlacement.position, flagTile);
+                civTilemap.flags.SetTile(cellPos, flagTile);
                 // Scale the flag
                 var matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale);
-                civTilemap.flags.SetTransformMatrix((Vector3Int)unitPlacement.position, matrix);
+                civTilemap.flags.SetTransformMatrix(cellPos, matrix);
             }
 
             // Place unit sprite
             if (unitTileCache.TryGetValue(unitPlacement.unit, out var unitTile) && civTilemap.units != null)
             {
-                civTilemap.units.SetTile((Vector3Int)unitPlacement.position, unitTile);
+                civTilemap.units.SetTile(cellPos, unitTile);
                 // Scale the unit
                 var matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.unitScale);
-                civTilemap.units.SetTransformMatrix((Vector3Int)unitPlacement.position, matrix);
+                civTilemap.units.SetTransformMatrix(cellPos, matrix);
             }
 
             // Register unit with UnitManager

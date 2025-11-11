@@ -135,7 +135,15 @@ public class HealthBarManager : MonoBehaviour
         var flagsTilemap = UnitManager.Instance.flags[Game.Instance.player.civilization];
         if (flagsTilemap == null) return;
 
-        var worldPos = flagsTilemap.CellToWorld((Vector3Int)unitPos);
+        Vector3 worldPos;
+        if (CombatManager.Instance != null && CombatManager.Instance.TryGetCombatPosition(unitPos, out var combatPos))
+        {
+            worldPos = combatPos;
+        }
+        else
+        {
+            worldPos = flagsTilemap.CellToWorld((Vector3Int)unitPos);
+        }
         worldPos.y += 1.2f;
 
         var screenPos = Camera.main.WorldToScreenPoint(worldPos);

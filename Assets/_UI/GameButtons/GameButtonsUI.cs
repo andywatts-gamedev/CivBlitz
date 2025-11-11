@@ -9,6 +9,7 @@ public class GameButtonsUI : MonoBehaviour
     [SerializeField] private GameEvent onMovesConsumed;
     [SerializeField] private GameEvent onUnitStateChanged;
     [SerializeField] private GameEvent onTurnChanged;
+    [SerializeField] private GameEvent onMapLoaded;
     
     private UIDocument doc;
     private Button nextUnitButton;
@@ -56,7 +57,14 @@ public class GameButtonsUI : MonoBehaviour
         if (onUnitMoved != null) onUnitMoved.Handler += UpdateButtonState;
         if (onMovesConsumed != null) onMovesConsumed.Handler += UpdateButtonState;
         if (onUnitStateChanged != null) onUnitStateChanged.Handler += UpdateButtonState;
+        if (onMapLoaded != null) onMapLoaded.Handler += UpdateButtonState;
         
+        StartCoroutine(InitialUpdate());
+    }
+
+    private System.Collections.IEnumerator InitialUpdate()
+    {
+        yield return new WaitForEndOfFrame();
         UpdateButtonState();
     }
 
@@ -79,6 +87,7 @@ public class GameButtonsUI : MonoBehaviour
         if (onUnitMoved != null) onUnitMoved.Handler -= UpdateButtonState;
         if (onMovesConsumed != null) onMovesConsumed.Handler -= UpdateButtonState;
         if (onUnitStateChanged != null) onUnitStateChanged.Handler -= UpdateButtonState;
+        if (onMapLoaded != null) onMapLoaded.Handler -= UpdateButtonState;
     }
 
 

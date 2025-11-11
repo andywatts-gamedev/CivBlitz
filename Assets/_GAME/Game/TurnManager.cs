@@ -70,6 +70,12 @@ public class TurnManager : Singleton<TurnManager>
                     CombatManager.Instance.TryCombat(from, to);
                 else
                     UnitManager.Instance.MoveUnit(from, to);
+                
+                // Wait for any movement/combat animations to complete
+                while (UnitManager.Instance.isMoving || CombatManager.Instance.isCombatMoving)
+                {
+                    yield return null;
+                }
                     
                 yield return new WaitForSeconds(0.5f);
                 

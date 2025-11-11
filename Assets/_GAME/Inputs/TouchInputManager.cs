@@ -35,7 +35,7 @@ public class TouchInputManager : MonoBehaviour
             uiDocument = FindFirstObjectByType<UIDocument>();
             if (uiDocument != null)
             {
-                Debug.Log($"TouchInputManager: Found UIDocument on {uiDocument.gameObject.name}, panel={uiDocument.rootVisualElement.panel}");
+                Debug.Log($"TouchInputManager: Found UIDocument on {uiDocument.gameObject.name}");
             }
             else
             {
@@ -46,6 +46,14 @@ public class TouchInputManager : MonoBehaviour
         inputs = new MyInputActions();
         inputs.Touch.PrimaryContact.started += _ => {
             var touchPos = inputs.Touch.PrimaryPosition.ReadValue<Vector2>();
+            
+            // Ignore first touch if at (0,0) - Unity Input System initialization issue
+            if (touchPos.x == 0 && touchPos.y == 0)
+            {
+                Debug.LogWarning("[Touch] Ignoring touch at (0,0) - likely initialization artifact");
+                return;
+            }
+            
             Debug.LogWarning($"[Touch] Contact started at {touchPos}, CameraController={(cameraController != null ? "OK" : "NULL")}");
             var tile = GetTileXZ(touchPos);
             
@@ -130,6 +138,12 @@ public class TouchInputManager : MonoBehaviour
         };
     }
 
+    private void Start()
+    {
+        // Log initialization status
+        Debug.Log($"[TouchInput] Start - panel ready: {uiDocument?.rootVisualElement?.panel != null}");
+    }
+
     private void Update()
     {
         if (isSecondTouchActive)
@@ -145,10 +159,10 @@ public class TouchInputManager : MonoBehaviour
             
             if (distance > DRAG_THRESHOLD)
             {
-                bool startedOnSelectedTile = dragStartTile.HasValue && isSelected && dragStartTile == selectedTile;
                 bool startedOnUI = IsPointerOverUI(lastTouchPosition);
                 
-                if (startedOnSelectedTile && !startedOnUI)
+                // Allow drag if started on any unit tile (player's units only, checked in Game.cs)
+                if (dragStartTile.HasValue && !startedOnUI)
                 {
                     isDragging = true;
                     var currentTile = GetTileXZ(touchPos);
@@ -168,7 +182,7 @@ public class TouchInputManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log($"[Touch] No action: startedOnUI={startedOnUI}, dragStartTile={dragStartTile}, isSelected={isSelected}");
+                    Debug.Log($"[Touch] No action: startedOnUI={startedOnUI}, dragStartTile={dragStartTile}");
                 }
             }
         }
@@ -243,6 +257,7 @@ public class TouchInputManager : MonoBehaviour
     {
         if (uiDocument == null || uiDocument.rootVisualElement == null)
         {
+            Debug.LogWarning("[TouchInput] UIDocument or root is null");
             return false;
         }
         
@@ -250,6 +265,7 @@ public class TouchInputManager : MonoBehaviour
         var panel = root.panel;
         if (panel == null)
         {
+            Debug.LogWarning("[TouchInput] Panel is null - UI not ready yet, allowing input");
             return false;
         }
         
@@ -261,7 +277,12 @@ public class TouchInputManager : MonoBehaviour
         // Use panel.Pick() - this respects picking-mode in USS and UXML
         var pickedElement = panel.Pick(panelPos);
         
-        return pickedElement != null && pickedElement != root;
+        bool hitUI = pickedElement != null && pickedElement != root;
+        if (hitUI)
+        {
+            Debug.Log($"[TouchInput] Hit UI element: {pickedElement?.name ?? "null"}");
+        }
+        return hitUI;
     }
 
     private void OnEnable() => inputs.Enable();

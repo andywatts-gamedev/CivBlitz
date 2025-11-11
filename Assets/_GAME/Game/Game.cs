@@ -122,6 +122,9 @@ public class Game : Singleton<Game>
         if (!UnitManager.Instance.TryGetUnit(from, out var unit))
             return false;
             
+        if (unit.civ != player.civilization)
+            return false;
+            
         if (unit.actionsLeft <= 0)
             return false;
             
@@ -215,7 +218,15 @@ public class Game : Singleton<Game>
         Debug.Log($"Drag ended: {fromTile} -> {toTile}");
         isDragging = false;
         
-        if (pathPreview != null) pathPreview.SetActive(false);
+        if (pathPreview != null)
+        {
+            var lineRenderer = pathPreview.GetComponent<LineRenderer>();
+            if (lineRenderer != null)
+            {
+                lineRenderer.positionCount = 0;
+            }
+            pathPreview.SetActive(false);
+        }
         
         // Clear hover panel when drag ends
         events.EmitHoverCleared();
@@ -237,6 +248,16 @@ public class Game : Singleton<Game>
     private void UpdatePathPreview(Vector2Int fromTile, Vector2Int toTile)
     {
         Debug.Log($"UpdatePathPreview: {fromTile} -> {toTile}");
+        
+        // Don't show preview if dragging to same tile
+        if (fromTile == toTile)
+        {
+            if (pathPreview != null)
+            {
+                pathPreview.SetActive(false);
+            }
+            return;
+        }
         
         // Create pathPreview GameObject if it doesn't exist
         if (pathPreview == null)
@@ -273,8 +294,8 @@ public class Game : Singleton<Game>
             if (shader == null) shader = Shader.Find("Universal Render Pipeline/2D/Sprite-Lit-Default");
             if (shader == null) shader = Shader.Find("Sprites/Default");
             lineRenderer.material = new Material(shader);
-            lineRenderer.startWidth = 0.5f;
-            lineRenderer.endWidth = 0.3f;
+            lineRenderer.startWidth = 0.15f;
+            lineRenderer.endWidth = 0.05f;
             lineRenderer.positionCount = 2;
             lineRenderer.useWorldSpace = true;
             lineRenderer.sortingOrder = 10;
@@ -290,11 +311,17 @@ public class Game : Singleton<Game>
             lineRenderer.receiveShadows = false;
             
             var widthCurve = new AnimationCurve();
-            widthCurve.AddKey(0f, 0.5f);
-            widthCurve.AddKey(1f, 0.3f);
+            widthCurve.AddKey(0f, 0.15f);
+            widthCurve.AddKey(1f, 0.15f);
             lineRenderer.widthCurve = widthCurve;
             
             Debug.Log($"LineRenderer created with shader: {shader?.name ?? "NULL"}");
+        }
+        
+        // Ensure we have 2 positions (might have been cleared to 0)
+        if (lineRenderer.positionCount != 2)
+        {
+            lineRenderer.positionCount = 2;
         }
         
         lineRenderer.SetPosition(0, startPos);

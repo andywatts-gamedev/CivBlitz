@@ -192,7 +192,9 @@ public class MapExporter : EditorWindow
         {
             if (terrainData.terrain != null && terrainTileCache.TryGetValue(terrainData.terrain, out var tile))
             {
-                terrainTilemap.SetTile((Vector3Int)terrainData.position, tile);
+                // Grid uses XZY swizzle: position.x=worldX, position.y=worldZ, z=0
+                var cellPos = new Vector3Int(terrainData.position.x, terrainData.position.y, 0);
+                terrainTilemap.SetTile(cellPos, tile);
                 terrainCount++;
             }
             else
@@ -211,20 +213,23 @@ public class MapExporter : EditorWindow
                 continue;
             }
 
+            // Grid uses XZY swizzle: position.x=worldX, position.y=worldZ, z=0
+            var cellPos = new Vector3Int(unitPlacement.position.x, unitPlacement.position.y, 0);
+            
             // Place flag
             if (civTilemap.flags != null)
             {
-                civTilemap.flags.SetTile((Vector3Int)unitPlacement.position, flagTile);
+                civTilemap.flags.SetTile(cellPos, flagTile);
                 var matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(2f, 2f, 2f));
-                civTilemap.flags.SetTransformMatrix((Vector3Int)unitPlacement.position, matrix);
+                civTilemap.flags.SetTransformMatrix(cellPos, matrix);
             }
 
             // Place unit
             if (unitPlacement.unit != null && unitTileCache.TryGetValue(unitPlacement.unit, out var unitTile) && civTilemap.units != null)
             {
-                civTilemap.units.SetTile((Vector3Int)unitPlacement.position, unitTile);
+                civTilemap.units.SetTile(cellPos, unitTile);
                 var matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(0.8f, 0.8f, 0.8f));
-                civTilemap.units.SetTransformMatrix((Vector3Int)unitPlacement.position, matrix);
+                civTilemap.units.SetTransformMatrix(cellPos, matrix);
                 unitCount++;
             }
             else
@@ -237,7 +242,7 @@ public class MapExporter : EditorWindow
             {
                 if (overrideTilesByHealth.TryGetValue(unitPlacement.healthOverride, out var overrideTile))
                 {
-                    overridesTilemap.SetTile((Vector3Int)unitPlacement.position, overrideTile);
+                    overridesTilemap.SetTile(cellPos, overrideTile);
                     Debug.Log($"[MapImporter] Placed override tile at {unitPlacement.position}: {unitPlacement.healthOverride}%");
                 }
                 else
@@ -412,9 +417,10 @@ public class MapExporter : EditorWindow
             var tile = terrainTilemap.GetTile(pos) as TerrainTile;
             if (tile != null && tile.terrainScob != null)
             {
+                // Grid uses XZY swizzle, so pos.x=worldX, pos.y=worldZ
                 terrainDataList.Add(new TerrainData
                 {
-                    position = (Vector2Int)pos,
+                    position = new Vector2Int(pos.x, pos.y),
                     terrain = tile.terrainScob
                 });
                 minX = Mathf.Min(minX, pos.x);
@@ -461,9 +467,10 @@ public class MapExporter : EditorWindow
                             }
                         }
                         
+                        // Grid uses XZY swizzle, so pos.x=worldX, pos.y=worldZ
                         unitPlacementList.Add(new UnitPlacement
                         {
-                            position = (Vector2Int)pos,
+                            position = new Vector2Int(pos.x, pos.y),
                             civilization = civTilemap.civ.civilization,
                             unit = unitTile.unitSCOB,
                             healthOverride = healthOverride
