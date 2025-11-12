@@ -265,30 +265,26 @@ public class CombatManager : Singleton<CombatManager>
             Destroy(attackerUnitSprite);
         }
         
-        if (!e.defenderKilled) {
-            var readyStateTile = MapLoader.Instance.GetStateTileForState(UnitState.Ready);
-            defenderStateTilemap.SetTile(defenderCellPos, readyStateTile);
-            defenderStateTilemap.SetTransformMatrix(defenderCellPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale));
-            unitTilemap.SetTile(defenderCellPos, defenderUnitTile);
-            unitTilemap.SetTransformMatrix(defenderCellPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.unitScale));
-            Destroy(defenderStateSprite);
-            Destroy(defenderUnitSprite);
-        }
-        
-        // Update health after animation
+        // Update health before restoring tiles so we can check correct state
         if (!e.attackerKilled && UnitManager.Instance.TryGetUnit(e.attackerPos, out var attacker))
         {
             attacker.health -= e.retaliationDamage;
             attacker.actionsLeft = 0;
-            // Fortified units stay fortified when attacking (unlike moved units)
             UnitManager.Instance.UpdateUnit(e.attackerPos, attacker);
         }
         
         if (!e.defenderKilled && UnitManager.Instance.TryGetUnit(e.defenderPos, out var defender))
         {
             defender.health -= e.attackDamage;
-            // Fortified defenders stay fortified after being attacked
             UnitManager.Instance.UpdateUnit(e.defenderPos, defender);
+            
+            var correctStateTile = MapLoader.Instance.GetStateTileForState(defender.state);
+            defenderStateTilemap.SetTile(defenderCellPos, correctStateTile);
+            defenderStateTilemap.SetTransformMatrix(defenderCellPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.flagScale));
+            unitTilemap.SetTile(defenderCellPos, defenderUnitTile);
+            unitTilemap.SetTransformMatrix(defenderCellPos, Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Game.Instance.unitScale));
+            Destroy(defenderStateSprite);
+            Destroy(defenderUnitSprite);
         }
         
         UnitManager.Instance.EmitMovesConsumed();

@@ -9,6 +9,7 @@ public class CombatLogUI : MonoBehaviour
     private UIDocument doc;
     private VisualElement panel, entriesContainer;
     private const int MAX_ENTRIES = 20;
+    private bool isNewTurn = false;
     
     // Font Awesome unicode glyphs
     private const string MELEE_GLYPH = "\uf71c";    // sword
@@ -39,7 +40,7 @@ public class CombatLogUI : MonoBehaviour
             CombatManager.Instance.OnCombatResolved += HandleCombatResolved;
         
         if (onTurnChanged != null) {
-            onTurnChanged.Handler += ClearLog;
+            onTurnChanged.Handler += HandleTurnChanged;
             Debug.Log($"[CombatLogUI] Subscribed to {onTurnChanged.name}");
         } else {
             Debug.LogWarning("[CombatLogUI] onTurnChanged is NULL!");
@@ -55,10 +56,15 @@ public class CombatLogUI : MonoBehaviour
             CombatManager.Instance.OnCombatResolved -= HandleCombatResolved;
         
         if (onTurnChanged != null)
-            onTurnChanged.Handler -= ClearLog;
+            onTurnChanged.Handler -= HandleTurnChanged;
         
         if (onMapLoaded != null)
             onMapLoaded.Handler -= ClearLog;
+    }
+    
+    void HandleTurnChanged()
+    {
+        isNewTurn = true;
     }
     
     void ClearLog()
@@ -67,6 +73,7 @@ public class CombatLogUI : MonoBehaviour
         if (entriesContainer == null) return;
         entriesContainer.Clear();
         panel.style.display = DisplayStyle.None;
+        isNewTurn = false;
     }
 
     void HandleCombatResolved(CombatEvent e)
@@ -91,6 +98,13 @@ public class CombatLogUI : MonoBehaviour
         
         var entry = new VisualElement();
         entry.AddToClassList("combat-entry");
+        
+        // Add top border if this is first combat of new turn
+        if (isNewTurn)
+        {
+            entry.AddToClassList("new-turn-entry");
+            isNewTurn = false;
+        }
 
         var attackerColor = Game.Instance.civilizations[e.attackerCiv].color;
         var defenderColor = Game.Instance.civilizations[e.defenderCiv].color;
@@ -184,7 +198,7 @@ public class CombatLogUI : MonoBehaviour
 
         entriesContainer.Add(entry);
 
-        // Limit entries
+        // Limit entries (remove oldest from top)
         while (entriesContainer.childCount > MAX_ENTRIES)
             entriesContainer.RemoveAt(0);
     }

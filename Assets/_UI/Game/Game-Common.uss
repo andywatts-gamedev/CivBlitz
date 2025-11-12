@@ -3,6 +3,7 @@
     display: none;
     position: absolute;
     right: 52%;
+    bottom: 0px;
 }
 
 #TargetTileContainer
@@ -10,9 +11,18 @@
     display: none;
     position: absolute;
     left: 52%;
+    bottom: 0px;
 }
 
 
+
+#CombatLogContainer
+{
+    display: none;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
 
 
 

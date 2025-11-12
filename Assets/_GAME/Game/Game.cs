@@ -310,11 +310,7 @@ public class Game : Singleton<Game>
             
             lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             lineRenderer.receiveShadows = false;
-            
-            var widthCurve = new AnimationCurve();
-            widthCurve.AddKey(0f, 0.15f);
-            widthCurve.AddKey(1f, 0.15f);
-            lineRenderer.widthCurve = widthCurve;
+            lineRenderer.widthMultiplier = 1f;
             
             Debug.Log($"LineRenderer created with shader: {shader?.name ?? "NULL"}");
         }

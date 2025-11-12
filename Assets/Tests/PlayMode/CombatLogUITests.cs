@@ -16,13 +16,12 @@ public class CombatLogUITests
     }
 
     [UnityTest]
-    public IEnumerator CombatLog_ClearsOnTurnChange()
+    public IEnumerator CombatLog_ShowsTurnIndicatorAfterTurnChange()
     {
         yield return null;
         
         var combatManager = CombatManager.Instance;
         var turnManager = TurnManager.Instance;
-        var unitManager = UnitManager.Instance;
         var game = Game.Instance;
         var doc = GameObject.Find("UI").GetComponent<UIDocument>();
         var root = doc.rootVisualElement;
@@ -59,18 +58,24 @@ public class CombatLogUITests
         combatManager.TriggerCombatResolvedForTest(combatEvent);
         yield return null;
         
-        Assert.AreEqual(DisplayStyle.Flex, container.style.display.value, "Combat log should be visible after combat");
-        Assert.Greater(entriesContainer.childCount, 0, "Combat log should have entries after combat");
+        var entryCountBefore = entriesContainer.childCount;
+        Assert.Greater(entryCountBefore, 0, "Combat log should have entries after combat");
         
-        var entryCount = entriesContainer.childCount;
-        Debug.Log($"[Test] Combat log has {entryCount} entries before turn change");
-        
-        // End turn to trigger combat log clear
+        // End turn
         turnManager.EndTurn();
         yield return null;
         
-        Assert.AreEqual(0, entriesContainer.childCount, "Combat log should be empty after turn change");
-        Assert.AreEqual(DisplayStyle.None, container.style.display.value, "Combat log should be hidden after clearing");
+        // Log should persist
+        Assert.AreEqual(entryCountBefore, entriesContainer.childCount, "Combat log should persist after turn change");
+        Assert.AreEqual(DisplayStyle.Flex, container.style.display.value, "Combat log should remain visible");
+        
+        // Trigger another combat
+        combatManager.TriggerCombatResolvedForTest(combatEvent);
+        yield return null;
+        
+        // Check that new entry has new-turn-entry class
+        var lastEntry = entriesContainer[entriesContainer.childCount - 1];
+        Assert.IsTrue(lastEntry.ClassListContains("new-turn-entry"), "New combat entry after turn change should have new-turn-entry class");
     }
 
     [UnityTest]
@@ -119,4 +124,5 @@ public class CombatLogUITests
         Assert.AreEqual(DisplayStyle.Flex, container.style.display.value, "Combat log should be visible after combat");
     }
 }
+
 
